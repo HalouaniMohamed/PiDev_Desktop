@@ -3,52 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pidev_desktop.entities;
-
-import java.io.Serializable;
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlRootElement;
+package entities;
 
 /**
  *
  * @author ALPHA
  */
-@Entity
-@Table(name = "shopping_cart_item")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "ShoppingCartItem.findAll", query = "SELECT s FROM ShoppingCartItem s")
-    , @NamedQuery(name = "ShoppingCartItem.findById", query = "SELECT s FROM ShoppingCartItem s WHERE s.id = :id")
-    , @NamedQuery(name = "ShoppingCartItem.findByQuantity", query = "SELECT s FROM ShoppingCartItem s WHERE s.quantity = :quantity")})
-public class ShoppingCartItem implements Serializable {
+public class ShoppingCartItem {
 
-    private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
-    @Column(name = "id")
     private Integer id;
-    @Basic(optional = false)
-    @Column(name = "quantity")
     private int quantity;
-    @JoinColumn(name = "product_id", referencedColumnName = "id")
-    @ManyToOne(optional = false)
     private Product product;
-    @JoinColumn(name = "commande_id", referencedColumnName = "id")
-    @ManyToOne
     private Commande commande;
-    @JoinColumn(name = "user_id", referencedColumnName = "id")
-    @ManyToOne
     private User user;
 
     public ShoppingCartItem() {
@@ -58,9 +24,17 @@ public class ShoppingCartItem implements Serializable {
         this.id = id;
     }
 
-    public ShoppingCartItem(Integer id, int quantity) {
+    public ShoppingCartItem(Integer id, int quantity, Product product, User user) {
         this.id = id;
         this.quantity = quantity;
+        this.product = product;
+        this.user = user;
+    }
+
+    public ShoppingCartItem(int quantity, Product product, User user) {
+        this.quantity = quantity;
+        this.product = product;
+        this.user = user;
     }
 
     public Integer getId() {
@@ -125,7 +99,7 @@ public class ShoppingCartItem implements Serializable {
 
     @Override
     public String toString() {
-        return "pidev_desktop.entities.ShoppingCartItem[ id=" + id + " ]";
+        return "ShoppingCartItem{" + "id=" + id + ", quantity=" + quantity + ", product=" + product + ", commande=" + commande + ", user=" + user + '}';
     }
 
 }

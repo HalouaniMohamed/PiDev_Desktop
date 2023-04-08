@@ -2,11 +2,6 @@
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
   <persistence-unit name="DesktopPU" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-    <class>pidev_desktop.entities.User</class>
-    <class>pidev_desktop.entities.Commande</class>
-    <class>pidev_desktop.entities.Product</class>
-    <class>pidev_desktop.entities.ShoppingCartItem</class>
-    <class>pidev_desktop.entities.Category</class>
     <class>pidev_desktop.entities.JournalMood</class>
     <class>pidev_desktop.entities.Post</class>
     <class>pidev_desktop.entities.Mood</class>
@@ -21,6 +16,11 @@
     <class>pidev_desktop.entities.DoctrineMigrationVersions</class>
     <class>pidev_desktop.entities.Evenements</class>
     <class>pidev_desktop.entities.Reservation</class>
+    <class>entities.ShoppingCartItem</class>
+    <class>entities.User</class>
+    <class>entities.Category</class>
+    <class>entities.Commande</class>
+    <class>entities.Product</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/pidevfinal?zeroDateTimeBehavior=convertToNull"/>
       <property name="javax.persistence.jdbc.user" value="root"/>

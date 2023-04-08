@@ -5,11 +5,6 @@
  */
 package tests;
 
-import java.sql.Date;
-import java.util.Calendar;
-import pidev_desktop.entities.Category;
-import services.CategoryService;
-
 /**
  *
  * @author ALPHA
@@ -20,10 +15,20 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        CategoryService cs = new CategoryService();
-        Date date = new Date(Calendar.getInstance().getTime().getTime());
-        Category c = new Category(34, "categoryTest", "gsfdgdfg", date, date);
-        cs.add(c);
+//        CategoryTests ct = new CategoryTests();
+//        ct.addCategory();
+//        ct.getAllCategories();
+//        ct.getById();
+//        ct.deleteById();
+
+//        ProductTests pt = new ProductTests();
+//        pt.addProduct();
+//        pt.getallProducts();
+//        pt.getProductById();
+//        pt.deleteById();
+//        CartTests cartTests = new CartTests();
+//        cartTests.getCart();
+//        cartTests.addToCart();
     }
 
 }

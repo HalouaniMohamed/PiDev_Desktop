@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pidev_desktop.entities;
+package entities;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -15,10 +15,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.Lob;
-import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -53,12 +50,11 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "User.findByResetTokenExpiresAt", query = "SELECT u FROM User u WHERE u.resetTokenExpiresAt = :resetTokenExpiresAt")})
 public class User implements Serializable {
 
-    @JoinTable(name = "user_notification", joinColumns = {
-        @JoinColumn(name = "user_id", referencedColumnName = "id")}, inverseJoinColumns = {
-        @JoinColumn(name = "notification_id", referencedColumnName = "id")})
-    @ManyToMany
-    private List<Notification> notificationList;
-
+//    @JoinTable(name = "user_notification", joinColumns = {
+//        @JoinColumn(name = "user_id", referencedColumnName = "id")}, inverseJoinColumns = {
+//        @JoinColumn(name = "notification_id", referencedColumnName = "id")})
+//    @ManyToMany
+//    private List<Notification> notificationList;
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -290,14 +286,5 @@ public class User implements Serializable {
     public String toString() {
         return "pidev_desktop.entities.User[ id=" + id + " ]";
     }
-
-    @XmlTransient
-    public List<Notification> getNotificationList() {
-        return notificationList;
-    }
-
-    public void setNotificationList(List<Notification> notificationList) {
-        this.notificationList = notificationList;
-    }
-
+//    }
 }

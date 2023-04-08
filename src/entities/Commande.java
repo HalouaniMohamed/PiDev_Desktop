@@ -3,11 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pidev_desktop.entities;
+package entities;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -18,12 +17,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -58,9 +55,7 @@ public class Commande implements Serializable {
     private boolean isConfirmed;
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    private User user;
-    @OneToMany(mappedBy = "commande")
-    private List<ShoppingCartItem> shoppingCartItemList;
+    private User userId;
 
     public Commande() {
     }
@@ -108,21 +103,12 @@ public class Commande implements Serializable {
         this.isConfirmed = isConfirmed;
     }
 
-    public User getUser() {
-        return user;
+    public User getUserId() {
+        return userId;
     }
 
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    @XmlTransient
-    public List<ShoppingCartItem> getShoppingCartItemList() {
-        return shoppingCartItemList;
-    }
-
-    public void setShoppingCartItemList(List<ShoppingCartItem> shoppingCartItemList) {
-        this.shoppingCartItemList = shoppingCartItemList;
+    public void setUserId(User userId) {
+        this.userId = userId;
     }
 
     @Override
