@@ -5,13 +5,20 @@
  */
 package gui;
 
+import entities.Category;
 import java.net.URL;
+import java.sql.Date;
+import java.util.Calendar;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonBar;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import services.CategoryService;
 
 /**
  * FXML Controller class
@@ -24,19 +31,45 @@ public class UpdateCategoryController implements Initializable {
     private TextField tfName;
     @FXML
     private TextArea tfDescription;
-    private String name;
-    private String description;
+    private Category category;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        System.out.println("hello from update controller");
+        System.out.println("init" + category);
     }
 
     @FXML
     private void updateCategory(ActionEvent event) {
+        System.out.println("method" + category);
+        if (tfName.getText().isEmpty()) {
+            Alert aler = new Alert(Alert.AlertType.ERROR);
+            aler.setTitle("Erreur");
+            aler.setHeaderText("Le nom est vide !");
+            ButtonType okButton = new ButtonType("ok", ButtonBar.ButtonData.OK_DONE);
+            aler.getButtonTypes().setAll(okButton);
+            aler.showAndWait();
+        } else {
+            Date date = new Date(Calendar.getInstance().getTime().getTime());
+            CategoryService cs = new CategoryService();
+            category.setCategoryName(tfName.getText());
+            category.setDescription(tfDescription.getText());
+            category.setUpdatedAt(date);
+            cs.update(category);
+
+            // on success show alert that displays a success message then empty the textfields
+            Alert aler = new Alert(Alert.AlertType.INFORMATION);
+            aler.setTitle("Success");
+            aler.setHeaderText("Categorie modifié");
+            ButtonType okButton = new ButtonType("ok", ButtonBar.ButtonData.OK_DONE);
+            aler.getButtonTypes().setAll(okButton);
+            aler.showAndWait();
+            tfName.setText(null);
+            tfDescription.setText(null);
+
+        }
     }
 
     public void setTfName(String name) {
@@ -47,12 +80,8 @@ public class UpdateCategoryController implements Initializable {
         this.tfDescription.setText(description);
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
 }

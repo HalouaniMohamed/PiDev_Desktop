@@ -120,6 +120,23 @@ public class CategoryService {
         return category;
     }
 
+    public void update(Category c) {
+        System.out.println("service" + c);
+        sql = " update category set category_name=? ,description=? ,updated_at=? where id= ? ";
+        try {
+            PreparedStatement ste = cnx.prepareStatement(sql);
+            ste.setString(1, c.getCategoryName());
+            ste.setString(2, c.getDescription());
+            ste.setDate(3, (Date) c.getUpdatedAt());
+            ste.setInt(4, c.getId());
+            ste.executeUpdate();
+            System.out.println("category updated");
+            ste.close();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+
     public void delete(Category c) {
         sql = " select count(*) from product where id=" + c.getId();
         int count = 0;

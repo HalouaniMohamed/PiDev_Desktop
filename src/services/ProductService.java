@@ -62,7 +62,7 @@ public class ProductService {
             ste.setDate(6, (Date) p.getUpdatedAt());
             ste.setInt(7, p.getCategory().getId());
             ste.executeUpdate();
-            System.out.println("product added");
+            System.out.println("product updated");
             ste.close();
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());

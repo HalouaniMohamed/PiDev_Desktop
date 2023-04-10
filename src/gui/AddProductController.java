@@ -7,21 +7,14 @@ package gui;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
 
 /**
  * FXML Controller class
  *
  * @author ALPHA
  */
-public class ShowCategoryController implements Initializable {
-
-    @FXML
-    private Label nameLabel;
-    @FXML
-    private Label descriptionLabel;
+public class AddProductController implements Initializable {
 
     /**
      * Initializes the controller class.
@@ -29,14 +22,6 @@ public class ShowCategoryController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }
-
-    public void setNameLabel(String text) {
-        this.nameLabel.setText(text);
-    }
-
-    public void setDescriptionLabel(String text) {
-        this.descriptionLabel.setText(text);
     }
 
 }

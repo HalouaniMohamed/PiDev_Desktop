@@ -8,14 +8,17 @@ package gui;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import entities.Category;
+import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.scene.Parent;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -151,38 +154,24 @@ public class CategoriesListController implements Initializable {
                                 + "-glyph-size:28px;"
                                 + "-fx-fill:#00E676;"
                         );
-//                        editIcon.setOnMouseClicked((MouseEvent event) -> {
-//                            category = categoriesView.getSelectionModel().getSelectedItem();
-//                            FXMLLoader loader = new FXMLLoader();
-//                            loader.setLocation(getClass().getResource("UpdateCategory.fxml"));
-//                            try {
-//
-//                                loader.load();
-//
-//                            } catch (IOException ex) {
-//
-//                                Logger.getLogger(UpdateCategoryController.class.getName()).log(Level.SEVERE, null, ex);
-//                            }
-//
-//                            UpdateCategoryController addStudentController = loader.getController();
-//
-//                            UpdateCategoryController controller = new UpdateCategoryController();
-//                            System.out.println("test");
-//                            controller.setTfName(category.getCategoryName());
-//                            System.out.println("test");
-//
-//                            controller.setTfDescription(category.getDescription());
-//                            System.out.println("test");
-//
-//                            controller.setName(category.getCategoryName());
-//                            controller.setDescription(category.getDescription());
-//                            Parent parent = loader.getRoot();
-//                            Stage stage = new Stage();
-//                            stage.setScene(new Scene(parent));
-//                            stage.initStyle(StageStyle.UTILITY);
-//                            stage.show();
-//
-//                        });
+                        editIcon.setOnMouseClicked((MouseEvent event) -> {
+                            category = categoriesView.getSelectionModel().getSelectedItem();
+                            FXMLLoader loader = new FXMLLoader(getClass().getResource("UpdateCategory.fxml"));
+
+                            try {
+                                Parent root = loader.load();
+
+                                UpdateCategoryController controller = loader.getController();
+                                controller.setTfName(category.getCategoryName());
+                                controller.setTfDescription(category.getDescription());
+                                controller.setCategory(category);
+                                categoriesView.getScene().setRoot(root);
+                            } catch (IOException ex) {
+
+                                System.out.println(ex.getMessage());
+                            }
+
+                        });
                         HBox managebtn = new HBox(editIcon);
                         managebtn.setStyle("-fx-alignment:center");
                         HBox.setMargin(editIcon, new Insets(2, 3, 0, 2));

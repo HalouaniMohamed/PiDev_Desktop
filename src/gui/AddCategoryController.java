@@ -55,13 +55,13 @@ public class AddCategoryController implements Initializable {
         } else {
             Date date = new Date(Calendar.getInstance().getTime().getTime());
             Category c = new Category(tfName.getText(), tfDescription.getText(), date, date);
-            CategoryService ps = new CategoryService();
-            ps.add(c);
+            CategoryService cs = new CategoryService();
+            cs.add(c);
 
             // on success show alert that displays a success message then empty the textfields
             Alert aler = new Alert(Alert.AlertType.INFORMATION);
             aler.setTitle("Success");
-            aler.setHeaderText("Categorie ajouté");
+            aler.setHeaderText("produit modifié");
             ButtonType okButton = new ButtonType("ok", ButtonBar.ButtonData.OK_DONE);
             aler.getButtonTypes().setAll(okButton);
             aler.showAndWait();
