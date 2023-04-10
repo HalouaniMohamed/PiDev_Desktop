@@ -8,46 +8,11 @@ package entities;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
-import javax.persistence.Basic;
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Lob;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
  * @author ALPHA
  */
-@Entity
-@Table(name = "user")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "User.findAll", query = "SELECT u FROM User u")
-    , @NamedQuery(name = "User.findById", query = "SELECT u FROM User u WHERE u.id = :id")
-    , @NamedQuery(name = "User.findByEmail", query = "SELECT u FROM User u WHERE u.email = :email")
-    , @NamedQuery(name = "User.findByPassword", query = "SELECT u FROM User u WHERE u.password = :password")
-    , @NamedQuery(name = "User.findByFirstName", query = "SELECT u FROM User u WHERE u.firstName = :firstName")
-    , @NamedQuery(name = "User.findByLastName", query = "SELECT u FROM User u WHERE u.lastName = :lastName")
-    , @NamedQuery(name = "User.findByAdresse", query = "SELECT u FROM User u WHERE u.adresse = :adresse")
-    , @NamedQuery(name = "User.findByBirthDate", query = "SELECT u FROM User u WHERE u.birthDate = :birthDate")
-    , @NamedQuery(name = "User.findByCreatedAt", query = "SELECT u FROM User u WHERE u.createdAt = :createdAt")
-    , @NamedQuery(name = "User.findByUpdatedAt", query = "SELECT u FROM User u WHERE u.updatedAt = :updatedAt")
-    , @NamedQuery(name = "User.findByStatus", query = "SELECT u FROM User u WHERE u.status = :status")
-    , @NamedQuery(name = "User.findByFile", query = "SELECT u FROM User u WHERE u.file = :file")
-    , @NamedQuery(name = "User.findByGender", query = "SELECT u FROM User u WHERE u.gender = :gender")
-    , @NamedQuery(name = "User.findByResetToken", query = "SELECT u FROM User u WHERE u.resetToken = :resetToken")
-    , @NamedQuery(name = "User.findByResetTokenExpiresAt", query = "SELECT u FROM User u WHERE u.resetTokenExpiresAt = :resetTokenExpiresAt")})
 public class User implements Serializable {
 
 //    @JoinTable(name = "user_notification", joinColumns = {
@@ -56,54 +21,24 @@ public class User implements Serializable {
 //    @ManyToMany
 //    private List<Notification> notificationList;
     private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
-    @Column(name = "id")
+
     private Integer id;
-    @Basic(optional = false)
-    @Column(name = "email")
     private String email;
-    @Basic(optional = false)
-    @Lob
-    @Column(name = "roles")
     private String roles;
-    @Basic(optional = false)
-    @Column(name = "password")
     private String password;
-    @Basic(optional = false)
-    @Column(name = "first_name")
     private String firstName;
-    @Basic(optional = false)
-    @Column(name = "last_name")
     private String lastName;
-    @Column(name = "adresse")
     private String adresse;
-    @Basic(optional = false)
-    @Column(name = "birth_date")
-    @Temporal(TemporalType.DATE)
     private Date birthDate;
-    @Column(name = "created_at")
-    @Temporal(TemporalType.TIMESTAMP)
     private Date createdAt;
-    @Column(name = "updated_at")
-    @Temporal(TemporalType.TIMESTAMP)
     private Date updatedAt;
-    @Column(name = "status")
     private Boolean status;
-    @Column(name = "file")
     private String file;
-    @Basic(optional = false)
-    @Column(name = "gender")
     private String gender;
-    @Column(name = "reset_token")
     private String resetToken;
-    @Column(name = "reset_token_expires_at")
-    @Temporal(TemporalType.TIMESTAMP)
     private Date resetTokenExpiresAt;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<Commande> commandeList;
-    @OneToMany(mappedBy = "user")
+
     private List<ShoppingCartItem> shoppingCartItemList;
 
     public User() {
@@ -244,7 +179,6 @@ public class User implements Serializable {
         this.resetTokenExpiresAt = resetTokenExpiresAt;
     }
 
-    @XmlTransient
     public List<Commande> getCommandeList() {
         return commandeList;
     }
@@ -253,7 +187,6 @@ public class User implements Serializable {
         this.commandeList = commandeList;
     }
 
-    @XmlTransient
     public List<ShoppingCartItem> getShoppingCartItemList() {
         return shoppingCartItemList;
     }
