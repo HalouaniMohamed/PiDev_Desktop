@@ -58,7 +58,7 @@ public class AddProductController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+
         List<Category> categories = cs.getAllCategories();
         cbCategorie.setItems(FXCollections.observableArrayList(categories));
         cbCategorie.setConverter(new StringConverter<Category>() {

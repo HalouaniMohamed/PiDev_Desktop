@@ -11,51 +11,71 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="768.0" prefWidth="1024.0" style="-fx-background-color: #fafdfb;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AddProductController">
+<AnchorPane id="AnchorPane" prefHeight="900.0" prefWidth="1600.0" style="-fx-background-color: #fafdfb;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AddProductController">
    <children>
-      <AnchorPane layoutX="312.0" layoutY="85.0" prefHeight="400.0" prefWidth="610.0" style="-fx-background-color: #ffffff; -fx-background-radius: 10;">
+      <AnchorPane layoutX="564.0" layoutY="89.0" prefHeight="700.0" prefWidth="783.0" style="-fx-background-color: #ffffff; -fx-background-radius: 10;" AnchorPane.leftAnchor="564.0">
          <children>
-            <Label layoutX="125.0" layoutY="108.0" text="Nom">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <TextField fx:id="tfName" layoutX="263.0" layoutY="105.0" prefHeight="26.0" prefWidth="263.0" />
-            <Label layoutX="125.0" layoutY="164.0" text="Description">
-               <font>
-                  <Font size="14.0" />
-               </font></Label>
-            <TextArea fx:id="tfDescription" layoutX="263.0" layoutY="160.0" prefHeight="82.0" prefWidth="263.0" />
-            <Button layoutX="229.0" layoutY="526.0" mnemonicParsing="false" onAction="#addProduct" prefHeight="26.0" prefWidth="150.0" style="-fx-background-color: #6777ef;" text="Ajouter" textFill="WHITE" />
-            <Label alignment="CENTER" layoutX="132.0" layoutY="25.0" prefHeight="83.0" prefWidth="370.0" text="Ajouter un produit" textAlignment="CENTER" AnchorPane.bottomAnchor="612.0" AnchorPane.leftAnchor="112.0" AnchorPane.rightAnchor="128.0" AnchorPane.topAnchor="5.0">
+            <Label alignment="CENTER" layoutX="40.0" layoutY="14.0" prefHeight="134.0" prefWidth="743.0" text="Ajouter un produit" textAlignment="CENTER" AnchorPane.bottomAnchor="592.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="14.0">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
             </Label>
-            <Label layoutX="125.0" layoutY="283.0" text="Prix">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <TextField fx:id="tfPrice" layoutX="263.0" layoutY="279.0" prefHeight="26.0" prefWidth="263.0" />
-            <Label layoutX="125.0" layoutY="339.0" text="Quantité">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <TextField fx:id="tfQuantity" layoutX="263.0" layoutY="335.0" prefHeight="26.0" prefWidth="263.0" />
-            <Label layoutX="125.0" layoutY="398.0" text="Catégorie">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <ChoiceBox fx:id="cbCategorie" layoutX="263.0" layoutY="395.0" prefHeight="26.0" prefWidth="263.0" />
-            <Button fx:id="imageBtn" layoutX="141.0" layoutY="465.0" mnemonicParsing="false" onAction="#handleUploadImage" text="Button" />
+            <AnchorPane layoutX="80.0" layoutY="137.0" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="137.0">
+               <children>
+                  <Label layoutY="3.0" text="Nom">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="tfName" layoutX="138.0" prefHeight="26.0" prefWidth="263.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="80.0" />
+                  <Label layoutY="59.0" text="Description">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <TextArea fx:id="tfDescription" layoutX="138.0" layoutY="55.0" prefHeight="82.0" prefWidth="263.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="80.0" />
+                  <Button layoutX="226.0" layoutY="424.0" mnemonicParsing="false" onAction="#addProduct" prefHeight="26.0" prefWidth="150.0" style="-fx-background-color: #6777ef;" text="Ajouter" textFill="WHITE" />
+                  <Label layoutY="178.0" text="Prix">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="tfPrice" layoutX="138.0" layoutY="174.0" prefHeight="26.0" prefWidth="263.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="80.0" />
+                  <Label layoutY="234.0" text="Quantité">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="tfQuantity" layoutX="138.0" layoutY="230.0" prefHeight="26.0" prefWidth="263.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="80.0" />
+                  <Label layoutY="293.0" text="Catégorie" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="543.2">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <ChoiceBox fx:id="cbCategorie" layoutX="138.0" layoutY="290.0" prefHeight="26.0" prefWidth="263.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="80.0" />
+                  <HBox layoutX="16.0" layoutY="360.0" prefHeight="28.0" prefWidth="373.0" style="-fx-border-radius: 5; -fx-border-color: #DCDCDC;" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="80.0">
+                     <children>
+                        <Button fx:id="imageBtn" mnemonicParsing="false" onAction="#handleUploadImage" prefHeight="26.0" prefWidth="222.0" style="-fx-background-color: #6777ef;" text="Upload image" textFill="WHITE" />
+                        <Label contentDisplay="CENTER" prefHeight="26.0" prefWidth="370.0" text="image name" textAlignment="CENTER">
+                           <HBox.margin>
+                              <Insets left="20.0" />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <Label layoutX="5.0" layoutY="363.0" text="Image">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
          </children>
          <padding>
             <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
@@ -68,9 +88,9 @@
             </DropShadow>
          </effect>
       </AnchorPane>
-      <AnchorPane id="AnchorPane" prefHeight="766.0" prefWidth="272.0" style="-fx-background-color: #fafdfb;">
+      <AnchorPane id="AnchorPane" prefHeight="900.0" prefWidth="361.0" style="-fx-background-color: #fafdfb;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <VBox prefHeight="799.0" prefWidth="268.0" style="-fx-background-color: #fafdfb;">
+            <VBox prefHeight="900.0" prefWidth="361.6" style="-fx-background-color: #fafdfb;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <Pane prefHeight="110.0" prefWidth="234.0">
                      <children>
@@ -81,39 +101,39 @@
                         </ImageView>
                      </children>
                   </Pane>
-                  <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="292.0" style="-fx-background-color: #ffffff;" text="Utilisateurs" textFill="#858796">
+                  <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="404.0" style="-fx-background-color: #ffffff;" text="Utilisateurs" textFill="#858796">
                      <font>
-                        <Font size="14.0" />
+                        <Font size="18.0" />
                      </font>
                   </Button>
                   <Separator prefWidth="200.0" />
-                  <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="292.0" style="-fx-background-color: #ffffff;" text="Actualités" textFill="#858796">
+                  <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="377.0" style="-fx-background-color: #ffffff;" text="Actualités" textFill="#858796">
                      <font>
-                        <Font size="14.0" />
+                        <Font size="18.0" />
                      </font>
                   </Button>
                   <Separator prefWidth="200.0" />
-                  <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="292.0" style="-fx-background-color: #ffffff;" text="Forum" textFill="#858796">
+                  <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="390.0" style="-fx-background-color: #ffffff;" text="Forum" textFill="#858796">
                      <font>
-                        <Font size="14.0" />
+                        <Font size="18.0" />
                      </font>
                   </Button>
                   <Separator prefWidth="200.0" />
-                  <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="292.0" style="-fx-background-color: #ffffff;" text="événements" textFill="#858796">
+                  <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="382.0" style="-fx-background-color: #ffffff;" text="événements" textFill="#858796">
                      <font>
-                        <Font size="14.0" />
+                        <Font size="18.0" />
                      </font>
                   </Button>
                   <Separator prefWidth="200.0" />
-                  <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="292.0" style="-fx-background-color: #ffffff;" text="Catégories" textFill="#858796">
+                  <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="406.0" style="-fx-background-color: #ffffff;" text="Catégories" textFill="#858796">
                      <font>
-                        <Font size="14.0" />
+                        <Font size="18.0" />
                      </font>
                   </Button>
                   <Separator prefWidth="200.0" />
-                  <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="292.0" style="-fx-background-color: #ffffff;" text="Produits" textFill="#858796">
+                  <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="394.0" style="-fx-background-color: #ffffff;" text="Produits" textFill="#858796">
                      <font>
-                        <Font size="14.0" />
+                        <Font size="18.0" />
                      </font>
                   </Button>
                   <Separator prefWidth="200.0" />
