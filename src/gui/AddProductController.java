@@ -17,8 +17,11 @@ import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ChoiceBox;
@@ -119,12 +122,27 @@ public class AddProductController implements Initializable {
             ps.add(p);
 
             // on success show alert that displays a success message then empty the textfields
-            Alert aler = new Alert(Alert.AlertType.INFORMATION);
-            aler.setTitle("Success");
-            aler.setHeaderText("produit ajouté");
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Success");
+            alert.setHeaderText("produit ajouté");
             ButtonType okButton = new ButtonType("ok", ButtonBar.ButtonData.OK_DONE);
-            aler.getButtonTypes().setAll(okButton);
-            aler.showAndWait();
+            alert.getButtonTypes().setAll(okButton);
+            Button okBtn = (Button) alert.getDialogPane().lookupButton(okButton);
+            okBtn.setOnAction(e -> {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("AdminProductsList.fxml"));
+
+                try {
+                    Parent root = loader.load();
+
+                    tfName.getScene().setRoot(root);
+                } catch (IOException ex) {
+
+                    System.out.println(ex.getMessage());
+                }
+                // Redirect to the showProduct interface
+                // Code to redirect here
+            });
+            alert.showAndWait();
             tfName.setText(null);
             tfDescription.setText(null);
         }
@@ -145,7 +163,7 @@ public class AddProductController implements Initializable {
     private void uploadFile(File file) {
         try {
             String uniqueFileName = generateUniqueFileName(file.getName());
-            FileUtils.copyFile(file, new File("C:/Users/ALPHA/Documents/NetBeansProjects/Desktop/src/uploads/products/" + uniqueFileName));
+            FileUtils.copyFile(file, new File("src/uploads/products/" + uniqueFileName));
             // Set the image name in the product object
             setImage(uniqueFileName);
             // Save a copy of the image in the xampp htdocs directory

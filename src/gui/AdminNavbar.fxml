@@ -13,7 +13,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="80.0" prefWidth="1600.0" style="-fx-background-color: #6777ef;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AdminNavbarController">
    <children>
-      <AnchorPane prefHeight="110.0" prefWidth="361.0" style="-fx-background-color: #4c60da;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane prefHeight="110.0" prefWidth="361.0" style="-fx-background-color: #4c60da;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1233.6" AnchorPane.topAnchor="0.0">
          <children>
             <ImageView fitHeight="112.0" fitWidth="139.0" layoutX="-5.0" layoutY="-1.0" pickOnBounds="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="217.0" AnchorPane.topAnchor="0.0">
                <image>
