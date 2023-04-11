@@ -9,6 +9,7 @@ import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import entities.Category;
 import entities.Product;
+import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -17,8 +18,10 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.scene.Parent;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -174,24 +177,23 @@ public class AdminProductsListController implements Initializable {
                                 + "-glyph-size:28px;"
                                 + "-fx-fill:#00E676;"
                         );
-//                        editIcon.setOnMouseClicked((MouseEvent event) -> {
-//                            product = productsView.getSelectionModel().getSelectedItem();
-//                            FXMLLoader loader = new FXMLLoader(getClass().getResource("UpdateProduct.fxml"));
-//
-//                            try {
-//                                Parent root = loader.load();
-//
-//                                UpdateCategoryController controller = loader.getController();
-//                                controller.setTfName(category.getCategoryName());
-//                                controller.setTfDescription(category.getDescription());
-//                                controller.setCategory(category);
-//                                categoriesView.getScene().setRoot(root);
-//                            } catch (IOException ex) {
-//
-//                                System.out.println(ex.getMessage());
-//                            }
-//
-//                        });
+                        editIcon.setOnMouseClicked((MouseEvent event) -> {
+                            product = productsView.getSelectionModel().getSelectedItem();
+                            FXMLLoader loader = new FXMLLoader(getClass().getResource("UpdateProduct.fxml"));
+
+                            try {
+                                Parent root = loader.load();
+
+                                UpdateProductController controller = loader.getController();
+                                controller.setTf(product.getName(), product.getDescription(), product.getPrice(), product.getImage(), product.getQuantity(), product.getCategory(), product.getImage());
+                                controller.setProduct(product);
+                                productsView.getScene().setRoot(root);
+                            } catch (IOException ex) {
+
+                                System.out.println(ex.getMessage());
+                            }
+
+                        });
                         HBox managebtn = new HBox(editIcon);
                         managebtn.setStyle("-fx-alignment:center");
                         HBox.setMargin(editIcon, new Insets(2, 3, 0, 2));

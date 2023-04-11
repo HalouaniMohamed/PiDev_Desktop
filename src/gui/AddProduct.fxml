@@ -61,8 +61,8 @@
                   <ChoiceBox fx:id="cbCategorie" layoutX="138.0" layoutY="290.0" prefHeight="26.0" prefWidth="263.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="80.0" />
                   <HBox layoutX="16.0" layoutY="360.0" prefHeight="28.0" prefWidth="373.0" style="-fx-border-radius: 5; -fx-border-color: #DCDCDC;" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="80.0">
                      <children>
-                        <Button fx:id="imageBtn" mnemonicParsing="false" onAction="#handleUploadImage" prefHeight="26.0" prefWidth="222.0" style="-fx-background-color: #6777ef;" text="Upload image" textFill="WHITE" />
-                        <Label contentDisplay="CENTER" prefHeight="26.0" prefWidth="370.0" text="image name" textAlignment="CENTER">
+                        <Button mnemonicParsing="false" onAction="#handleUploadImage" prefHeight="26.0" prefWidth="222.0" style="-fx-background-color: #6777ef;" text="Upload image" textFill="WHITE" />
+                        <Label fx:id="imageLabel" contentDisplay="CENTER" prefHeight="26.0" prefWidth="370.0" text="image name" textAlignment="CENTER">
                            <HBox.margin>
                               <Insets left="20.0" />
                            </HBox.margin>

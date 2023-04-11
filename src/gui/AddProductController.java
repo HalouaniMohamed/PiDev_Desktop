@@ -22,6 +22,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
@@ -52,13 +53,15 @@ public class AddProductController implements Initializable {
 
     ProductService ps = new ProductService();
     CategoryService cs = new CategoryService();
+    @FXML
+    private Label imageLabel;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
+        imageLabel.setText("no image");
         List<Category> categories = cs.getAllCategories();
         cbCategorie.setItems(FXCollections.observableArrayList(categories));
         cbCategorie.setConverter(new StringConverter<Category>() {
@@ -108,7 +111,7 @@ public class AddProductController implements Initializable {
             }
             // create a new Product object with the values
             Product p = new Product(name, description, price, image, quantity, date, date, category);
-            CategoryService cs = new CategoryService();
+
             if (selectedFile != null) {
                 uploadFile(selectedFile);
                 p.setImage(image);
@@ -134,7 +137,8 @@ public class AddProductController implements Initializable {
         fileChooser.setTitle("Select Image");
         selectedFile = fileChooser.showOpenDialog(null);
         if (selectedFile != null) {
-            // Do something with the selected file
+            String fileName = selectedFile.getName();
+            imageLabel.setText(fileName);
         }
     }
 

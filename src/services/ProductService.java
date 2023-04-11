@@ -61,6 +61,7 @@ public class ProductService {
             ste.setInt(5, p.getQuantity());
             ste.setDate(6, (Date) p.getUpdatedAt());
             ste.setInt(7, p.getCategory().getId());
+            ste.setInt(8, p.getId());
             ste.executeUpdate();
             System.out.println("product updated");
             ste.close();
