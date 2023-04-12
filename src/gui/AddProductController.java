@@ -168,8 +168,8 @@ public class AddProductController implements Initializable {
             setImage(uniqueFileName);
             // Save a copy of the image in the xampp htdocs directory
 
-            File destFile2 = new File("C:/xampp/htdocs/uploads/products/" + uniqueFileName);
-            FileUtils.copyFile(file, destFile2);
+//            File destFile2 = new File("C:/xampp/htdocs/uploads/products/" + uniqueFileName);
+//            FileUtils.copyFile(file, destFile2);
         } catch (IOException e) {
             e.printStackTrace();
         }
