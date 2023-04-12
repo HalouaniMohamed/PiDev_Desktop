@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" cache="true" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.gui.AjoutController">
+   <children>
+      <Label fx:id="textlabel" layoutX="27.0" layoutY="14.0" prefHeight="159.0" prefWidth="547.0" text="Reponse ajoutée!" textFill="#e41212">
+         <font>
+            <Font name="Arial" size="12.0" />
+         </font></Label>
+      <Label fx:id="lb" layoutX="51.0" layoutY="156.0" prefHeight="17.0" prefWidth="121.0" text="La liste des réponses:" textFill="#e41212">
+         <font>
+            <Font name="Arial" size="12.0" />
+         </font></Label>
+<ListView fx:id="listViewReponses" layoutX="43.0" layoutY="189.0" prefHeight="150.0" prefWidth="500.0" />
+
+   </children>
+</AnchorPane>

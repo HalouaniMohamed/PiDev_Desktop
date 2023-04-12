@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.gui.CommentaireController">
+   <children>
+<ListView fx:id="listViewCommentaire" layoutX="15.0" layoutY="39.0" prefHeight="150.0" prefWidth="440.0" />
+      <TextField fx:id="tfId_User" layoutX="173.0" layoutY="237.0" promptText="id_user" />
+      <TextField fx:id="tfcommentaires_id" layoutX="173.0" layoutY="269.0" promptText="commentaires_id" />
+      <TextField fx:id="tfreponse" layoutX="173.0" layoutY="302.0" promptText="reponse" />
+      
+      <Button fx:id="ajouterbtn" layoutX="213.0" layoutY="375.0" mnemonicParsing="false" onAction="#ajouterCommentaire" text="Ajouter" textFill="#070707">
+         <font>
+            <Font name="Arial" size="12.0" />
+         </font></Button>
+      <Label layoutX="55.0" layoutY="241.0" text="Id_User" textAlignment="CENTER" textFill="#202122" textOverrun="CENTER_ELLIPSIS">
+         <font>
+            <Font name="Arial" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="55.0" layoutY="269.0" text="Post-Id" textFill="#202122">
+         <font>
+            <Font name="Arial" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="55.0" layoutY="307.0" text="Reponse" textFill="#202122">
+         <font>
+            <Font name="Arial" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="14.0" layoutY="14.0" text="La liste des commentaires:" />
+      <Label layoutX="41.0" layoutY="209.0" text="Ajouter un commentaire:" />
+<Button fx:id="modifierBtn" layoutX="462.0" layoutY="67.0" mnemonicParsing="false" onAction="#ModifierCommentaire" text="Modifier Commentaire" textFill="#070707">
+         <font>
+            <Font name="Arial" size="12.0" />
+         </font>
+</Button>
+
+
+      <Button layoutX="465.0" layoutY="114.0" mnemonicParsing="false" onAction="#SupprimerCommentaire" prefHeight="25.0" prefWidth="132.0" text="Supprimer question" />
+
+   </children>
+</AnchorPane>

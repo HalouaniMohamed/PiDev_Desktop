@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.gui.PostController">
+   <children>
+<ListView fx:id="listViewQuestion" layoutX="15.0" layoutY="39.0" prefHeight="150.0" prefWidth="455.0" />
+      <TextField fx:id="tfId_User" layoutX="173.0" layoutY="237.0" promptText="Id_User" />
+      <TextField fx:id="tfNom_Utilisateur" layoutX="173.0" layoutY="269.0" promptText="Nom_Utilisateur" />
+      <TextField fx:id="tfDescription" layoutX="173.0" layoutY="302.0" promptText="Description" />
+      <TextField fx:id="tfPublication" layoutX="173.0" layoutY="334.0" promptText="Publication" />
+      <Button fx:id="ajouterBtn" layoutX="213.0" layoutY="375.0" mnemonicParsing="false" onAction="#AjouterPost" text="Ajouter" textFill="#070707">
+         <font>
+            <Font name="Arial" size="12.0" />
+         </font></Button>
+      <Label layoutX="55.0" layoutY="241.0" text="Id_User" textAlignment="CENTER" textFill="#202122" textOverrun="CENTER_ELLIPSIS">
+         <font>
+            <Font name="Arial" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="57.0" layoutY="273.0" text="Nom Utilisateur" textFill="#202122">
+         <font>
+            <Font name="Arial" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="55.0" layoutY="306.0" text="Description" textFill="#202122">
+         <font>
+            <Font name="Arial" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="56.0" layoutY="338.0" text="Publication" textFill="#202122">
+         <font>
+            <Font name="Arial" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="14.0" layoutY="14.0" text="La liste des questions:" />
+      <Label layoutX="41.0" layoutY="209.0" text="Ajouter une question:" />
+<Button fx:id="modifierBtn" layoutX="474.0" layoutY="62.0" mnemonicParsing="false" onAction="#ModifierPost" prefHeight="23.0" prefWidth="121.0" text="Modifier question" textFill="#070707">
+         <font>
+            <Font name="Arial" size="12.0" />
+         </font>
+</Button>
+
+
+      <Button layoutX="476.0" layoutY="114.0" mnemonicParsing="false" onAction="#SupprimerPost" text="Supprimer question" />
+
+   </children>
+</AnchorPane>
