@@ -35,7 +35,7 @@ public class CategoryTests {
     // show category by Id
 
     public void getById() {
-        System.out.println(cs.getCategoryById(5));
+//        System.out.println(cs.getCategoryById(5));
     }
     //delete category
 

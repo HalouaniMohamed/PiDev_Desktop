@@ -13,11 +13,11 @@
 
 <AnchorPane id="AnchorPane" prefHeight="80.0" prefWidth="1600.0" style="-fx-background-color: #6777ef;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AdminNavbarController">
    <children>
-      <AnchorPane prefHeight="110.0" prefWidth="361.0" style="-fx-background-color: #4c60da;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1233.6" AnchorPane.topAnchor="0.0">
+      <AnchorPane id="AnchorPane" prefHeight="110.0" prefWidth="361.0" style="-fx-background-color: #4c60da;" stylesheets="@application.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1233.6" AnchorPane.topAnchor="0.0">
          <children>
             <ImageView fitHeight="112.0" fitWidth="139.0" layoutX="-5.0" layoutY="-1.0" pickOnBounds="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="217.0" AnchorPane.topAnchor="0.0">
                <image>
-                  <Image url="@../../../../../Desktop/logo-removebg-preview.png" />
+                  <Image url="file:/C:/Users/ALPHA/Desktop/logo-removebg-preview.png" />
                </image>
             </ImageView>
             <Label layoutX="162.0" prefHeight="112.0" prefWidth="204.0" text="Echkili" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="162.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">

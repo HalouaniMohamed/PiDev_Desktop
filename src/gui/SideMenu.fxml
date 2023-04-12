@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="544.0" prefWidth="363.0" style="-fx-background-color: #fafdfb;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.SideMenuController">
+<AnchorPane id="AnchorPane" prefHeight="544.0" prefWidth="363.0" style="-fx-background-color: #fafdfb;" stylesheets="@application.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.SideMenuController">
    <children>
       <VBox prefHeight="603.0" prefWidth="361.0" style="-fx-background-color: #fafdfb;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>

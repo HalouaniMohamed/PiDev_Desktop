@@ -12,6 +12,7 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
@@ -24,6 +25,7 @@ import javafx.scene.layout.BorderStrokeStyle;
 import javafx.scene.layout.BorderWidths;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -46,6 +48,8 @@ public class UserProductsListController implements Initializable {
     private int itemsPerPage = 8;
 
     private int currentPageIndex = 0;
+    @FXML
+    private HBox pagination;
 
     /**
      * Initializes the controller class.
@@ -69,6 +73,28 @@ public class UserProductsListController implements Initializable {
             int col = (i - startIndex) % 4;
             gridPane.add(productNode, col, row);
         }
+
+        // Clear the pagination HBox first
+        pagination.getChildren().clear();
+
+        int totalPages = (int) Math.ceil((double) products.size() / itemsPerPage);
+        for (int i = 1; i <= totalPages; i++) {
+            final int pageIndex = i - 1; // declare a final variable
+            Button pageButton = new Button(Integer.toString(i));
+            pageButton.setPrefWidth(30);
+            pageButton.setOnAction(e -> {
+                currentPageIndex = pageIndex; // use the final variable
+                updateGridPane();
+            });
+
+            if (i == currentPageIndex + 1) {
+                pageButton.setStyle("-fx-background-color: #26ace2; -fx-text-fill: white; -fx-border-radius: 5;");
+            } else {
+                pageButton.setStyle("-fx-background-color: white; -fx-text-fill: black; -fx-border-radius: 5;");
+            }
+
+            pagination.getChildren().add(pageButton);
+        }
     }
 
     private Node createProductNode(Product product) {
@@ -81,8 +107,8 @@ public class UserProductsListController implements Initializable {
         String imagePath = "file:///" + imageDirectoryPath + product.getImage();
         ImageView imageView = new ImageView(new Image(imagePath));
 
-        imageView.setFitWidth(200);
-        imageView.setFitHeight(200);
+        imageView.setFitWidth(180);
+        imageView.setFitHeight(180);
 
         Label nameLabel = new Label(product.getName());
         nameLabel.setAlignment(Pos.CENTER);
@@ -105,7 +131,8 @@ public class UserProductsListController implements Initializable {
         productBox.setSpacing(10);
         productBox.setAlignment(Pos.CENTER);
         productBox.setBorder(new Border(new BorderStroke(Color.LIGHTGRAY, BorderStrokeStyle.SOLID, new CornerRadii(5), new BorderWidths(2))));
-
+        Insets margin = new Insets(10);
+        VBox.setMargin(productBox, margin);
         return productBox;
     }
 

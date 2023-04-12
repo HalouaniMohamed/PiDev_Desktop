@@ -6,14 +6,18 @@
 package gui;
 
 import entities.Category;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
 import java.util.Calendar;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextArea;
@@ -48,7 +52,17 @@ public class AddCategoryController implements Initializable {
         if (tfName.getText().isEmpty()) {
             Alert aler = new Alert(Alert.AlertType.ERROR);
             aler.setTitle("Erreur");
-            aler.setHeaderText("Le nom est vide !");
+            aler.setHeaderText(null);
+
+            aler.setContentText("Le nom est vide !");
+            ButtonType okButton = new ButtonType("ok", ButtonBar.ButtonData.OK_DONE);
+            aler.getButtonTypes().setAll(okButton);
+            aler.showAndWait();
+        } else if (tfName.getText().length() < 3) {
+            Alert aler = new Alert(Alert.AlertType.ERROR);
+            aler.setHeaderText(null);
+            aler.setTitle("Erreur");
+            aler.setContentText("Le nom doit depasser 3 caracteres");
             ButtonType okButton = new ButtonType("ok", ButtonBar.ButtonData.OK_DONE);
             aler.getButtonTypes().setAll(okButton);
             aler.showAndWait();
@@ -59,12 +73,27 @@ public class AddCategoryController implements Initializable {
             cs.add(c);
 
             // on success show alert that displays a success message then empty the textfields
-            Alert aler = new Alert(Alert.AlertType.INFORMATION);
-            aler.setTitle("Success");
-            aler.setHeaderText("produit modifié");
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Success");
+            alert.setHeaderText("Catégorie ajouté");
             ButtonType okButton = new ButtonType("ok", ButtonBar.ButtonData.OK_DONE);
-            aler.getButtonTypes().setAll(okButton);
-            aler.showAndWait();
+            alert.getButtonTypes().setAll(okButton);
+            Button okBtn = (Button) alert.getDialogPane().lookupButton(okButton);
+            okBtn.setOnAction(e -> {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("CategoriesList.fxml"));
+
+                try {
+                    Parent root = loader.load();
+
+                    tfName.getScene().setRoot(root);
+                } catch (IOException ex) {
+
+                    System.out.println(ex.getMessage());
+                }
+                // Redirect to the showProduct interface
+                // Code to redirect here
+            });
+            alert.showAndWait();
             tfName.setText(null);
             tfDescription.setText(null);
 

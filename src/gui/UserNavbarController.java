@@ -54,4 +54,8 @@ public class UserNavbarController implements Initializable {
     private void redirectToEvents(ActionEvent event) {
     }
 
+    @FXML
+    private void redirectToCart(ActionEvent event) {
+    }
+
 }

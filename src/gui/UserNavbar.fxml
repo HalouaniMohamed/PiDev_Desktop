@@ -8,14 +8,13 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="80.0" prefWidth="1600.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.UserNavbarController">
+<AnchorPane  prefHeight="80.0" prefWidth="1600.0" style="-fx-background-color: #fff;" stylesheets="/gui/application.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.UserNavbarController">
    <children>
-      <HBox layoutX="68.0" layoutY="8.0" prefHeight="80.0" prefWidth="1600.0" spacing="20.0" AnchorPane.bottomAnchor="-10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <HBox layoutX="68.0" layoutY="8.0" prefHeight="80.0" prefWidth="1600.0" spacing="10.0" AnchorPane.bottomAnchor="-10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <ImageView fitHeight="101.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../Desktop/9raya/echkilii.png" />
+                  <Image url="file:/C:/Users/ALPHA/Desktop/9raya/echkilii.png" />
                </image>
             </ImageView>
             <Button alignment="CENTER" mnemonicParsing="false" onAction="#redirectToHome" prefHeight="79.0" prefWidth="126.0" style="-fx-background-color: #fff;" text="Home" textFill="#242429">
@@ -49,6 +48,11 @@
                </font>
             </Button>
             <Button alignment="CENTER" mnemonicParsing="false" onAction="#redirectToEvents" prefHeight="79.0" prefWidth="126.0" style="-fx-background-color: #fff;" text="Evenements" textFill="#242429">
+               <font>
+                  <Font name="Cambria" size="18.0" />
+               </font>
+            </Button>
+            <Button alignment="CENTER" mnemonicParsing="false" onAction="#redirectToCart" prefHeight="79.0" prefWidth="126.0" style="-fx-background-color: #fff;" text="Panier" textFill="#242429">
                <font>
                   <Font name="Cambria" size="18.0" />
                </font>

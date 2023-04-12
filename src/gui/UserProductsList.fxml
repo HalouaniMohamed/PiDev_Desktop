@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.UserProductsListController">
+<AnchorPane  maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1600.0" style="-fx-background-color: #fff;" stylesheets="/gui/application.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.UserProductsListController">
    <children>
       <BorderPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <top>
@@ -31,10 +31,10 @@
                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                           </rowConstraints>
                         </GridPane>
-                        <HBox layoutX="631.0" layoutY="735.0" prefHeight="46.0" prefWidth="200.0">
+                        <HBox fx:id="pagination" alignment="CENTER" layoutX="643.0" layoutY="725.0" prefHeight="46.0" prefWidth="200.0" spacing="10.0">
                            <children>
-                              <Button mnemonicParsing="false" onAction="#handlePrevButton" prefHeight="51.0" prefWidth="107.0" text="Button" />
-                              <Button mnemonicParsing="false" onAction="#handleNextButton" prefHeight="52.0" prefWidth="94.0" text="Button" />
+                              <Button mnemonicParsing="false" onAction="#handlePrevButton" prefHeight="46.0" prefWidth="98.0" text="Button" />
+                              <Button mnemonicParsing="false" onAction="#handleNextButton" prefHeight="46.0" prefWidth="50.0" text="Button" />
                            </children>
                         </HBox>
                      </children>

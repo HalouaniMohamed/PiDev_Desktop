@@ -17,8 +17,11 @@ import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ChoiceBox;
@@ -121,12 +124,27 @@ public class UpdateProductController implements Initializable {
             ps.update(product);
 
             // on success show alert that displays a success message then empty the textfields
-            Alert aler = new Alert(Alert.AlertType.INFORMATION);
-            aler.setTitle("Success");
-            aler.setHeaderText("produit modifié");
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Success");
+            alert.setHeaderText("Produit Modifié");
             ButtonType okButton = new ButtonType("ok", ButtonBar.ButtonData.OK_DONE);
-            aler.getButtonTypes().setAll(okButton);
-            aler.showAndWait();
+            alert.getButtonTypes().setAll(okButton);
+            Button okBtn = (Button) alert.getDialogPane().lookupButton(okButton);
+            okBtn.setOnAction(e -> {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("AdminProductsList.fxml"));
+
+                try {
+                    Parent root = loader.load();
+
+                    tfName.getScene().setRoot(root);
+                } catch (IOException ex) {
+
+                    System.out.println(ex.getMessage());
+                }
+                // Redirect to the showProduct interface
+                // Code to redirect here
+            });
+            alert.showAndWait();
             tfName.setText(null);
             tfDescription.setText(null);
         }

@@ -32,37 +32,6 @@ public class CategoryService {
 
     }
 
-    public Category getCategoryById(Integer id) {
-        sql = "select * from category where id=" + id;
-        Statement ste;
-        Category category = new Category();
-        try {
-            ste = cnx.createStatement();
-            ResultSet rs = ste.executeQuery(sql);
-
-            if (!rs.next()) {
-                System.out.println("no category found");
-                return null;
-            }
-            Integer categoryId = rs.getInt("id");
-            String name = rs.getString("category_name");
-            String description = rs.getString("description");
-            Date createdAt = rs.getDate("create_at");
-            Date updatedAt = rs.getDate("updated_at");
-            category.setId(categoryId);
-            category.setCategoryName(name);
-            category.setDescription(description);
-            category.setCreateAt(createdAt);
-            category.setUpdatedAt(updatedAt);
-            rs.close();
-            ste.close();
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
-        return category;
-
-    }
-
     public void add(Category c) {
         sql = "insert into category(category_name,description,create_at,updated_at) values(?,?,?,?)";
         try {
@@ -96,28 +65,6 @@ public class CategoryService {
             Logger.getLogger(CategoryService.class.getName()).log(Level.SEVERE, null, ex);
         }
         return categories;
-    }
-
-    public Category getCategoryById(int categoryId) {
-        Category category = new Category();
-        sql = "select * from category where id=" + categoryId;
-        try {
-            Statement ste = cnx.createStatement();
-            ResultSet rs = ste.executeQuery(sql);
-            if (rs.next()) {
-                category.setId(rs.getInt("id"));
-                category.setCategoryName(rs.getString("category_name"));
-                category.setDescription(rs.getString("description"));
-                category.setCreateAt(rs.getDate("create_at"));
-                category.setUpdatedAt(rs.getDate("updated_at"));
-            }
-            ste.close();
-            rs.close();
-
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
-        return category;
     }
 
     public void update(Category c) {
