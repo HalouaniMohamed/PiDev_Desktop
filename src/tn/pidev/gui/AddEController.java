@@ -66,55 +66,121 @@ public class AddEController implements Initializable {
         // TODO
     }
     @FXML
-    private void addEvent(ActionEvent event) {
+private void addEvent(ActionEvent event) {
 
-        // Check that all text fields have values
-        if (tfName.getText().isEmpty() || tfDescription.getText().isEmpty() || tfLocation.getText().isEmpty()
-                || tfCapacity.getText().isEmpty() || urlTF.getText().isEmpty() || tfType.getText().isEmpty()
-                || tfHour.getText().isEmpty() || tfDate.getValue() == null) {
+    // Check that all text fields have values
+    if (tfName.getText().isEmpty() || tfDescription.getText().isEmpty() || tfLocation.getText().isEmpty()
+            || tfCapacity.getText().isEmpty() || urlTF.getText().isEmpty() || tfType.getText().isEmpty()
+            || tfHour.getText().isEmpty() || tfDate.getValue() == null) {
 
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error");
+        alert.setHeaderText("Un ou plusieurs champs sont vides!");
+        ButtonType okButton = new ButtonType("OK", ButtonBar.ButtonData.OK_DONE);
+        alert.getButtonTypes().setAll(okButton);
+        alert.showAndWait();
+    } else {
+        DateFormat timeFormat = new SimpleDateFormat("HH:mm");
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+
+        // Use LocalDate and LocalTime instead of Date and Time classes for easier manipulation of date and time values
+        LocalDate localDate = tfDate.getValue();
+        LocalTime localTime = LocalTime.parse(tfHour.getText().trim());
+
+        // Check if tfCapacity is an integer
+        int capacity = 0;
+        try {
+            capacity = Integer.parseInt(tfCapacity.getText());
+        } catch (NumberFormatException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
-            alert.setHeaderText("One or more fields are empty!");
+            alert.setHeaderText("Le nombre de places doit etre un entier !");
             ButtonType okButton = new ButtonType("OK", ButtonBar.ButtonData.OK_DONE);
             alert.getButtonTypes().setAll(okButton);
             alert.showAndWait();
-        } else {
-            DateFormat timeFormat = new SimpleDateFormat("HH:mm");
-            DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-
-            // Use LocalDate and LocalTime instead of Date and Time classes for easier manipulation of date and time values
-            LocalDate localDate = tfDate.getValue();
-            LocalTime localTime = LocalTime.parse(tfHour.getText().trim());
-
-            Evenements eventObj = new Evenements(Integer.parseInt(tfCapacity.getText()), tfName.getText(),
-                    tfLocation.getText(), tfDescription.getText(), tfType.getText(),
-                    Date.valueOf(localDate), Time.valueOf(localTime));
-            System.out.println(file.getPath());
-            eventObj.setImage(file.getAbsolutePath());
-
-            // Call the EventService to add the event to the database
-            EvenementsService eventService = new EvenementsService();
-            eventService.ajouter(eventObj);
-
-            // Show success message and clear text fields
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Success");
-            alert.setHeaderText("Event added successfully");
-            ButtonType okButton = new ButtonType("OK", ButtonBar.ButtonData.OK_DONE);
-            alert.getButtonTypes().setAll(okButton);
-            alert.showAndWait();
-            tfName.setText("");
-            tfDescription.setText("");
-            tfLocation.setText("");
-            tfCapacity.setText("");
-            tfDate.setValue(null);
-            tfType.setText("");
-            tfHour.setText("");
-            urlTF.setText("");
-
+            return;
         }
+
+        // Check if description has at least 5 characters
+        if (tfDescription.getText().length() < 5) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("La description doit contenir au moins 5 caracteres !");
+            ButtonType okButton = new ButtonType("OK", ButtonBar.ButtonData.OK_DONE);
+            alert.getButtonTypes().setAll(okButton);
+            alert.showAndWait();
+            return;
+        }
+        // Get current date
+LocalDate currentDate = LocalDate.now();
+
+// Get selected date from tfDate
+LocalDate selectedDate = tfDate.getValue();
+
+// Compare dates
+if (selectedDate.isBefore(currentDate)) {
+    // Show error message and return
+    Alert alert = new Alert(Alert.AlertType.ERROR);
+    alert.setTitle("Error");
+    alert.setHeaderText("La date doit être supérieure ou égale à la date système !");
+    ButtonType okButton = new ButtonType("OK", ButtonBar.ButtonData.OK_DONE);
+    alert.getButtonTypes().setAll(okButton);
+    alert.showAndWait();
+    return;
+}
+// Check if tfType is a string
+if (!tfType.getText().matches("[a-zA-Z]+")) {
+    Alert alert = new Alert(Alert.AlertType.ERROR);
+    alert.setTitle("Error");
+    alert.setHeaderText("Le champ Type doit contenir uniquement des lettres !");
+    ButtonType okButton = new ButtonType("OK", ButtonBar.ButtonData.OK_DONE);
+    alert.getButtonTypes().setAll(okButton);
+    alert.showAndWait();
+    return;
+}
+// Check if tfHour is a valid time in the format HH:MM
+if (!tfHour.getText().matches("^([0-1][0-9]|2[0-3]):[0-5][0-9]$")) {
+    Alert alert = new Alert(Alert.AlertType.ERROR);
+    alert.setTitle("Error");
+    alert.setHeaderText("Le champ Heure doit être au format HH:MM !");
+    ButtonType okButton = new ButtonType("OK", ButtonBar.ButtonData.OK_DONE);
+    alert.getButtonTypes().setAll(okButton);
+    alert.showAndWait();
+    return;
+}
+
+
+
+        Evenements eventObj = new Evenements(capacity, tfName.getText(),
+                tfLocation.getText(), tfDescription.getText(), tfType.getText(),
+                Date.valueOf(localDate), Time.valueOf(localTime));
+        System.out.println(file.getPath());
+        eventObj.setImage(file.getAbsolutePath());
+
+        // Call the EventService to add the event to the database
+        EvenementsService eventService = new EvenementsService();
+        eventService.ajouter(eventObj);
+
+        // Show success message and clear text fields
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Success");
+        alert.setHeaderText("Evenement ajoute avec succes");
+        ButtonType okButton = new ButtonType("OK", ButtonBar.ButtonData.OK_DONE);
+        alert.getButtonTypes().setAll(okButton);
+        alert.showAndWait();
+        tfName.setText("");
+        tfDescription.setText("");
+        tfLocation.setText("");
+        tfCapacity.setText("");
+        tfDate.setValue(null);
+        tfType.setText("");
+        tfHour.setText("");
+        urlTF.setText("");
+
     }
+}
+
+
     
 	@FXML
 	private void importer(ActionEvent event) {

@@ -20,7 +20,7 @@ public class Main extends Application {
      
     	Main.stg = primaryStage;
         
-        FXMLLoader loader= new FXMLLoader(getClass().getResource("../gui/AddR.fxml"));
+        FXMLLoader loader= new FXMLLoader(getClass().getResource("../gui/AddE.fxml"));
      
         Parent root=  loader.load();
         Scene scene= new Scene(root ,1400,700);
