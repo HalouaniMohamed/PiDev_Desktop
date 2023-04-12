@@ -20,6 +20,16 @@ public class rendez_vous {
     private Date date_rv ;
     private Medecin medecin;
     private Cabinet cabinet ;
+    private int idMedecin;
+
+    public rendez_vous(String nom, String prenom, String cause, String descriprion, Date date_rv, int idMedecin) {
+        this.nom = nom;
+        this.prenom = prenom;
+        this.cause = cause;
+        this.description = description;
+        this.date_rv = date_rv;
+        this.idMedecin = idMedecin;
+    }
 
     public Cabinet getCabinet() {
         return cabinet;
@@ -41,7 +51,6 @@ public class rendez_vous {
     }
 
     public rendez_vous(int id, String nom, String prenom, String cause, String description, Date date_rv, Medecin medecin) {
-        this.id = id;
         this.nom = nom;
         this.prenom = prenom;
         this.cause = cause;
@@ -130,6 +139,14 @@ public class rendez_vous {
   public Date getDate_rv() {
       return date_rv;
   }
+
+    public int getIdMedecin() {
+        return idMedecin;
+    }
+
+    public void setIdMedecin(int idMedecin) {
+        this.idMedecin = idMedecin;
+    }
 
    public void setDate_rv(Date date_rv) {
         this.date_rv = date_rv;

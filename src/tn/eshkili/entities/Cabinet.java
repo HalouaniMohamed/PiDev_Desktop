@@ -11,17 +11,19 @@ package tn.eshkili.entities;
  */
 public class Cabinet {
     private int id ;
-    private String adresse ;
-
-    public Cabinet(int id, String adresse) {
-        this.id = id;
-        this.adresse = adresse;
-    }
+    private String nom,adresse ;
 
     public Cabinet() {
     }
 
-    public Cabinet(String adresse) {
+    public Cabinet(int id, String nom, String adresse) {
+        this.id = id;
+        this.nom = nom;
+        this.adresse = adresse;
+    }
+
+    public Cabinet(String nom, String adresse) {
+        this.nom = nom;
         this.adresse = adresse;
     }
 
@@ -33,6 +35,14 @@ public class Cabinet {
         this.id = id;
     }
 
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
     public String getAdresse() {
         return adresse;
     }
@@ -40,5 +50,7 @@ public class Cabinet {
     public void setAdresse(String adresse) {
         this.adresse = adresse;
     }
+
+
     
 }
