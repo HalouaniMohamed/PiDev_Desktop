@@ -3,10 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/LENOVO/Desktop/pidev3A40m/src/tn/eshkili/services/Cabinet.java</file>
-            <file>file:/C:/Users/LENOVO/Desktop/pidev3A40m/src/tn/eshkili/test/Main.java</file>
-            <file>file:/C:/Users/LENOVO/Desktop/pidev3A40m/src/tn/eshkili/services/NewInterface.java</file>
-            <file>file:/C:/Users/LENOVO/Desktop/pidev3A40m/src/tn/eshkili/services/RendezVous.java</file>
+            <file>file:/C:/Users/rayen/OneDrive/Documents/NetBeansProjects/pidev/src/tn/echkili/gui/Home.java</file>
+            <file>file:/C:/Users/rayen/OneDrive/Documents/NetBeansProjects/pidev/src/tn/echkili/services/UserCRUD.java</file>
+            <file>file:/C:/Users/rayen/OneDrive/Documents/NetBeansProjects/pidev/src/tn/echkili/gui/AdminController.java</file>
+            <file>file:/C:/Users/rayen/OneDrive/Documents/NetBeansProjects/pidev/src/tn/echkili/gui/Admin.fxml</file>
+            <file>file:/C:/Users/rayen/OneDrive/Documents/NetBeansProjects/pidev/src/tn/echkili/gui/AdminNavbar.fxml</file>
+            <file>file:/C:/Users/rayen/OneDrive/Documents/NetBeansProjects/pidev/src/tn/echkili/gui/SignIn.fxml</file>
         </group>
     </open-files>
 </project-private>
