@@ -15,6 +15,7 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -86,10 +87,36 @@ public class AddProductController implements Initializable {
 
     @FXML
     private void addProduct(ActionEvent event) {
+//        System.out.println(tfQuantity.getText());
+//        System.out.println(!isInt(tfQuantity.getText()));
+//        System.out.println(!(Integer.parseInt(tfQuantity.getText()) >= 0));
         if (tfName.getText().isEmpty() || tfPrice.getText().isEmpty() || tfQuantity.getText().isEmpty()) {
             Alert aler = new Alert(Alert.AlertType.ERROR);
             aler.setTitle("Erreur");
-            aler.setHeaderText("Le nom est vide !");
+            aler.setHeaderText("Champ vide !");
+            ButtonType okButton = new ButtonType("ok", ButtonBar.ButtonData.OK_DONE);
+            aler.getButtonTypes().setAll(okButton);
+            aler.showAndWait();
+        } else if (tfName.getText().length() < 3) {
+            Alert aler = new Alert(Alert.AlertType.ERROR);
+            aler.setTitle("Erreur");
+            aler.setHeaderText("Nom invalide!");
+            ButtonType okButton = new ButtonType("ok", ButtonBar.ButtonData.OK_DONE);
+            aler.getButtonTypes().setAll(okButton);
+            aler.showAndWait();
+        } else if (!isDouble(tfPrice.getText()) || !(Double.parseDouble(tfPrice.getText()) > 0)) {
+
+            Alert aler = new Alert(Alert.AlertType.ERROR);
+            aler.setTitle("Erreur");
+            aler.setHeaderText("Prix invalide!");
+            ButtonType okButton = new ButtonType("ok", ButtonBar.ButtonData.OK_DONE);
+            aler.getButtonTypes().setAll(okButton);
+            aler.showAndWait();
+        } //        check if thequantity is valid
+        else if (!isInt(tfQuantity.getText()) || !(Integer.parseInt(tfQuantity.getText()) >= 0)) {
+            Alert aler = new Alert(Alert.AlertType.ERROR);
+            aler.setTitle("Erreur");
+            aler.setHeaderText("Quantité invalide!");
             ButtonType okButton = new ButtonType("ok", ButtonBar.ButtonData.OK_DONE);
             aler.getButtonTypes().setAll(okButton);
             aler.showAndWait();
@@ -119,32 +146,49 @@ public class AddProductController implements Initializable {
                 uploadFile(selectedFile);
                 p.setImage(image);
             }
-            ps.add(p);
-
-            // on success show alert that displays a success message then empty the textfields
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Success");
-            alert.setHeaderText("produit ajouté");
-            ButtonType okButton = new ButtonType("ok", ButtonBar.ButtonData.OK_DONE);
-            alert.getButtonTypes().setAll(okButton);
-            Button okBtn = (Button) alert.getDialogPane().lookupButton(okButton);
-            okBtn.setOnAction(e -> {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("AdminProductsList.fxml"));
-
-                try {
-                    Parent root = loader.load();
-
-                    tfName.getScene().setRoot(root);
-                } catch (IOException ex) {
-
-                    System.out.println(ex.getMessage());
+            Task<Boolean> task = new Task<Boolean>() {
+                @Override
+                protected Boolean call() throws Exception {
+                    return ps.isUnique(p);
                 }
-                // Redirect to the showProduct interface
-                // Code to redirect here
+            };
+
+            task.setOnSucceeded(e -> {
+                boolean isUnique = task.getValue();
+                if (!isUnique) {
+                    Alert aler = new Alert(Alert.AlertType.ERROR);
+                    aler.setHeaderText(null);
+                    aler.setTitle("Erreur");
+                    aler.setContentText("Le nom existe déjà");
+                    ButtonType okButton = new ButtonType("ok", ButtonBar.ButtonData.OK_DONE);
+                    aler.getButtonTypes().setAll(okButton);
+                    aler.showAndWait();
+                } else {
+                    ps.add(p);
+
+                    // on success show alert that displays a success message then empty the textfields
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Success");
+                    alert.setHeaderText("Produit ajouté");
+                    ButtonType okButton = new ButtonType("ok", ButtonBar.ButtonData.OK_DONE);
+                    alert.getButtonTypes().setAll(okButton);
+                    Button okBtn = (Button) alert.getDialogPane().lookupButton(okButton);
+                    okBtn.setOnAction(evt -> {
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("AdminProductsList.fxml"));
+                        try {
+                            Parent root = loader.load();
+                            tfName.getScene().setRoot(root);
+                        } catch (IOException ex) {
+                            System.out.println(ex.getMessage());
+                        }
+                    });
+                    alert.showAndWait();
+                    tfName.setText(null);
+                    tfDescription.setText(null);
+                }
             });
-            alert.showAndWait();
-            tfName.setText(null);
-            tfDescription.setText(null);
+
+            new Thread(task).start();
         }
 
     }
@@ -181,6 +225,24 @@ public class AddProductController implements Initializable {
         String[] parts = fileName.split("\\.");
         String extension = parts[parts.length - 1];
         return timestamp + "." + extension;
+    }
+
+    public boolean isDouble(String str) {
+        try {
+            Double.parseDouble(str);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
+
+    public static boolean isInt(String s) {
+        try {
+            Integer.parseInt(s);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
     }
 
 }

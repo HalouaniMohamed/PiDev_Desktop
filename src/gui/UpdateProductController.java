@@ -15,6 +15,7 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -88,11 +89,35 @@ public class UpdateProductController implements Initializable {
         if (tfName.getText().isEmpty() || tfPrice.getText().isEmpty() || tfQuantity.getText().isEmpty()) {
             Alert aler = new Alert(Alert.AlertType.ERROR);
             aler.setTitle("Erreur");
-            aler.setHeaderText("Le nom est vide !");
+            aler.setHeaderText("Champ vide !");
+            ButtonType okButton = new ButtonType("ok", ButtonBar.ButtonData.OK_DONE);
+            aler.getButtonTypes().setAll(okButton);
+            aler.showAndWait();
+        } else if (tfName.getText().length() < 3) {
+            Alert aler = new Alert(Alert.AlertType.ERROR);
+            aler.setTitle("Erreur");
+            aler.setHeaderText("Nom invalide!");
+            ButtonType okButton = new ButtonType("ok", ButtonBar.ButtonData.OK_DONE);
+            aler.getButtonTypes().setAll(okButton);
+            aler.showAndWait();
+        } else if (!isDouble(tfPrice.getText()) || !(Double.parseDouble(tfPrice.getText()) > 0)) {
+
+            Alert aler = new Alert(Alert.AlertType.ERROR);
+            aler.setTitle("Erreur");
+            aler.setHeaderText("Prix invalide!");
+            ButtonType okButton = new ButtonType("ok", ButtonBar.ButtonData.OK_DONE);
+            aler.getButtonTypes().setAll(okButton);
+            aler.showAndWait();
+        } //        check if the quantity is valid
+        else if (!isInt(tfQuantity.getText()) || !(Integer.parseInt(tfQuantity.getText()) >= 0)) {
+            Alert aler = new Alert(Alert.AlertType.ERROR);
+            aler.setTitle("Erreur");
+            aler.setHeaderText("Quantité invalide!");
             ButtonType okButton = new ButtonType("ok", ButtonBar.ButtonData.OK_DONE);
             aler.getButtonTypes().setAll(okButton);
             aler.showAndWait();
         } else {
+            System.out.println("1st step");
             Date date = new Date(Calendar.getInstance().getTime().getTime());
 
             // get the values from the text fields
@@ -105,6 +130,8 @@ public class UpdateProductController implements Initializable {
             Category category = cbCategorie.getValue();
             // check if a category was selected
             if (category == null) {
+                System.out.println("category null");
+
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Error");
                 alert.setHeaderText("No category selected!");
@@ -117,36 +144,60 @@ public class UpdateProductController implements Initializable {
             product.setQuantity(quantity);
             product.setPrice(price);
             product.setUpdatedAt(date);
+            System.out.println("3rd step");
+
             if (selectedFile != null) {
+                System.out.println("yay i have image ");
+
                 uploadFile(selectedFile);
                 product.setImage(image);
             }
-            ps.update(product);
+            Task<Boolean> task = new Task<Boolean>() {
+                @Override
+                protected Boolean call() throws Exception {
+                    return ps.isUnique(product);
+                }
+            };
+
+            task.setOnSucceeded(e -> {
+                System.out.println("here");
+                boolean isUnique = task.getValue();
+                if (!isUnique) {
+                    System.out.println("i am not unique");
+                    Alert aler = new Alert(Alert.AlertType.ERROR);
+                    aler.setHeaderText(null);
+                    aler.setTitle("Erreur");
+                    aler.setContentText("Le nom existe déjà");
+                    ButtonType okButton = new ButtonType("ok", ButtonBar.ButtonData.OK_DONE);
+                    aler.getButtonTypes().setAll(okButton);
+                    aler.showAndWait();
+                } else {
+                    ps.update(product);
+
+                    // on success show alert that displays a success message then empty the textfields
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Success");
+                    alert.setHeaderText("Produit modifié");
+                    ButtonType okButton = new ButtonType("ok", ButtonBar.ButtonData.OK_DONE);
+                    alert.getButtonTypes().setAll(okButton);
+                    Button okBtn = (Button) alert.getDialogPane().lookupButton(okButton);
+                    okBtn.setOnAction(evt -> {
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("AdminProductsList.fxml"));
+                        try {
+                            Parent root = loader.load();
+                            tfName.getScene().setRoot(root);
+                        } catch (IOException ex) {
+                            System.out.println(ex.getMessage());
+                        }
+                    });
+                    alert.showAndWait();
+                    tfName.setText(null);
+                    tfDescription.setText(null);
+                }
+            });
+            new Thread(task).start();
 
             // on success show alert that displays a success message then empty the textfields
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Success");
-            alert.setHeaderText("Produit Modifié");
-            ButtonType okButton = new ButtonType("ok", ButtonBar.ButtonData.OK_DONE);
-            alert.getButtonTypes().setAll(okButton);
-            Button okBtn = (Button) alert.getDialogPane().lookupButton(okButton);
-            okBtn.setOnAction(e -> {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("AdminProductsList.fxml"));
-
-                try {
-                    Parent root = loader.load();
-
-                    tfName.getScene().setRoot(root);
-                } catch (IOException ex) {
-
-                    System.out.println(ex.getMessage());
-                }
-                // Redirect to the showProduct interface
-                // Code to redirect here
-            });
-            alert.showAndWait();
-            tfName.setText(null);
-            tfDescription.setText(null);
         }
     }
 
@@ -200,6 +251,24 @@ public class UpdateProductController implements Initializable {
 
     public void setProduct(Product product) {
         this.product = product;
+    }
+
+    public boolean isDouble(String str) {
+        try {
+            Double.parseDouble(str);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
+
+    public static boolean isInt(String s) {
+        try {
+            Integer.parseInt(s);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
     }
 
 }

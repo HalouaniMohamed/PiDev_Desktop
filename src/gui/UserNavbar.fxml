@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane  prefHeight="80.0" prefWidth="1600.0" style="-fx-background-color: #fff;" stylesheets="/gui/application.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.UserNavbarController">
+<AnchorPane prefHeight="80.0" prefWidth="1600.0" style="-fx-background-color: #fff;" stylesheets="/gui/application.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.UserNavbarController">
    <children>
       <HBox layoutX="68.0" layoutY="8.0" prefHeight="80.0" prefWidth="1600.0" spacing="10.0" AnchorPane.bottomAnchor="-10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -37,7 +37,7 @@
                   <Font name="Cambria" size="18.0" />
                </font>
             </Button>
-            <Button alignment="CENTER" mnemonicParsing="false" onAction="#redirectToProducts" prefHeight="79.0" prefWidth="126.0" style="-fx-background-color: #fff;" text="Produits" textFill="#242429">
+            <Button fx:id="p" alignment="CENTER" mnemonicParsing="false" onAction="#redirectToProducts" prefHeight="79.0" prefWidth="126.0" style="-fx-background-color: #fff;" text="Produits" textFill="#242429">
                <font>
                   <Font name="Cambria" size="18.0" />
                </font>

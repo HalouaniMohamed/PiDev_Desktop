@@ -19,6 +19,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.Parent;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -114,8 +115,22 @@ public class CategoriesListController implements Initializable {
                         deleteIcon.setOnMouseClicked((MouseEvent event) -> {
 
                             category = categoriesView.getSelectionModel().getSelectedItem();
-                            cs.deleteById(category.getId());
-                            refreshTable();
+                            boolean success = cs.deleteById(category.getId());
+
+                            if (success) {
+                                refreshTable();
+                                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                                alert.setTitle("Success");
+                                alert.setHeaderText("Catégorie supprimé avec succès");
+                                alert.setContentText("La catégorie " + category.getCategoryName() + " a été supprimée de la base de données.");
+                                alert.showAndWait();
+                            } else {
+                                Alert alert = new Alert(Alert.AlertType.ERROR);
+                                alert.setTitle("Error");
+                                alert.setHeaderText("Impossible de supprimer la catégorie");
+                                alert.setContentText("La catégorie " + category.getCategoryName() + " ne peut pas être supprimée car elle est associée à des produits.");
+                                alert.showAndWait();
+                            }
 
                         });
 

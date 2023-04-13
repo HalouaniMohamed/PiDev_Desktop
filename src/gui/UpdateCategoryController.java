@@ -11,6 +11,7 @@ import java.net.URL;
 import java.sql.Date;
 import java.util.Calendar;
 import java.util.ResourceBundle;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -54,38 +55,63 @@ public class UpdateCategoryController implements Initializable {
             ButtonType okButton = new ButtonType("ok", ButtonBar.ButtonData.OK_DONE);
             aler.getButtonTypes().setAll(okButton);
             aler.showAndWait();
+        } else if (tfName.getText().length() < 3) {
+            Alert aler = new Alert(Alert.AlertType.ERROR);
+            aler.setHeaderText(null);
+            aler.setTitle("Erreur");
+            aler.setContentText("Le nom doit depasser 3 caracteres");
+            ButtonType okButton = new ButtonType("ok", ButtonBar.ButtonData.OK_DONE);
+            aler.getButtonTypes().setAll(okButton);
+            aler.showAndWait();
+
         } else {
             Date date = new Date(Calendar.getInstance().getTime().getTime());
-            CategoryService cs = new CategoryService();
             category.setCategoryName(tfName.getText());
             category.setDescription(tfDescription.getText());
-            category.setUpdatedAt(date);
-            cs.update(category);
-
-            // on success show alert that displays a success message then empty the textfields
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Success");
-            alert.setHeaderText("Catégorie modifié");
-            ButtonType okButton = new ButtonType("ok", ButtonBar.ButtonData.OK_DONE);
-            alert.getButtonTypes().setAll(okButton);
-            Button okBtn = (Button) alert.getDialogPane().lookupButton(okButton);
-            okBtn.setOnAction(e -> {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("CategoriesList.fxml"));
-
-                try {
-                    Parent root = loader.load();
-
-                    tfName.getScene().setRoot(root);
-                } catch (IOException ex) {
-
-                    System.out.println(ex.getMessage());
+            CategoryService cs = new CategoryService();
+            Task<Boolean> task = new Task<Boolean>() {
+                @Override
+                protected Boolean call() throws Exception {
+                    return cs.isUnique(category);
                 }
-                // Redirect to the showProduct interface
-                // Code to redirect here
+            };
+
+            task.setOnSucceeded(e -> {
+                boolean isUnique = task.getValue();
+                if (!isUnique) {
+                    Alert aler = new Alert(Alert.AlertType.ERROR);
+                    aler.setHeaderText(null);
+                    aler.setTitle("Erreur");
+                    aler.setContentText("Le nom existe déjà");
+                    ButtonType okButton = new ButtonType("ok", ButtonBar.ButtonData.OK_DONE);
+                    aler.getButtonTypes().setAll(okButton);
+                    aler.showAndWait();
+                } else {
+                    cs.update(category);
+
+                    // on success show alert that displays a success message then empty the textfields
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Success");
+                    alert.setHeaderText("Catégorie modifié");
+                    ButtonType okButton = new ButtonType("ok", ButtonBar.ButtonData.OK_DONE);
+                    alert.getButtonTypes().setAll(okButton);
+                    Button okBtn = (Button) alert.getDialogPane().lookupButton(okButton);
+                    okBtn.setOnAction(evt -> {
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("CategoriesList.fxml"));
+                        try {
+                            Parent root = loader.load();
+                            tfName.getScene().setRoot(root);
+                        } catch (IOException ex) {
+                            System.out.println(ex.getMessage());
+                        }
+                    });
+                    alert.showAndWait();
+                    tfName.setText(null);
+                    tfDescription.setText(null);
+                }
             });
-            alert.showAndWait();
-            tfName.setText(null);
-            tfDescription.setText(null);
+
+            new Thread(task).start();
 
         }
     }

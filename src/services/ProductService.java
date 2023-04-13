@@ -50,6 +50,26 @@ public class ProductService {
         }
     }
 
+    public boolean isUnique(Product p) {
+        sql = "SELECT COUNT(*) FROM product WHERE name=?";
+        System.out.println(sql);
+        boolean unique = false;
+        try {
+            PreparedStatement ste = cnx.prepareStatement(sql);
+            ste.setString(1, p.getName());
+            ResultSet rs = ste.executeQuery();
+            if (rs.next() && rs.getInt(1) == 0) {
+                System.out.println("Product with the same name already exists!");
+                unique = true;
+            } else {
+                unique = false;
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return unique;
+    }
+
     public void update(Product p) {
         sql = " update product set name=? ,description=? ,price=? ,image=? ,quantity=?,updated_at=?,category_id=? where id= ? ";
         try {

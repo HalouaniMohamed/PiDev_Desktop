@@ -13,8 +13,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import entities.Category;
 import tools.MyConnection;
 
@@ -47,6 +45,26 @@ public class CategoryService {
         }
     }
 
+    public boolean isUnique(Category c) {
+        sql = "SELECT COUNT(*) FROM category WHERE category_name=?";
+        System.out.println(sql);
+        boolean unique = false;
+        try {
+            PreparedStatement ste = cnx.prepareStatement(sql);
+            ste.setString(1, c.getCategoryName());
+            ResultSet rs = ste.executeQuery();
+            if (rs.next() && rs.getInt(1) == 0) {
+                System.out.println("Category with the same name already exists!");
+                unique = true;
+            } else {
+                unique = false;
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return unique;
+    }
+
     public List<Category> getAllCategories() {
         List<Category> categories = new ArrayList<>();
         sql = "select * from category";
@@ -62,7 +80,7 @@ public class CategoryService {
             rs.close();
 
         } catch (SQLException ex) {
-            Logger.getLogger(CategoryService.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getMessage());
         }
         return categories;
     }
@@ -85,7 +103,7 @@ public class CategoryService {
     }
 
     public void delete(Category c) {
-        sql = " select count(*) from product where id=" + c.getId();
+        sql = " select count(*) from product where category_id=" + c.getId();
         int count = 0;
         try {
             Statement ste = cnx.createStatement();
@@ -112,9 +130,9 @@ public class CategoryService {
         }
     }
 
-    public void deleteById(Integer categoryId) {
+    public boolean deleteById(Integer categoryId) {
 
-        sql = " select count(*) from product where id=" + categoryId;
+        sql = " select count(*) from product where category_id=" + categoryId;
         int count = 0;
         try {
             Statement ste = cnx.createStatement();
@@ -129,15 +147,18 @@ public class CategoryService {
         // check if the category is associated with any products, display an error message in that case
         if (count > 0) {
             System.out.println("Cette categorie ne peut pas etre supprimé");
-            return;
+            return false;
         }
         sql = "delete from category where id=" + categoryId;
         try {
             Statement ste = cnx.createStatement();
             ste.executeUpdate(sql);
             System.out.println("Categorie" + categoryId + "supprimé avec success");
+            return true;
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
+            return false;
         }
     }
+
 }
