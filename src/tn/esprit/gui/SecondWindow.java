@@ -31,7 +31,7 @@ public class SecondWindow extends Application {
          
             
             
-            Scene scene = new Scene(root);
+            Scene scene = new Scene(root,780,600);
             
             primaryStage.setTitle("Forum");
             primaryStage.setScene(scene);

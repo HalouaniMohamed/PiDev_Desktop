@@ -55,6 +55,56 @@ public class CommentaireController implements Initializable {
     
     @FXML
     private void ajouterCommentaire(ActionEvent event) {
+        // Vérifier si tous les champs sont remplis
+    if (tfId_User.getText().isEmpty() || tfcommentaires_id.getText().isEmpty() || tfreponse.getText().isEmpty() ) {
+        Alert alert = new Alert(AlertType.ERROR);
+        alert.setTitle("Erreur de saisie");
+        alert.setHeaderText(null);
+        alert.setContentText("Tous les champs doivent être remplis");
+        alert.showAndWait();
+        return;
+    }
+
+    // Vérifier si le nom d'utilisateur ne contient pas de caractères spéciaux
+    String nomUtilisateur = tfreponse.getText();
+    if (!nomUtilisateur.matches("[a-zA-Z0-9.,?.]+")) {
+        Alert alert = new Alert(AlertType.ERROR);
+        alert.setTitle("Erreur de saisie");
+        alert.setHeaderText(null);
+        alert.setContentText("La réponse ne doit contenir que des lettres ou des chiffres ");
+        alert.showAndWait();
+        return;
+    }
+     int id;
+    try {
+        // Vérifier que l'ID est un entier
+        id = Integer.parseInt(tfId_User.getText());
+    } catch (NumberFormatException e) {
+        Alert alert = new Alert(AlertType.ERROR);
+        alert.setTitle("ID invalide");
+        alert.setHeaderText(null);
+        alert.setContentText("L'ID doit être un entier.");
+        alert.showAndWait();
+        return;
+    }
+     int idc;
+    try {
+        // Vérifier que l'ID est un entier
+        idc = Integer.parseInt(tfcommentaires_id.getText());
+    } catch (NumberFormatException e) {
+        Alert alert = new Alert(AlertType.ERROR);
+        alert.setTitle("Numéro post invalide");
+        alert.setHeaderText(null);
+        alert.setContentText("Le numéro du post doit être un entier.");
+        alert.showAndWait();
+        return;
+    }
+
+  
+
+    
+   
+
         
 
        Commentaire c = new Commentaire(Integer.parseInt(tfId_User.getText()), Integer.parseInt(tfcommentaires_id.getText()), tfreponse.getText());
@@ -68,7 +118,7 @@ public class CommentaireController implements Initializable {
         try {
             Parent root = loader.load();
 
-            DetailsController dc = loader.getController();
+            AjoutController dc = loader.getController();
            dc.setLabel("Commentaire:" + " " + c.getReponse() );
 
             tfreponse.getScene().setRoot(root);
@@ -79,6 +129,7 @@ public class CommentaireController implements Initializable {
     }
     @FXML
 void ModifierCommentaire (ActionEvent event) {
+    
         Commentaire selectedLN =  listViewCommentaire.getSelectionModel().getSelectedItem();
         if (selectedLN == null) {
             // Afficher un message d'erreur
@@ -93,6 +144,7 @@ void ModifierCommentaire (ActionEvent event) {
             dialog.setTitle("Modifier un commentaire");
             dialog.setHeaderText("Modifier les champs du commentaire");
             dialog.setContentText("Reponse:");
+            
 
             // Set the default value of the input field to the current event name.
             dialog.getEditor().setText(selectedLN.getReponse());
@@ -102,10 +154,14 @@ void ModifierCommentaire (ActionEvent event) {
                 // Update the event name with the new value.
                 selectedLN.setReponse(result.get());
                 // TODO: Update the other event details using similar steps.
+      
+    
+    
 
                 CommentaireService bs = new CommentaireService();
                 
                 bs.modifier(selectedLN);
+                
                 // Show a confirmation alert.
                 Alert alert = new Alert(AlertType.INFORMATION);
                 alert.setTitle("Succes");
@@ -140,9 +196,9 @@ void SupprimerCommentaire(ActionEvent event) {
             alert.showAndWait();
 
             // Actualiser le TableView
-             List<Commentaire> questions = CommentaireService.afficher();
-        ObservableList<Commentaire> observableQuestions = FXCollections.observableArrayList(questions);
-        listViewCommentaire.setItems(observableQuestions);
+             List<Commentaire> commentaires = CommentaireService.afficher();
+        ObservableList<Commentaire> observableCommentaires = FXCollections.observableArrayList(commentaires);
+        listViewCommentaire.setItems(observableCommentaires);
             
         }
     }

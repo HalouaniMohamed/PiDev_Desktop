@@ -3,8 +3,19 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/asus/Documents/NetBeansProjects/PidevJava/src/tn/esprit/gui/AjoutController.java</file>
+            <file>file:/C:/Users/asus/Documents/NetBeansProjects/PidevJava/src/tn/esprit/gui/Commentaire.fxml</file>
+            <file>file:/C:/Users/asus/Documents/NetBeansProjects/PidevJava/src/tn/esprit/gui/AdminCommentaire.fxml</file>
+            <file>file:/C:/Users/asus/Documents/NetBeansProjects/PidevJava/src/tn/esprit/gui/firstWindow.java</file>
             <file>file:/C:/Users/asus/Documents/NetBeansProjects/PidevJava/src/tn/esprit/gui/Ajout.fxml</file>
+            <file>file:/C:/Users/asus/Documents/NetBeansProjects/PidevJava/src/tn/esprit/entities/Post.java</file>
+            <file>file:/C:/Users/asus/Documents/NetBeansProjects/PidevJava/src/tn/esprit/gui/FourthWindow.java</file>
+            <file>file:/C:/Users/asus/Documents/NetBeansProjects/PidevJava/src/tn/esprit/gui/AdminPost.fxml</file>
+            <file>file:/C:/Users/asus/Documents/NetBeansProjects/PidevJava/src/tn/esprit/gui/Details.fxml</file>
+            <file>file:/C:/Users/asus/Documents/NetBeansProjects/PidevJava/src/tn/esprit/entities/Commentaire.java</file>
+            <file>file:/C:/Users/asus/Documents/NetBeansProjects/PidevJava/src/tn/esprit/gui/Post.fxml</file>
+            <file>file:/C:/Users/asus/Documents/NetBeansProjects/PidevJava/src/tn/esprit/gui/PostController.java</file>
+            <file>file:/C:/Users/asus/Documents/NetBeansProjects/PidevJava/src/tn/esprit/gui/ThirdWindow.java</file>
+            <file>file:/C:/Users/asus/Documents/NetBeansProjects/PidevJava/src/tn/esprit/gui/SecondWindow.java</file>
             <file>file:/C:/Users/asus/Documents/NetBeansProjects/PidevJava/src/tn/esprit/gui/CommentaireController.java</file>
         </group>
     </open-files>

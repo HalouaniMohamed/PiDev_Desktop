@@ -26,9 +26,9 @@ public class main {
    public static void main(String[] args) {
     //***********Ajout&Suppression*************//
  
-    
+    PostService ps = new PostService();
         
-    
+    ps.afficher();
     
 
     
@@ -47,10 +47,10 @@ public class main {
    // Appel de la méthode modifier pour mettre à jour le commentaire dans la base de données
   // cs.modifier(commentaireModifie);
    //************Affichage***************//
-    List<Commentaire> commentaires = cs.afficher();
-    for (Commentaire c : commentaires) {
-        System.out.println(c);
-    }
+//    List<Commentaire> commentaires = cs.afficher();
+//    for (Commentaire c : commentaires) {
+//        System.out.println(c);
+//    }
     
 }
 

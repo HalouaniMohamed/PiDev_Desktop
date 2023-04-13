@@ -18,49 +18,46 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextInputDialog;
-import tn.esprit.entities.Post;
-import tn.esprit.services.PostService;
+
 import tn.esprit.entities.Commentaire;
 import tn.esprit.services.CommentaireService;
 import javafx.scene.layout.VBox;
 import javafx.scene.control.Label;
 
 
-public class AdminPostController implements Initializable {
+public class AdminCommentaireController implements Initializable {
     
     @FXML
     private TextField tfId_User;
     @FXML
-    private TextField tfNom_Utilisateur;
+    private TextField tfcommentaires_id;
     @FXML
-    private TextField tfDescription;
+    private TextField tfreponse;
     @FXML
-    private TextField tfPublication;
+    private Button ajouterbtn;
     @FXML
-    private Button ajouterBtn;
-    @FXML
-private ListView<Post> listViewQuestion;
+    
+    private ListView<Commentaire> listViewCommentaire;
    
 
-    private PostService postService = new PostService();
+    private CommentaireService  CommentaireService = new CommentaireService();
 
     /**
      * Initializes the controller class.
      */
     
      public void initialize(URL url, ResourceBundle rb) {
-        // Afficher la liste des questions dans la ListView
-        List<Post> questions = postService.afficher();
-        ObservableList<Post> observableQuestions = FXCollections.observableArrayList(questions);
-        listViewQuestion.setItems(observableQuestions);
+      
+      // Afficher la liste des commentaires dans la ListView
         
+        List<Commentaire> commentaires =  CommentaireService.afficher();
+        ObservableList<Commentaire> observableCommentaires = FXCollections.observableArrayList(commentaires);
+        listViewCommentaire.setItems(observableCommentaires);
     }
-    
- 
-
+     
 @FXML
-void SupprimerPost(ActionEvent event) {
-        Post selectedLN =  listViewQuestion.getSelectionModel().getSelectedItem();
+void SupprimerCommentaire(ActionEvent event) {
+         Commentaire selectedLN =  listViewCommentaire.getSelectionModel().getSelectedItem();
         if (selectedLN == null) {
             // Afficher un message d'erreur
             Alert alert = new Alert(AlertType.ERROR);
@@ -69,23 +66,28 @@ void SupprimerPost(ActionEvent event) {
             alert.setContentText("Veuillez selectionner pour supprimer !");
             alert.showAndWait();
         } else {
-            PostService ps = new PostService();
+            CommentaireService ps = new  CommentaireService();
             System.out.println(selectedLN.getId());
             ps.supprimer(selectedLN);
 
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Information");
             alert.setHeaderText(null);
-            alert.setContentText("Post supprime!");
+            alert.setContentText(" Commentaire supprime!");
             alert.showAndWait();
 
             // Actualiser le TableView
-             List<Post> questions = postService.afficher();
-        ObservableList<Post> observableQuestions = FXCollections.observableArrayList(questions);
-        listViewQuestion.setItems(observableQuestions);
+             List<Commentaire> commentaires = CommentaireService.afficher();
+        ObservableList<Commentaire> observableCommentaires = FXCollections.observableArrayList(commentaires);
+        listViewCommentaire.setItems(observableCommentaires);
             
         }
     }
+        
+    }
+    
+ 
+
 
      
 
@@ -96,4 +98,4 @@ void SupprimerPost(ActionEvent event) {
     
 
     
-}
+

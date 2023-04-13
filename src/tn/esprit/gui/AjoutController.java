@@ -39,18 +39,18 @@ public void initialize(URL url, ResourceBundle rb) {
     CommentaireService ps = new CommentaireService();
     lb.setText(textlabel.getText());
 
-    // Récupérer la liste des questions
-    List<Commentaire> questions = ps.afficher();
+    // Récupérer la liste des commentaires
+    List<Commentaire> commentaires = ps.afficher();
 
-    // Afficher la liste des questions dans la ListView
-    listViewCommentaires.getItems().setAll(questions);
+    // Afficher la liste des commentaires dans la ListView
+    listViewCommentaires.getItems().setAll(commentaires);
 }
    
      public void setLabel(String text){
         this.textlabel.setText(text);
     }
-     public void setListView(List<Commentaire> posts) {
-        ObservableList<Commentaire> observableList = FXCollections.observableArrayList(posts);
+     public void setListView(List<Commentaire> commentaires) {
+        ObservableList<Commentaire> observableList = FXCollections.observableArrayList(commentaires);
         listViewCommentaires.setItems(observableList);
     }
      

@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="603.0" prefWidth="885.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.gui.AdminPostController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.gui.AdminCommentaireController">
     
    <children>
       <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass">
@@ -36,13 +36,13 @@
                                     <Image url="@../../../../../../Downloads/1-removebg-preview.png" />
                                  </image>
                               </ImageView>
-                              <ListView fx:id="listViewQuestion" layoutX="21.0" layoutY="121.0" prefHeight="293.0" prefWidth="736.0" />
-                              <Label alignment="CENTER" layoutX="11.0" layoutY="63.0" prefHeight="37.0" prefWidth="743.0" text="Liste des Posts" textAlignment="CENTER" textFill="#0e0e90">
+                              <ListView fx:id="listViewCommentaire" layoutX="21.0" layoutY="89.0" prefHeight="314.0" prefWidth="736.0" />
+                              <Label alignment="CENTER" layoutX="9.0" layoutY="52.0" prefHeight="37.0" prefWidth="743.0" text="Liste des commentaires" textAlignment="CENTER" textFill="#0e0e90">
                                  <font>
                                     <Font name="System Bold" size="14.0" />
                                  </font>
                               </Label>
-                              <Button layoutX="314.0" layoutY="455.0" mnemonicParsing="false" onAction="#SupprimerPost" prefHeight="26.0" prefWidth="150.0" style="-fx-background-color: #6777ef;" text="Supprimer post" textFill="WHITE" />
+                              <Button layoutX="314.0" layoutY="421.0" mnemonicParsing="false" onAction="#SupprimerCommentaire" prefHeight="26.0" prefWidth="150.0" style="-fx-background-color: #6777ef;" text="Supprimer commentaire" textFill="WHITE" />
                            </children>
                         </AnchorPane>
                      </children>
@@ -51,7 +51,7 @@
             </AnchorPane>
          </children>
       </AnchorPane>
-      <AnchorPane id="AnchorPane" prefHeight="112.0" prefWidth="818.0" style="-fx-background-color: #6777ef;">
+      <AnchorPane id="AnchorPane" prefHeight="80.0" prefWidth="1600.0" style="-fx-background-color: #6777ef;">
          <children>
             <AnchorPane prefHeight="110.0" prefWidth="361.0" style="-fx-background-color: #4c60da;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1233.6" AnchorPane.topAnchor="0.0">
                <children>
@@ -69,12 +69,14 @@
             </AnchorPane>
             <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="108.0" prefWidth="588.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="361.0" AnchorPane.rightAnchor="503.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <Pane prefHeight="110.0" prefWidth="200.0" />
-                  <Label alignment="CENTER" layoutX="47.0" prefHeight="108.0" prefWidth="327.0" text="Forum" textAlignment="CENTER" textFill="#0e0e90">
-                     <font>
-                        <Font name="System Bold" size="24.0" />
-                     </font>
-                  </Label>
+                  <Pane prefHeight="110.0" prefWidth="200.0">
+                     <children>
+                        <Label alignment="CENTER" layoutX="-216.0" prefHeight="134.0" prefWidth="743.0" text="Forum" textAlignment="CENTER" textFill="#0e0e90">
+                           <font>
+                              <Font name="System Bold" size="24.0" />
+                           </font>
+                        </Label>
+                     </children></Pane>
                </children>
             </AnchorPane>
          </children>

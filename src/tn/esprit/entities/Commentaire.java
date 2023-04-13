@@ -5,6 +5,8 @@
  */
 package tn.esprit.entities;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author asus
@@ -15,16 +17,19 @@ public class Commentaire {
     private Post post ;
 
     public Commentaire() {
+         
     }
    
    
 
-    public Commentaire(int id, int commentaires_id, int id_user, String reponse) {
-        this.id = id;
-        this.commentaires_id=commentaires_id;
-        this.id_user = id_user;
-        this.reponse = reponse;
-    }
+    public Commentaire(int id, int commentaires_id, int id_user, String reponse, Post post) {
+    this.id = id;
+    this.commentaires_id = commentaires_id;
+    this.id_user = id_user;
+    this.reponse = reponse;
+    this.post = post;
+}
+
 
     public int getCommentaires_id() {
         return commentaires_id ;
@@ -76,12 +81,14 @@ public class Commentaire {
     public void setPost(Post post) {
         this.post = post;
     }
-    
 
     @Override
     public String toString() {
-        return "Commentaire{" +  " reponse=" + reponse +  '}';
+        return "Commentaire{" + "Réponse:" + reponse + ", du post numéro:" + id_user + '}';
     }
+    
+
+   
  
     
 }

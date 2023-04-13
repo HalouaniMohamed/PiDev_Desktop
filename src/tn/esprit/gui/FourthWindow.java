@@ -22,12 +22,12 @@ import javafx.stage.Stage;
  *
  * @author asus
  */
-public class ThirdWindow extends Application {
+public class FourthWindow extends Application {
     
     @Override
     public void start(Stage primaryStage) {
        try {
-            Parent root = FXMLLoader.load(getClass().getResource("AdminPost.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("AdminCommentaire.fxml"));
             Scene scene = new Scene(root,780,600);
             
             primaryStage.setTitle("Forum");

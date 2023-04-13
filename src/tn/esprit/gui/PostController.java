@@ -47,36 +47,68 @@ private ListView<Post> listViewQuestion;
      */
     @Override
      public void initialize(URL url, ResourceBundle rb) {
+         
         // Afficher la liste des questions dans la ListView
         List<Post> questions = postService.afficher();
         ObservableList<Post> observableQuestions = FXCollections.observableArrayList(questions);
         listViewQuestion.setItems(observableQuestions);
-    }
-    
-    @FXML
-    private void AjouterPost(ActionEvent event) {
         
-
-        Post p = new Post(Integer.parseInt( tfId_User.getText()), tfNom_Utilisateur.getText(), tfDescription.getText(), tfPublication.getText());
-        PostService ps = new PostService();
-       
-        ps.ajouter(p);
-
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("Details.fxml"));
-
-        try {
-            Parent root = loader.load();
-
-            DetailsController dc = loader.getController();
-           dc.setLabel("Question:" + " " + p.getPublication() + "\n publiée par"  + " " + p.getNom_utilisateur() );
-
-            tfNom_Utilisateur.getScene().setRoot(root);
-        } catch (IOException ex) {
-
-            System.out.println(ex.getMessage());
-        }
     }
+     @FXML
+private void AjouterPost(ActionEvent event) {
+        
+    // Vérifier si tous les champs sont remplis
+    if (tfId_User.getText().isEmpty() || tfNom_Utilisateur.getText().isEmpty() || tfDescription.getText().isEmpty() || tfPublication.getText().isEmpty()) {
+        Alert alert = new Alert(AlertType.ERROR);
+        alert.setTitle("Erreur de saisie");
+        alert.setHeaderText(null);
+        alert.setContentText("Tous les champs doivent être remplis");
+        alert.showAndWait();
+        return;
+    }
+
+    // Vérifier si le nom d'utilisateur ne contient pas de caractères spéciaux
+    String nomUtilisateur = tfNom_Utilisateur.getText();
+    if (!nomUtilisateur.matches("[a-zA-Z0-9_]+")) {
+        Alert alert = new Alert(AlertType.ERROR);
+        alert.setTitle("Erreur de saisie");
+        alert.setHeaderText(null);
+        alert.setContentText("Le nom d'utilisateur ne doit contenir que des lettres, des chiffres ou des tirets bas");
+        alert.showAndWait();
+        return;
+    }
+     int id;
+    try {
+        // Vérifier que l'ID est un entier
+        id = Integer.parseInt(tfId_User.getText());
+    } catch (NumberFormatException e) {
+        Alert alert = new Alert(AlertType.ERROR);
+        alert.setTitle("ID invalide");
+        alert.setHeaderText(null);
+        alert.setContentText("L'ID doit être un entier.");
+        alert.showAndWait();
+        return;
+    }
+
+    // Ajouter le post
+    Post p = new Post(Integer.parseInt(tfId_User.getText()), nomUtilisateur, tfDescription.getText(), tfPublication.getText());
+    PostService ps = new PostService();
+    ps.ajouter(p);
+
+    // Afficher la fenêtre des détails
+    FXMLLoader loader = new FXMLLoader(getClass().getResource("Details.fxml"));
+    try {
+        Parent root = loader.load();
+        DetailsController dc = loader.getController();
+        dc.setLabel("Question:" + " " + p.getPublication() + "\n publiée par"  + " " + p.getNom_utilisateur() );
+        tfNom_Utilisateur.getScene().setRoot(root);
+    } catch (IOException ex) {
+        System.out.println(ex.getMessage());
+    }
+}
+
     @FXML
+
 void ModifierPost(ActionEvent event) {
     Post selectedLN = listViewQuestion.getSelectionModel().getSelectedItem();
     if (selectedLN == null) {

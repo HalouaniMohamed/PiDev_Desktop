@@ -89,7 +89,7 @@ public class Post {
     
     @Override
     public String toString() {
-        return "Post{" + "id=" + id + ", id_user=" + id_user + ", description=" + description + ", publication=" + publication + ", nom_utilisateur=" + nom_utilisateur + ", Commentaire =" + commentaires +'}';
+        return "Post{" + "numéro:" + id +  ", publication: "  + nom_utilisateur+ ", publiée par:" + description + ", Description:" + publication + ", Commentaire :" + commentaires +'}';
     }
     
 }
