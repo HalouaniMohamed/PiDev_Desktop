@@ -3,10 +3,18 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/LENOVO/Desktop/pidev3A40m/src/tn/eshkili/services/Cabinet.java</file>
-            <file>file:/C:/Users/LENOVO/Desktop/pidev3A40m/src/tn/eshkili/test/Main.java</file>
-            <file>file:/C:/Users/LENOVO/Desktop/pidev3A40m/src/tn/eshkili/services/NewInterface.java</file>
-            <file>file:/C:/Users/LENOVO/Desktop/pidev3A40m/src/tn/eshkili/services/RendezVous.java</file>
+            <file>file:/C:/Users/ASUS/Pictures/PiDev_Desktop-Event-Reservation/src/tn/pidev/entites/Reservation.java</file>
+            <file>file:/C:/Users/ASUS/Pictures/PiDev_Desktop-Event-Reservation/src/tn/pidev/gui/ConnexionReservation.fxml</file>
+            <file>file:/C:/Users/ASUS/Pictures/PiDev_Desktop-Event-Reservation/src/tn/pidev/tests/main.java</file>
+            <file>file:/C:/Users/ASUS/Pictures/PiDev_Desktop-Event-Reservation/src/tn/pidev/gui/AfficheR.fxml</file>
+            <file>file:/C:/Users/ASUS/Pictures/PiDev_Desktop-Event-Reservation/src/tn/pidev/services/ReservationService.java</file>
+            <file>file:/C:/Users/ASUS/Pictures/PiDev_Desktop-Event-Reservation/src/tn/pidev/gui/AfficheRUserrController.java</file>
+            <file>file:/C:/Users/ASUS/Pictures/PiDev_Desktop-Event-Reservation/src/tn/pidev/gui/ConnexionReservationController.java</file>
+            <file>file:/C:/Users/ASUS/Pictures/PiDev_Desktop-Event-Reservation/src/tn/pidev/entites/Evenements.java</file>
+            <file>file:/C:/Users/ASUS/Pictures/PiDev_Desktop-Event-Reservation/src/tn/pidev/gui/AfficheRUserr.fxml</file>
+            <file>file:/C:/Users/ASUS/Pictures/PiDev_Desktop-Event-Reservation/nbproject/build-impl.xml</file>
+            <file>file:/C:/Users/ASUS/Pictures/PiDev_Desktop-Event-Reservation/src/tn/pidev/gui/Main.java</file>
+            <file>file:/C:/Users/ASUS/Pictures/PiDev_Desktop-Event-Reservation/src/tn/pidev/gui/AfficheRController.java</file>
         </group>
     </open-files>
 </project-private>

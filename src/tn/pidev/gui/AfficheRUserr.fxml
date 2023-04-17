@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="544.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.pidev.gui.AfficheRUserrController">
+   <children>
+      <Label layoutX="8.0" layoutY="7.0" prefHeight="61.0" prefWidth="210.0" text="Ma reservation " textFill="#e11616">
+         <font>
+            <Font name="System Bold" size="28.0" />
+         </font>
+      </Label>
+      <Button layoutX="446.0" layoutY="17.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="140.0" text="Supprimer" onAction="#supprimer" textFill="#e40707">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Button layoutX="293.0" layoutY="17.0" mnemonicParsing="false" prefHeight="43.0"  onAction="#modifier"   prefWidth="140.0" text="Modifier" textFill="#e40707">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      
+      <ListView fx:id="listView" layoutX="9.0" layoutY="80.0" prefHeight="459.0" prefWidth="582.0" />
+   </children>
+</AnchorPane>

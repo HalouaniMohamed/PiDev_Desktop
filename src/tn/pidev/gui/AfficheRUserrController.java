@@ -1,0 +1,207 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package tn.pidev.gui;
+
+import java.net.URL;
+import java.util.List;
+import java.util.Optional;
+import java.util.ResourceBundle;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.Label;
+import javafx.scene.control.ListCell;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TextInputDialog;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
+import javafx.util.Callback;
+import tn.pidev.entites.Reservation;
+import tn.pidev.entites.Reservation;
+import tn.pidev.services.ReservationService;
+
+/**
+ * FXML Controller class
+ *
+ * @author ASUS
+ */public class AfficheRUserrController implements Initializable {
+	 
+ 	 @FXML private ListView<Reservation> listView;
+	 private String mail;
+	 private List<Reservation> reservations;
+
+	 public void setReservation(String emmail) {
+	     this.mail = emmail;
+	     System.out.println(mail);
+	     ReservationService es = new ReservationService();
+	     reservations = es.afficherParEmail(mail);
+	     if (reservations != null) {
+	         listView.getItems().addAll(reservations);
+	     }
+	 }
+
+ 	    public void initialize(URL location, ResourceBundle resources) {
+	      
+
+ 	       listView.setCellFactory((Callback<ListView<Reservation>, ListCell<Reservation>>) new Callback<ListView<Reservation>, ListCell<Reservation>>() {
+ 	    	    public ListCell<Reservation> call(ListView<Reservation> param) {
+ 	    	        return new ListCell<Reservation>() {
+
+ 	    	            @Override
+ 	    	            protected void updateItem(Reservation item, boolean empty) {
+ 	    	                super.updateItem(item, empty);
+
+ 	    	                if (empty || item == null) {
+ 	    	                    setText(null);
+ 	    	                    setGraphic(null);
+ 	    	                } else {
+ 	    	                    
+ 	    	                    HBox hbox = new HBox();
+ 	    	                    hbox.setAlignment(Pos.CENTER_LEFT);
+ 	    	                    hbox.setSpacing(10);
+
+ 	    	 
+ 	    	                    Label nomLabel = new Label(item.getE().toString());
+
+ 	    	                   nomLabel.setFont(Font.font("System", FontWeight.BOLD, 16));
+
+ 	    	                    Label emaill = new Label(item.getEmail());
+ 	    	                   emaill.setStyle("-fx-font-size: 14;");
+                                    
+ 	    	                   Label nb = new Label(String.valueOf(item.getNombre_de_place_areserver()));
+ 	    	                  nb.setStyle("-fx-font-size: 14px;");
+ 
+
+ 	    	                    
+ 	    	                    hbox.getChildren().addAll(nomLabel, emaill,nb );
+
+ 	    	                    // Afficher la HBox comme contenu de la cellule
+ 	    	                    setGraphic(hbox);
+ 	    	                }
+ 	    	            }
+ 	    	        };
+ 	    	    }
+ 	    	});
+
+ 	    	
+ 
+ 	    }
+
+
+ 	   @FXML
+ 	  private void supprimer(ActionEvent event) {
+ 	      // R�cup�rer la liste de r�servations
+ 	      ObservableList<Reservation> reservations = listView.getItems();
+
+ 	      // V�rifier s'il y a des r�servations dans la liste
+ 	      if (reservations.size() == 0) {
+ 	          Alert alert = new Alert(AlertType.INFORMATION);
+ 	          alert.setTitle("Information");
+ 	          alert.setHeaderText(null);
+ 	          alert.setContentText("Il n'y a aucune r�servation � supprimer.");
+ 	          alert.showAndWait();
+ 	          return;
+ 	      }
+
+ 	      // Afficher une alerte de confirmation
+ 	      Alert alert = new Alert(AlertType.CONFIRMATION);
+ 	      alert.setTitle("Confirmation de suppression");
+ 	      alert.setHeaderText(null);
+ 	      alert.setContentText("�tes-vous s�r de vouloir supprimer toutes les r�servations ?");
+ 	      Optional<ButtonType> result = alert.showAndWait();
+ 	      if (result.get() != ButtonType.OK) {
+ 	          return;
+ 	      }
+
+ 	      // Supprimer toutes les r�servations
+ 	      for (Reservation reservation : reservations) {
+ 		     ReservationService es = new ReservationService();
+
+ 	          es.supprimer(reservation.getId());
+ 	      }
+
+ 	      // Rafra�chir la liste de r�servations
+ 	      reservations.clear();
+ 	  }
+ 	  @FXML
+ 	 private void modifier(ActionEvent event) {
+ 	     // R�cup�rer l'�l�ment s�lectionn� dans le ListView
+ 	     Reservation selectedReservation = listView.getSelectionModel().getSelectedItem();
+
+ 	     // V�rifier que l'utilisateur a bien s�lectionn� un �l�ment
+ 	     if (selectedReservation == null) {
+ 	         Alert alert = new Alert(AlertType.WARNING);
+ 	         alert.setTitle("Aucune r�servation s�lectionn�e");
+ 	         alert.setHeaderText(null);
+ 	         alert.setContentText("Veuillez s�lectionner une r�servation � modifier.");
+ 	         alert.showAndWait();
+ 	         return;
+ 	     }
+
+ 	     // Afficher une bo�te de dialogue pour permettre � l'utilisateur de modifier la r�servation
+ 	     TextInputDialog dialog = new TextInputDialog(String.valueOf(selectedReservation.getNombre_de_place_areserver()));
+ 	     dialog.setTitle("Modifier la r�servation");
+ 	     dialog.setHeaderText(null);
+ 	     dialog.setContentText("Veuillez saisir le nouveau nombre de places � r�server:");
+
+ 	     Optional<String> result = dialog.showAndWait();
+ 	     if (result.isPresent()) {
+ 	         // V�rifier que la saisie est valide (nombre entier positif)
+ 	         String newValue = result.get();
+ 	         try {
+ 	             int newNombreDePlaces = Integer.parseInt(newValue);
+ 	             if (newNombreDePlaces < 1) {
+ 	                 throw new NumberFormatException();
+ 	             }
+
+ 	             // Modifier la r�servation dans la base de donn�es
+ 	             ReservationService service = new ReservationService();
+ 	             selectedReservation.setNombre_de_place_areserver(newNombreDePlaces);
+ 	             service.modifier(selectedReservation);
+
+ 	             // Afficher une bo�te de dialogue de confirmation
+ 	             Alert alert = new Alert(AlertType.INFORMATION);
+ 	             alert.setTitle("R�servation modifi�e");
+ 	             alert.setHeaderText(null);
+ 	             alert.setContentText("La r�servation a �t� modifi�e avec succ�s.");
+ 	             alert.showAndWait();
+
+ 	             // Rafra�chir la liste des r�servations dans le ListView
+ 	             ObservableList<Reservation> reservations = service.afficherParEmail(selectedReservation.getEmail());
+ 	             listView.setItems(reservations);
+
+ 	         } catch (NumberFormatException ex) {
+ 	             // Afficher une bo�te de dialogue d'erreur si la saisie est invalide
+ 	             Alert alert = new Alert(AlertType.ERROR);
+ 	             alert.setTitle("Saisie invalide");
+ 	             alert.setHeaderText(null);
+ 	             alert.setContentText("Veuillez saisir un nombre entier positif.");
+ 	             alert.showAndWait();
+ 	         }
+ 	     }
+ 	 }
+ }
+ 
+
+
+
+
+
+
+ 
