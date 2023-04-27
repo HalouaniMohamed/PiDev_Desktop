@@ -5,3 +5,7 @@
 .mainFxmlClass {
 
 }
+.button-transparent {
+  
+  -fx-background-color: transparent;
+}

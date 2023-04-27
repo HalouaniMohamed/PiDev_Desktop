@@ -13,6 +13,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
+import static jdk.nashorn.internal.runtime.Debug.id;
 import tn.esprit.entities.Commentaire;
 import tn.esprit.entities.Post;
 import tn.esprit.tools.ConnexionBD;
@@ -44,6 +46,7 @@ public class PostService implements NewInterface<Post>{
             System.out.println(ex.getMessage());
         }
     }
+   
     
     public void modifier(Post p) {
     sql = "UPDATE post SET id_user = ?, nom_utilisateur = ?, description = ?, publication = ? WHERE id = ?";
@@ -78,6 +81,9 @@ public List<Post> afficher() {
                     rs.getString("description"),
                     rs.getString("publication"),
                     rs.getString("nom_utilisateur")
+                    
+                   
+                    
             );
             p.setId(rs.getInt("id"));
 
@@ -177,6 +183,53 @@ public void supprimer(Post p) {
         System.out.println(ex.getMessage());
     }
 }
+
+    public void setlike(Post p) {
+        
+        try {
+        String req = "SELECT likes FROM post WHERE id = ?";
+        PreparedStatement ps = cnx.prepareStatement(req);
+        int id = p.getId();
+        ps.setInt(1, id);
+        ResultSet rs = ps.executeQuery();
+        if (rs.next()) {
+            int likes = rs.getInt("likes");
+            likes++;
+            req = "UPDATE post SET likes = ? WHERE id = ?";
+            ps = cnx.prepareStatement(req);
+            ps.setInt(1, likes);
+            ps.setInt(2, id);
+            ps.executeUpdate();
+        }
+    } catch (SQLException ex) {
+        Logger.getLogger(PostService.class.getName()).log(Level.SEVERE, null, ex);
+    }
+      
+    }
+
+    public void setdislike(Post p) {
+         try {
+        String req = "SELECT dislike FROM post WHERE id = ?";
+        PreparedStatement ps = cnx.prepareStatement(req);
+        int id = p.getId();
+        ps.setInt(1, id);
+        ResultSet rs = ps.executeQuery();
+        if (rs.next()) {
+            int dislike = rs.getInt("dislike");
+            dislike++;
+            req = "UPDATE post SET dislike = ? WHERE id = ?";
+            ps = cnx.prepareStatement(req);
+            ps.setInt(1, dislike);
+            ps.setInt(2, id);
+            ps.executeUpdate();
+        }
+    } catch (SQLException ex) {
+        Logger.getLogger(PostService.class.getName()).log(Level.SEVERE, null, ex);
+    }
+       
+    }
+    
+ 
 
   
 

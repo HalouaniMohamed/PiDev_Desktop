@@ -84,7 +84,7 @@ public class Commentaire {
 
     @Override
     public String toString() {
-        return "Commentaire{" + "Réponse:" + reponse + ", du post numéro:" + id_user + '}';
+        return    reponse + ", du post numéro:" + id_user ;
     }
     
 

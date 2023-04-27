@@ -30,7 +30,7 @@ public class firstWindow extends Application {
            // Parent r = FXMLLoader.load(getClass().getResource("Commentaire.fxml"));
             
             
-            Scene scene = new Scene(root,780,600);
+            Scene scene = new Scene(root,830,650);
             
             primaryStage.setTitle("Forum");
             primaryStage.setScene(scene);

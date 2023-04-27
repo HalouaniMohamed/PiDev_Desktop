@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="603.0" prefWidth="885.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.gui.PostController">
+<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="1700.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.gui.PostController">
     
    <children>
       <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass">
@@ -30,51 +30,72 @@
                               </ImageView>
                            </children>
                         </Pane>
-                        <AnchorPane id="AnchorPane" minWidth="-Infinity" prefHeight="575.0" prefWidth="827.0" style="-fx-background-color: #fafdfb;">
+                        <AnchorPane id="AnchorPane" minWidth="-Infinity" prefHeight="642.0" prefWidth="838.0" style="-fx-background-color: #fafdfb;">
                            <children>
                               <ImageView fitHeight="75.0" fitWidth="99.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../../../../../../Downloads/1-removebg-preview.png" />
                                  </image>
                               </ImageView>
-                              <Label layoutX="227.0" layoutY="333.0" prefHeight="29.0" prefWidth="153.0" text="Id_User:" textFill="#1c3ca4">
-                                 <font>
-                                    <Font size="14.0" />
-                                 </font>
-                              </Label>
-                              <Label layoutX="227.0" layoutY="371.0" prefHeight="29.0" prefWidth="153.0" text="Nom Utilisateur" textFill="#1c3ca4">
-                                 <font>
-                                    <Font size="14.0" />
-                                 </font>
-                              </Label>
-                              <Label layoutX="227.0" layoutY="407.0" prefHeight="29.0" prefWidth="153.0" text="Description" textFill="#1c3ca4">
-                                 <font>
-                                    <Font size="14.0" />
-                                 </font>
-                              </Label>
-                              <Label layoutX="227.0" layoutY="441.0" prefHeight="29.0" prefWidth="153.0" text="Publication" textFill="#1c3ca4">
-                                 <font>
-                                    <Font size="14.0" />
-                                 </font>
-                              </Label>
-                              <TextField fx:id="tfId_User" layoutX="418.0" layoutY="335.0" prefHeight="26.0" prefWidth="146.0" />
-                              <TextField fx:id="tfNom_Utilisateur" layoutX="418.0" layoutY="373.0" prefHeight="26.0" prefWidth="146.0" />
-                              <TextField fx:id="tfDescription" layoutX="418.0" layoutY="409.0" prefHeight="26.0" prefWidth="146.0" />
-                              <TextField fx:id="tfPublication" layoutX="418.0" layoutY="443.0" prefHeight="26.0" prefWidth="146.0" />
-                              <ListView fx:id="listViewQuestion" layoutX="21.0" layoutY="89.0" prefHeight="131.0" prefWidth="736.0" />
-                              <Button fx:id="ajouterBtn" layoutX="305.0" layoutY="478.0" mnemonicParsing="false" onAction="#AjouterPost" prefHeight="26.0" prefWidth="150.0" style="-fx-background-color: #6777ef;" text="Ajouter post" textFill="WHITE" />
+
+
+                              <ListView fx:id="listViewQuestion" layoutX="13.0" layoutY="170.0" prefHeight="131.0" prefWidth="736.0" />
                               <Label alignment="CENTER" layoutX="9.0" layoutY="52.0" prefHeight="37.0" prefWidth="743.0" text="Liste des Posts&amp;Commentaires" textAlignment="CENTER" textFill="#0e0e90">
                                  <font>
                                     <Font name="System Bold" size="14.0" />
                                  </font>
                               </Label>
-                              <Label alignment="CENTER" layoutX="21.0" layoutY="293.0" prefHeight="29.0" prefWidth="736.0" text="Ajouter un post:" textAlignment="CENTER" textFill="#0e0e90">
+                              <Button fx:id="modifierBtn" layoutX="202.0" layoutY="314.0" mnemonicParsing="false" onAction="#ModifierPost" prefHeight="26.0" prefWidth="150.0" style="-fx-background-color: #6777ef;" text="Modifier post" textFill="WHITE" />
+                              <Button layoutX="427.0" layoutY="314.0" mnemonicParsing="false" onAction="#SupprimerPost" prefHeight="26.0" prefWidth="150.0" style="-fx-background-color: #6777ef;" text="Supprimer post" textFill="WHITE" />
+                              <AnchorPane layoutX="184.0" layoutY="361.0" prefHeight="322.0" prefWidth="393.0" style="-fx-background-color: #0e0e90;" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="250.0" AnchorPane.topAnchor="361.0">
+                                 <children>
+                                    <AnchorPane layoutX="36.0" layoutY="18.0" prefHeight="249.0" prefWidth="327.0" style="-fx-background-color: #F1EDDF;">
+                                       <children>
+                                          <VBox layoutX="29.0" layoutY="39.0" prefHeight="187.0" prefWidth="266.0" spacing="10.0">
+                                             <children>
+                                                <TextField fx:id="tfId_User" prefHeight="26.0" prefWidth="286.0" promptText="Id_user" />
+                                                <TextField fx:id="tfNom_Utilisateur" prefHeight="26.0" prefWidth="146.0" promptText="Nom utilisateur" />
+                                                <TextField fx:id="tfDescription" prefHeight="26.0" prefWidth="282.0" promptText="Description" />
+                                                <TextField fx:id="tfPublication" prefHeight="26.0" prefWidth="146.0" promptText="Publication" />
+                                                <Button fx:id="Btn" mnemonicParsing="false" onAction="#AjouterPost" prefHeight="26.0" prefWidth="306.0" style="-fx-background-color: #6777ef;" text="Ajouter post" textFill="WHITE" />
+                                             </children>
+                                          </VBox>
+                                          <Label alignment="CENTER" layoutX="73.0" layoutY="6.0" prefHeight="29.0" prefWidth="159.0" text="Ajouter un post:" textAlignment="CENTER" textFill="#0e0e90">
+                                             <font>
+                                                <Font name="System Bold" size="14.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </AnchorPane>
+                                 </children>
+                              </AnchorPane>
+                              <TextField fx:id="id_recherche" layoutX="244.0" layoutY="125.0" onAction="#cherchepost" prefHeight="37.0" prefWidth="310.0" promptText="Chercher" />
+                              <Button fx:id="id_like" layoutX="756.0" layoutY="172.0" mnemonicParsing="false" onAction="#likepost" prefHeight="58.0" prefWidth="53.0" styleClass="button-transparent" stylesheets="@post.css" textFill="#0d0d0d">
+                                 <graphic>
+                                    <ImageView fitHeight="45.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../src/Icon-like-button-transparent-PNG.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic></Button>
+                              <Button fx:id="id_dislike" layoutX="756.0" layoutY="232.0" mnemonicParsing="false" onAction="#dislikepost" prefHeight="58.0" prefWidth="53.0" styleClass="button-transparent" stylesheets="@post.css" textFill="#0d0d0d">
+                                 <graphic>
+                                    <ImageView fitHeight="42.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../src/Dislike-icon-on-transparent-PNG.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic></Button>
+                              <ImageView fitHeight="37.0" fitWidth="40.0" layoutX="202.0" layoutY="125.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../../../../LetsBarter-main/projetVersion1/src/tn/edu/esprit/gui/1546_1.png" />
+                                 </image>
+                              </ImageView>
+                              <Button fx:id="btn_sort" alignment="CENTER" layoutX="635.0" layoutY="125.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="90.0" style="-fx-background-color: #0e0e90;" text="Trier" textFill="#fff9f9">
                                  <font>
-                                    <Font name="System Bold" size="14.0" />
+                                    <Font name="Arial Bold" size="14.0" />
                                  </font>
-                              </Label>
-                              <Button fx:id="modifierBtn" layoutX="214.0" layoutY="232.0" mnemonicParsing="false" onAction="#ModifierPost" prefHeight="26.0" prefWidth="150.0" style="-fx-background-color: #6777ef;" text="Modifier post" textFill="WHITE" />
-                              <Button layoutX="439.0" layoutY="232.0" mnemonicParsing="false" onAction="#SupprimerPost" prefHeight="26.0" prefWidth="150.0" style="-fx-background-color: #6777ef;" text="Supprimer post" textFill="WHITE" />
+                              </Button>
                            </children>
                         </AnchorPane>
                      </children>
@@ -102,7 +123,7 @@
             <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="108.0" prefWidth="588.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="361.0" AnchorPane.rightAnchor="503.0" AnchorPane.topAnchor="0.0">
                <children>
                   <Pane prefHeight="110.0" prefWidth="200.0" />
-                  <Label alignment="CENTER" layoutX="47.0" prefHeight="108.0" prefWidth="327.0" text="Forum" textAlignment="CENTER" textFill="#0e0e90">
+                  <Label alignment="CENTER" layoutX="70.0" layoutY="15.0" prefHeight="108.0" prefWidth="327.0" text="Forum" textAlignment="CENTER" textFill="#0e0e90">
                      <font>
                         <Font name="System Bold" size="24.0" />
                      </font>

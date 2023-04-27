@@ -16,6 +16,8 @@ public class Post {
     private int id, id_user;
     private String description, publication, nom_utilisateur;
     private List<Commentaire> commentaires;
+    private int likes;
+    private int dislike;
     
     public Post() {
         commentaires = new ArrayList<>();
@@ -26,7 +28,11 @@ public class Post {
         this.publication = publication;
         this.nom_utilisateur = nom_utilisateur;
         commentaires = new ArrayList<>();
+         this.likes = likes;
+          
     }
+
+    
         public List<Commentaire> getCommentaires() {
         return commentaires;
     }
@@ -73,23 +79,43 @@ public class Post {
     public String getNom_utilisateur() {
         return nom_utilisateur;
     }
-
-    public void setNom_utilisateur(String nom_utilisateur) {
+    
+     public void setNom_utilisateur(String nom_utilisateur) {
         this.nom_utilisateur = nom_utilisateur;
     }
     
-    public Post(int id, int id_user, String description, String publication, String nom_utilisateur) {
+    public int getLikes() {
+        return likes;
+    }
+
+    public void setLikes(int likes) {
+        this.likes = likes;
+    }
+    
+    public int getDislike() {
+        return dislike;
+    }
+
+    public void setDislike(int dislike) {
+        this.dislike = dislike;
+    }
+
+   
+    
+    public Post(int id, int id_user, String description, String publication, String nom_utilisateur, int likes ) {
         this.id = id;
         this.id_user = id_user;
         this.description = description;
         this.publication = publication;
         this.nom_utilisateur = nom_utilisateur;
+        this.likes = likes;
+        this.dislike = dislike;
     }
 
     
     @Override
     public String toString() {
-        return "Post{" + "numéro:" + id +  ", publication: "  + nom_utilisateur+ ", publiée par:" + description + ", Description:" + publication + ", Commentaire :" + commentaires +'}';
+        return "Post " + id +  ": "  + nom_utilisateur  + "\nPubliée par: " + description +  "\nCommentaire :" + commentaires ;
     }
     
 }

@@ -37,38 +37,31 @@
                                     <Image url="@../../../../../../Downloads/1-removebg-preview.png" />
                                  </image>
                               </ImageView>
-                              <Label layoutX="227.0" layoutY="333.0" prefHeight="29.0" prefWidth="153.0" text="Id_User:" textFill="#1c3ca4">
-                                 <font>
-                                    <Font size="14.0" />
-                                 </font>
-                              </Label>
-                              <Label layoutX="227.0" layoutY="371.0" prefHeight="29.0" prefWidth="153.0" text="Post Id" textFill="#1c3ca4">
-                                 <font>
-                                    <Font size="14.0" />
-                                 </font>
-                              </Label>
-                              <Label layoutX="227.0" layoutY="407.0" prefHeight="29.0" prefWidth="153.0" text="Réponse" textFill="#1c3ca4">
-                                 <font>
-                                    <Font size="14.0" />
-                                 </font>
-                              </Label>
-                              <TextField fx:id="tfId_User" layoutX="418.0" layoutY="335.0" prefHeight="26.0" prefWidth="146.0" />
-                              <TextField fx:id="tfcommentaires_id" layoutX="418.0" layoutY="373.0" prefHeight="26.0" prefWidth="146.0" />
-                              <TextField fx:id="tfreponse" layoutX="418.0" layoutY="409.0" prefHeight="26.0" prefWidth="146.0" />
                               <ListView fx:id="listViewCommentaire" layoutX="21.0" layoutY="89.0" prefHeight="131.0" prefWidth="736.0" />
-                              <Button fx:id="ajouterbtn" layoutX="305.0" layoutY="478.0" mnemonicParsing="false" onAction="#ajouterCommentaire" prefHeight="26.0" prefWidth="150.0" style="-fx-background-color: #6777ef;" text="Ajouter commentaire" textFill="WHITE" />
                               <Label alignment="CENTER" layoutX="9.0" layoutY="52.0" prefHeight="37.0" prefWidth="743.0" text="Liste des commentaires" textAlignment="CENTER" textFill="#0e0e90">
-                                 <font>
-                                    <Font name="System Bold" size="14.0" />
-                                 </font>
-                              </Label>
-                              <Label alignment="CENTER" layoutX="21.0" layoutY="293.0" prefHeight="29.0" prefWidth="736.0" text="Ajouter un commentaire:" textAlignment="CENTER" textFill="#0e0e90">
                                  <font>
                                     <Font name="System Bold" size="14.0" />
                                  </font>
                               </Label>
                               <Button fx:id="modifierBtn" layoutX="214.0" layoutY="232.0" mnemonicParsing="false" onAction="#ModifierCommentaire" prefHeight="26.0" prefWidth="150.0" style="-fx-background-color: #6777ef;" text="Modifier commentaire" textFill="WHITE" />
                               <Button layoutX="439.0" layoutY="232.0" mnemonicParsing="false" onAction="#SupprimerCommentaire" prefHeight="26.0" prefWidth="150.0" style="-fx-background-color: #6777ef;" text="Supprimer commentaire" textFill="WHITE" />
+                              <AnchorPane layoutX="202.0" layoutY="288.0" prefHeight="291.0" prefWidth="393.0" style="-fx-background-color: #0e0e90;">
+                                 <children>
+                                    <AnchorPane layoutX="36.0" layoutY="18.0" prefHeight="249.0" prefWidth="327.0" style="-fx-background-color: #F1EDDF;">
+                                       <children>
+                                          <Label alignment="CENTER" layoutX="73.0" layoutY="6.0" prefHeight="29.0" prefWidth="200.0" text="Ajouter un commentaire" textAlignment="CENTER" textFill="#0e0e90">
+                                             <font>
+                                                <Font name="System Bold" size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="tfId_User" layoutX="21.0" layoutY="72.0" prefHeight="26.0" prefWidth="286.0" promptText="Id_User" />
+                                          <TextField fx:id="tfcommentaires_id" layoutX="22.0" layoutY="107.0" prefHeight="26.0" prefWidth="286.0" promptText="Numéro du post" />
+                                          <TextField fx:id="tfreponse" layoutX="24.0" layoutY="143.0" prefHeight="26.0" prefWidth="286.0" promptText="Réponse" />
+                                          <Button fx:id="ajouterbtn" layoutX="98.0" layoutY="186.0" mnemonicParsing="false" onAction="#ajouterCommentaire" prefHeight="26.0" prefWidth="150.0" style="-fx-background-color: #6777ef;" text="Ajouter commentaire" textFill="WHITE" />
+                                       </children>
+                                    </AnchorPane>
+                                 </children>
+                              </AnchorPane>
                            </children>
                         </AnchorPane>
                      </children>
