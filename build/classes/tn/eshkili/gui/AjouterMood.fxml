@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<?import javafx.scene.control.DatePicker?>
+
+<?import javafx.scene.control.TextArea?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19" fx:controller="tn.eshkili.gui.AjouterMoodController">
+   <children>
+      <Label layoutX="64.0" layoutY="57.0" text="ID:" />
+      <Label layoutX="58.0" layoutY="110.0" text="UserID:" />
+      <Label layoutX="54.0" layoutY="170.0" text="mood:" />
+      <Label layoutX="50.0" layoutY="233.0" text="description:" />
+      <Label layoutX="55.0" layoutY="299.0" text="MoodID:" />
+      <TextField fx:id="tfID" layoutX="169.0" layoutY="53.0" />
+      <TextField fx:id="tfUserID" layoutX="170.0" layoutY="106.0" />
+      <TextField fx:id="tfmood" layoutX="170.0" layoutY="166.0" />
+      <TextField fx:id="tfdesc" layoutX="169.0" layoutY="220.0" />
+      <TextField fx:id="tfmoodID" layoutX="171.0" layoutY="295.0" />
+      <Button fx:id="btnAjouter" layoutX="421.0" layoutY="348.0" mnemonicParsing="false" onAction="#savemood" text="Ajouter" />
+   </children>
+</AnchorPane>
+
+
+
+
+

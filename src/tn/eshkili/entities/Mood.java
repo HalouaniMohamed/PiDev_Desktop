@@ -25,6 +25,7 @@ public class Mood {
         this.description = description;
 
 }
+    
 
   public Mood( int user_id, int mood_id, String mood, String description) {
        
@@ -33,6 +34,14 @@ public class Mood {
         this.mood = mood;
         this.description = description;
     }
+
+    public Mood(int user_id, String mood, String description , int mood_id) {
+        this.mood_id = mood_id;
+        this.mood = mood;
+        this.description = description;
+        this.user_id = user_id;
+    }
+
 
     public int getId() {
         return id;
@@ -78,6 +87,8 @@ public class Mood {
     public String toString() {
         return "Mood{" + "id=" + id + ", user_id=" + user_id + ", mood_id=" + mood_id + ", mood=" + mood + ", description=" + description + '}';
     }
+
+    
 
 
 

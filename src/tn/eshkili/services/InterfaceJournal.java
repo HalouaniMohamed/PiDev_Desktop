@@ -10,9 +10,10 @@ import tn.eshkili.entities.JournalMood;
 /**
  *
  * @author LENOVO
+ * @param <T>
  */
-public interface InterfaceJournal {
-           public void ajouterJournal(JournalMood J);
+public interface InterfaceJournal<T> {
+   public void ajouterJournal(JournalMood J);
    public List<JournalMood> afficherJournal();
     public void supprimerJournal(int id);
     public void modifierJournal(JournalMood J);

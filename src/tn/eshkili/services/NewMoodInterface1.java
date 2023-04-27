@@ -5,14 +5,16 @@
 package tn.eshkili.services;
 
 import java.util.List;
+import tn.eshkili.entities.Mood;
 
 /**
  *
  * @author LENOVO
+ * @param <T>
  */
-public interface NewMoodInterface1 {
-        public void ajouterMood(Mood M);
-   public List<Mood> afficherMood();
+public interface NewMoodInterface1<T> {
+    public void ajouterMood(Mood M);
+    public List<Mood> afficherMood();
     public void supprimerMood(int id);
     public void modifierMood(Mood M);
     

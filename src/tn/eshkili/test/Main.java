@@ -3,87 +3,38 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package tn.eshkili.test;
 
-import java.util.Date;
-import java.util.List;
-import tn.eshkili.entities.Cabinet;
-import tn.eshkili.entities.Medecin;
-import tn.eshkili.entities.rendez_vous;
-import tn.eshkili.services.RendezVous;
+import tn.eshkili.entities.JournalMood;
+import tn.eshkili.entities.Mood;
+import tn.eshkili.services.Journal;
 import tn.eshkili.utils.MaConnexion;
+import tn.eshkili.services.Mood1;
 
-/** 
+
+/**
  *
- * @author Mongi
+ * @author LENOVO
  */
-public class Main { 
-    
+public class main {
     public static void main(String[] args) {
-//        MaConnexion mc = MaConnexion.getInstance();
-//        MaConnexion mc1 = MaConnexion.getInstance();
-//        MaConnexion mc2 =  MaConnexion.getInstance();
-
-//// pouuuuuuurrrr mooddiiiiiifiiiiiierrrrrr
-//RendezVous a = new RendezVous();
-//
-//rendez_vous rv = new rendez_vous();
-//Medecin medecin = new Medecin();
-//Cabinet cabinet = new Cabinet();
-//
-//// initialisation des données du rendez-vous, du médecin et du cabinet
-//rv.setNom("az");
-//rv.setPrenom("Marie");
-//rv.setCause("Consultation de routine");
-//rv.setDescription("Aucune description disponible");
-//rv.setDate_rv(new Date());
-//
-//medecin.setId(1);
-//cabinet.setId(1);
-//
-//// appel de la méthode modifierRendezVous() avec les paramètres appropriés
-//a.modifierRendezVous(27, rv, medecin, cabinet);
-
-
-// c'bonnnnn c'est mooooodiiiiifiiiiiieeeerrrr
-//********************************************************************************//
-//// poouuuurrrr suuuuuuppppprriiiiiiimeeeerrrrr
-RendezVous r = new RendezVous();
-int id = 27; // ID du rendez-vous à supprimer
-rendez_vous rv = r.getRendezVousById(id); // Obtenir le rendez-vous par son ID
-r.supprimer(id); // Supprimer le rendez-vous de la base de données
-// c bon suuuuuuppppprriiiiiiimeeeerrrrr
-
-//***************************************************************************//
-
-//pooouuuuurrrrr aaaaaaaafffffficccchhhhhhheeeeeerrrr
-// RendezVous rendezVous = new RendezVous();
-// rendezVous.afficherRendezVous();
-//  
-// }
-// c''''eeessssstttttt booooooonnnnnnn aaaaaaaafffffficccchhhhhhheeeeeerrrr
-
-//*************************************************************************//
-//poooooouuuuuuurrrrr aaaaaajouuuuuuuteeeeeerrrrrr
-// RendezVous rendezVous = new RendezVous();
-//Medecin medecin = new Medecin();
-//Cabinet cabinet = new Cabinet();
-//medecin.setId(1); // remplacez 1 par l'ID du médecin concerné
-//cabinet.setId(1); // remplacez 1 par l'ID du médecin concerné
-//
-//
-//rendez_vous r = new rendez_vous();
-// r.setNom("Nom du patient");
-// r.setPrenom("Prénom du patient");
-// r.setCause("Cause du rendez-vous");
-// r.setDescription("Description du rendez-vous");
-// r.setDate_rv(new java.util.Date()); // remplacez java.util.Date() par la date souhaitée pour le rendez-vous
-//rendezVous.add(r,medecin,cabinet);
-
-// c'essssssstt booooooonnnnn c'eeeeessstttt aaaaaajouuuuuuuuuteeeeeerrrrrrrrrrr
-
-   }
+        //MaConnexion mc = new MaConnexion;
+       // Mood1 m1 = new Mood1();
+        Journal j1 = new Journal();
+        
+        
+        //Mood m = new Mood (12 ,"happy", "happy" , 5 );
+         //m1.ajouterMood(m);
+         //System.out.println(m1.afficherMood());
+         //m1.supprimerMood(36);
+         //m1.modifierMood(m);
+        JournalMood j = new JournalMood (22,40,17 );
+        //j1.ajouterJournal(j);
+        //System.out.println(j1.afficherJournal());
+        j1.supprimerJournal(23);
+        j1.modifierJournal(j);
+         
+        
+    }
 }
-    
-
-    
