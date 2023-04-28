@@ -168,6 +168,34 @@ public class Mood1 implements NewMoodInterface1<Mood>{
         System.out.println(ex.getMessage());
     }
     }
+
+    public Mood getById(int id) {
+        sql = "SELECT * FROM mood WHERE id = ?";
+        try {
+            PreparedStatement ste = conn.prepareStatement(sql);
+            ste.setInt(1, id);
+            ResultSet rs = ste.executeQuery();
+            if (rs.next()) {
+                Mood m = new Mood(
+                    rs.getInt("user_id"),
+                    rs.getInt("mood_id"),
+                    rs.getString("mood"),
+                    rs.getString("description")
+                );
+                m.setId(rs.getInt("id"));
+                return m;
+            } else {
+                System.out.println("Le mood avec l'ID " + id + " n'existe pas.");
+                return null;
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+            return null;
+        }
+    }
+    
+    
+    
     
 }
 

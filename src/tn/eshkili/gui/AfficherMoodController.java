@@ -5,21 +5,40 @@
  */
 package tn.eshkili.gui;
 
+import com.itextpdf.text.Chunk;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.PageSize;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
+import java.io.FileOutputStream;
 import java.net.URL;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
+import javafx.scene.chart.PieChart;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListCell;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputDialog;
-import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.Tooltip;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.stage.Stage;
 import tn.eshkili.entities.Mood;
 import tn.eshkili.services.Mood1;
 
@@ -30,50 +49,92 @@ import tn.eshkili.services.Mood1;
  */
 public class AfficherMoodController implements Initializable {
 
+    
+    
     @FXML
-    private TableView<Mood> Moodview;
-    @FXML
+    private ListView<Mood> Moodview;
+    static int id,user_id,mood_id;   
+    static String mood,description;
+    static Mood M = new Mood();
     private TableColumn<Mood, Integer> tfid;
-    @FXML
     private TableColumn<Mood, Integer> tfuser;
-    @FXML
     private TableColumn<Mood, Integer> tfmoodid;
-    @FXML
     private TableColumn<Mood, String> tfmood;
-    @FXML
     private TableColumn<Mood, String> tfdesc;
      ObservableList<Mood> listeB = FXCollections.observableArrayList();
     @FXML
     private Button buttmod;
     @FXML
     private Button buttsupp;
+    @FXML
+    private Button buttstat;
+    @FXML
+    private TextField searchField;
 
-    
-        public void show(){
-    	Mood1 bs=new Mood1();
-        List<Mood> listeMoods = bs.afficherMood();
-   
- 
-    tfid.setCellValueFactory(new PropertyValueFactory<>("id"));
-    tfuser.setCellValueFactory(new PropertyValueFactory<>("user_id"));
-    tfmoodid.setCellValueFactory(new PropertyValueFactory<>("mood_id"));
-     
-       
+    static Mood E = new Mood();
+        private ObservableList<Mood> moodList;
+    @FXML
+    private Button butpdf;
 
-    tfmood.setCellValueFactory(new PropertyValueFactory<>("mood"));
-    tfdesc.setCellValueFactory(new PropertyValueFactory<>("description"));
 
-    
- 
-    Moodview.setItems(listeB);
-    }
     /**
      * Initializes the controller class.
      */
+    
+        
+          
+ 
+
+  
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        show();
+       // show();
+        ListView<Mood> list1 = Moodview;
+    Mood1 inter = new Mood1();
+    List<Mood> list2 = inter.afficherMood();
+    moodList = FXCollections.observableArrayList(list2);
+for (int i = 0; i < list2.size(); i++) {
+    Mood E = list2.get(i);
+    list1.getItems().add(E); 
+}    
+        
+  list1.setCellFactory(param -> new ListCell<Mood>() {
+            @Override
+            protected void updateItem(Mood item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty || item == null) {
+                    setText(null);
+                } else {
+                    setText(item.getId() + "   |   " + item.getUser_id() + "   |   " + item.getMood_id() + "   |   " + item.getMood() + "   |   " + " (" + item.getDescription() + ")");
+                }
+            }
+        });
+
+        // Ajouter une fonction de recherche
+        FilteredList<Mood> filteredList = new FilteredList<>(moodList, p -> true);
+        searchField.textProperty().addListener((observable, oldValue, newValue) -> {
+            filteredList.setPredicate(e -> {
+                if (newValue == null || newValue.isEmpty()) {
+                    return true;
+                }
+
+                String lowerCaseFilter = newValue.toLowerCase();
+
+                if ( String.valueOf(e.getUser_id()).toLowerCase().contains(lowerCaseFilter)) {
+                    return true; // Recherche par nom complet
+
+                } else if (e.getMood().toString().toLowerCase().contains(lowerCaseFilter)) {
+                    return true; // Recherche par date de naissance
+
+                }
+
+                return false; // Aucune correspondance trouvée
+            });
+        });
+
+        SortedList<Mood> sortedList = new SortedList<>(filteredList);
+        list1.setItems(sortedList);
     }    
 
     @FXML
@@ -135,7 +196,7 @@ public class AfficherMoodController implements Initializable {
     private void supprimermood(ActionEvent event) {
         
                 
-        Mood selectedLN =  Moodview.getSelectionModel().getSelectedItem();
+        Mood selectedLN =  (Mood) Moodview.getSelectionModel().getSelectedItem();
         if (selectedLN == null) {
             // Afficher un message d'erreur
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -155,9 +216,115 @@ public class AfficherMoodController implements Initializable {
             alert.showAndWait();
 
             // Actualiser le TableView
-            show();
+            //show();
         }
     }
+
+    @FXML
+    private void stat(ActionEvent event) {
+        // Create a map to store the frequency of each type
+        Map<String, Integer> typeFrequency = new HashMap<>();
+
+        // Loop through the items in the TableView
+        for (Mood o : Moodview.getItems()) {
+            //int points = o.getPoints();
+            String mood = o.getMood();
+
+            if (typeFrequency.containsKey(mood)) {
+                typeFrequency.put(mood, typeFrequency.get(mood) + 1);
+            } else {
+                typeFrequency.put(mood, 1);
+            }
+        }
     
+        // Create a PieChart data set
+        ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList();
+        for (String nom: typeFrequency.keySet()) {
+            int frequency = typeFrequency.get(nom);
+            double percentage = (double) frequency / Moodview.getItems().size() * 100;
+
+            String percentageText = String.format("%.2f%%", percentage);
+
+
+            PieChart.Data slice = new PieChart.Data("Mood" + " " + percentageText, frequency);
+            pieChartData.add(slice);
+        }
+
+
     
-}
+         // Create a PieChart with the data set
+        PieChart chart = new PieChart(pieChartData);
+     
+        // Show percentage values in the chart's tooltip
+        for (final PieChart.Data data : chart.getData()) {
+            Tooltip tooltip = new Tooltip();
+            tooltip.setText(String.format("%.2f%%", (data.getPieValue() / Moodview.getItems().size() * 200)));
+            Tooltip.install(data.getNode(), tooltip);
+        }
+
+        // Show the chart in a new window
+        Scene scene = new Scene(chart);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.show();
+       }
+
+    @FXML
+    private void pdf(ActionEvent event) {
+          Document document = new Document(PageSize.A4);
+        Color headerColor = Color.web("#0692a1");
+        Color cellColor = Color.web("#ff7a4a");
+        Font font = Font.loadFont(getClass().getResourceAsStream("/fonts/VTFRedzone-Classic.ttf"), 12);
+
+        try {
+            PdfWriter.getInstance(document, new FileOutputStream("user.pdf"));
+
+            document.open();
+
+            Paragraph paragraph = new Paragraph("les produits");
+           // paragraph.setAlignment(Element.ALIGN_CENTER);
+            document.add(paragraph);
+
+            document.add(Chunk.NEWLINE);
+
+            PdfPTable pdfTable = new PdfPTable(2);
+
+            ObservableList<Mood> selectedProduits = Moodview.getSelectionModel().getSelectedItems();
+
+            pdfTable.addCell("Nom du champ");
+            pdfTable.addCell("Valeur");
+
+            for (Mood mood : selectedProduits) {
+//                pdfTable.addCell("ID");
+//                pdfTable.addCell(String.valueOf(produit.getId()));
+
+                pdfTable.addCell("Mood");
+                pdfTable.addCell(mood.getMood());
+
+                
+
+                pdfTable.completeRow(); // Add a new row for each selected item
+            }
+
+            document.add(pdfTable);
+
+            document.close();
+
+            Alert alert = new Alert(AlertType.INFORMATION);
+            alert.setTitle("Export PDF");
+            alert.setHeaderText(null);
+            alert.setContentText("Le fichier PDF a été généré avec succès !");
+            alert.showAndWait();
+        } catch (Exception e) {
+            e.printStackTrace();
+            
+        }
+    }
+        
+    }
+
+  
+    
+
+   
+    

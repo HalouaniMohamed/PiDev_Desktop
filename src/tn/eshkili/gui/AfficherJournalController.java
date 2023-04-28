@@ -16,6 +16,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextInputDialog;
@@ -33,12 +34,11 @@ import tn.eshkili.services.Mood1;
 public class AfficherJournalController implements Initializable {
 
     @FXML
-    private TableView<JournalMood> journalview;
-    @FXML
+    private ListView<JournalMood> journalview;
+    static int id,id_user,moods_id;   
+    static JournalMood J = new JournalMood();
     private TableColumn<JournalMood, Integer> tfid;
-    @FXML
     private TableColumn<JournalMood, Integer> tfiduser;
-    @FXML
     private TableColumn<JournalMood, Integer> tfmoodsid;
     ObservableList<JournalMood> listeB = FXCollections.observableArrayList();
     @FXML
@@ -47,30 +47,37 @@ public class AfficherJournalController implements Initializable {
     /**
      * Initializes the controller class.
      */
-    
-     public void show(){
-    	Journal bs=new Journal();
-        List<JournalMood> listeJournals = bs.afficherJournal();
-   
- 
-    tfid.setCellValueFactory(new PropertyValueFactory<>("id"));
-    tfiduser.setCellValueFactory(new PropertyValueFactory<>("id_user"));
-    tfmoodsid.setCellValueFactory(new PropertyValueFactory<>("moods_id"));
-     
-       
-
-
-    
- 
-    journalview.setItems(listeB);
-    }
+//    /*
+//     public void show(){
+//    	Journal bs=new Journal();
+//        List<JournalMood> listeJournals = bs.afficherJournal();
+//
+//
+//    tfid.setCellValueFactory(new PropertyValueFactory<>("id"));
+//    tfiduser.setCellValueFactory(new PropertyValueFactory<>("id_user"));
+//    tfmoodsid.setCellValueFactory(new PropertyValueFactory<>("moods_id"));
+//
+//
+//
+//
+//
+//
+//    journalview.setItems(listeB);
+//    }*/
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-         show();
+         //show();
+         
+              ListView<JournalMood> list1 = journalview;
+    Journal inter = new Journal();
+    List<JournalMood> list2 = inter.afficherJournal();
+for (int i = 0; i < list2.size(); i++) {
+    JournalMood E = list2.get(i);
+    list1.getItems().add(E); 
     }    
 
-   
+    } 
     @FXML
     private void supprimerjournal(ActionEvent event) {
                 
@@ -94,7 +101,7 @@ public class AfficherJournalController implements Initializable {
             alert.showAndWait();
 
             // Actualiser le TableView
-            show();
+           // show();
         }
     }
     

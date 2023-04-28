@@ -25,7 +25,7 @@ public class Main extends Application {
      
     	Main.stg = primaryStage;
         
-        FXMLLoader loader= new FXMLLoader(getClass().getResource("../gui/AfficherJournal.fxml"));
+        FXMLLoader loader= new FXMLLoader(getClass().getResource("../gui/AfficherMood.fxml"));
  
         Parent root=  loader.load();
         Scene scene= new Scene(root ,1400,700);
