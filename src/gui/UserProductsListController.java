@@ -6,6 +6,7 @@
 package gui;
 
 import entities.Product;
+import entities.ShoppingCartItem;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -15,9 +16,11 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonBar;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Border;
 import javafx.scene.layout.BorderStroke;
@@ -30,6 +33,8 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import services.ProductService;
+import services.ShoppingCartItemService;
+import tools.Statics;
 
 /**
  * FXML Controller class
@@ -100,35 +105,60 @@ public class UserProductsListController implements Initializable {
     private Node createProductNode(Product product) {
         // Create a custom product node that displays the product's image
         // and other details. You can use any JavaFX layout and controls you want.
-
-        //get current absolute path
-        String absolutePath = System.getProperty("user.dir").replace("\\", "/");
-        String imageDirectoryPath = absolutePath + "/src/uploads/products/";
-        String imagePath = "file:///" + imageDirectoryPath + product.getImage();
-        ImageView imageView = new ImageView(new Image(imagePath));
-
-        imageView.setFitWidth(180);
-        imageView.setFitHeight(180);
+        String imageUrl = "http://127.0.0.1:8000/uploads/products/" + product.getImage();
+        ImageView imageView = new ImageView(imageUrl);
+        imageView.setFitWidth(150);
+        imageView.setFitHeight(150);
 
         Label nameLabel = new Label(product.getName());
         nameLabel.setAlignment(Pos.CENTER);
         nameLabel.setMaxWidth(Double.MAX_VALUE);
 
-        Label priceLabel = new Label("$" + product.getPrice());
+        Label priceLabel = new Label(product.getPrice() + "DT");
         priceLabel.setAlignment(Pos.CENTER);
         priceLabel.setMaxWidth(Double.MAX_VALUE);
 
-        Button buyButton = new Button("Buy");
+        Label quantityLabel = new Label(product.getQuantity() > 0 ? "disponible" : "non disponible");
+        quantityLabel.setAlignment(Pos.CENTER);
+        quantityLabel.setTextFill(product.getQuantity() > 0 ? Color.GREEN : Color.RED);
+        quantityLabel.setMaxWidth(Double.MAX_VALUE);
+
+        Button buyButton = new Button("Ajouter au panier");
         buyButton.setPrefWidth(100);
         buyButton.setPrefHeight(30);
         buyButton.setFont(Font.font(18));
         buyButton.setStyle("-fx-background-color: #26ace2; -fx-text-fill: white; -fx-border-radius: 5;");
         buyButton.setOnAction(e -> {
-            // handle button click event here
+            ShoppingCartItem item = new ShoppingCartItem(1, product, Statics.currentUser);
+            ShoppingCartItemService shoppingCartItemService = new ShoppingCartItemService();
+            boolean success = shoppingCartItemService.add(item);
+            if (success) {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Success");
+                alert.setHeaderText("Produit ajouté");
+                ButtonType okButton = new ButtonType("OK", ButtonBar.ButtonData.OK_DONE);
+                alert.getButtonTypes().setAll(okButton);
+                Button okBtn = (Button) alert.getDialogPane().lookupButton(okButton);
+                okBtn.setOnAction(evt -> {
+                    alert.close();
+                });
+                alert.showAndWait();
+            } else {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Quantité insuffisante");
+                alert.setHeaderText("Quantité insuffisante");
+                ButtonType okButton = new ButtonType("OK", ButtonBar.ButtonData.OK_DONE);
+                alert.getButtonTypes().setAll(okButton);
+                Button okBtn = (Button) alert.getDialogPane().lookupButton(okButton);
+                okBtn.setOnAction(evt -> {
+                    alert.close();
+                });
+                alert.showAndWait();
+            }
         });
 
-        VBox productBox = new VBox(imageView, nameLabel, priceLabel, buyButton);
-        productBox.setSpacing(10);
+        VBox productBox = new VBox(imageView, nameLabel, priceLabel, quantityLabel, buyButton);
+        productBox.setSpacing(8);
         productBox.setAlignment(Pos.CENTER);
         productBox.setBorder(new Border(new BorderStroke(Color.LIGHTGRAY, BorderStrokeStyle.SOLID, new CornerRadii(5), new BorderWidths(2))));
         Insets margin = new Insets(10);

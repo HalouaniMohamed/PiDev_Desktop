@@ -31,9 +31,9 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
 import javafx.util.StringConverter;
-import org.apache.commons.io.FileUtils;
 import services.CategoryService;
 import services.ProductService;
+import tools.ImageUploader;
 
 /**
  * FXML Controller class
@@ -87,9 +87,6 @@ public class AddProductController implements Initializable {
 
     @FXML
     private void addProduct(ActionEvent event) {
-//        System.out.println(tfQuantity.getText());
-//        System.out.println(!isInt(tfQuantity.getText()));
-//        System.out.println(!(Integer.parseInt(tfQuantity.getText()) >= 0));
         if (tfName.getText().isEmpty() || tfPrice.getText().isEmpty() || tfQuantity.getText().isEmpty()) {
             Alert aler = new Alert(Alert.AlertType.ERROR);
             aler.setTitle("Erreur");
@@ -143,8 +140,9 @@ public class AddProductController implements Initializable {
             Product p = new Product(name, description, price, image, quantity, date, date, category);
 
             if (selectedFile != null) {
-                uploadFile(selectedFile);
-                p.setImage(image);
+
+                String imageName = uploadFile(selectedFile);
+                p.setImage(imageName);
             }
             Task<Boolean> task = new Task<Boolean>() {
                 @Override
@@ -204,27 +202,20 @@ public class AddProductController implements Initializable {
         }
     }
 
-    private void uploadFile(File file) {
+    private String uploadFile(File file) {
+        String uniqueImageName = null;
         try {
-            String uniqueFileName = generateUniqueFileName(file.getName());
-            FileUtils.copyFile(file, new File("src/uploads/products/" + uniqueFileName));
-            // Set the image name in the product object
-            setImage(uniqueFileName);
-            // Save a copy of the image in the xampp htdocs directory
+            ImageUploader imageUploader = new ImageUploader();
+            System.out.println("before calling the method");
+            uniqueImageName = imageUploader.uploadImage(file);
+            System.out.println("after calling the method");
 
-//            File destFile2 = new File("C:/xampp/htdocs/uploads/products/" + uniqueFileName);
-//            FileUtils.copyFile(file, destFile2);
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (IOException ex) {
+            System.out.println("whaaaaaaaaaaaaat");
+
         }
-    }
+        return uniqueImageName;
 
-    private String generateUniqueFileName(String fileName) {
-        // Generate a unique file name using a timestamp and the original file name
-        long timestamp = System.currentTimeMillis();
-        String[] parts = fileName.split("\\.");
-        String extension = parts[parts.length - 1];
-        return timestamp + "." + extension;
     }
 
     public boolean isDouble(String str) {

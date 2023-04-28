@@ -52,16 +52,16 @@ public class ProductService {
 
     public boolean isUnique(Product p) {
         sql = "SELECT COUNT(*) FROM product WHERE name=?";
-        System.out.println(sql);
         boolean unique = false;
         try {
             PreparedStatement ste = cnx.prepareStatement(sql);
             ste.setString(1, p.getName());
             ResultSet rs = ste.executeQuery();
             if (rs.next() && rs.getInt(1) == 0) {
-                System.out.println("Product with the same name already exists!");
                 unique = true;
             } else {
+                System.out.println("Product with the same name already exists!");
+
                 unique = false;
             }
         } catch (SQLException ex) {

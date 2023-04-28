@@ -55,11 +55,6 @@
                      </font>
                   </Label>
                   <TextField fx:id="tfQuantity" layoutX="138.0" layoutY="230.0" prefHeight="26.0" prefWidth="263.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="80.0" />
-                  <Label layoutY="293.0" text="Catégorie" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="543.2">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Label>
                   <ChoiceBox fx:id="cbCategorie" layoutX="138.0" layoutY="290.0" prefHeight="26.0" prefWidth="263.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="80.0" />
                   <HBox layoutX="16.0" layoutY="360.0" prefHeight="28.0" prefWidth="373.0" style="-fx-border-radius: 5; -fx-border-color: #DCDCDC;" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="80.0">
                      <children>
@@ -72,6 +67,11 @@
                      </children>
                   </HBox>
                   <Label layoutX="5.0" layoutY="363.0" text="Image">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="5.0" layoutY="294.0" text="Catégorie">
                      <font>
                         <Font size="14.0" />
                      </font>
