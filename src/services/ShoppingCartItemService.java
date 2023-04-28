@@ -160,4 +160,16 @@ public class ShoppingCartItemService {
         }
     }
 
+    public void deleteCartItemsForUser(int userId) {
+        String deleteSql = "DELETE FROM shopping_cart_item WHERE user_id = ?";
+        try (PreparedStatement deleteStatement = cnx.prepareStatement(deleteSql)) {
+            deleteStatement.setInt(1, userId);
+            int deletedRows = deleteStatement.executeUpdate();
+            if (deletedRows > 0) {
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+
 }

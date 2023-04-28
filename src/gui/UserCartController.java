@@ -6,17 +6,12 @@
 package gui;
 
 import com.stripe.Stripe;
-import com.stripe.exception.StripeException;
-import com.stripe.model.checkout.Session;
-import com.stripe.param.checkout.SessionCreateParams;
-import com.stripe.model.Charge;
-import com.stripe.model.Token;
 import entities.Product;
 import entities.ShoppingCartItem;
+import java.io.IOException;
 import java.net.URL;
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.ResourceBundle;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
@@ -25,10 +20,11 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import services.ShoppingCartItemService;
@@ -36,6 +32,7 @@ import tools.Statics;
 import javafx.scene.control.TableCell;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -60,6 +57,7 @@ public class UserCartController implements Initializable {
     private TableColumn<ShoppingCartItem, String> itemDelete;
     ShoppingCartItemService service = new ShoppingCartItemService();
     ObservableList<ShoppingCartItem> data = FXCollections.observableArrayList();
+    List<ShoppingCartItem> items = new ArrayList<>();
 
     /**
      * Initializes the controller class.
@@ -73,7 +71,7 @@ public class UserCartController implements Initializable {
 
         data.clear();
 
-        List<ShoppingCartItem> items = service.getCartItems(Statics.currentUser.getId());
+        items = service.getCartItems(Statics.currentUser.getId());
         data.addAll(items);
         cartTable.setItems(data);
 
@@ -177,65 +175,83 @@ public class UserCartController implements Initializable {
                 int quantity = item.getQuantity();
                 totalPrice += price * quantity;
             }
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("CreditCard.fxml"));
+            Parent root = loader.load();
 
-            // Create a new checkout session with Stripe
-            SessionCreateParams params = new SessionCreateParams.Builder()
-                    .addPaymentMethodType(SessionCreateParams.PaymentMethodType.CARD)
-                    .setMode(SessionCreateParams.Mode.PAYMENT)
-                    .setSuccessUrl("http://localhost:8080/success")
-                    .setCancelUrl("http://localhost:8080/cancel")
-                    .addLineItem(new SessionCreateParams.LineItem.Builder()
-                            .setPriceData(new SessionCreateParams.LineItem.PriceData.Builder()
-                                    .setCurrency("usd")
-                                    .setUnitAmount((long) (totalPrice * 100))
-                                    .setProductData(new SessionCreateParams.LineItem.PriceData.ProductData.Builder()
-                                            .setName("Shopping Cart Items")
-                                            .build())
-                                    .build())
-                            .setQuantity(1L)
-                            .build())
-                    .build();
+            // Get the controller of the loaded FXML file
+            CreditCardController controller = loader.getController();
 
-            Session session = Session.create(params);
-            Map<String, Object> tokenParams = new HashMap<String, Object>();
+            // Set the total price in the CreditCardController
+            controller.setTotalPrice(totalPrice);
+            controller.setTotalPriceLabel(totalPrice);
+            controller.setItems(items);
 
-            Map<String, Object> cardParams = new HashMap<>();
-            cardParams.put("number", "4100000000000019");
-            cardParams.put("exp_month", 12);
-            cardParams.put("exp_year", 2025);
-            cardParams.put("cvc", "123");
-
-            tokenParams.put("card", cardParams);
-            Token token = Token.create(tokenParams);
-
-            Map<String, Object> params2 = new HashMap<>();
-            params2.put("amount", (long) (totalPrice * 100));
-            params2.put("currency", "eur");
-            params2.put("source", token.getId());
-            params2.put(
-                    "description",
-                    "My First Test Charge (created for API docs at https://www.stripe.com/docs/api)"
-            );
-            try {
-                Charge charge = Charge.create(params2);
-                System.out.println(charge);
-            } catch (StripeException ex) {
-                System.out.println("error in payment: " + ex.getMessage());
-                ex.printStackTrace();
-                // Display an alert dialog with the error message
-                Alert alert = new Alert(AlertType.ERROR);
-                alert.setTitle("Payment Error");
-                alert.setHeaderText(null);
-                alert.setContentText("An error occurred during the payment: " + ex.getMessage());
-                alert.showAndWait();
-
-            }
-
-            // Redirect the user to the Stripe checkout page
-        } catch (StripeException ex) {
-            System.out.println("huh ?");
+            // Display the window
+            Stage stage = new Stage();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException ex) {
+            ex.printStackTrace();
         }
 
+//            // Create a new checkout session with Stripe
+//            SessionCreateParams params = new SessionCreateParams.Builder()
+//                    .addPaymentMethodType(SessionCreateParams.PaymentMethodType.CARD)
+//                    .setMode(SessionCreateParams.Mode.PAYMENT)
+//                    .setSuccessUrl("http://localhost:8080/success")
+//                    .setCancelUrl("http://localhost:8080/cancel")
+//                    .addLineItem(new SessionCreateParams.LineItem.Builder()
+//                            .setPriceData(new SessionCreateParams.LineItem.PriceData.Builder()
+//                                    .setCurrency("usd")
+//                                    .setUnitAmount((long) (totalPrice * 100))
+//                                    .setProductData(new SessionCreateParams.LineItem.PriceData.ProductData.Builder()
+//                                            .setName("Shopping Cart Items")
+//                                            .build())
+//                                    .build())
+//                            .setQuantity(1L)
+//                            .build())
+//                    .build();
+//
+//            Session session = Session.create(params);
+//            Map<String, Object> tokenParams = new HashMap<String, Object>();
+//
+//            Map<String, Object> cardParams = new HashMap<>();
+//            cardParams.put("number", "4100000000000019");
+//            cardParams.put("exp_month", 12);
+//            cardParams.put("exp_year", 2025);
+//            cardParams.put("cvc", "123");
+//
+//            tokenParams.put("card", cardParams);
+//            Token token = Token.create(tokenParams);
+//
+//            Map<String, Object> params2 = new HashMap<>();
+//            params2.put("amount", (long) (totalPrice * 100));
+//            params2.put("currency", "eur");
+//            params2.put("source", token.getId());
+//            params2.put(
+//                    "description",
+//                    "My First Test Charge (created for API docs at https://www.stripe.com/docs/api)"
+//            );
+//            try {
+//                Charge charge = Charge.create(params2);
+//                System.out.println(charge);
+//            } catch (StripeException ex) {
+//                System.out.println("error in payment: " + ex.getMessage());
+//                ex.printStackTrace();
+//                // Display an alert dialog with the error message
+//                Alert alert = new Alert(AlertType.ERROR);
+//                alert.setTitle("Payment Error");
+//                alert.setHeaderText(null);
+//                alert.setContentText("An error occurred during the payment: " + ex.getMessage());
+//                alert.showAndWait();
+//
+//            }
+//
+//            // Redirect the user to the Stripe checkout page
+//        } catch (StripeException ex) {
+//            System.out.println("huh ?");
+//        }
     }
 
 }

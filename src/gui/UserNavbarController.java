@@ -51,7 +51,7 @@ public class UserNavbarController implements Initializable {
 
     @FXML
     private void redirectToProducts(ActionEvent event) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("UserProducts.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("UserProductsList.fxml"));
         try {
             Parent root = loader.load();
             p.getScene().setRoot(root);
@@ -70,6 +70,13 @@ public class UserNavbarController implements Initializable {
 
     @FXML
     private void redirectToCart(ActionEvent event) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("UserCart.fxml"));
+        try {
+            Parent root = loader.load();
+            p.getScene().setRoot(root);
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
     }
 
 }
