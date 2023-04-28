@@ -38,7 +38,7 @@
             <HBox layoutY="154.0" prefHeight="43.0" prefWidth="212.0" spacing="20.0">
                <children>
                   <Button mnemonicParsing="false" onAction="#cancelStripe" prefHeight="26.0" prefWidth="160.0" text="Cancel" />
-                  <Button mnemonicParsing="false" onAction="#stripeCheckout" prefHeight="26.0" prefWidth="163.0" style="-fx-background-color: #0096FF;" text="Payer" textFill="WHITE" />
+                  <Button fx:id="done" mnemonicParsing="false" onAction="#stripeCheckout" prefHeight="26.0" prefWidth="163.0" style="-fx-background-color: #0096FF;" text="Payer" textFill="WHITE" />
                </children>
             </HBox>
          </children>

@@ -85,14 +85,14 @@ public class AdminStatisticsController implements Initializable {
 
             for (String date : sortedTotals.keySet()) {
                 double totalAmount = sortedTotals.get(date);
-                dataset.addValue(totalAmount, "Total Transaction Price", date);
+                dataset.addValue(totalAmount, "Prix total des transactions", date);
             }
 
             // Create the chart
             JFreeChart chart = ChartFactory.createBarChart(
-                    "Total Transaction Price by Date",
+                    "Prix total des transactions par date",
                     "Date",
-                    "Total Transaction Price (USD)",
+                    "Prix total des transactions en dinars",
                     dataset,
                     PlotOrientation.VERTICAL,
                     true,

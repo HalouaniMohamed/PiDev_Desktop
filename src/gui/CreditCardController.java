@@ -9,8 +9,11 @@ import com.stripe.exception.StripeException;
 import com.stripe.model.Charge;
 import com.stripe.model.Token;
 import entities.ShoppingCartItem;
+import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -19,7 +22,11 @@ import java.util.concurrent.CompletableFuture;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Label;
@@ -27,6 +34,8 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import services.OrderService;
 import services.ShoppingCartItemService;
+import tools.MailSenderH;
+import tools.PdfGeneratorH;
 import tools.Statics;
 
 /**
@@ -51,6 +60,9 @@ public class CreditCardController implements Initializable {
     private TextField tfYear;
     List<ShoppingCartItem> items = new ArrayList<>();
 
+    @FXML
+//    private Button done;
+
     /**
      * Initializes the controller class.
      */
@@ -69,6 +81,78 @@ public class CreditCardController implements Initializable {
 
     @FXML
     private void stripeCheckout(ActionEvent event) {
+        String email = tfEmail.getText();
+        String cardNumber = tfCardNumber.getText();
+        String month = tfMonth.getText();
+        String year = tfYear.getText();
+        String cvc = tftCVC.getText();
+
+        if (email == null || email.isEmpty() || !email.matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$")) {
+            // Display an alert dialog for invalid email
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Invalid Email");
+            alert.setHeaderText(null);
+            alert.setContentText("Please enter a valid email address.");
+            alert.showAndWait();
+            return;
+        }
+
+        if (cardNumber == null || cardNumber.isEmpty() || !cardNumber.matches("^\\d{16}$")) {
+            // Display an alert dialog for invalid card number
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Invalid Card Number");
+            alert.setHeaderText(null);
+            alert.setContentText("Please enter a valid 16-digit card number.");
+            alert.showAndWait();
+            return;
+        }
+
+        if (month == null || month.isEmpty() || !month.matches("^(0[1-9]|1[0-2])$")) {
+            // Display an alert dialog for invalid month
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Invalid Month");
+            alert.setHeaderText(null);
+            alert.setContentText("Please enter a valid month (MM).");
+            alert.showAndWait();
+            return;
+        }
+
+        if (year == null || year.isEmpty() || !year.matches("^\\d{4}$")) {
+            // Display an alert dialog for invalid year
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Invalid Year");
+            alert.setHeaderText(null);
+            alert.setContentText("Please enter a valid year (YYYY).");
+            alert.showAndWait();
+            return;
+        }
+
+        if (cvc == null || cvc.isEmpty() || !cvc.matches("^\\d{3}$")) {
+            // Display an alert dialog for invalid cvc
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Invalid CVC");
+            alert.setHeaderText(null);
+            alert.setContentText("Please enter a valid 3-digit CVC code.");
+            alert.showAndWait();
+            return;
+        }
+
+        // Parse inputs
+        int expMonth = Integer.parseInt(month);
+        int expYear = Integer.parseInt(year);
+        int currentYear = Calendar.getInstance().get(Calendar.YEAR);
+        int currentMonth = Calendar.getInstance().get(Calendar.MONTH) + 1;
+
+        // Validate expiration date
+        if (expYear < currentYear || (expYear == currentYear && expMonth < currentMonth)) {
+            // Display an alert dialog for expired card
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Expired Card");
+            alert.setHeaderText(null);
+            alert.setContentText("Your card has already expired.");
+            alert.showAndWait();
+            return;
+        }
         try {
             Map<String, Object> tokenParams = new HashMap<String, Object>();
 
@@ -110,6 +194,40 @@ public class CreditCardController implements Initializable {
                         ShoppingCartItemService cartService = new ShoppingCartItemService();
                         cartService.deleteCartItemsForUser(Statics.currentUser.getId());
                         System.out.println("decrementing done");
+
+                        //generate pdf using the shopping cart items
+                        PdfGeneratorH pdfGenerator = new PdfGeneratorH();
+                        File pdfFile = pdfGenerator.generateInvoicePdf(items);
+
+                        //send the email
+                        MailSenderH mailer = new MailSenderH();
+                        mailer.sendEmailH(email, pdfFile);
+                        try {
+                            Platform.runLater(() -> {
+                                Stage currentStage = (Stage) totalPriceLabel.getScene().getWindow();
+                                currentStage.close();
+                            });
+                        } catch (Exception e) {
+                            System.out.println(e.getMessage());
+                        }
+                        Platform.runLater(() -> {
+
+                            FXMLLoader loader = new FXMLLoader(getClass().getResource("UserProductsList.fxml"));
+
+                            try {
+                                // set the main window to UserProductList.fxml
+                                System.out.println("hi");
+                                Parent root = loader.load();
+                                Scene scene = new Scene(root);
+                                Stage mainStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                                mainStage.setScene(scene);
+                                mainStage.show();
+                            } catch (IOException ex) {
+                                System.out.println(ex.getMessage());
+                                System.out.println("baaaaaaaa3");
+                            }
+                        });
+
                     }
                 });
             } catch (StripeException ex) {

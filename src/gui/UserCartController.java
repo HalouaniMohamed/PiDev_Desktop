@@ -25,6 +25,8 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import services.ShoppingCartItemService;
@@ -58,6 +60,11 @@ public class UserCartController implements Initializable {
     ShoppingCartItemService service = new ShoppingCartItemService();
     ObservableList<ShoppingCartItem> data = FXCollections.observableArrayList();
     List<ShoppingCartItem> items = new ArrayList<>();
+    @FXML
+    private Button btn;
+    @FXML
+    private Label prixTotale;
+    double totalPrice;
 
     /**
      * Initializes the controller class.
@@ -74,12 +81,17 @@ public class UserCartController implements Initializable {
         items = service.getCartItems(Statics.currentUser.getId());
         data.addAll(items);
         cartTable.setItems(data);
+        if (data.isEmpty()) {
+            // Disable the button if there are no items in the shopping cart
+            btn.setDisable(true);
+            return;
+        }
 
     }
 
     public void load() {
         refreshTable();
-
+        calculateTotalPrice();
         itemImage.setCellFactory(column -> {
             return new TableCell<ShoppingCartItem, String>() {
                 @Override
@@ -169,12 +181,7 @@ public class UserCartController implements Initializable {
 
         try {
             // Calculate the total price of the items in the shopping cart
-            double totalPrice = 0;
-            for (ShoppingCartItem item : data) {
-                double price = item.getProduct().getPrice();
-                int quantity = item.getQuantity();
-                totalPrice += price * quantity;
-            }
+
             FXMLLoader loader = new FXMLLoader(getClass().getResource("CreditCard.fxml"));
             Parent root = loader.load();
 
@@ -252,6 +259,21 @@ public class UserCartController implements Initializable {
 //        } catch (StripeException ex) {
 //            System.out.println("huh ?");
 //        }
+    }
+
+    public void calculateTotalPrice() {
+
+        for (ShoppingCartItem item : data) {
+            double price = item.getProduct().getPrice();
+            int quantity = item.getQuantity();
+            totalPrice += price * quantity;
+        }
+        setLabel();
+
+    }
+
+    public void setLabel() {
+        prixTotale.setText(String.format("%.2f", totalPrice));
     }
 
 }
