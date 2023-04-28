@@ -19,7 +19,10 @@ import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonBar;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import org.controlsfx.control.Notifications;
@@ -69,6 +72,28 @@ public class AjouterMoodController implements Initializable {
         Mood1 M = new Mood1();
         M.ajouterMood(m);
         
+                 // Check if description has at least 5 characters
+        if (tfmood.getText().length() < 1) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("La description doit contenir au moins 5 caracteres !");
+            ButtonType okButton = new ButtonType("OK", ButtonBar.ButtonData.OK_DONE);
+            alert.getButtonTypes().setAll(okButton);
+            alert.showAndWait();
+            return;
+        }
+        
+        
+               // Check if description has at least 5 characters
+        if (tfdesc.getText().length() < 5) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("La description doit contenir au moins 5 caracteres !");
+            ButtonType okButton = new ButtonType("OK", ButtonBar.ButtonData.OK_DONE);
+            alert.getButtonTypes().setAll(okButton);
+            alert.showAndWait();
+            return;
+        }
         
          String message = "Dear Client,\n"
                         + "\n"

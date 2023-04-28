@@ -58,7 +58,7 @@ public class AjouterJournalController implements Initializable {
         J.ajouterJournal(j);
         
                      try {
-        Parent page1 = FXMLLoader.load(getClass().getResource("../gui/AfficherJournal.fxml"));
+        Parent page1 = FXMLLoader.load(getClass().getResource("../gui/AfficherMood.fxml"));
         Scene scene = new Scene(page1);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(scene);
