@@ -184,7 +184,7 @@ public class Evenements {
 
     @Override
     public String toString() {
-        return  "nom_evenement=" + nom_evenement ;
+        return  "nom_evenement=" + nom_evenement+"nbr de place = "+nbr_de_places ;
     }
 
     

@@ -70,7 +70,7 @@ public class AfficheReservationController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-         System.out.println("odk");
+
 
     show();
 }
@@ -84,5 +84,14 @@ public class AfficheReservationController implements Initializable {
 
     }
 
-    
+ @FXML 
+ private Button stat;
+ 
+  @FXML
+    private void Stat(javafx.event.ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../GUI/Stat.fxml"));
+        Parent root = loader.load();
+        stat.getScene().setRoot(root);
+
+    }
 }

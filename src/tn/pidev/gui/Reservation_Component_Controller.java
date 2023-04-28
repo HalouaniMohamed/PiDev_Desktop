@@ -123,7 +123,7 @@ public class Reservation_Component_Controller implements Initializable {
             new Alert(Alert.AlertType.WARNING,"E-mail Invalide",ButtonType.OK).show();
         }else if(this.event.getNbr_de_places()==0){
     
-     new Alert(Alert.AlertType.WARNING,"Pas de places disponible pour  cet evenement!",ButtonType.OK).show();
+     new Alert(Alert.AlertType.WARNING,"Pas de place disponible pour  cet evenement!",ButtonType.OK).show();
     
     
     }else{
@@ -133,7 +133,7 @@ public class Reservation_Component_Controller implements Initializable {
             sendMail(this.event, r);
             generatePDF(r);
             new EvenementsService().modifier(this.event);
-            new Alert(Alert.AlertType.INFORMATION,"Reservation Validée!",ButtonType.OK);
+            new Alert(Alert.AlertType.INFORMATION,"Reservation Valider!",ButtonType.OK);
             controller.clear();
             controller.Afficher(null);
         }
@@ -144,8 +144,8 @@ public class Reservation_Component_Controller implements Initializable {
         // Set the SMTP host and port for sending the email
         String host = "smtp.gmail.com";
         String port = "587";
-        String username = "arco.sc0156@gmail.com";
-        String password = "hghseksuroiqviag";
+        String username = "meriem.bouchahoua@esprit.tn";
+        String password = "223JFT442893732971";
 
         // Set the properties for the email session
         Properties properties = new Properties();
@@ -173,7 +173,7 @@ public class Reservation_Component_Controller implements Initializable {
 
             // Set the subject and body text for the email
             msg.setSubject("Confirmation de réservation");
-            msg.setText("Salut , Votre Réservation pour l'evenement "+ee.getNom_evenement()+" a été effectuée avec succés , avec un nombre de place "+r.getNombre_de_place_areserver()+"."
+            msg.setText("Salut , Votre Réservation pour l'evenement "+ee.getNom_evenement()+" a été effectuée , avec un nombre de place "+r.getNombre_de_place_areserver()+"."
                     + "Veuillez nous contacter en cas d'annulation et merci.");
             // Create an alert to notify the user that the email was sent successfully
 

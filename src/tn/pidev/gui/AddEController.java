@@ -164,7 +164,7 @@ if (!tfHour.getText().matches("^([0-1][0-9]|2[0-3]):[0-5][0-9]$")) {
         // Show success message and clear text fields
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Success");
-        alert.setHeaderText("Evenement ajoute avec succés");
+        alert.setHeaderText("Evenement ajoute avec succes");
         ButtonType okButton = new ButtonType("OK", ButtonBar.ButtonData.OK_DONE);
         alert.getButtonTypes().setAll(okButton);
         alert.showAndWait();

@@ -110,7 +110,7 @@ Reservation res = listView.getSelectionModel().getSelectedItem();
  	          Alert alert = new Alert(AlertType.INFORMATION);
  	          alert.setTitle("Information");
  	          alert.setHeaderText(null);
- 	          alert.setContentText("Il n'y a aucune r�servation � supprimer.");
+ 	          alert.setContentText("Il n'y a aucune réservation à supprimer.");
  	          alert.showAndWait();
  	          return;
  	      }
@@ -119,7 +119,7 @@ Reservation res = listView.getSelectionModel().getSelectedItem();
  	      Alert alert = new Alert(AlertType.CONFIRMATION);
  	      alert.setTitle("Confirmation de suppression");
  	      alert.setHeaderText(null);
- 	      alert.setContentText("�tes-vous s�r de vouloir supprimer toutes les r�servations ?");
+ 	      alert.setContentText("etes-vous sur de vouloir supprimer la réservation ?");
  	      Optional<ButtonType> result = alert.showAndWait();
  	      if (result.get() != ButtonType.OK) {
  	          return;
@@ -128,11 +128,14 @@ Reservation res = listView.getSelectionModel().getSelectedItem();
  	      // Supprimer toutes les r�servations
  	 
  		     ReservationService es = new ReservationService();
-                       EvenementsService ss =new EvenementsService();
+                       
 int nbr_place = res.getNombre_de_place_areserver();
-Evenements e = ss.getOneById(res.getE().getId());
-               System.out.println(res.getE().getId());
+Evenements e = es.getEvent(res.getId());
+
+               System.out.println(e.getId());
  	          es.supprimer(res.getId());
+                  e.setNbr_de_places(e.getNbr_de_places()+nbr_place);
+                  new EvenementsService().modifier(e);
  	     // e.setNbr_de_places(e.getNbr_de_places()+nbr_place);
             
             //  ss.modifier(e);
@@ -150,9 +153,9 @@ reservations.clear();
  	     // V�rifier que l'utilisateur a bien s�lectionn� un �l�ment
  	     if (selectedReservation == null) {
  	         Alert alert = new Alert(AlertType.WARNING);
- 	         alert.setTitle("Aucune r�servation s�lectionn�e");
+ 	         alert.setTitle("Aucune reservation sélectionné");
  	         alert.setHeaderText(null);
- 	         alert.setContentText("Veuillez s�lectionner une r�servation � modifier.");
+ 	         alert.setContentText("Veuillez sélectionner une réservation à modifier.");
  	         alert.showAndWait();
  	         return;
  	     }
@@ -161,7 +164,7 @@ reservations.clear();
  	     TextInputDialog dialog = new TextInputDialog(String.valueOf(selectedReservation.getNombre_de_place_areserver()));
  	     dialog.setTitle("Modifier la r�servation");
  	     dialog.setHeaderText(null);
- 	     dialog.setContentText("Veuillez saisir le nouveau nombre de places � r�server:");
+ 	     dialog.setContentText("Veuillez saisir le nouveau nombre de places à réserver:");
 
  	     Optional<String> result = dialog.showAndWait();
  	     if (result.isPresent()) {
@@ -172,17 +175,26 @@ reservations.clear();
  	             if (newNombreDePlaces < 1) {
  	                 throw new NumberFormatException();
  	             }
-
+ ReservationService es = new ReservationService();
+                       
+int old_nbr_place = selectedReservation.getNombre_de_place_areserver();
+int idd = selectedReservation.getId();
+Evenements e = es.getEvent(selectedReservation.getId());
+e.setNbr_de_places(e.getNbr_de_places()+old_nbr_place);
  	             // Modifier la r�servation dans la base de donn�es
  	             ReservationService service = new ReservationService();
  	             selectedReservation.setNombre_de_place_areserver(newNombreDePlaces);
  	             service.modifier(selectedReservation);
+                      Reservation rr = es.getOneById(idd);
+                      int new_nbr_place = rr.getNombre_de_place_areserver();
+                      e.setNbr_de_places(e.getNbr_de_places()-new_nbr_place);
+                      new EvenementsService().modifier(e);
 
  	             // Afficher une bo�te de dialogue de confirmation
  	             Alert alert = new Alert(AlertType.INFORMATION);
- 	             alert.setTitle("R�servation modifi�e");
+ 	             alert.setTitle("Réservation modifiée");
  	             alert.setHeaderText(null);
- 	             alert.setContentText("La r�servation a �t� modifi�e avec succ�s.");
+ 	             alert.setContentText("La reservation a été modifiée avec succés.");
  	             alert.showAndWait();
 
  	             // Rafra�chir la liste des r�servations dans le ListView

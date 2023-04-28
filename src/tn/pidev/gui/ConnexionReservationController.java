@@ -127,7 +127,7 @@ public class ConnexionReservationController implements Initializable {
             } else {
             	   Alert alert = new Alert(Alert.AlertType.ERROR);
                    alert.setTitle("Error");
-                   alert.setHeaderText("Aucune reservation passée par cet email!");
+                   alert.setHeaderText("Non Trouvee!");
                    ButtonType okButton = new ButtonType("OK", ButtonBar.ButtonData.OK_DONE);
                    alert.getButtonTypes().setAll(okButton);
                    alert.showAndWait();

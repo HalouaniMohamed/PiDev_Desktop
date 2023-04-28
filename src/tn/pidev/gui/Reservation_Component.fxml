@@ -44,7 +44,7 @@
                            <children>
                               <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
                                  <children>
-                                    <Label fx:id="_nom" text="Nom Evenement" textFill="#6777ef">
+                                    <Label fx:id="_nom" text="Nom Evenement" textFill="#171ddd">
                                        <font>
                                           <Font name="Comic Sans MS Bold" size="15.0" />
                                        </font>
@@ -53,12 +53,12 @@
                               </HBox>
                               <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
                                  <children>
-                                    <Label text="Places Valable: ">
+                                    <Label text="Places disponibles :" textFill="#171ddd">
                                        <font>
                                           <Font name="Comic Sans MS Bold" size="15.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="_places" text="250">
+                                    <Label fx:id="_places" text="250" textFill="#171ddd">
                                        <font>
                                           <Font name="Comic Sans MS Bold" size="15.0" />
                                        </font>
@@ -71,12 +71,12 @@
                            <children>
                               <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
                                  <children>
-                                    <Label text="Type:">
+                                    <Label text="Type:" textFill="#171ddd">
                                        <font>
                                           <Font name="Comic Sans MS Bold" size="12.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="_type" layoutX="109.0" layoutY="24.0" text="Type:">
+                                    <Label fx:id="_type" layoutX="109.0" layoutY="24.0" text="Type" textFill="#171ddd">
                                        <font>
                                           <Font name="Comic Sans MS Bold" size="12.0" />
                                        </font>
@@ -85,12 +85,12 @@
                               </HBox>
                               <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
                                  <children>
-                                    <Label text="Emplacement: ">
+                                    <Label text="Emplacement: " textFill="#171ddd">
                                        <font>
                                           <Font name="Comic Sans MS Bold" size="12.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="_emplacement" text="Emplacement">
+                                    <Label fx:id="_emplacement" text="Emplacement" textFill="#171ddd">
                                        <font>
                                           <Font name="Comic Sans MS Bold" size="12.0" />
                                        </font>
@@ -101,7 +101,7 @@
                         </HBox>
                         <HBox VBox.vgrow="ALWAYS">
                            <children>
-                              <Label fx:id="_description" text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum." wrapText="true">
+                              <Label fx:id="_description" text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum." textFill="#1e5d90" wrapText="true">
                                  <font>
                                     <Font name="Comic Sans MS" size="12.0" />
                                  </font>
@@ -120,12 +120,12 @@
                      <children>
                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
                            <children>
-                              <Label text="Date: ">
+                              <Label text="Date: " textFill="#171ddd">
                                  <font>
                                     <Font name="Comic Sans MS Bold" size="11.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="_date" layoutX="93.0" layoutY="25.0" text="Date is epic!">
+                              <Label fx:id="_date" layoutX="93.0" layoutY="25.0" text="Date is epic!" textFill="#171ddd">
                                  <font>
                                     <Font name="Comic Sans MS Bold" size="11.0" />
                                  </font>
@@ -134,12 +134,12 @@
                         </HBox>
                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
                            <children>
-                              <Label text="Tilme: ">
+                              <Label text="Heure : " textFill="#171ddd">
                                  <font>
                                     <Font name="Comic Sans MS Bold" size="11.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="_time" layoutX="93.0" layoutY="25.0" text="Time is epic!">
+                              <Label fx:id="_time" layoutX="93.0" layoutY="25.0" text="Time is epic!" textFill="#171ddd">
                                  <font>
                                     <Font name="Comic Sans MS Bold" size="11.0" />
                                  </font>
@@ -155,14 +155,17 @@
             </VBox>
             <VBox alignment="CENTER" spacing="25.0" GridPane.columnIndex="1">
                <children>
-                  <Label text="Ajouter une réservation">
+                  <Label text="Passer Reservation" textFill="#171ddd">
                      <font>
                         <Font name="Comic Sans MS Bold" size="20.0" />
                      </font>
                   </Label>
                   <HBox alignment="CENTER_LEFT" spacing="25.0">
                      <children>
-                        <Label text="Quantité" />
+                        <Label text="Quantité" textFill="#147b9e">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font></Label>
                         <Slider fx:id="_qunatite" blockIncrement="1.0" majorTickUnit="10.0" min="1.0" minorTickCount="1" showTickLabels="true" showTickMarks="true" snapToTicks="true" HBox.hgrow="ALWAYS" />
                      </children>
                      <padding>
@@ -171,7 +174,10 @@
                   </HBox>
                   <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="318.0" spacing="25.0">
                      <children>
-                        <Label prefHeight="17.0" prefWidth="50.0" text="Email" />
+                        <Label prefHeight="17.0" prefWidth="50.0" text="Email" textFill="#147b9e">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font></Label>
                         <TextField fx:id="_email" promptText="Example@example.tn" HBox.hgrow="ALWAYS" />
                      </children>
                      <padding>
@@ -187,13 +193,18 @@
             </VBox>
          </children>
       </GridPane>
-      <Button mnemonicParsing="false" onAction="#close" style="-fx-background-color: #6777ef;" text="Close" textFill="WHITE" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+      <Button mnemonicParsing="false" onAction="#close" style="-fx-background-color: #6777ef red;" text="Close" textFill="WHITE" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
          <font>
-            <Font name="System Bold" size="12.0" />
+            <Font name="Comic Sans MS Bold" size="12.0" />
          </font>
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
+      <ImageView fitHeight="135.0" fitWidth="141.0">
+         <image>
+            <Image url="@../../../../../../../Downloads/1-removebg-preview%20(2).png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

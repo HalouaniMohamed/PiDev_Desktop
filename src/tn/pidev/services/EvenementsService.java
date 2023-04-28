@@ -78,6 +78,39 @@ System.out.println(e.getMessage());
         return null;    
         
     }
+    
+    public int getNbr_place(int id){
+    
+    String sql = "Select * From reservation Where evenements_id = ? "; 
+try (
+             PreparedStatement pstmt = cnx.prepareStatement(sql)) {
+            pstmt.setInt(1, id);
+           
+            ResultSet rs = pstmt.executeQuery();
+
+
+        List<Reservation> personnes = new ArrayList<Reservation>();
+        while (rs.next()) {
+            Reservation p = new Reservation(rs.getInt("id"),//or rst.getInt(1)
+                    rs.getInt("nombre_de_place_areserver"),
+                    rs.getString("email"),
+                    rs.getString("evenements_id"));
+            personnes.add(p);
+        }
+        int a=0;
+        for(Reservation r : personnes){
+        a+= r.getNombre_de_place_areserver();
+        
+        }
+    
+        return a;
+    } catch (SQLException e) {
+System.out.println(e.getMessage());
+        }
+return 0;
+    
+    
+    }
 
 
 //Méthode d'affichage :  

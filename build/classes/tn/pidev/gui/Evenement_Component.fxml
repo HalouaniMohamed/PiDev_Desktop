@@ -10,8 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane fx:id="BODY" maxHeight="200.0" maxWidth="975.0" minHeight="200.0" minWidth="975.0" onMouseClicked="#preview" prefHeight="200.0" prefWidth="975.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.pidev.gui.Evenement_Component_Controller">
+<AnchorPane fx:id="BODY" maxHeight="200.0" maxWidth="975.0" minHeight="200.0" minWidth="975.0" onMouseClicked="#preview" prefHeight="200.0" prefWidth="975.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.pidev.gui.Evenement_Component_Controller">
    <children>
       <HBox alignment="CENTER" layoutX="141.0" layoutY="40.0" maxHeight="50.0" maxWidth="50.0" minHeight="50.0" minWidth="50.0" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: #6777ef;" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -26,25 +25,11 @@
          <children>
             <VBox>
                <children>
-                  <Label fx:id="_nom" text="Nom Evenement">
+                  <Label fx:id="_nom" text="Nom Evenement" textFill="#101dd0">
                      <font>
                         <Font name="Comic Sans MS Bold" size="18.0" />
                      </font>
                   </Label>
-                  <HBox alignment="CENTER">
-                     <children>
-                        <Label text="Places Valable">
-                           <font>
-                              <Font name="Comic Sans MS Bold" size="11.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="_nbr_places" alignment="CENTER" prefHeight="22.0" prefWidth="52.0" text="25" HBox.hgrow="ALWAYS">
-                           <font>
-                              <Font name="Comic Sans MS Bold" size="15.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </HBox>
                </children>
             </VBox>
          </children>
@@ -65,12 +50,12 @@
                      <children>
                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                            <children>
-                              <Label text="Type: ">
+                              <Label text="Type: " textFill="#147b9e">
                                  <font>
                                     <Font name="Comic Sans MS Bold" size="11.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="_type" layoutX="74.0" layoutY="25.0" text="Type is epic !">
+                              <Label fx:id="_type" layoutX="74.0" layoutY="25.0" text="Type is epic !" textFill="#147b9e">
                                  <font>
                                     <Font name="Comic Sans MS Bold" size="11.0" />
                                  </font>
@@ -79,12 +64,26 @@
                         </HBox>
                         <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
                            <children>
-                              <Label text="Emplacement: ">
+                              <HBox alignment="CENTER">
+                                 <children>
+                                    <Label text="Places disponibles :" textFill="#147b9e">
+                                       <font>
+                                          <Font name="Comic Sans MS Bold" size="11.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="_nbr_places" alignment="CENTER" prefHeight="22.0" prefWidth="52.0" text="25" textFill="#147b9e" HBox.hgrow="ALWAYS">
+                                       <font>
+                                          <Font name="Comic Sans MS Bold" size="15.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <Label text="Emplacement: " textFill="#147b9e">
                                  <font>
                                     <Font name="Comic Sans MS Bold" size="11.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="_lieu" layoutX="140.0" layoutY="25.0" text="Emplacement is also epic!">
+                              <Label fx:id="_lieu" layoutX="140.0" layoutY="25.0" text="Emplacement is also epic!" textFill="#147b9e">
                                  <font>
                                     <Font name="Comic Sans MS Bold" size="11.0" />
                                  </font>
@@ -95,12 +94,12 @@
                            <children>
                               <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                                  <children>
-                                    <Label text="Date: ">
+                                    <Label text="Date: " textFill="#147b9e">
                                        <font>
                                           <Font name="Comic Sans MS Bold" size="11.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="_date" layoutX="93.0" layoutY="25.0" text="Date is epic!">
+                                    <Label fx:id="_date" layoutX="93.0" layoutY="25.0" text="Date is epic!" textFill="#147b9e">
                                        <font>
                                           <Font name="Comic Sans MS Bold" size="11.0" />
                                        </font>
@@ -109,12 +108,12 @@
                               </HBox>
                               <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0">
                                  <children>
-                                    <Label text="Tilme: ">
+                                    <Label text="Heure:" textFill="#147b9e">
                                        <font>
                                           <Font name="Comic Sans MS Bold" size="11.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="_time" layoutX="93.0" layoutY="25.0" text="Time is epic!">
+                                    <Label fx:id="_time" layoutX="93.0" layoutY="25.0" text="Time is epic!" textFill="#147b9e">
                                        <font>
                                           <Font name="Comic Sans MS Bold" size="11.0" />
                                        </font>
@@ -127,9 +126,9 @@
                   </HBox>
                   <HBox prefHeight="219.0" prefWidth="795.0">
                      <children>
-                        <Label fx:id="_desc" text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum." textOverrun="CLIP" wrapText="true">
+                        <Label fx:id="_desc" prefHeight="99.0" prefWidth="795.0" text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum." textOverrun="CLIP" wrapText="true">
                            <font>
-                              <Font name="Comic Sans MS" size="12.0" />
+                              <Font name="Times New Roman" size="12.0" />
                            </font>
                         </Label>
                      </children>

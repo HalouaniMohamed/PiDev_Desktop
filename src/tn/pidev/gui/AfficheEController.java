@@ -126,8 +126,8 @@ public class AfficheEController implements Initializable {
                 // Show a confirmation alert.
                 Alert alert = new Alert(AlertType.INFORMATION);
                 alert.setTitle("Succes");
-                alert.setHeaderText("L'evenement a ete modifie avec succes");
-                alert.setContentText("Les modifications ont été enregistrees.");
+                alert.setHeaderText("L'evenement a ete modifie avec succe");
+                alert.setContentText("Les modifications ont ete enregistrees.");
                 alert.showAndWait();
             }
             
@@ -162,7 +162,7 @@ public class AfficheEController implements Initializable {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("information");
             alert.setHeaderText(null);
-            alert.setContentText("Evenements supprimé!");
+            alert.setContentText("Evenements supprime!");
             alert.showAndWait();
 
             // Actualiser le TableView
@@ -177,8 +177,8 @@ public class AfficheEController implements Initializable {
         // Set the SMTP host and port for sending the email
         String host = "smtp.gmail.com";
         String port = "587";
-        String username = "arco.sc0156@gmail.com";
-        String password = "hghseksuroiqviag";
+        String username = "meriem.bouchahoua@esprit.tn";
+        String password = "223JFT442893732971";
 
         // Set the properties for the email session
         Properties properties = new Properties();
@@ -205,9 +205,8 @@ public class AfficheEController implements Initializable {
             msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse(r.getEmail()));
 
             // Set the subject and body text for the email
-            msg.setSubject("Annulation d'evenement");
-            msg.setText("Salut , l'"+r.getE().getNom_evenement()+" a été annulé pour des raisons ou autres , nous "
-                    + "sommes desolés !");
+            msg.setSubject("Annulation d'evenements");
+            msg.setText("Bonjour , nous sommes desolés de vous informer que , l'"+r.getE().getNom_evenement()+" a été annulé , merci pour votre compréhension");
             // Create an alert to notify the user that the email was sent successfully
 
             

@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="BODY" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.pidev.gui.Evenements_Client_Controller">
+<AnchorPane fx:id="BODY" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.pidev.gui.Evenements_Client_Controller">
    <children>
       <GridPane layoutX="268.0" layoutY="154.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <columnConstraints>
@@ -61,7 +61,7 @@
                   </AnchorPane>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
                      <children>
-                        <TextField alignment="CENTER" onKeyTyped="#search" prefHeight="25.0" prefWidth="422.0" promptText="Chercher Evenement ...">
+                        <TextField alignment="CENTER" onKeyTyped="#search" prefHeight="31.0" prefWidth="369.0" promptText="Chercher Evenement ...">
                            <font>
                               <Font name="Comic Sans MS" size="14.0" />
                            </font>
@@ -73,5 +73,10 @@
          </children>
       </GridPane>
       <Button fx:id="voirR" mnemonicParsing="false" onAction="#goToR" style="-fx-background-color: #6777ef;" text="Consulter vos reservations" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" />
+      <ImageView fitHeight="143.0" fitWidth="132.0">
+         <image>
+            <Image url="@../../../../../../../Downloads/1-removebg-preview%20(2).png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

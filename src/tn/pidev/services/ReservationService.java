@@ -53,7 +53,56 @@ import tn.pidev.tools.ConnexionBD;
     
     
   //Affichage d'une réservation :   
+ public Evenements getEvent(int id){
+ String req = "Select evenements_id from reservation where id = ?";
+ try{
+   PreparedStatement ps = cnx.prepareStatement(req);
+   ps.setInt(1, id);
+    	    ResultSet rs = ps.executeQuery();
+            
+            if (rs.next()) {
+ Evenements e = new EvenementsService().getOneById(rs.getInt("evenements_id"));
+                return e;
+            }
+ }catch(SQLException e){
  
+ 
+ 
+ 
+ }
+ 
+ return null;
+ 
+ 
+ }
+ public Reservation getOneById(int id){
+ String req = "Select * from reservation where id = ?";
+ try{
+   PreparedStatement ps = cnx.prepareStatement(req);
+   ps.setInt(1, id);
+    	    ResultSet rs = ps.executeQuery();
+            
+            if (rs.next()) {
+  Reservation reservation = new Reservation(
+    	            rs.getInt("id"),
+    	            rs.getInt("nombre_de_place_areserver"),
+    	            rs.getString("email"),
+    	            rs.getString("evenements_id")
+    	        );
+  return reservation;
+            }
+             
+ }catch(SQLException e){
+ 
+ 
+ 
+ 
+ }
+ 
+ return null;
+ 
+ 
+ }
   @Override
 public ObservableList<Reservation> afficher() {
     	ObservableList<Reservation> reservations =  FXCollections.observableArrayList();
