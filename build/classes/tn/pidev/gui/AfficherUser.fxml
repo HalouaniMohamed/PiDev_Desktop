@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="468.0" prefWidth="474.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.pidev.gui.AfficherUserController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="528.0" prefWidth="1603.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.pidev.gui.AfficherUserController">
    <children>
       <ListView fx:id="listView" layoutY="1.0" prefHeight="466.0" prefWidth="1600.0" />
       <AnchorPane id="AnchorPane" prefHeight="50.0" prefWidth="1000.0" style="-fx-background-color: #6777ef;">
@@ -52,5 +52,10 @@
             <Separator layoutX="1324.0" layoutY="35.0" orientation="VERTICAL" prefHeight="46.0" prefWidth="8.0" />
          </children>
       </AnchorPane>
+      <Button fx:id="ajoutr" layoutX="30.0" layoutY="479.0" mnemonicParsing="false" onAction="#goToAddR" prefHeight="35.0" prefWidth="125.0" style="-fx-background-color: #6777ef;" text="Ajouter" textFill="WHITE">
+         <font>
+            <Font name="Century Schoolbook" size="15.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

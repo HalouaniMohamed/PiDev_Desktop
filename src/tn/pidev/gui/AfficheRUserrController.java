@@ -6,18 +6,16 @@
 package tn.pidev.gui;
 
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
@@ -25,15 +23,13 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextInputDialog;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.util.Callback;
+import tn.pidev.entites.Evenements;
 import tn.pidev.entites.Reservation;
-import tn.pidev.entites.Reservation;
+import tn.pidev.services.EvenementsService;
 import tn.pidev.services.ReservationService;
 
 /**
@@ -105,10 +101,10 @@ import tn.pidev.services.ReservationService;
 
 
  	   @FXML
- 	  private void supprimer(ActionEvent event) {
+ 	  private void supprimer(ActionEvent event) throws SQLException {
  	      // R�cup�rer la liste de r�servations
  	      ObservableList<Reservation> reservations = listView.getItems();
-
+Reservation res = listView.getSelectionModel().getSelectedItem(); 
  	      // V�rifier s'il y a des r�servations dans la liste
  	      if (reservations.size() == 0) {
  	          Alert alert = new Alert(AlertType.INFORMATION);
@@ -130,14 +126,21 @@ import tn.pidev.services.ReservationService;
  	      }
 
  	      // Supprimer toutes les r�servations
- 	      for (Reservation reservation : reservations) {
+ 	 
  		     ReservationService es = new ReservationService();
-
- 	          es.supprimer(reservation.getId());
- 	      }
-
+                       EvenementsService ss =new EvenementsService();
+int nbr_place = res.getNombre_de_place_areserver();
+Evenements e = ss.getOneById(res.getE().getId());
+               System.out.println(res.getE().getId());
+ 	          es.supprimer(res.getId());
+ 	     // e.setNbr_de_places(e.getNbr_de_places()+nbr_place);
+            
+            //  ss.modifier(e);
+reservations.clear();
  	      // Rafra�chir la liste de r�servations
- 	      reservations.clear();
+               setReservation(res.getEmail());
+
+ 	    	
  	  }
  	  @FXML
  	 private void modifier(ActionEvent event) {

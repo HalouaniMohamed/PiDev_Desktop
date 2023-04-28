@@ -1,17 +1,75 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19" fx:controller="tn.pidev.gui.ConnexionReservationController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.pidev.gui.ConnexionReservationController">
    <children>
-      <TextField fx:id="txmail" layoutX="237.0" layoutY="175.0" prefHeight="25.0" prefWidth="220.0" />
-      <Label layoutX="99.0" layoutY="179.0" prefHeight="17.0" prefWidth="77.0" text="Email : " />
-      <Button layoutX="271.0" layoutY="246.0" onAction="#verifMail" mnemonicParsing="false" text="Afficher mes réservations " />
-      <Text layoutX="193.0" layoutY="104.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Entrez votre Email pour afficher vos reservations" />
+      <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="797.0">
+         <children>
+            <Text fill="#1212b9" layoutX="191.0" layoutY="194.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Entrez votre Email pour afficher vos reservations :" wrappingWidth="433.123046875">
+               <font>
+                  <Font name="Cambria" size="20.0" />
+               </font>
+            </Text>
+            <Button layoutX="317.0" layoutY="321.0" mnemonicParsing="false" onAction="#verifMail" style="-fx-background-color: #6777ef;" text="Afficher mes réservations " textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <Label layoutX="93.0" layoutY="255.0" prefHeight="17.0" prefWidth="77.0" text="Email : " textFill="#391bbf">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txmail" layoutX="289.0" layoutY="251.0" prefHeight="25.0" prefWidth="220.0" />
+            <Button fx:id="returnn" layoutX="33.0" layoutY="120.0" mnemonicParsing="false" onAction="#back" style="-fx-background-color: #6777ef;" text="Retour" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+      <AnchorPane id="AnchorPane" prefHeight="80.0" prefWidth="1600.0" style="-fx-background-color: #6777ef;">
+         <children>
+            <AnchorPane prefHeight="110.0" prefWidth="361.0" style="-fx-background-color: #4c60da;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1233.6" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Label layoutX="162.0" prefHeight="112.0" prefWidth="204.0" text="Echkili" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="162.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <font>
+                        <Font name="Comic Sans MS" size="48.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="110.0" prefWidth="0.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="361.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Pane prefHeight="110.0" prefWidth="200.0" />
+                  <HBox alignment="CENTER_RIGHT" layoutY="22.0" prefHeight="55.0" prefWidth="486.0" AnchorPane.bottomAnchor="35.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="22.0">
+                     <children>
+                        <Button mnemonicParsing="false" text="ednlnlno">
+                           <HBox.margin>
+                              <Insets right="30.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Separator orientation="VERTICAL" prefHeight="46.0" prefWidth="8.0" />
+                        <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="55.0" prefWidth="236.0" style="-fx-background-color: #6777ef;" text="Admin" textFill="WHITE">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </HBox>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

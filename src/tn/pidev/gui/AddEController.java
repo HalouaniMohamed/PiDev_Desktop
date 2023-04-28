@@ -1,21 +1,20 @@
 package tn.pidev.gui;
 
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
 import java.sql.Time;
 import java.text.DateFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.Calendar;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonBar;
@@ -43,7 +42,8 @@ public class AddEController implements Initializable {
     private TextField tfLocation;
     @FXML
     private TextField tfCapacity;
-
+@FXML 
+private Button retour;
     @FXML
     private TextField tfType;
     @FXML
@@ -66,7 +66,7 @@ public class AddEController implements Initializable {
         // TODO
     }
     @FXML
-private void addEvent(ActionEvent event) {
+private void addEvent(ActionEvent event) throws IOException {
 
     // Check that all text fields have values
     if (tfName.getText().isEmpty() || tfDescription.getText().isEmpty() || tfLocation.getText().isEmpty()
@@ -122,7 +122,7 @@ if (selectedDate.isBefore(currentDate)) {
     // Show error message and return
     Alert alert = new Alert(Alert.AlertType.ERROR);
     alert.setTitle("Error");
-    alert.setHeaderText("La date doit être supérieure ou égale à la date système !");
+    alert.setHeaderText("La date doit être supérieure ou égale à la date d'aujourd'hui !");
     ButtonType okButton = new ButtonType("OK", ButtonBar.ButtonData.OK_DONE);
     alert.getButtonTypes().setAll(okButton);
     alert.showAndWait();
@@ -164,10 +164,13 @@ if (!tfHour.getText().matches("^([0-1][0-9]|2[0-3]):[0-5][0-9]$")) {
         // Show success message and clear text fields
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Success");
-        alert.setHeaderText("Evenement ajoute avec succes");
+        alert.setHeaderText("Evenement ajoute avec succés");
         ButtonType okButton = new ButtonType("OK", ButtonBar.ButtonData.OK_DONE);
         alert.getButtonTypes().setAll(okButton);
         alert.showAndWait();
+         FXMLLoader loader = new FXMLLoader(getClass().getResource("../GUI/AfficheE.fxml"));
+        Parent root = loader.load();
+        submitButton.getScene().setRoot(root);
         tfName.setText("");
         tfDescription.setText("");
         tfLocation.setText("");
@@ -198,6 +201,12 @@ if (!tfHour.getText().matches("^([0-1][0-9]|2[0-3]):[0-5][0-9]$")) {
        
     }
 	}
-    
+    @FXML
+    private void returnE(javafx.event.ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../GUI/AfficheE.fxml"));
+        Parent root = loader.load();
+        retour.getScene().setRoot(root);
+
+    }
  
 }

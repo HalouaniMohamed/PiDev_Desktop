@@ -5,6 +5,7 @@
  */
 package tn.pidev.gui;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.regex.Matcher;
@@ -14,13 +15,16 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import javafx.util.StringConverter;
 import tn.pidev.entites.Evenements;
@@ -34,7 +38,8 @@ import tn.pidev.services.ReservationService;
  * @author ASUS
  */
 public class AddRController implements Initializable {
-
+@FXML 
+private Button annuler;
     @FXML
     private TextField tfNbr;
     @FXML
@@ -81,8 +86,16 @@ public class AddRController implements Initializable {
 	        });
 		}
 
+                @FXML
+    private void retourR(javafx.event.ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../GUI/AfficherUser.fxml"));
+        Parent root = loader.load();
+        annuler.getScene().setRoot(root);
+
+    }
+                
      @FXML
-    private void addReservation(ActionEvent reservation) {
+    private void addReservation(ActionEvent reservation) throws IOException {
 
         // Check that all text fields have values
         if (tfNbr.getText().isEmpty() || tfMail.getText().isEmpty() ) {
@@ -121,6 +134,9 @@ public class AddRController implements Initializable {
             ButtonType okButton = new ButtonType("OK", ButtonBar.ButtonData.OK_DONE);
             alert.getButtonTypes().setAll(okButton);
             alert.showAndWait();
+              FXMLLoader loader = new FXMLLoader(getClass().getResource("../GUI/AfficherUser.fxml"));
+        Parent root = loader.load();
+        annuler.getScene().setRoot(root);
             tfNbr.setText("");
             tfMail.setText("");
             

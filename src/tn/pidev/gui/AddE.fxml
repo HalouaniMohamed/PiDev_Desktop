@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.pidev.gui.AddEController">
+<AnchorPane id="AnchorPane" prefHeight="634.0" prefWidth="1600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.pidev.gui.AddEController">
     
    <children>
       <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass">
@@ -20,18 +20,9 @@
          <children>
             <AnchorPane id="AnchorPane" prefHeight="544.0" prefWidth="231.0" style="-fx-background-color: #fafdfb;">
                <children>
-                  <VBox prefHeight="603.0" prefWidth="231.0" style="-fx-background-color: #fafdfb;">
+                  <VBox prefHeight="624.0" prefWidth="827.0" style="-fx-background-color: #fafdfb;">
                      <children>
-                        <Pane prefHeight="110.0" prefWidth="234.0">
-                           <children>
-                              <ImageView fitHeight="108.0" fitWidth="225.0" layoutX="5.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../../../Desktop/9raya/echkilii.png" />
-                                 </image>
-                              </ImageView>
-                           </children>
-                        </Pane>
-                        <AnchorPane id="AnchorPane" minWidth="-Infinity" prefHeight="575.0" prefWidth="827.0" style="-fx-background-color: #fafdfb;">
+                        <AnchorPane id="AnchorPane" minWidth="-Infinity" prefHeight="634.0" prefWidth="827.0" style="-fx-background-color: #fafdfb;">
                            <children>
                               <Label layoutX="225.0" layoutY="144.0" prefHeight="29.0" prefWidth="153.0" text="Nom de l'évenement :" textFill="#1c3ca4">
                                  <font>
@@ -88,7 +79,8 @@
                                     <Font size="14.0" />
                                  </font>
                               </Label>
-                              <Button fx:id="submitButton" layoutX="331.0" layoutY="549.0" mnemonicParsing="false" onAction="#addEvent" prefHeight="26.0" prefWidth="150.0" style="-fx-background-color: #6777ef;" text="Ajouter" textFill="WHITE" />
+                              <Button fx:id="submitButton" layoutX="256.0" layoutY="578.0" mnemonicParsing="false" onAction="#addEvent" prefHeight="26.0" prefWidth="150.0" style="-fx-background-color: #6777ef;" text="Ajouter" textFill="WHITE" />
+                              <Button fx:id="retour" layoutX="488.0" layoutY="578.0" mnemonicParsing="false" onAction="#returnE" prefHeight="26.0" prefWidth="150.0" style="-fx-background-color: #6777ef;" text="Annuler" textFill="WHITE" AnchorPane.bottomAnchor="15.0" />
                            </children>
                         </AnchorPane>
                      </children>

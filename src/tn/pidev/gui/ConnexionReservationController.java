@@ -24,6 +24,7 @@ import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import tn.pidev.entites.Evenements;
 import tn.pidev.entites.Reservation;
@@ -41,6 +42,8 @@ public class ConnexionReservationController implements Initializable {
      */
 	   @FXML
 	    private TextField txmail;
+    @FXML
+    private Button returnn;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
@@ -124,7 +127,7 @@ public class ConnexionReservationController implements Initializable {
             } else {
             	   Alert alert = new Alert(Alert.AlertType.ERROR);
                    alert.setTitle("Error");
-                   alert.setHeaderText("Non Trouvee!");
+                   alert.setHeaderText("Aucune reservation passée par cet email!");
                    ButtonType okButton = new ButtonType("OK", ButtonBar.ButtonData.OK_DONE);
                    alert.getButtonTypes().setAll(okButton);
                    alert.showAndWait();
@@ -132,6 +135,16 @@ public class ConnexionReservationController implements Initializable {
         
 
         }
+
+    
+    @FXML
+    private void back(javafx.event.ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../GUI/Evenements_Client.fxml"));
+        Parent root = loader.load();
+        returnn.getScene().setRoot(root);
+
+    }
+    
     }
     
  

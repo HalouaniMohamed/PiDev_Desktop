@@ -184,7 +184,7 @@ public class Evenements {
 
     @Override
     public String toString() {
-        return "Evenements{" + "id=" + id + ", nbr_de_places=" + nbr_de_places + ", nom_evenement=" + nom_evenement + ", lieu_evenement=" + lieu_evenement + ", description_evenement=" + description_evenement + ", type=" + type + ", image=" + image + ", date_evenement=" + date_evenement + ", heure=" + heure + ", created_at=" + created_at + ", updated_at=" + updated_at + '}';
+        return  "nom_evenement=" + nom_evenement ;
     }
 
     

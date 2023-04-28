@@ -20,11 +20,12 @@ public class Main extends Application {
      
     	Main.stg = primaryStage;
         
-        FXMLLoader loader= new FXMLLoader(getClass().getResource("../gui/AfficheReservation.fxml"));
+  //  FXMLLoader loader= new FXMLLoader(getClass().getResource("../gui/afficheE.fxml"));
+   FXMLLoader loader= new FXMLLoader(getClass().getResource("../gui/Evenements_Client.fxml"));
  
         Parent root=  loader.load();
-        Scene scene= new Scene(root ,1400,700);
-        primaryStage.setTitle("Bievennue");
+        Scene scene= new Scene(root ,1000,620);
+        primaryStage.setTitle("Echkili");
         primaryStage.setScene(scene);
         primaryStage.show();
     }

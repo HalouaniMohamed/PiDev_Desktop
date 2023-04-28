@@ -1,5 +1,6 @@
 package tn.pidev.gui;
  
+import java.io.IOException;
 import java.net.URL;
 
 import java.util.List;
@@ -8,8 +9,11 @@ import java.util.ResourceBundle;
 
  
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
+import javafx.scene.Parent;
+import javafx.scene.control.Button;
 
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
@@ -27,6 +31,16 @@ import tn.pidev.entites.Evenements;
 import tn.pidev.services.EvenementsService;
 
 public class AfficherUserController implements Initializable {
+    @FXML 
+    private Button ajoutr;
+    
+    @FXML
+    private void goToAddR(javafx.event.ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../GUI/AddR.fxml"));
+        Parent root = loader.load();
+        ajoutr.getScene().setRoot(root);
+
+    }
  
     @FXML private ListView<Evenements> listView;
 
