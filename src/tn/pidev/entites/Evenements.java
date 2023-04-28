@@ -46,6 +46,12 @@ public class Evenements {
         this.image = image;
         this.heure = heure;
     }
+
+    public Evenements(int id, int nbr_de_places, String nom_evenement) {
+        this.id = id;
+        this.nbr_de_places = nbr_de_places;
+        this.nom_evenement = nom_evenement;
+    }
     
     
 
@@ -87,26 +93,7 @@ public class Evenements {
         this.date_evenement = date_evenement;
         this.heure = heure;
     }
-    
-
-    public Evenements(int i) {
-       this.id=id;}
-
-   
-
-    public Evenements(String text, String text0, String text1, int parseInt, java.sql.Date date, String text2, String text3, String text4) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-  
-
  
-
- 
-
-    
-    
-
     public int getId() {
         return id;
     }
@@ -197,7 +184,7 @@ public class Evenements {
 
     @Override
     public String toString() {
-        return "Evenements{" + "id=" + id + ", nbr_de_places=" + nbr_de_places + ", nom_evenement=" + nom_evenement + ", lieu_evenement=" + lieu_evenement + ", description_evenement=" + description_evenement + ", type=" + type + ", image=" + image + ", date_evenement=" + date_evenement + ", heure=" + heure + ", created_at=" + created_at + ", updated_at=" + updated_at + '}';
+        return  "nom_evenement=" + nom_evenement+"nbr de place = "+nbr_de_places ;
     }
 
     

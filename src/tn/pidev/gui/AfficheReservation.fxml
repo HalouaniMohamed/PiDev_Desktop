@@ -15,14 +15,15 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.pidev.gui.AfficheRController">
-   <children>
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.pidev.gui.AfficheReservationController">
+    
+  <children>
       <AnchorPane id="AnchorPane" prefHeight="544.0" prefWidth="231.0" style="-fx-background-color: #fafdfb;" />
-      <AnchorPane id="AnchorPane" layoutY="-16.0" prefHeight="798.0" prefWidth="1024.0">
+      <AnchorPane id="AnchorPane" layoutY="-16.0" prefHeight="961.0" prefWidth="1297.0">
          <children>
             <AnchorPane fx:id="id" layoutX="292.0" layoutY="8.0" prefHeight="790.0" prefWidth="708.0">
                <children>
-                  <TableView fx:id="categoriesView" layoutX="9.0" layoutY="218.0" prefHeight="603.0" prefWidth="691.0">
+                  <TableView fx:id="ReservationView" layoutX="9.0" layoutY="218.0" prefHeight="603.0" prefWidth="691.0">
                     <columns>
                       <TableColumn fx:id="tfID" prefWidth="126.93325805664062" text="Id" />
                         <TableColumn fx:id="tfName" prefWidth="132.00009155273438" text="Nom_événement" />
@@ -82,6 +83,11 @@
                   <Separator prefWidth="200.0" />
                </children>
             </VBox>
+            <Button fx:id="stat" layoutX="1095.0" layoutY="568.0" mnemonicParsing="false" onAction="#Stat" prefHeight="35.0" prefWidth="139.0" style="-fx-background-color: #6777ef;" text="Statistiques" textFill="WHITE">
+               <font>
+                  <Font name="Century Schoolbook" size="15.0" />
+               </font>
+            </Button>
          </children>
       </AnchorPane>
       <AnchorPane id="AnchorPane" prefHeight="80.0" prefWidth="1600.0" style="-fx-background-color: #6777ef;">
@@ -122,5 +128,10 @@
             </AnchorPane>
          </children>
       </AnchorPane>
+      <Button fx:id="returnE" layoutX="1072.0" layoutY="470.0" mnemonicParsing="false" onAction="#goE" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: #6777ef;" text="Retour aux evenements" textFill="WHITE">
+         <font>
+            <Font name="Century Schoolbook" size="15.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

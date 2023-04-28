@@ -13,6 +13,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import tn.pidev.tools.ConnexionBD;
 import tn.pidev.entites.Evenements;
+import tn.pidev.entites.Reservation;
 
 public class EvenementsService implements NewInterface<Evenements>{
     Connection cnx;
@@ -48,6 +49,68 @@ try {
 }
      
 }
+
+    public Evenements getOneById(int id) throws SQLException {
+String sql = "SELECT * FROM evenements WHERE id = ?";
+        try (
+             PreparedStatement pstmt = cnx.prepareStatement(sql)) {
+            pstmt.setInt(1, id);
+            ResultSet rs = pstmt.executeQuery();
+            if (rs.next()) {
+                 Evenements e;
+                e = new Evenements(rs.getInt("id"),
+                        rs.getInt("nbr_de_places"),
+                        rs.getString("nom_evenement"),
+                        rs.getString("lieu_evenement"),
+                        rs.getString("description_evenement"),
+                        rs.getString("type"),
+                        rs.getString("image"),
+                        rs.getDate("date_evenement"),
+                        rs.getTime("heure"),
+                        rs.getTimestamp("created_at").toLocalDateTime(),
+                        rs.getTimestamp("updated_at").toLocalDateTime());
+
+                return e;
+            }
+        } catch (SQLException e) {
+System.out.println(e.getMessage());
+        }
+        return null;    
+        
+    }
+    
+    public int getNbr_place(int id){
+    
+    String sql = "Select * From reservation Where evenements_id = ? "; 
+try (
+             PreparedStatement pstmt = cnx.prepareStatement(sql)) {
+            pstmt.setInt(1, id);
+           
+            ResultSet rs = pstmt.executeQuery();
+
+
+        List<Reservation> personnes = new ArrayList<Reservation>();
+        while (rs.next()) {
+            Reservation p = new Reservation(rs.getInt("id"),//or rst.getInt(1)
+                    rs.getInt("nombre_de_place_areserver"),
+                    rs.getString("email"),
+                    rs.getString("evenements_id"));
+            personnes.add(p);
+        }
+        int a=0;
+        for(Reservation r : personnes){
+        a+= r.getNombre_de_place_areserver();
+        
+        }
+    
+        return a;
+    } catch (SQLException e) {
+System.out.println(e.getMessage());
+        }
+return 0;
+    
+    
+    }
 
 
 //Méthode d'affichage :  
@@ -88,9 +151,10 @@ try {
     	String query = "DELETE FROM evenements WHERE id = ?";
         System.out.println(query);
 
-		PreparedStatement statement = cnx.prepareStatement(query);
+		PreparedStatement statement = cnx.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 		statement.setInt(1, id);
 		statement.executeUpdate();
+                ResultSet rs= statement.getGeneratedKeys();
             System.out.println("Evenement supprimé");
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
@@ -118,7 +182,38 @@ try {
     }
 }
 
+ public List<Reservation> getR(int id) throws SQLException {
+String sql = "Select * From reservation Where evenements_id = ? "; 
+try (
+             PreparedStatement pstmt = cnx.prepareStatement(sql)) {
+            pstmt.setInt(1, id);
+           
+            ResultSet rs = pstmt.executeQuery();
+
+
+        List<Reservation> personnes = new ArrayList<Reservation>();
+        while (rs.next()) {
+           
+
+      	        Reservation reservation = new Reservation(
+      	            rs.getInt("id"),
+      	            rs.getInt("nombre_de_place_areserver"),
+      	            rs.getString("email"),
+                        new EvenementsService().getOneById(rs.getInt("evenements_id"))
+      	           
+      	        );
+      	     
+      	                               
+
+            personnes.add(reservation);
+        }
     
+        return personnes;
+    } catch (SQLException e) {
+System.out.println(e.getMessage());
+        }
+return null;
+    }   
 
 
 }

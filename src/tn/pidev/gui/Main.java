@@ -2,7 +2,7 @@ package tn.pidev.gui;
 
 import java.io.IOException;
 
- import javafx.application.Application;
+import javafx.application.Application;
 import static javafx.application.Application.launch;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -20,11 +20,12 @@ public class Main extends Application {
      
     	Main.stg = primaryStage;
         
-        FXMLLoader loader= new FXMLLoader(getClass().getResource("../gui/AddE.fxml"));
-     
+   //FXMLLoader loader= new FXMLLoader(getClass().getResource("../gui/AddE.fxml"));
+ FXMLLoader loader= new FXMLLoader(getClass().getResource("../gui/Evenements_Client.fxml"));
+ 
         Parent root=  loader.load();
-        Scene scene= new Scene(root ,1400,700);
-        primaryStage.setTitle("Bievennue");
+        Scene scene= new Scene(root ,1000,620);
+        primaryStage.setTitle("Echkili");
         primaryStage.setScene(scene);
         primaryStage.show();
     }

@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="BODY" maxHeight="200.0" maxWidth="975.0" minHeight="200.0" minWidth="975.0" onMouseClicked="#preview" prefHeight="200.0" prefWidth="975.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.pidev.gui.Evenement_Component_Controller">
+   <children>
+      <HBox alignment="CENTER" layoutX="141.0" layoutY="40.0" maxHeight="50.0" maxWidth="50.0" minHeight="50.0" minWidth="50.0" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: #6777ef;" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label fx:id="_nbr" text="255" textFill="WHITE">
+               <font>
+                  <Font name="Comic Sans MS" size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" layoutX="288.0" layoutY="25.0" maxHeight="50.0" minHeight="50.0" prefHeight="50.0" prefWidth="200.0" spacing="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <VBox>
+               <children>
+                  <Label fx:id="_nom" text="Nom Evenement" textFill="#101dd0">
+                     <font>
+                        <Font name="Comic Sans MS Bold" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER_LEFT" layoutX="68.0" layoutY="86.0" maxHeight="150.0" minHeight="150.0" prefHeight="150.0" prefWidth="200.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <ImageView fx:id="_pic" fitHeight="130.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../../../Pictures/AhFIgb.jpg" />
+               </image>
+            </ImageView>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+               <children>
+                  <HBox maxHeight="45.0" minHeight="45.0" prefHeight="45.0" prefWidth="795.0">
+                     <children>
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <Label text="Type: " textFill="#147b9e">
+                                 <font>
+                                    <Font name="Comic Sans MS Bold" size="11.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="_type" layoutX="74.0" layoutY="25.0" text="Type is epic !" textFill="#147b9e">
+                                 <font>
+                                    <Font name="Comic Sans MS Bold" size="11.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+                           <children>
+                              <HBox alignment="CENTER">
+                                 <children>
+                                    <Label text="Places disponibles :" textFill="#147b9e">
+                                       <font>
+                                          <Font name="Comic Sans MS Bold" size="11.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="_nbr_places" alignment="CENTER" prefHeight="22.0" prefWidth="52.0" text="25" textFill="#147b9e" HBox.hgrow="ALWAYS">
+                                       <font>
+                                          <Font name="Comic Sans MS Bold" size="15.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <Label text="Emplacement: " textFill="#147b9e">
+                                 <font>
+                                    <Font name="Comic Sans MS Bold" size="11.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="_lieu" layoutX="140.0" layoutY="25.0" text="Emplacement is also epic!" textFill="#147b9e">
+                                 <font>
+                                    <Font name="Comic Sans MS Bold" size="11.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <VBox>
+                           <children>
+                              <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <Label text="Date: " textFill="#147b9e">
+                                       <font>
+                                          <Font name="Comic Sans MS Bold" size="11.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="_date" layoutX="93.0" layoutY="25.0" text="Date is epic!" textFill="#147b9e">
+                                       <font>
+                                          <Font name="Comic Sans MS Bold" size="11.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <Label text="Heure:" textFill="#147b9e">
+                                       <font>
+                                          <Font name="Comic Sans MS Bold" size="11.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="_time" layoutX="93.0" layoutY="25.0" text="Time is epic!" textFill="#147b9e">
+                                       <font>
+                                          <Font name="Comic Sans MS Bold" size="11.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="219.0" prefWidth="795.0">
+                     <children>
+                        <Label fx:id="_desc" prefHeight="99.0" prefWidth="795.0" text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum." textOverrun="CLIP" wrapText="true">
+                           <font>
+                              <Font name="Times New Roman" size="12.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+         <padding>
+            <Insets left="10.0" right="10.0" />
+         </padding>
+      </HBox>
+   </children>
+   <cursor>
+      <Cursor fx:constant="HAND" />
+   </cursor>
+</AnchorPane>

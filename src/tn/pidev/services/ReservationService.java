@@ -12,6 +12,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import tn.pidev.entites.Evenements;
 import tn.pidev.entites.Reservation;
 import tn.pidev.tools.ConnexionBD;
@@ -51,33 +53,79 @@ import tn.pidev.tools.ConnexionBD;
     
     
   //Affichage d'une réservation :   
-    @Override
-public List<Reservation> afficher() {
-    List<Reservation> reservations = new ArrayList<>();
-    
-    String req = "SELECT r.*, e.* FROM reservation r JOIN evenements e ON r.evenements_id = e.id";
-    try {
-        PreparedStatement ps = cnx.prepareStatement(req);
-        ResultSet rs=ps.executeQuery();
-        while(rs.next()){
+ public Evenements getEvent(int id){
+ String req = "Select evenements_id from reservation where id = ?";
+ try{
+   PreparedStatement ps = cnx.prepareStatement(req);
+   ps.setInt(1, id);
+    	    ResultSet rs = ps.executeQuery();
             
-                Evenements e;
-                e = new Evenements(rs.getInt("id"),
-                        rs.getInt("nbr_de_places"),
-                        rs.getString("nom_evenement"),
-                        rs.getString("lieu_evenement"),
-                        rs.getString("description_evenement"),
-                        rs.getString("type"),
-                        rs.getString("image"),
-                        rs.getDate("date_evenement"),
-                        rs.getTime("heure"),
-                        rs.getTimestamp("created_at").toLocalDateTime(),
-                        rs.getTimestamp("updated_at").toLocalDateTime());
+            if (rs.next()) {
+ Evenements e = new EvenementsService().getOneById(rs.getInt("evenements_id"));
+                return e;
+            }
+ }catch(SQLException e){
+ 
+ 
+ 
+ 
+ }
+ 
+ return null;
+ 
+ 
+ }
+ public Reservation getOneById(int id){
+ String req = "Select * from reservation where id = ?";
+ try{
+   PreparedStatement ps = cnx.prepareStatement(req);
+   ps.setInt(1, id);
+    	    ResultSet rs = ps.executeQuery();
+            
+            if (rs.next()) {
+  Reservation reservation = new Reservation(
+    	            rs.getInt("id"),
+    	            rs.getInt("nombre_de_place_areserver"),
+    	            rs.getString("email"),
+    	            rs.getString("evenements_id")
+    	        );
+  return reservation;
+            }
+             
+ }catch(SQLException e){
+ 
+ 
+ 
+ 
+ }
+ 
+ return null;
+ 
+ 
+ }
+  @Override
+public ObservableList<Reservation> afficher() {
+    	ObservableList<Reservation> reservations =  FXCollections.observableArrayList();
+    	String req = "SELECT r.*, e.nom_evenement AS nom FROM reservation r JOIN evenements e ON r.evenements_id = e.id";
+    	try {
+    	    PreparedStatement ps = cnx.prepareStatement(req);
+    	    ResultSet rs = ps.executeQuery();
+    	    while (rs.next()) {
+    	        Evenements e = new Evenements(
+    	            rs.getInt("id"),
+    	            rs.getInt("nombre_de_place_areserver"),
+    	            rs.getString("e.nom")
+    	       
+    	        );
 
-            Reservation reservation = new Reservation(rs.getInt("id"),
-                                                       rs.getInt("nombre_de_place_areserver"),
-                                                       rs.getString("email"),
-                                                      e);
+    	        Reservation reservation = new Reservation(
+    	            rs.getInt("id"),
+    	            rs.getInt("nombre_de_place_areserver"),
+    	            rs.getString("email"),
+    	            rs.getString("nom")
+    	        );
+    	     
+    	        reservation.setE(e);                            
 
             reservations.add(reservation);
         }
@@ -113,5 +161,45 @@ public List<Reservation> afficher() {
             System.out.println(ex.getMessage());
         }
     }
+
+    
+     public ObservableList<Reservation> afficherParEmail(String email) {
+    	ObservableList<Reservation> reservations =  FXCollections.observableArrayList();
+        System.out.println(email);
+        String req = "SELECT r.*, e.nom_evenement AS nom FROM reservation r JOIN evenements e ON r.evenements_id = e.id WHERE r.email = ?";
+        try {
+        	PreparedStatement ps = cnx.prepareStatement(req);
+        	ps.setString(1, email); // Set the value of the parameter
+        	ResultSet rs = ps.executeQuery();
+      	    while (rs.next()) {
+      	        Evenements e = new Evenements(
+      	            rs.getInt("id"),
+      	            rs.getInt("nombre_de_place_areserver"),
+      	            rs.getString("nom")
+      	       
+      	        );
+
+      	        Reservation reservation = new Reservation(
+      	            rs.getInt("id"),
+      	            rs.getInt("nombre_de_place_areserver"),
+      	            rs.getString("email"),
+      	            e
+      	        );
+      	     
+      	        reservation.setE(e);                            
+
+              reservations.add(reservation);
+      	    }
+            // V�rifier s'il y a des r�servations dans la liste
+            if (reservations.size() == 0) {
+                System.out.println("Aucune reservation trouvee pour l'email " + email);
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return reservations;
+    }
+
+
 
 }

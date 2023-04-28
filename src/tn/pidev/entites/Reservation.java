@@ -13,7 +13,23 @@ public class Reservation {
     private int id,nombre_de_place_areserver;
     private String email;
     private Evenements e ;
-    
+        private String enom ;
+
+    public Reservation(int id, int nombre_de_place_areserver, String email, String enom) {
+        this.id = id;
+        this.nombre_de_place_areserver = nombre_de_place_areserver;
+        this.email = email;
+        this.enom = enom;
+    }
+
+    public String getEnom() {
+        return enom;
+    }
+
+    public void setEnom(String enom) {
+        this.enom = enom;
+    }
+
     public Reservation() {
     }
 //Constructeur paramétré 

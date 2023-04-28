@@ -16,7 +16,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.pidev.gui.AddRController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.pidev.gui.AddRController">
    <children>
       <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0">
     
@@ -95,7 +95,7 @@
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <Button layoutX="181.0" layoutY="275.0" mnemonicParsing="false" onAction="#addReservation" prefHeight="26.0" prefWidth="150.0" style="-fx-background-color: #6777ef;" text="Ajouter" textFill="WHITE" />
+                        <Button layoutX="39.0" layoutY="275.0" mnemonicParsing="false" onAction="#addReservation" prefHeight="26.0" prefWidth="150.0" style="-fx-background-color: #6777ef;" text="Ajouter" textFill="WHITE" />
                         <Label layoutX="12.0" layoutY="177.0" text="Nombre de places :">
                            <font>
                               <Font size="14.0" />
@@ -109,6 +109,7 @@
                            </font>
                         </Label>
                         <TextField fx:id="tfMail" layoutX="150.0" layoutY="93.0" prefHeight="26.0" prefWidth="236.0" />
+                        <Button fx:id="annuler" layoutX="282.0" layoutY="275.0" mnemonicParsing="false" onAction="#retourR" prefHeight="26.0" prefWidth="150.0" style="-fx-background-color: #6777ef;" text="Annuler" textFill="WHITE" />
                      </children>
                   </AnchorPane>
                </children>
