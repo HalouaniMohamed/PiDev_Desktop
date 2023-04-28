@@ -20,16 +20,31 @@ public class rendez_vous {
     private Date date_rv ;
     private Medecin medecin;
     private Cabinet cabinet ;
-    private int idMedecin;
+    private int idMedecin,idCabinet;
 
-    public rendez_vous(String nom, String prenom, String cause, String descriprion, Date date_rv, int idMedecin) {
+    public int getIdCabinet() {
+        return idCabinet;
+    }
+
+    public void setIdCabinet(int idCabinet) {
+        this.idCabinet = idCabinet;
+    }
+
+    public rendez_vous( String nom, String prenom, String cause, String description, Date date_rv, int idCabinet) {
+        
         this.nom = nom;
         this.prenom = prenom;
         this.cause = cause;
         this.description = description;
         this.date_rv = date_rv;
-        this.idMedecin = idMedecin;
+        this.idCabinet = idCabinet;
     }
+    
+    
+    
+    
+
+
 
     public Cabinet getCabinet() {
         return cabinet;
@@ -91,6 +106,7 @@ public class rendez_vous {
         this.cause = cause;
         this.description = description;
         this.date_rv = date_rv;
+
     }
 
     public rendez_vous() {

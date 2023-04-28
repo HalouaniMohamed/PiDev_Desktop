@@ -3,15 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Mongi/Documents/NetBeansProjects/pidev3A40/src/tn/eshkili/services/RendezVous.java</file>
             <file>file:/C:/Users/Mongi/Documents/NetBeansProjects/pidev3A40/src/tn/eshkili/entities/Cabinet.java</file>
             <file>file:/C:/Users/Mongi/Documents/NetBeansProjects/pidev3A40/src/tn/eshkili/gui/AfficheRVController.java</file>
-            <file>file:/C:/Users/Mongi/Documents/NetBeansProjects/pidev3A40/src/tn/eshkili/entities/Medecin.java</file>
+            <file>file:/C:/Users/Mongi/Documents/NetBeansProjects/pidev3A40/src/tn/eshkili/gui/style.css</file>
             <file>file:/C:/Users/Mongi/Documents/NetBeansProjects/pidev3A40/src/tn/eshkili/entities/rendez_vous.java</file>
-            <file>file:/C:/Users/Mongi/Documents/NetBeansProjects/pidev3A40/src/tn/eshkili/services/Cabinet.java</file>
             <file>file:/C:/Users/Mongi/Documents/NetBeansProjects/pidev3A40/src/tn/eshkili/gui/ajouteRV.fxml</file>
+            <file>file:/C:/Users/Mongi/Documents/NetBeansProjects/pidev3A40/src/tn/eshkili/gui/modifierRV.fxml</file>
             <file>file:/C:/Users/Mongi/Documents/NetBeansProjects/pidev3A40/src/tn/eshkili/gui/afficheRV.fxml</file>
             <file>file:/C:/Users/Mongi/Documents/NetBeansProjects/pidev3A40/src/tn/eshkili/gui/AjouteRVController.java</file>
+            <file>file:/C:/Users/Mongi/Documents/NetBeansProjects/pidev3A40/src/tn/eshkili/gui/ModifierRVController.java</file>
             <file>file:/C:/Users/Mongi/Documents/NetBeansProjects/pidev3A40/src/tn/eshkili/gui/FirstWindow.java</file>
         </group>
     </open-files>

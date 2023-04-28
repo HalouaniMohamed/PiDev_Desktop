@@ -8,39 +8,90 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="tfimage" prefHeight="684.0" prefWidth="651.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.eshkili.gui.AjouteRVController">
+<AnchorPane id="AnchorPane" fx:id="tfimage" prefHeight="684.0" prefWidth="599.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.eshkili.gui.AjouteRVController">
    <children>
-      <Label layoutX="104.0" layoutY="178.0" text="Nom :" />
-      <Label layoutX="94.0" layoutY="232.0" text="Prenom :" />
-      <Label layoutX="94.0" layoutY="300.0" text="Cause :" />
-      <Label layoutX="85.0" layoutY="392.0" text="Description : " />
-      <TextField fx:id="tfNom" layoutX="189.0" layoutY="174.0" prefHeight="25.0" prefWidth="234.0" />
-      <TextField fx:id="tfPrenom" layoutX="192.0" layoutY="228.0" prefHeight="25.0" prefWidth="234.0" />
-      <TextField fx:id="tfCause" layoutX="189.0" layoutY="283.0" prefHeight="25.0" prefWidth="234.0" />
-      <TextField fx:id="tfDescription" layoutX="192.0" layoutY="357.0" prefHeight="87.0" prefWidth="226.0" />
-      <Button fx:id="tfValider" layoutX="240.0" layoutY="634.0" mnemonicParsing="false" onAction="#SaveRV" prefHeight="25.0" prefWidth="130.0" text="Valider" />
-      <DatePicker fx:id="tfDate" layoutX="204.0" layoutY="481.0" prefHeight="25.0" prefWidth="204.0" />
-      <Label layoutX="118.0" layoutY="485.0" text="Date :" />
-      <ComboBox fx:id="cbMedecin" layoutX="207.0" layoutY="535.0" prefHeight="25.0" prefWidth="197.0" />
-      <ComboBox fx:id="cbCabinet" layoutX="207.0" layoutY="585.0" prefHeight="25.0" prefWidth="197.0" />
+      <Label layoutX="88.0" layoutY="173.0" text="Nom :">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font></Label>
+      <Label layoutX="85.0" layoutY="227.0" text="Prenom :">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font></Label>
+      <Label layoutX="89.0" layoutY="282.0" text="Cause :">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font></Label>
+      <Label layoutX="66.0" layoutY="387.0" text="Description : ">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font></Label>
+      <TextField fx:id="tfNom" alignment="CENTER" layoutX="189.0" layoutY="174.0" prefHeight="25.0" prefWidth="234.0" promptText="Votre nom" style="-fx-background-radius: 25;" styleClass="shadow" stylesheets="@style.css" />
+      <TextField fx:id="tfPrenom" alignment="CENTER" layoutX="192.0" layoutY="228.0" prefHeight="25.0" prefWidth="234.0" promptText="Votre Prénom" style="-fx-background-radius: 25;" styleClass="shadow" stylesheets="@style.css" />
+      <TextField fx:id="tfCause" alignment="CENTER" layoutX="189.0" layoutY="283.0" prefHeight="25.0" prefWidth="234.0" promptText="La Cause du maaladie" style="-fx-background-radius: 25;" styleClass="shadow" stylesheets="@style.css" />
+      <TextField fx:id="tfDescription" alignment="CENTER" layoutX="192.0" layoutY="357.0" prefHeight="87.0" prefWidth="226.0" promptText="Une Description" style="-fx-background-radius: 25;" styleClass="shadow" stylesheets="@style.css" />
+      <Button fx:id="tfValider" layoutX="239.0" layoutY="619.0" mnemonicParsing="false" onAction="#SaveRV" prefHeight="37.0" prefWidth="119.0" style="-fx-background-color: #84dbf0;" styleClass="shadow" stylesheets="@style.css" text="Valider">
+         <font>
+            <Font name="System Italic" size="24.0" />
+         </font></Button>
+      <DatePicker fx:id="tfDate" layoutX="204.0" layoutY="481.0" prefHeight="25.0" prefWidth="204.0" styleClass="shadow" stylesheets="@style.css" />
+      <Label layoutX="107.0" layoutY="480.0" text="Date :">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font></Label>
+      <ComboBox fx:id="cbMedecin" layoutX="207.0" layoutY="535.0" prefHeight="25.0" prefWidth="197.0" style="-fx-background-radius: 25;" styleClass="shadow" stylesheets="@style.css" />
+      <ComboBox fx:id="cbCabinet" layoutX="207.0" layoutY="585.0" prefHeight="25.0" prefWidth="197.0" style="-fx-background-radius: 25;" styleClass="shadow" stylesheets="@style.css" />
 
-      <Label layoutX="115.0" layoutY="539.0" text="Medecin :" />
-      <Label layoutX="113.0" layoutY="589.0" text="Cabinet" />
-      <Label layoutX="47.0" layoutY="71.0" prefHeight="68.0" prefWidth="371.0" text="CREATION D'UN RENDEZ-VOUS" textAlignment="CENTER">
+      <Label layoutX="82.0" layoutY="535.0" text="Medecin :">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font></Label>
+      <Label layoutX="113.0" layoutY="589.0" text="Cabinet">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font></Label>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="102.0" layoutY="78.0" prefHeight="68.0" prefWidth="380.0" style="-fx-background-color: #D3D3D3;" text="CREATION D'UN RENDEZ-VOUS" textAlignment="CENTER">
          <font>
             <Font name="Gill Sans Ultra Bold" size="20.0" />
          </font>
       </Label>
-      <Label layoutX="518.0" layoutY="66.0" prefHeight="17.0" prefWidth="96.0" style="-fx-background-color: #84dbf0;" text="ESHKILI">
+      <Label alignment="CENTER" prefHeight="78.0" prefWidth="651.0" style="-fx-background-color: #84dbf0;" text="ESHKILI">
          <font>
-            <Font size="27.0" />
+            <Font name="Trebuchet MS" size="53.0" />
          </font>
       </Label>
-      <ImageView fx:id="tfimage" depthTest="ENABLE" disable="true" fitHeight="123.0" fitWidth="173.0" layoutX="479.0" layoutY="-26.0" pickOnBounds="true" smooth="false" AnchorPane.rightAnchor="-1.0">
+      <Label layoutX="102.0" layoutY="237.0">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font>
+      </Label>
+      <Circle fill="#84dbf0" layoutX="25.0" layoutY="55.0" radius="69.0" strokeType="INSIDE" styleClass="#84dbf0">
+         <stroke>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.5176470875740051" green="0.8588235378265381" blue="0.9411764740943909" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </stroke>
+      </Circle>
+      <ImageView fitHeight="174.0" fitWidth="180.0" layoutX="475.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../../../Desktop/eshkili.png" />
+            <Image url="@image/eshkili.png" />
          </image>
       </ImageView>
    </children>

@@ -23,15 +23,15 @@ import javafx.stage.Stage;
  * @author Mongi
  */
 public class FirstWindow extends Application {
-    
+
     @Override
     public void start(Stage primaryStage) {
-      
+
         try {
             Parent root = FXMLLoader.load(getClass().getResource("ajouteRV.fxml"));
-            
+
             Scene scene = new Scene(root);
-            
+
             primaryStage.setTitle("pris d'un RendezVous !");
             primaryStage.setScene(scene);
             primaryStage.show();
@@ -46,5 +46,5 @@ public class FirstWindow extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-    
+
 }
