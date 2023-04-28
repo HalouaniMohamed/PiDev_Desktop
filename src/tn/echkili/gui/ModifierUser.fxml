@@ -22,22 +22,22 @@
                   <Font size="15.0" />
                </font>
             </Button>
-            <TextField fx:id="numeroM" layoutX="90.0" layoutY="226.0"  prefHeight="28.0" prefWidth="220.0" promptText="Numero ..." >
+            <TextField fx:id="numeroM" layoutX="90.0" layoutY="226.0" prefHeight="28.0" prefWidth="220.0" promptText="Numero ...">
                <font>
                   <Font size="15.0" />
                </font>
             </TextField>
-            <TextField fx:id="adresseM" layoutX="90.0" layoutY="189.0"  prefHeight="28.0" prefWidth="220.0" promptText="Adresse ..." >
+            <TextField fx:id="adresseM" layoutX="90.0" layoutY="189.0" prefHeight="28.0" prefWidth="220.0" promptText="Adresse ...">
                <font>
                   <Font size="15.0" />
                </font>
             </TextField>
-            <TextField fx:id="email_signupM" layoutX="90.0" layoutY="263.0"  prefHeight="28.0" prefWidth="220.0" promptText="Email ..." >
+            <TextField fx:id="email_signupM" layoutX="90.0" layoutY="263.0" prefHeight="28.0" prefWidth="220.0" promptText="Email ...">
                <font>
                   <Font size="15.0" />
                </font>
             </TextField>
-            <TextField fx:id="usernameM" layoutX="90.0" layoutY="153.0"  prefHeight="28.0" prefWidth="220.0" promptText="Username ..." >
+            <TextField fx:id="usernameM" layoutX="90.0" layoutY="153.0" prefHeight="28.0" prefWidth="220.0" promptText="Username ...">
                <font>
                   <Font size="15.0" />
                </font>

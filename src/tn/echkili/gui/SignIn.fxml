@@ -1,26 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.echkili.gui.SignInController">
    <children>
-      <AnchorPane fx:id="login_form" prefHeight="500.0" prefWidth="394.0">
+      <AnchorPane fx:id="login_form" prefHeight="500.0" prefWidth="530.0">
          <children>
             <AnchorPane prefHeight="500.0" prefWidth="400.0" styleClass="login-bg">
                <children>
-                  <ImageView fitHeight="187.0" fitWidth="150.0" layoutX="132.0" layoutY="175.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../img/img.png" />
-                     </image>
-                  </ImageView>
+                  
                </children>
             </AnchorPane>
             <AnchorPane layoutX="401.0" prefHeight="500.0" prefWidth="400.0">
@@ -54,7 +50,7 @@
                         <Font name="Microsoft Sans Serif" size="15.0" />
                      </font>
                   </Hyperlink>
-                  <Hyperlink fx:id="mdp_oub" layoutX="145.0" layoutY="427.0" styleClass="hypertext-design" text="Mot de passe oublié ?">
+                  <Hyperlink fx:id="mdp_oub" layoutX="145.0" layoutY="427.0" onAction="#sendPaswword_btn" styleClass="hypertext-design" text="Mot de passe oublié ?">
                      <font>
                         <Font name="Microsoft Sans Serif" size="15.0" />
                      </font>
@@ -63,6 +59,8 @@
             </AnchorPane>
          </children>
       </AnchorPane>
+   </children>
+   <children>
       <AnchorPane fx:id="signup_form" layoutX="10.0" layoutY="10.0" prefHeight="500.0" prefWidth="229.0" visible="false">
          <children>
             <AnchorPane layoutX="390.0" layoutY="-10.0" prefHeight="500.0" prefWidth="400.0" styleClass="login-bg">
@@ -80,12 +78,12 @@
             </AnchorPane>
             <AnchorPane layoutX="-10.0" prefHeight="500.0" prefWidth="400.0">
                <children>
-                  <Label layoutX="100.0" layoutY="100.0" prefHeight="54.0" prefWidth="118.0" text="Inscription" textFill="#662d60">
+                  <Label layoutX="100.0" layoutY="32.0" prefHeight="42.0" prefWidth="150.0" text="Inscription" textFill="#662d60">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <Button fx:id="signup_btn" layoutX="159.0" layoutY="428.0" mnemonicParsing="false" onAction="#signUp" prefHeight="24.0" prefWidth="83.0" styleClass="button-design" text="m'inscrire" textFill="WHITE">
+                  <Button fx:id="signup_btn" layoutX="136.0" layoutY="428.0" mnemonicParsing="false" onAction="#signUp" prefHeight="31.0" prefWidth="106.0" styleClass="button-design" text="m'inscrire" textFill="WHITE">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -95,32 +93,56 @@
                         <Font name="Microsoft Sans Serif" size="15.0" />
                      </font>
                   </Hyperlink>
-                  <TextField fx:id="username" layoutX="90.0" layoutY="204.0" prefHeight="31.0" prefWidth="232.0" promptText="Username " styleClass="textfield-design">
+                
+      <TextField fx:id="nom" layoutX="25.0" layoutY="120.0" prefHeight="31.0" prefWidth="130.0" promptText="Nom" styleClass="textfield-design">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </TextField>
+      
+      <TextField fx:id="prenom" layoutX="180.0" layoutY="120.0" prefHeight="31.0" prefWidth="130.0" promptText="Prenom" styleClass="textfield-design">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </TextField>
+      
+                  <TextField fx:id="username" layoutX="25.0" layoutY="180.0" prefHeight="31.0" prefWidth="130.0" promptText="Username " styleClass="textfield-design">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </TextField>
-                  <TextField fx:id="adresse" layoutX="90.0" layoutY="241.0" prefHeight="28.0" prefWidth="220.0" promptText="Adresse ..." styleClass="textfield-design">
+                  
+                  <TextField fx:id="adresse" layoutX="180.0" layoutY="180.0" prefHeight="31.0" prefWidth="130.0" promptText="Adresse ..." styleClass="textfield-design">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </TextField>
-                  <TextField fx:id="email_signup" layoutX="90.0" layoutY="315.0" prefHeight="28.0" prefWidth="220.0" promptText="Email ..." styleClass="textfield-design">
+                  
+                  <TextField fx:id="email_signup" layoutX="25.0" layoutY="220.0" prefHeight="31.0" prefWidth="130.0" promptText="Email ..." styleClass="textfield-design">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </TextField>
-                  <TextField fx:id="numero" layoutX="90.0" layoutY="278.0" prefHeight="28.0" prefWidth="220.0" promptText="Numero ..." styleClass="textfield-design">
+      
+      <ComboBox fx:id="roles" layoutX="180.0" layoutY="220.0" prefHeight="31.0" prefWidth="130.0" promptText="Choisir un role" styleClass="textfield-design">
+      </ComboBox>
+                  <RadioButton fx:id="Gender1" layoutX="25.0" layoutY="280.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="73.0" text="Homme" />
+                  <RadioButton fx:id="gender2" layoutX="125.0" layoutY="280.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="59.0" text="Femme" />
+      
+      
+      
+      
+                  <TextField fx:id="numero" layoutX="180.0" layoutY="280.0" prefHeight="31.0" prefWidth="130.0" promptText="Numero ..." styleClass="textfield-design">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </TextField>
-                  <PasswordField fx:id="password_signup" layoutX="90.0" layoutY="351.0" prefHeight="28.0" prefWidth="220.0" promptText="Password ..." styleClass="textfield-design">
+                    <PasswordField fx:id="password_signup" layoutX="25.0" layoutY="340.0" prefHeight="30.0" prefWidth="280.0" promptText="Password ..." styleClass="textfield-design">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </PasswordField>
-                  <PasswordField fx:id="confirm_password" layoutX="90.0" layoutY="388.0" prefHeight="28.0" prefWidth="220.0" promptText="Confirm password ..." styleClass="textfield-design">
+                  <PasswordField fx:id="confirm_password" layoutX="25.0" layoutY="380.0" prefHeight="30.0" prefWidth="280.0" promptText="Confirm password ..." styleClass="textfield-design">
                      <font>
                         <Font size="15.0" />
                      </font>
