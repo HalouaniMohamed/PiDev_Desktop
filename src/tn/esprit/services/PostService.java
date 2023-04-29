@@ -78,9 +78,13 @@ public List<Post> afficher() {
         while (rs.next()) {
             Post p = new Post(
                     rs.getInt("id_user"),
+                    rs.getString("nom_utilisateur"),
                     rs.getString("description"),
-                    rs.getString("publication"),
-                    rs.getString("nom_utilisateur")
+                    rs.getString("publication")
+                    
+                  //  rs.getInt("likes"),
+                   // rs.getInt("dislike")
+                     
                     
                    
                     
@@ -228,6 +232,17 @@ public void supprimer(Post p) {
     }
        
     }
+         public void incrementLike(Post post) {
+        try {
+            PreparedStatement preparedStatement = cnx.prepareStatement("UPDATE post SET Like = islike + 1 WHERE id_annonce = ?");
+            preparedStatement.setInt(1, post.getId()); // remplacer "id" par l'attribut qui représente l'ID de l'annonce
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+   
     
  
 

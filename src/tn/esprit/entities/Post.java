@@ -22,7 +22,7 @@ public class Post {
     public Post() {
         commentaires = new ArrayList<>();
     }
-      public Post(int id_user, String description, String publication, String nom_utilisateur) {
+      public Post(int id_user, String description, String publication, String nom_utilisateur ) {
         this.id_user = id_user;
         this.description = description;
         this.publication = publication;
@@ -100,6 +100,33 @@ public class Post {
         this.dislike = dislike;
     }
 
+    public Post(int id_user, String description, String publication, String nom_utilisateur, int likes, int dislike) {
+        this.id_user = id_user;
+        this.description = description;
+        this.publication = publication;
+        this.nom_utilisateur = nom_utilisateur;
+        this.likes = likes;
+        this.dislike = dislike;
+    }
+
+    public Post( int id_user, String publication, String nom_utilisateur, List<Commentaire> commentaires, int likes, int dislike) {
+        
+        this.id_user = id_user;
+        this.publication = publication;
+        this.nom_utilisateur = nom_utilisateur;
+        this.commentaires = commentaires;
+        this.likes = likes;
+        this.dislike = dislike;
+    }
+
+    public Post(int id_user, String publication, String nom_utilisateur, int likes, int dislike) {
+        this.id_user = id_user;
+        this.publication = publication;
+        this.nom_utilisateur = nom_utilisateur;
+        this.likes = likes;
+        this.dislike = dislike;
+    }
+
    
     
     public Post(int id, int id_user, String description, String publication, String nom_utilisateur, int likes ) {
@@ -115,7 +142,7 @@ public class Post {
     
     @Override
     public String toString() {
-        return "Post " + id +  ": "  + nom_utilisateur  + "\nPubliée par: " + description +  "\nCommentaire :" + commentaires ;
+        return "Post " + id +  ": "  + description  + "\nPubliée par: " + publication + "\nCommentaire :" + commentaires ;
     }
     
 }

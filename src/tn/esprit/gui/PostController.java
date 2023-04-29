@@ -51,7 +51,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.stage.Popup;
 import javafx.stage.PopupWindow;
 import javafx.util.Duration;
-
+import javafx.event.EventHandler;
 public class PostController implements Initializable {
     
     @FXML
@@ -79,6 +79,7 @@ public class PostController implements Initializable {
     private Button id_like;
        @FXML
     private Button id_dislike;
+      
        
       
 
@@ -92,7 +93,16 @@ public class PostController implements Initializable {
 
     @Override
 public void initialize(URL url, ResourceBundle rb) {
-    
+    btn_sort.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+           
+            listViewQuestion.getItems().sort(Comparator.comparing(Post::getDescription));
+              listViewQuestion.getSelectionModel().clearSelection();
+   
+           }
+        });
+    //  listViewQuestion.refresh();
     
     // Afficher la liste des questions dans la ListView
     List<Post> questions = postService.afficher();
@@ -296,6 +306,7 @@ private void likepost(ActionEvent event) {
             PostService ps = new PostService();
             System.out.println(selectedLN.getId());
             ps.setlike(selectedLN);
+            
 
           // Notification LIKE 
            String title="Notification de poste";
@@ -342,10 +353,12 @@ private void dislikepost(ActionEvent event) {
     
 }
 
-
-
-
+ 
             
+
+
+
+ 
 
 }
                     

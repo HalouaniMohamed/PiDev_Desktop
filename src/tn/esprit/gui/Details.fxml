@@ -36,14 +36,15 @@
                                  </image>
                               </ImageView>
                               <ListView fx:id="listViewQuestions" layoutX="14.0" layoutY="263.0" prefHeight="244.0" prefWidth="736.0" />
-                              <Label fx:id="textlabel" layoutX="325.0" layoutY="99.0" text="Post ajouté!" textFill="#0e0e90">
-                                 <font>
-                                    <Font name="System Bold Italic" size="12.0" />
-                                 </font></Label>
                               <Label fx:id="lb" layoutX="304.0" layoutY="227.0" text="La liste des posts:" textFill="#0e0e90">
                                  <font>
                                     <Font name="Arial Bold Italic" size="17.0" />
                                  </font></Label>
+                              <Label fx:id="textlabel" layoutX="298.0" layoutY="104.0" text="Post ajouté!" textFill="#0e0e90">
+                                 <font>
+                                    <Font name="System Bold Italic" size="12.0" />
+                                 </font>
+                              </Label>
                               
                            </children>
                         </AnchorPane>
