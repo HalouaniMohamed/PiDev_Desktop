@@ -13,7 +13,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import entities.Mood;
-import tools.MaConnexion;
+import tools.MyConnection;
 
 
 /**
@@ -22,7 +22,7 @@ import tools.MaConnexion;
  */
 public class Mood1 implements NewMoodInterface1<Mood>{
      Statement ste;
-    Connection conn = MaConnexion.getInstance().getCnx();
+    Connection conn = MyConnection.getInstance().getCnx();
     String sql="";
 
 

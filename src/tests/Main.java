@@ -9,7 +9,7 @@ package tests;
 import entities.JournalMood;
 import entities.Mood;
 import services.Journal;
-import tools.MaConnexion;
+import tools.MyConnection;
 import services.Mood1;
 
 

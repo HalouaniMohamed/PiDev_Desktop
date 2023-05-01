@@ -13,14 +13,14 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import entities.JournalMood;
-import tools.MaConnexion;
+import tools.MyConnection;
 /**
  *
  * @author LENOVO
  */
 public class Journal implements InterfaceJournal<JournalMood> {
       Statement ste;
-    Connection conn = MaConnexion.getInstance().getCnx();
+    Connection conn = MyConnection.getInstance().getCnx();
     String sql="";
     
     /**
