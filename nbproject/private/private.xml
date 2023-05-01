@@ -3,7 +3,28 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/asus/source/repos/PFE_EXP/Desktop/Projet%20Maryem/PidevJava/src/tn/esprit/gui/PostController.java</file>
+            <file>file:/C:/Users/asus/source/repos/PFE_EXP/Desktop/PiDev_Java/src/gui/CommentaireController.java</file>
+            <file>file:/C:/Users/asus/source/repos/PFE_EXP/Desktop/PiDev_Java/src/gui/AdminPost.fxml</file>
+            <file>file:/C:/Users/asus/source/repos/PFE_EXP/Desktop/PiDev_Java/src/entities/Post.java</file>
+            <file>file:/C:/Users/asus/source/repos/PFE_EXP/Desktop/PiDev_Java/src/gui/PostController.java</file>
+            <file>file:/C:/Users/asus/source/repos/PFE_EXP/Desktop/PiDev_Java/src/gui/AjoutController.java</file>
+            <file>file:/C:/Users/asus/source/repos/PFE_EXP/Desktop/PiDev_Java/src/gui/DetailsController.java</file>
+            <file>file:/C:/Users/asus/source/repos/PFE_EXP/Desktop/PiDev_Java/src/tools/MyConnection.java</file>
+            <file>file:/C:/Users/asus/source/repos/PFE_EXP/Desktop/PiDev_Java/src/entities/Commentaire.java</file>
+            <file>file:/C:/Users/asus/source/repos/PFE_EXP/Desktop/PiDev_Java/src/gui/Post.fxml</file>
+            <file>file:/C:/Users/asus/source/repos/PFE_EXP/Desktop/PiDev_Java/src/gui/SecondWindow.java</file>
+            <file>file:/C:/Users/asus/source/repos/PFE_EXP/Desktop/PiDev_Java/src/gui/Commentaire.fxml</file>
+            <file>file:/C:/Users/asus/source/repos/PFE_EXP/Desktop/PiDev_Java/src/services/PostService.java</file>
+            <file>file:/C:/Users/asus/source/repos/PFE_EXP/Desktop/PiDev_Java/src/gui/AdminCommentaire.fxml</file>
+            <file>file:/C:/Users/asus/source/repos/PFE_EXP/Desktop/PiDev_Java/src/gui/AdminCommentaireController.java</file>
+            <file>file:/C:/Users/asus/source/repos/PFE_EXP/Desktop/PiDev_Java/src/gui/Details.fxml</file>
+            <file>file:/C:/Users/asus/source/repos/PFE_EXP/Desktop/PiDev_Java/src/services/CommentaireService.java</file>
+            <file>file:/C:/Users/asus/source/repos/PFE_EXP/Desktop/PiDev_Java/src/services/NewInterface.java</file>
+            <file>file:/C:/Users/asus/source/repos/PFE_EXP/Desktop/PiDev_Java/src/tests/main.java</file>
+            <file>file:/C:/Users/asus/source/repos/PFE_EXP/Desktop/PiDev_Java/src/gui/FourthWindow.java</file>
+            <file>file:/C:/Users/asus/source/repos/PFE_EXP/Desktop/PiDev_Java/src/gui/firstWindow.java</file>
+            <file>file:/C:/Users/asus/source/repos/PFE_EXP/Desktop/PiDev_Java/src/gui/AdminPostController.java</file>
+            <file>file:/C:/Users/asus/source/repos/PFE_EXP/Desktop/PiDev_Java/src/gui/ThirdWindow.java</file>
         </group>
     </open-files>
 </project-private>
