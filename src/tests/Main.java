@@ -3,32 +3,38 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package tests;
+
+import entities.JournalMood;
+import entities.Mood;
+import services.Journal;
+import tools.MaConnexion;
+import services.Mood1;
+
 
 /**
  *
- * @author ALPHA
+ * @author LENOVO
  */
-public class Main {
-
-    /**
-     * @param args the command line arguments
-     */
+public class main {
     public static void main(String[] args) {
-//        CategoryTests ct = new CategoryTests();
-//        ct.addCategory();
-//        ct.getAllCategories();
-//        ct.getById();
-//        ct.deleteById();
-
-//        ProductTests pt = new ProductTests();
-//        pt.addProduct();
-//        pt.getallProducts();
-//        pt.getProductById();
-//        pt.deleteById();
-//        CartTests cartTests = new CartTests();
-//        cartTests.getCart();
-//        cartTests.addToCart();
+        //MaConnexion mc = new MaConnexion;
+       // Mood1 m1 = new Mood1();
+        Journal j1 = new Journal();
+        
+        
+        //Mood m = new Mood (12 ,"happy", "happy" , 5 );
+         //m1.ajouterMood(m);
+         //System.out.println(m1.afficherMood());
+         //m1.supprimerMood(36);
+         //m1.modifierMood(m);
+        JournalMood j = new JournalMood (22,40,17 );
+        //j1.ajouterJournal(j);
+        //System.out.println(j1.afficherJournal());
+        //j1.supprimerJournal(23);
+        j1.modifierJournal(j);
+         
+        
     }
-
 }
