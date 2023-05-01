@@ -24,7 +24,7 @@ public class Main extends Application {
         try {
 
             System.out.println("sent");
-            Parent root = FXMLLoader.load(getClass().getResource("UserCart.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("AdminStatistics.fxml"));
 
             Scene scene = new Scene(root, 1600, 900);
 

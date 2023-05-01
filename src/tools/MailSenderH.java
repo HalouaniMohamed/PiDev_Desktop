@@ -56,7 +56,7 @@ public class MailSenderH {
 
             // Create the message body and add an attachment
             MimeBodyPart messageBodyPart = new MimeBodyPart();
-            messageBodyPart.setText("Bonjour,votre commande est confirmée , vous pouvez voir les informations de la commande dans le fichier joint ci-dessous");
+            messageBodyPart.setText("Bonjour,votre commande est confirmée , vous trouvez les informations de la commande dans le fichier joint ci-dessous");
             Multipart multipart = new MimeMultipart();
             multipart.addBodyPart(messageBodyPart);
             messageBodyPart = new MimeBodyPart();
