@@ -8,8 +8,7 @@ package tools;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 /**
  *
  * @author ALPHA
@@ -21,6 +20,26 @@ public class MyConnection {
     public final String user = "root";
     public final String pwd = "";
     public static MyConnection ct;
+
+    private static int userId;
+    private static String image_Name;
+
+    public static int getUserId() {
+        return userId;
+    }
+
+    public static void setUserId(int userId) {
+        MyConnection.userId = userId;
+
+    }
+
+    public static String getImage_Name() {
+        return image_Name;
+    }
+
+    public static void setImage_Name(String image_Name) {
+        MyConnection.image_Name = image_Name;
+    }
 
     private MyConnection() {
         try {

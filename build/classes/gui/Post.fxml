@@ -96,7 +96,7 @@
                                     <Font name="Arial Bold" size="14.0" />
                                  </font>
                               </Button>
-                              <Button fx:id="MesPosts" alignment="CENTER" layoutX="704.0" layoutY="125.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="90.0" style="-fx-background-color: #0e0e90;" text="Mes posts" textFill="#fff9f9">
+                              <Button fx:id="voirP" alignment="CENTER" layoutX="704.0" layoutY="125.0" mnemonicParsing="false" onAction="#goP" prefHeight="37.0" prefWidth="90.0" style="-fx-background-color: #0e0e90;" text="Mes posts" textFill="#fff9f9">
                                  <font>
                                     <Font name="Arial Bold" size="14.0" />
                                  </font>

@@ -6,6 +6,8 @@
 package gui;
 
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -14,29 +16,27 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 /**
  *
- * @author asus
+ * @author Mongi
  */
-public class firstWindow extends Application {
+public class FirstWindow extends Application {
     
     @Override
     public void start(Stage primaryStage) {
-       try {
-            Parent root = FXMLLoader.load(getClass().getResource("Post.fxml"));
-           // Parent r = FXMLLoader.load(getClass().getResource("Commentaire.fxml"));
+      
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("ajouteRV.fxml"));
             
+            Scene scene = new Scene(root);
             
-            Scene scene = new Scene(root,830,650);
-            
-            primaryStage.setTitle("Forum");
+            primaryStage.setTitle("pris d'un RendezVous !");
             primaryStage.setScene(scene);
             primaryStage.show();
         } catch (IOException ex) {
-            System.out.println(ex.getMessage());
+            Logger.getLogger(FirstWindow.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

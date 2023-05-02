@@ -17,6 +17,8 @@ import java.util.stream.Collectors;
 import static jdk.nashorn.internal.runtime.Debug.id;
 import entities.Commentaire;
 import entities.Post;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import tools.MyConnection;
 /**
  *
@@ -133,7 +135,68 @@ public List<Post> afficher() {
         System.out.println(ex.getMessage());
     }
     return posts;
+    }
+//afficher par id_user
+public List<Post> afficherPostParId(int id_user) {
+List<Post> posts = new ArrayList<>();
+sql = "SELECT p.*, c.id AS commentaires_id, c.id_user AS commentaires_id_user, c.reponse AS commentaire_reponse " +
+"FROM post p LEFT JOIN commentaire c ON p.id = c.commentaires_id WHERE p.id_user = " + id_user;
+try {
+Statement ste = cnx.createStatement();
+ResultSet rs = ste.executeQuery(sql);
+while (rs.next()) {
+Post p = new Post(
+rs.getInt("id_user"),
+rs.getString("nom_utilisateur"),
+rs.getString("description"),
+rs.getString("publication")
+);
+p.setId(rs.getInt("id"));
+        // Ajouter le commentaire associé au post à sa liste de commentaires
+        if (rs.getInt("commentaires_id") != 0) {
+            Commentaire c = new Commentaire(
+                    rs.getInt("commentaires_id_user"),
+                    rs.getInt("commentaires_id"),
+                    rs.getString("commentaire_reponse")
+            );
+            p.ajouterCommentaire(c);
+        }
+
+        // Vérifier si le post a déjà été ajouté à la liste de posts
+        boolean postExists = false;
+        for (Post post : posts) {
+            if (post.getId() == p.getId()) {
+                // Ajouter le commentaire associé au post à sa liste de commentaires
+                if (rs.getInt("commentaires_id") != 0) {
+                    Commentaire c = new Commentaire(
+                            rs.getInt("commentaires_id_user"),
+                            rs.getInt("commentaires_id"),
+                            rs.getString("commentaire_reponse")
+                    );
+                    post.ajouterCommentaire(c);
+                }
+                postExists = true;
+                break;
+            }
+        }
+        // Si le post n'a pas encore été ajouté, ajouter le post à la liste de posts
+        if (!postExists) {
+            posts.add(p);
+        }
+    }
+    for (Post pc : posts) {
+        System.out.println("Post :");
+        System.out.println(pc);
+        System.out.println("Commentaires :");
+        pc.afficherCommentaires();
+    }
+} catch (SQLException ex) {
+    System.out.println(ex.getMessage());
 }
+return posts;
+}
+
+
 
 
    @Override
@@ -242,13 +305,14 @@ public void supprimer(Post p) {
         }
     }
 
-   
+
+}
+
     
  
 
   
 
     
-}
-    
+
 

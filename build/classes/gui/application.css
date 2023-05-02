@@ -1,0 +1,7 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@800&display=swap');
+AnchorPane{
+    -fx-font-family: 'Playfair Display', serif;
+    -fx-font-size: 13pt;
+}
+

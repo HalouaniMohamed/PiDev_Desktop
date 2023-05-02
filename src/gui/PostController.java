@@ -113,7 +113,16 @@ public void initialize(URL url, ResourceBundle rb) {
     
 
 }
+ @FXML 
+    private Button voirP;
+    
+     @FXML
+    private void goP(javafx.event.ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../GUI/AffichePuser.fxml"));
+        Parent root = loader.load();
+        voirP.getScene().setRoot(root);
 
+    }
     
      @FXML
 private void AjouterPost(ActionEvent event) {
@@ -350,6 +359,7 @@ private void dislikepost(ActionEvent event) {
 
       
     }
+        
     
 }
 
