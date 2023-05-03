@@ -5,10 +5,13 @@
  */
 package gui;
 
+import edu.worshop.controllers.User_AddController;
 import entities.User;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -57,6 +60,18 @@ public class UserNavbarController implements Initializable {
             ImageView imageView = new ImageView(image);
             imageView.setFitWidth(40);
             imageView.setFitHeight(40);
+            imageView.setOnMouseClicked(event -> {
+                try {
+                    Parent page1 = FXMLLoader.load(getClass().getResource("Front_Profile.fxml"));
+                    Scene scene = new Scene(page1);
+                    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                    stage.setScene(scene);
+                    stage.show();
+                } catch (IOException ex) {
+                    Logger.getLogger(User_AddController.class.getName()).log(Level.SEVERE, null, ex);
+                    //showAlert("Error loading");
+                }
+            });
 
             Label userName = new Label(currentUser.getFull_name());
             userName.setAlignment(Pos.CENTER_LEFT);
@@ -89,6 +104,26 @@ public class UserNavbarController implements Initializable {
 
     @FXML
     private void redirectToForum(ActionEvent event) {
+        User currentUser = SessionManager.getCurrentUser();
+        System.out.println("mmmmmmmmmmmmmmm");
+        System.out.println(currentUser.getRoles());
+        if (currentUser.getRoles().contains("[ROLE_MEDECIN]")) {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("ZiwCommentaire.fxml"));
+            try {
+                Parent root = loader.load();
+                p.getScene().setRoot(root);
+            } catch (IOException ex) {
+                System.out.println(ex.getMessage());
+            }
+        } else {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("ziw.fxml"));
+            try {
+                Parent root = loader.load();
+                p.getScene().setRoot(root);
+            } catch (IOException ex) {
+                System.out.println(ex.getMessage());
+            }
+        }
     }
 
     @FXML

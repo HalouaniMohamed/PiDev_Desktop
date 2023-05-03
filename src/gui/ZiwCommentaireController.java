@@ -5,14 +5,12 @@
  */
 package gui;
 
-import static com.github.plushaze.traynotification.notification.Notifications.SUCCESS;
-import com.github.plushaze.traynotification.notification.TrayNotification;
 import entities.Commentaire;
+import entities.User;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -20,9 +18,9 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
-import javafx.util.Duration;
 import services.CommentaireService;
 import javafx.scene.layout.GridPane;
+import tools.SessionManager;
 
 /**
  * FXML Controller class
@@ -30,33 +28,33 @@ import javafx.scene.layout.GridPane;
  * @author asus
  */
 public class ZiwCommentaireController implements Initializable {
-        @FXML
+
+    @FXML
     private GridPane gridPane;
     @FXML
     private HBox pagination;
-     @FXML 
+    @FXML
     private Button voirP;
-      @FXML 
+    @FXML
     private Button AjouterP;
-    
-     @FXML
+    private User currentUser;
+
+    @FXML
     private void goQ(javafx.event.ActionEvent event) throws IOException {
-      FXMLLoader loader = new FXMLLoader(getClass().getResource("../GUI/AfficheCUser.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../GUI/AfficheCUser.fxml"));
         Parent root = loader.load();
         voirP.getScene().setRoot(root);
 
-
     }
+
     @FXML
-    private void  addP(javafx.event.ActionEvent event) throws IOException {
-      FXMLLoader loader = new FXMLLoader(getClass().getResource("../GUI/Commentaire.fxml"));
+    private void addP(javafx.event.ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../GUI/Commentaire.fxml"));
         Parent root = loader.load();
         AjouterP.getScene().setRoot(root);
 
-
     }
-      private CommentaireService commentaireService = new CommentaireService();
-    
+    private CommentaireService commentaireService = new CommentaireService();
 
     /**
      * Initializes the controller class.
@@ -64,9 +62,15 @@ public class ZiwCommentaireController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-         fillGridPane();
-    }    
-     private void fillGridPane() {
+        fillGridPane();
+        currentUser = SessionManager.getCurrentUser();
+        if (currentUser == null) {
+            AjouterP.setDisable(true);
+            voirP.setDisable(true);
+        }
+    }
+
+    private void fillGridPane() {
         List<Commentaire> commentaires = commentaireService.afficher();
         int row = 0;
         int column = 0;
@@ -84,8 +88,6 @@ public class ZiwCommentaireController implements Initializable {
             }
         }
     }
-     
-      
-    
+
 }
 /////////////

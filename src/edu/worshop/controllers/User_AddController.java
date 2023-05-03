@@ -37,7 +37,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.text.Font;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.Window;
@@ -78,9 +77,8 @@ public class User_AddController implements Initializable {
 
         roleu.getItems().addAll("ROLE_MEDECIN", "ROLE_PATIENT");
 
-        Font font = Font.loadFont(getClass().getResourceAsStream("/fonts/VTFRedzone-Classic.ttf"), 50);
-        label.setFont(font);
-
+        //Font font = Font.loadFont(getClass().getResourceAsStream("/fonts/VTFRedzone-Classic.ttf"), 50);
+        //label.setFont(font);
     }
 
     @FXML
@@ -95,7 +93,7 @@ public class User_AddController implements Initializable {
 
         if (!email.matches("^[\\w-.]+@([\\w-]+\\.)+[\\w-]{2,4}$")) {
             // Show an error message and return
-            Alert alert = new Alert(Alert.AlertType.ERROR, "Invalid email address", ButtonType.OK);
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Email invalide", ButtonType.OK);
             alert.showAndWait();
             return;
         }
@@ -103,14 +101,14 @@ public class User_AddController implements Initializable {
         // Check if password is at least 8 characters long
         if (password.length() < 8) {
             // Show an error message and return
-            Alert alert = new Alert(AlertType.ERROR, "Password must be at least 8 characters long", ButtonType.OK);
+            Alert alert = new Alert(AlertType.ERROR, "Mot de passe doit contenir 8 characteres", ButtonType.OK);
             alert.showAndWait();
             return;
         }
         // Check if address is not empty
         if (address.isEmpty()) {
             // Show an error message and return
-            Alert alert = new Alert(Alert.AlertType.ERROR, "Address cannot be empty", ButtonType.OK);
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Adresse ne peut pas etre vide", ButtonType.OK);
             alert.showAndWait();
             return;
         }
@@ -118,21 +116,21 @@ public class User_AddController implements Initializable {
         // Check if full name is not empty
         if (full_name.isEmpty()) {
             // Show an error message and return
-            Alert alert = new Alert(Alert.AlertType.ERROR, "Full name cannot be empty", ButtonType.OK);
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Pseudo ne peut pas etre vide", ButtonType.OK);
             alert.showAndWait();
             return;
 
         }
         if (su.emailExist(email)) {
             // Show an error message and return
-            Alert alert = new Alert(Alert.AlertType.ERROR, "Email already exists", ButtonType.OK);
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Email déja utilisé", ButtonType.OK);
             alert.showAndWait();
             return;
         }
         // Check if password is at least 8 characters long
         if (password.length() < 8) {
             // Show an error message and return
-            Alert alert = new Alert(Alert.AlertType.ERROR, "Password must be at least 8 characters long.", ButtonType.OK);
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Mot de passe doit contenir 8 characteres.", ButtonType.OK);
             alert.showAndWait();
             return;
         }
@@ -156,7 +154,7 @@ public class User_AddController implements Initializable {
         su.add(updatedUser);
 
         // Show a success message
-        Alert alert = new Alert(AlertType.INFORMATION, "User added successfully!", ButtonType.OK);
+        Alert alert = new Alert(AlertType.INFORMATION, "Utilisateur ajouté", ButtonType.OK);
         alert.showAndWait();
         try {
             Parent page1 = FXMLLoader.load(getClass().getResource("../../../gui/User_List.fxml"));
@@ -172,6 +170,7 @@ public class User_AddController implements Initializable {
                 .text("user ajouté.")
                 .position(Pos.BOTTOM_RIGHT)
                 .showInformation();
+
     }
 
     @FXML

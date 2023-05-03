@@ -37,15 +37,15 @@
                                  </image>
                               </ImageView>
                               <ListView fx:id="listViewCommentaires" layoutX="14.0" layoutY="227.0" prefHeight="244.0" prefWidth="736.0" />
-                              <Label fx:id="textlabel" layoutX="14.0" layoutY="117.0" text="Commentaire ajouté!" textFill="#0e0e90">
+                              <Label fx:id="textlabel" layoutX="14.0" layoutY="117.0" text="Commentaire ajouté!" textFill="#26ace2">
                                  <font>
                                     <Font name="System Bold Italic" size="12.0" />
                                  </font></Label>
-                              <Label fx:id="lb" layoutX="304.0" layoutY="199.0" text="La liste des commentaires:" textFill="#0e0e90">
+                              <Label fx:id="lb" layoutX="304.0" layoutY="199.0" text="La liste des commentaires:" textFill="#26ace2">
                                  <font>
                                     <Font name="Arial Bold Italic" size="17.0" />
                                  </font></Label>
-                              <Button fx:id="retour" alignment="CENTER" layoutX="83.0" layoutY="485.0" mnemonicParsing="false" onAction="#back" prefHeight="26.0" prefWidth="101.0" style="-fx-background-color: #0e0e90;" text="Retour" textFill="#fff9f9">
+                              <Button fx:id="retour" alignment="CENTER" layoutX="83.0" layoutY="485.0" mnemonicParsing="false" onAction="#back" prefHeight="26.0" prefWidth="101.0" style="-fx-background-color: #26ace2;" text="Retour" textFill="#fff9f9">
                                  <font>
                                     <Font name="Arial Bold" size="14.0" />
                                  </font>

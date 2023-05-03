@@ -21,10 +21,16 @@
                   <Font size="24.0" />
                </font></Button>
             <Separator prefWidth="200.0" />
-            <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="361.0" style="-fx-background-color: #ffffff;" text="Forum" textFill="#858796">
+            <Button mnemonicParsing="false" onAction="#redirectToPost" prefHeight="45.0" prefWidth="361.0" style="-fx-background-color: #ffffff;" text="Post" textFill="#858796">
                <font>
                   <Font size="24.0" />
                </font></Button>
+            <Separator prefWidth="200.0" />
+            <Button mnemonicParsing="false" onAction="#redirectToCommentaire" prefHeight="45.0" prefWidth="361.0" style="-fx-background-color: #ffffff;" text="Commentaires" textFill="#858796">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
             <Separator prefWidth="200.0" />
             <Button mnemonicParsing="false" onAction="#redirectToAddE" prefHeight="45.0" prefWidth="361.0" style="-fx-background-color: #ffffff;" text="Ajouter Evénements" textFill="#858796">
                <font>

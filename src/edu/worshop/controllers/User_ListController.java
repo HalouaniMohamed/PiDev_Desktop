@@ -147,7 +147,7 @@ public class User_ListController implements Initializable {
             list.getItems().remove(selectedIndex);
             list.refresh();
         } else {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION, "plz select a user to delete", ButtonType.OK);
+            Alert alert = new Alert(Alert.AlertType.INFORMATION, "Veuillez choisir un utilisateur a supprimer", ButtonType.OK);
             alert.showAndWait();
         }
     }

@@ -31,7 +31,17 @@
                           </rowConstraints>
                         </GridPane>
                         <HBox fx:id="pagination" alignment="CENTER" layoutX="643.0" layoutY="725.0" prefHeight="46.0" prefWidth="200.0" spacing="10.0" />
-                        <TextField fx:id="id_recherche" layoutX="240.0" layoutY="6.0" onAction="#cherchepost" prefHeight="37.0" prefWidth="356.0" promptText="Chercher" />
+                        <TextField fx:id="id_recherche" layoutX="507.0" layoutY="15.0" onAction="#cherchepost" prefHeight="64.0" prefWidth="628.0" promptText="Chercher" />
+                        <Button fx:id="AjouterP" alignment="CENTER" layoutX="-36.0" layoutY="66.0" mnemonicParsing="false" onAction="#addP" prefHeight="37.0" prefWidth="213.0" style="-fx-background-color: #26ace2;" text="Ajouter Question" textFill="#fff9f9">
+                           <font>
+                              <Font name="Arial Bold" size="14.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="voirP" alignment="CENTER" layoutX="-37.0" layoutY="128.0" mnemonicParsing="false" onAction="#goQ" prefHeight="38.0" prefWidth="219.0" style="-fx-background-color: #26ace2;" text="Mes posts" textFill="#fff9f9">
+                           <font>
+                              <Font name="Arial Bold" size="14.0" />
+                           </font>
+                        </Button>
                      </children>
                   </AnchorPane>
                </children>
@@ -46,16 +56,6 @@
             <Image url="@../src/Icon-like-button-transparent-PNG.png" />
          </image>
       </ImageView>
-      <Button fx:id="AjouterP" alignment="CENTER" layoutX="51.0" layoutY="114.0" mnemonicParsing="false" onAction="#addP" prefHeight="37.0" prefWidth="213.0" style="-fx-background-color: #0e0e90;" text="Ajouter Question" textFill="#fff9f9">
-         <font>
-            <Font name="Arial Bold" size="14.0" />
-         </font>
-      </Button>
-      <Button fx:id="voirP" alignment="CENTER" layoutX="51.0" layoutY="213.0" mnemonicParsing="false" onAction="#goQ" prefHeight="37.0" prefWidth="174.0" style="-fx-background-color: #0e0e90;" text="Mes posts" textFill="#fff9f9">
-         <font>
-            <Font name="Arial Bold" size="14.0" />
-         </font>
-      </Button>
       <ImageView fitHeight="37.0" fitWidth="40.0" layoutX="162.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../LetsBarter-main/projetVersion1/src/tn/edu/esprit/gui/1546_1.png" />
