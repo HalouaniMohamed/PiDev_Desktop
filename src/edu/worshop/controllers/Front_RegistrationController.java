@@ -13,6 +13,7 @@ import java.sql.Date;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -21,6 +22,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
@@ -40,8 +42,6 @@ public class Front_RegistrationController implements Initializable {
     @FXML
     private TextField emailF;
     @FXML
-    private TextField passwordF;
-    @FXML
     private TextField passwordFF;
     @FXML
     private TextField addressF;
@@ -51,6 +51,8 @@ public class Front_RegistrationController implements Initializable {
     private ComboBox<String> roles;
 
     ServiceUser su = new ServiceUser();
+    @FXML
+    private Button conn;
 
     /**
      * Initializes the controller class.
@@ -139,6 +141,20 @@ public class Front_RegistrationController implements Initializable {
             //showAlert("Error loading");
         }
 
+    }
+
+    @FXML
+    private void RedirectToLogin(ActionEvent event) {
+        try {
+            Parent page1 = FXMLLoader.load(getClass().getResource("../../../gui/Front_Login.fxml"));
+            Scene scene = new Scene(page1);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(User_AddController.class.getName()).log(Level.SEVERE, null, ex);
+            //showAlert("Error loading");
+        }
     }
 
 }

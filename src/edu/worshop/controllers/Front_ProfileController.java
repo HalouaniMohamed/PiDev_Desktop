@@ -10,7 +10,6 @@ import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
 import tools.MyConnection;
 import services.ServiceUser;
-import static edu.worshop.controllers.User_ListController.date;
 /**
  * FXML Controller class
  *
@@ -29,20 +28,13 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-/**
- * FXML Controller class
- *
- * @author azizo
- */
 public class Front_ProfileController implements Initializable {
 
     @FXML
@@ -54,7 +46,7 @@ public class Front_ProfileController implements Initializable {
     @FXML
     private TextField addresst;
     ServiceUser su = new ServiceUser();
-    
+
     @FXML
     private Text Profile_Details;
     @FXML
@@ -69,10 +61,10 @@ public class Front_ProfileController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-         int userId = MyConnection.getUserId();
-         
+        int userId = MyConnection.getUserId();
+
         User user = new ServiceUser().getUserById(userId);
-        
+
         if (user != null) {
             full_namet.setText(user.getFull_name());
             emailt.setText(user.getEmail());
@@ -83,10 +75,9 @@ public class Front_ProfileController implements Initializable {
             Image image = new Image(file.toURI().toString());
             ProfileImage.setImage(image);
         }
-        
-        Font font = Font.loadFont(getClass().getResourceAsStream("/fonts/VTFRedzone-Classic.ttf"), 25);
-        Profile_Details.setFont(font);
-        
+
+        //Font font = Font.loadFont(getClass().getResourceAsStream("/fonts/VTFRedzone-Classic.ttf"), 25);
+        //Profile_Details.setFont(font);
     }
 
     @FXML
@@ -104,34 +95,33 @@ public class Front_ProfileController implements Initializable {
         user.setDate_naissance(date);
         //user.setDate_naissance(date_naisst.getText());
         su.update(user);
-        
+
         // Show a success message
-        Alert alert = new Alert(Alert.AlertType.INFORMATION, "Profile Updated successfully!", ButtonType.OK);
+        Alert alert = new Alert(Alert.AlertType.INFORMATION, "Profile modifié avec succés!", ButtonType.OK);
         alert.showAndWait();
     }
-public void setText(User user)
-    {
-     
-        String id =String.valueOf(user.getId());
+
+    public void setText(User user) {
+
+        String id = String.valueOf(user.getId());
         full_namet.setText(user.getFull_name());
         addresst.setText(user.getAddress());
         emailt.setText(user.getEmail());
-     
+
     }
 
-@FXML
+    @FXML
     private void logout(ActionEvent event) {
-         try {
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/worshop/gui/Front_Login.fxml"));
-                    Parent root = loader.load();
-                    Scene scene = new Scene(root);
-                    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                    stage.setScene(scene);
-                    stage.show();
-                    
-                    
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/worshop/gui/Front_Login.fxml"));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

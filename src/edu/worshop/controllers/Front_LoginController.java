@@ -179,7 +179,7 @@ public class Front_LoginController implements Initializable {
     }
 
     private void displayErrorMessage() {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION, "plz verify input", ButtonType.OK);
+        Alert alert = new Alert(Alert.AlertType.INFORMATION, "Verifiez vos données", ButtonType.OK);
         alert.showAndWait();
     }
 

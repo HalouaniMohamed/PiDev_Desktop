@@ -89,10 +89,7 @@ public class Reservation_Component_Controller implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Tooltip tooltip = new Tooltip();
-        userEmail = SessionManager.getEmail();
-        if ((userEmail == null) || (userEmail == "")) {
-            userEmail = "default@gmail.com";
-        }
+        userEmail = SessionManager.getCurrentUser().getEmail();
 
         try {
             _qunatite.setOnMouseReleased(event -> {
@@ -120,9 +117,16 @@ public class Reservation_Component_Controller implements Initializable {
 //        Matcher matcher = pattern.matcher(_email.getText());
 //        if (!matcher.matches()) {
 //            new Alert(Alert.AlertType.WARNING, "E-mail Invalide", ButtonType.OK).show();
-//        } else 
+//        } else
+        if ((userEmail == null) || (userEmail == "")) {
+            new Alert(Alert.AlertType.WARNING, "Vous devez vous connecter", ButtonType.OK).show();
+
+        }
         if (this.event.getNbr_de_places() == 0) {
 
+            new Alert(Alert.AlertType.WARNING, "Pas de places disponible pour  cet evenement!", ButtonType.OK).show();
+
+        } else if (_qunatite.getValue() > this.event.getNbr_de_places()) {
             new Alert(Alert.AlertType.WARNING, "Pas de places disponible pour  cet evenement!", ButtonType.OK).show();
 
         } else {

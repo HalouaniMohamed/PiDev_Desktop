@@ -1,6 +1,7 @@
 package gui;
 
 import entities.Evenements;
+import entities.User;
 import java.io.IOException;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
@@ -20,7 +21,9 @@ import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
 import services.EvenementsService;
 import tools.SessionManager;
@@ -87,6 +90,12 @@ public class Evenements_Client_Controller implements Initializable {
             AnchorPane.setRightAnchor(POP, 0.0);
             AnchorPane.setBottomAnchor(POP, 0.0);
             POP.setAlignment(Pos.CENTER);
+            User currentUser = SessionManager.getCurrentUser();
+            System.out.println(currentUser);
+            if (currentUser == null) {
+                new Alert(Alert.AlertType.WARNING, "Vous devez vous connecter", ButtonType.OK).show();
+                return;
+            }
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui//Reservation_Component.fxml"));
             AnchorPane component = loader.load();
             Reservation_Component_Controller controller = loader.getController();
@@ -110,15 +119,21 @@ public class Evenements_Client_Controller implements Initializable {
     private Button voirR;
 
     @FXML
-    private void goToR(javafx.event.ActionEvent event) throws IOException {
+    private void goToR(javafx.event.ActionEvent event) {
+        User currentUser = SessionManager.getCurrentUser();
+        System.out.println(currentUser);
+        if (currentUser == null) {
+            new Alert(Alert.AlertType.WARNING, "Vous devez vous connecter", ButtonType.OK).show();
+            return;
+        }
         try {
+
             // Load the AfficheRUserr.fxml interface
             FXMLLoader loader = new FXMLLoader(getClass().getResource("AfficheRUserr.fxml"));
             Parent root = loader.load();
             AfficheRUserrController controller = loader.getController();
-
             // Set the reservation data in the controller
-            controller.setReservation(SessionManager.getEmail());
+            controller.setReservation(SessionManager.getCurrentUser().getEmail());
 
             // Show the AfficheRUserr.fxml interface
             Scene scene = new Scene(root);

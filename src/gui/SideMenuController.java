@@ -88,4 +88,15 @@ public class SideMenuController implements Initializable {
         }
     }
 
+    @FXML
+    private void redirectToUsers(ActionEvent event) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("User_List.fxml"));
+        try {
+            Parent root = loader.load();
+            tfName.getScene().setRoot(root);
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+
 }

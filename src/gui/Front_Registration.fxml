@@ -22,7 +22,7 @@
             <TextField fx:id="emailF" layoutX="151.0" layoutY="242.0" promptText="Email" style="-fx-background-color: transparent; -fx-border-width: 0px 0px 2px 0px; -fx-border-color: #0593A2;" />
             <TextField fx:id="addressF" layoutX="151.0" layoutY="327.0" promptText="Addresse" style="-fx-border-color: #0593A2; -fx-border-width: 0px 0px 2px 0px; -fx-background-color: transparent;" />
             <TextField fx:id="full_nameF" layoutX="151.0" layoutY="200.0" promptText="Pseudo" style="-fx-border-color: #0593A2; -fx-border-width: 0px 0px 2px 0px; -fx-background-color: transparent;" />
-            <Button layoutX="186.0" layoutY="483.0" mnemonicParsing="false" onMouseClicked="#Register" prefHeight="36.0" prefWidth="78.0" style="-fx-background-color: #0593A2;" text="S'inscrire" textFill="WHITE" />
+            <Button layoutX="112.0" layoutY="484.0" mnemonicParsing="false" onMouseClicked="#Register" prefHeight="36.0" prefWidth="106.0" style="-fx-background-color: #0593A2;" text="S'inscrire" textFill="WHITE" />
             <DatePicker fx:id="dateNaissanceField" layoutX="140.0" layoutY="390.0" />
             <Label layoutX="187.0" layoutY="367.0" text="Date de naissance" textFill="#a4a4a4" />
             <PasswordField fx:id="passwordFF" layoutX="151.0" layoutY="286.0" promptText="Mot de passe" style="-fx-border-color: #0593A2; -fx-border-width: 0px 0px 2px 0px; -fx-background-color: transparent;" />
@@ -32,6 +32,7 @@
                </font>
             </Label>
             <ComboBox fx:id="roles" layoutX="142.0" layoutY="434.0" prefHeight="26.0" prefWidth="184.0" promptText="Choisir votre role" />
+            <Button fx:id="conn" layoutX="257.0" layoutY="484.0" mnemonicParsing="false" onAction="#RedirectToLogin" prefHeight="36.0" prefWidth="112.0" style="-fx-background-color: #0593A2;" text="Se connecter" textFill="WHITE" />
          </children>
       </AnchorPane>
       <AnchorPane prefHeight="600.0" prefWidth="434.0" style="-fx-background-color: #0593A2;">

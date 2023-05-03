@@ -6,11 +6,7 @@
 package edu.worshop.controllers;
 
 import services.PasswordEncryption;
-import java.net.URL;
-import java.util.ResourceBundle;
-import javafx.fxml.Initializable;
 import services.ServiceUser;
-import edu.worshop.interfaces.IService;
 import entities.User;
 import tools.MyConnection;
 import java.io.File;
@@ -19,8 +15,6 @@ import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
 import java.sql.Date;
-import java.text.SimpleDateFormat;
-import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -40,8 +34,6 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -84,8 +76,8 @@ public class User_AddController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-        roleu.getItems().addAll( "ROLE_MEDECIN", "ROLE_PATIENT");
-        
+        roleu.getItems().addAll("ROLE_MEDECIN", "ROLE_PATIENT");
+
         Font font = Font.loadFont(getClass().getResourceAsStream("/fonts/VTFRedzone-Classic.ttf"), 50);
         label.setFont(font);
 
@@ -144,7 +136,7 @@ public class User_AddController implements Initializable {
             alert.showAndWait();
             return;
         }
-System.out.println(date);
+        System.out.println(date);
         // Convert the date from the DatePicker to a Date object
         //Date date = Date.valueOf(dateNaissanceField.getValue());
         // Get the filename of the image from the path
@@ -167,7 +159,7 @@ System.out.println(date);
         Alert alert = new Alert(AlertType.INFORMATION, "User added successfully!", ButtonType.OK);
         alert.showAndWait();
         try {
-            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/worshop/gui/User_List.fxml"));
+            Parent page1 = FXMLLoader.load(getClass().getResource("../../../gui/User_List.fxml"));
             Scene scene = new Scene(page1);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(scene);
@@ -176,10 +168,10 @@ System.out.println(date);
             Logger.getLogger(User_ListController.class.getName()).log(Level.SEVERE, null, ex);
         }
         Notifications.create()
-                    .title("Notification")
-                    .text("user ajouté.")
-                    .position(Pos.BOTTOM_RIGHT)
-                    .showInformation();
+                .title("Notification")
+                .text("user ajouté.")
+                .position(Pos.BOTTOM_RIGHT)
+                .showInformation();
     }
 
     @FXML

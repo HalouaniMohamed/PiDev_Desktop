@@ -11,7 +11,7 @@
    <children>
       <VBox prefHeight="603.0" prefWidth="361.0" style="-fx-background-color: #fafdfb;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="361.0" style="-fx-background-color: #ffffff;" text="Utilisateurs" textFill="#858796">
+            <Button mnemonicParsing="false" onAction="#redirectToUsers" prefHeight="45.0" prefWidth="361.0" style="-fx-background-color: #ffffff;" text="Utilisateurs" textFill="#858796">
                <font>
                   <Font size="24.0" />
                </font></Button>

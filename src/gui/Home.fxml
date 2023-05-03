@@ -20,9 +20,9 @@
             <fx:include source="UserNavbar.fxml" />
          </top>
          <center>
-            <ScrollPane BorderPane.alignment="CENTER">
+            <ScrollPane prefHeight="1055.0" prefWidth="1600.0" BorderPane.alignment="CENTER">
                <content>
-                  <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #fff;">
+                  <AnchorPane prefHeight="1186.0" prefWidth="1598.0" style="-fx-background-color: #fff;">
                      <children>
                         <AnchorPane prefHeight="502.0" prefWidth="1600.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="20.0">
                            <children>

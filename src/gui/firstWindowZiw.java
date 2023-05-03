@@ -21,8 +21,7 @@ public class firstWindowZiw extends Application {
     @Override
     public void start(Stage primaryStage) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("Commentaire.fxml"));
-            // Parent r = FXMLLoader.load(getClass().getResource("Commentaire.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("Ziw.fxml"));
 
             Scene scene = new Scene(root, 1600, 900);
 

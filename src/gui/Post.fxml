@@ -46,7 +46,7 @@
                                     <Image url="@../../../../../../LetsBarter-main/projetVersion1/src/tn/edu/esprit/gui/1546_1.png" />
                                  </image>
                               </ImageView>
-                              <AnchorPane layoutX="268.0" layoutY="148.0" prefHeight="326.0" prefWidth="418.0" style="-fx-background-color: #F1EDDF;">
+                              <AnchorPane layoutX="268.0" layoutY="157.0" prefHeight="318.0" prefWidth="444.0" style="-fx-background-color: #F1EDDF;">
                                  <children>
                                     <VBox layoutX="29.0" layoutY="84.0" prefHeight="182.0" prefWidth="354.0" spacing="10.0">
                                        <children>

@@ -29,20 +29,20 @@
                               </ImageView>
                            </children>
                         </Pane>
-                        <AnchorPane id="AnchorPane" minWidth="-Infinity" prefHeight="575.0" prefWidth="827.0" style="-fx-background-color: #fafdfb;">
+                        <AnchorPane id="AnchorPane" minWidth="-Infinity" prefHeight="535.0" prefWidth="9731.0" style="-fx-background-color: #fafdfb;">
                            <children>
                               <ImageView fitHeight="75.0" fitWidth="99.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../../../../../../Downloads/1-removebg-preview.png" />
                                  </image>
                               </ImageView>
-                              <ListView fx:id="listViewQuestion" layoutX="21.0" layoutY="121.0" prefHeight="293.0" prefWidth="736.0" />
-                              <Label alignment="CENTER" layoutX="11.0" layoutY="63.0" prefHeight="37.0" prefWidth="743.0" text="Liste des Posts" textAlignment="CENTER" textFill="#0e0e90">
+                              <ListView fx:id="listViewQuestion" layoutX="368.0" layoutY="97.0" prefHeight="344.0" prefWidth="882.0" />
+                              <Label alignment="CENTER" layoutX="368.0" layoutY="52.0" prefHeight="37.0" prefWidth="743.0" text="Liste des Posts" textAlignment="CENTER" textFill="#0e0e90">
                                  <font>
                                     <Font name="System Bold" size="14.0" />
                                  </font>
                               </Label>
-                              <Button layoutX="314.0" layoutY="455.0" mnemonicParsing="false" onAction="#SupprimerPost" prefHeight="26.0" prefWidth="150.0" style="-fx-background-color: #6777ef;" text="Supprimer post" textFill="WHITE" />
+                              <Button layoutX="698.0" layoutY="456.0" mnemonicParsing="false" onAction="#SupprimerPost" prefHeight="26.0" prefWidth="150.0" style="-fx-background-color: #6777ef;" text="Supprimer post" textFill="WHITE" />
                            </children>
                         </AnchorPane>
                      </children>
