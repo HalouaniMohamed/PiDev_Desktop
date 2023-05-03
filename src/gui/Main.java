@@ -1,35 +1,40 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package gui;
 
 import java.io.IOException;
-
 import javafx.application.Application;
-import static javafx.application.Application.launch;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 /**
- * JavaFX App
+ *
+ * @author ALPHA
  */
 public class Main extends Application {
-	public static Stage stg;
 
     @Override
-    public void start(Stage primaryStage) throws IOException {
-     
-    	Main.stg = primaryStage;
-        
-   FXMLLoader loader= new FXMLLoader(getClass().getResource("../gui/AfficheE.fxml"));
- //FXMLLoader loader= new FXMLLoader(getClass().getResource("../gui/Evenements_Client.fxml"));
- 
-        Parent root=  loader.load();
-        Scene scene= new Scene(root ,1000,620);
-        primaryStage.setTitle("Echkili");
-        primaryStage.setScene(scene);
-        primaryStage.show();
+    public void start(Stage primaryStage) {
+        try {
+            System.out.println("sent");
+            Parent root = FXMLLoader.load(getClass().getResource("Evenements_Client.fxml"));
+            Scene scene = new Scene(root, 1600, 900);
+//            primaryStage.setTitle("addCategory");
+            primaryStage.setScene(scene);
+            primaryStage.show();
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
     }
 
+    /**
+     * @param args the command line arguments
+     */
     public static void main(String[] args) {
         launch(args);
     }

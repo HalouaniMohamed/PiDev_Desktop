@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.DetailsController">
+    
+   <children>
+      <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass">
+          
+         <children>
+            <AnchorPane id="AnchorPane" prefHeight="544.0" prefWidth="231.0" style="-fx-background-color: #fafdfb;">
+               <children>
+                  <VBox prefHeight="603.0" prefWidth="231.0" style="-fx-background-color: #fafdfb;">
+                     <children>
+                        <Pane prefHeight="110.0" prefWidth="234.0">
+                           <children>
+                              <ImageView fitHeight="108.0" fitWidth="225.0" layoutX="5.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../../../Desktop/9raya/echkilii.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </Pane>
+                        <AnchorPane id="AnchorPane" minWidth="-Infinity" prefHeight="575.0" prefWidth="827.0" style="-fx-background-color: #fafdfb;">
+                           <children>
+                              <ImageView fitHeight="75.0" fitWidth="99.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../../../../Downloads/1-removebg-preview.png" />
+                                 </image>
+                              </ImageView>
+                              <ListView fx:id="listViewQuestions" layoutX="15.0" layoutY="229.0" prefHeight="244.0" prefWidth="736.0" />
+                              <Label fx:id="lb" layoutX="308.0" layoutY="196.0" text="La liste des posts:" textFill="#0e0e90">
+                                 <font>
+                                    <Font name="Arial Bold Italic" size="17.0" />
+                                 </font></Label>
+                              <Label fx:id="textlabel" layoutX="298.0" layoutY="104.0" text="Post ajouté!" textFill="#0e0e90">
+                                 <font>
+                                    <Font name="System Bold Italic" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Button fx:id="retour" alignment="CENTER" layoutX="29.0" layoutY="488.0" mnemonicParsing="false" onAction="#back" prefHeight="26.0" prefWidth="101.0" style="-fx-background-color: #0e0e90;" text="Retour" textFill="#fff9f9">
+                                 <font>
+                                    <Font name="Arial Bold" size="14.0" />
+                                 </font>
+                              </Button>
+                              
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+      <AnchorPane id="AnchorPane" prefHeight="80.0" prefWidth="1600.0" style="-fx-background-color: #6777ef;">
+         <children>
+            <AnchorPane prefHeight="110.0" prefWidth="361.0" style="-fx-background-color: #4c60da;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1233.6" AnchorPane.topAnchor="0.0">
+               <children>
+                  <ImageView fitHeight="112.0" fitWidth="139.0" layoutX="-5.0" layoutY="-1.0" pickOnBounds="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="217.0" AnchorPane.topAnchor="0.0">
+                     <image>
+                        <Image url="@../../../../../Desktop/logo-removebg-preview.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="162.0" prefHeight="112.0" prefWidth="204.0" text="Echkili" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="162.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <font>
+                        <Font name="Comic Sans MS" size="48.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="108.0" prefWidth="588.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="361.0" AnchorPane.rightAnchor="503.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Pane prefHeight="110.0" prefWidth="200.0">
+                     <children>
+                        <Label alignment="CENTER" layoutX="-216.0" prefHeight="134.0" prefWidth="743.0" text="Forum" textAlignment="CENTER" textFill="#0e0e90">
+                           <font>
+                              <Font name="System Bold" size="24.0" />
+                           </font>
+                        </Label>
+                     </children></Pane>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
