@@ -13,8 +13,16 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
+import javafx.stage.Stage;
 import tools.SessionManager;
 
 /**
@@ -26,6 +34,13 @@ public class UserNavbarController implements Initializable {
 
     @FXML
     private Button p;
+    @FXML
+    private Button loginBtn;
+    @FXML
+    private Button singupBtn;
+    @FXML
+    private HBox navbar;
+    private User currentUser;
 
     /**
      * Initializes the controller class.
@@ -33,10 +48,39 @@ public class UserNavbarController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        currentUser = SessionManager.getCurrentUser();
+        if (currentUser != null) {
+            navbar.getChildren().remove(loginBtn);
+//            navbar.getChildren().remove(singupBtn);
+            singupBtn.setText("Déconnenxion");
+            Image image = new Image("/images/avatar.png");
+            ImageView imageView = new ImageView(image);
+            imageView.setFitWidth(40);
+            imageView.setFitHeight(40);
+
+            Label userName = new Label(currentUser.getFull_name());
+            userName.setAlignment(Pos.CENTER_LEFT);
+            userName.setMaxWidth(Double.MAX_VALUE);
+
+            HBox avatar = new HBox(imageView, userName);
+            avatar.setSpacing(8);
+            avatar.setAlignment(Pos.CENTER);
+            navbar.getChildren().addAll(avatar);
+        }
     }
 
     @FXML
     private void redirectToHome(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Home.fxml"));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
@@ -116,6 +160,49 @@ public class UserNavbarController implements Initializable {
             p.getScene().setRoot(root);
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
+        }
+    }
+
+    @FXML
+    private void redirectToLogin(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Front_Login.fxml"));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void redirectToSignup(ActionEvent event) {
+        if (currentUser == null) {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("Front_Registration.fxml"));
+                Parent root = loader.load();
+                Scene scene = new Scene(root);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else {
+            SessionManager.cleanUserSession();
+            SessionManager.setCurrentUser(null);
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("Home.fxml"));
+                Parent root = loader.load();
+                Scene scene = new Scene(root);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 

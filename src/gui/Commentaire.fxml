@@ -2,74 +2,18 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.CommentaireController">
+<AnchorPane id="AnchorPane" prefHeight="900.0" prefWidth="1600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.CommentaireController">
     
    <children>
-      <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass">
-          
-         <children>
-            <AnchorPane id="AnchorPane" prefHeight="544.0" prefWidth="231.0" style="-fx-background-color: #fafdfb;">
-               <children>
-                  <VBox prefHeight="603.0" prefWidth="231.0" style="-fx-background-color: #fafdfb;">
-                     <children>
-                        <Pane prefHeight="110.0" prefWidth="234.0">
-                           <children>
-                              <ImageView fitHeight="108.0" fitWidth="225.0" layoutX="5.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../../../Desktop/9raya/echkilii.png" />
-                                 </image>
-                              </ImageView>
-                           </children>
-                        </Pane>
-                        <AnchorPane id="AnchorPane" minWidth="-Infinity" prefHeight="575.0" prefWidth="827.0" style="-fx-background-color: #fafdfb;">
-                           <children>
-                              <ImageView fitHeight="75.0" fitWidth="99.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../../../../Downloads/1-removebg-preview.png" />
-                                 </image>
-                              </ImageView>
-                              <ListView fx:id="listViewCommentaire" layoutX="21.0" layoutY="89.0" prefHeight="131.0" prefWidth="736.0" />
-                              <Label alignment="CENTER" layoutX="9.0" layoutY="52.0" prefHeight="37.0" prefWidth="743.0" text="Liste des commentaires" textAlignment="CENTER" textFill="#0e0e90">
-                                 <font>
-                                    <Font name="System Bold" size="14.0" />
-                                 </font>
-                              </Label>
-                              <Button fx:id="modifierBtn" layoutX="214.0" layoutY="232.0" mnemonicParsing="false" onAction="#ModifierCommentaire" prefHeight="26.0" prefWidth="150.0" style="-fx-background-color: #6777ef;" text="Modifier commentaire" textFill="WHITE" />
-                              <Button layoutX="439.0" layoutY="232.0" mnemonicParsing="false" onAction="#SupprimerCommentaire" prefHeight="26.0" prefWidth="150.0" style="-fx-background-color: #6777ef;" text="Supprimer commentaire" textFill="WHITE" />
-                              <AnchorPane layoutX="202.0" layoutY="288.0" prefHeight="291.0" prefWidth="393.0" style="-fx-background-color: #0e0e90;">
-                                 <children>
-                                    <AnchorPane layoutX="36.0" layoutY="18.0" prefHeight="249.0" prefWidth="327.0" style="-fx-background-color: #F1EDDF;">
-                                       <children>
-                                          <Label alignment="CENTER" layoutX="73.0" layoutY="6.0" prefHeight="29.0" prefWidth="200.0" text="Ajouter un commentaire" textAlignment="CENTER" textFill="#0e0e90">
-                                             <font>
-                                                <Font name="System Bold" size="14.0" />
-                                             </font>
-                                          </Label>
-                                          <TextField fx:id="tfId_User" layoutX="21.0" layoutY="72.0" prefHeight="26.0" prefWidth="286.0" promptText="Id_User" />
-                                          <TextField fx:id="tfcommentaires_id" layoutX="22.0" layoutY="107.0" prefHeight="26.0" prefWidth="286.0" promptText="Numéro du post" />
-                                          <TextField fx:id="tfreponse" layoutX="24.0" layoutY="143.0" prefHeight="26.0" prefWidth="286.0" promptText="Réponse" />
-                                          <Button fx:id="ajouterbtn" layoutX="98.0" layoutY="186.0" mnemonicParsing="false" onAction="#ajouterCommentaire" prefHeight="26.0" prefWidth="150.0" style="-fx-background-color: #6777ef;" text="Ajouter commentaire" textFill="WHITE" />
-                                       </children>
-                                    </AnchorPane>
-                                 </children>
-                              </AnchorPane>
-                           </children>
-                        </AnchorPane>
-                     </children>
-                  </VBox>
-               </children>
-            </AnchorPane>
-         </children>
-      </AnchorPane>
       <AnchorPane id="AnchorPane" prefHeight="80.0" prefWidth="1600.0" style="-fx-background-color: #6777ef;">
          <children>
             <AnchorPane prefHeight="110.0" prefWidth="361.0" style="-fx-background-color: #4c60da;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1233.6" AnchorPane.topAnchor="0.0">
@@ -100,5 +44,42 @@
             </AnchorPane>
          </children>
       </AnchorPane>
+      <BorderPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <center>
+            <AnchorPane id="AnchorPane" prefHeight="544.0" prefWidth="231.0" style="-fx-background-color: #fafdfb;" BorderPane.alignment="CENTER">
+               <children>
+                  <VBox layoutX="221.0" layoutY="34.0" prefHeight="774.0" prefWidth="1202.0" style="-fx-background-color: #fafdfb;">
+                     <children>
+                        <AnchorPane id="AnchorPane" minWidth="-Infinity" prefHeight="432.0" prefWidth="827.0" style="-fx-background-color: #fafdfb;">
+                           <children>
+                              <Label alignment="CENTER" layoutX="374.0" layoutY="26.0" prefHeight="55.0" prefWidth="408.0" text="Ajouter un commentaire" textAlignment="CENTER" textFill="#0e0e90">
+                                 <font>
+                                    <Font name="System Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                              <VBox layoutX="292.0" layoutY="127.0" prefHeight="252.0" prefWidth="582.0" spacing="20.0">
+                                 <children>
+                                    <TextField fx:id="tfId_User" prefHeight="40.0" prefWidth="286.0" promptText="Id_User" />
+                                    <TextField fx:id="tfcommentaires_id" prefHeight="40.0" prefWidth="286.0" promptText="Numéro du post" />
+                                    <TextField fx:id="tfreponse" prefHeight="40.0" prefWidth="286.0" promptText="Réponse" />
+                                 </children>
+                              </VBox>
+                              <Button fx:id="ajouterbtn" layoutX="491.0" layoutY="493.0" mnemonicParsing="false" onAction="#ajouterCommentaire" prefHeight="37.0" prefWidth="286.0" style="-fx-background-color: #6777ef;" text="Ajouter commentaire" textFill="WHITE" />
+                              <Button fx:id="retour" alignment="CENTER" layoutX="117.0" layoutY="535.0" mnemonicParsing="false" onAction="#back" prefHeight="26.0" prefWidth="101.0" style="-fx-background-color: #0e0e90;" text="Retour" textFill="#fff9f9">
+                                 <font>
+                                    <Font name="Arial Bold" size="14.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
+         </center>
+         <top>
+            <fx:include source="UserNavbar.fxml" />
+         </top>
+      </BorderPane>
    </children>
 </AnchorPane>

@@ -89,7 +89,7 @@ public class Front_LoginController implements Initializable {
                 stage.show();
             } else if (roles.contains("[ROLE_MEDECIN]")) {
                 try {
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("../../../gui/UserCart.fxml"));
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("../../../gui/Home.fxml"));
                     Parent root = loader.load();
                     Scene scene = new Scene(root);
                     Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

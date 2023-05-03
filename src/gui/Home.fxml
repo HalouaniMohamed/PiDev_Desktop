@@ -1,11 +1,112 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.HomeController">
-    
+<AnchorPane id="AnchorPane" prefHeight="900.0" prefWidth="1600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.HomeController">
+   <children>
+      <BorderPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <top>
+            <fx:include source="UserNavbar.fxml" />
+         </top>
+         <center>
+            <ScrollPane BorderPane.alignment="CENTER">
+               <content>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #fff;">
+                     <children>
+                        <AnchorPane prefHeight="502.0" prefWidth="1600.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="20.0">
+                           <children>
+                              <HBox prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <ImageView fitHeight="433.0" fitWidth="926.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../images/home1.png" />
+                                       </image>
+                                    </ImageView>
+                                    <AnchorPane prefHeight="461.0" prefWidth="830.0">
+                                       <children>
+                                          <Label layoutX="290.0" layoutY="28.0" text="A propos de nous">
+                                             <font>
+                                                <Font name="Comic Sans MS Bold Italic" size="36.0" />
+                                             </font>
+                                          </Label>
+                                          <TextArea layoutX="83.0" layoutY="103.0" prefHeight="286.0" prefWidth="670.0" style="-fx-background-color: #fff;" text="Echkili est une plateforme dédiée aux personnes souffrant de troubles de santé mentale . Ce site est une vitrine digitale qui va vous permettre d'interagir avec les médecins à travers des forums de discussion. Ainsi , il offre un service d'actualités aux internautes pour avoir la bonne information, au bon moment, près de chez soi.&#10;" wrapText="true">
+                                             <font>
+                                                <Font size="24.0" />
+                                             </font>
+                                          </TextArea>
+                                          <HBox layoutX="80.0" layoutY="393.0" prefHeight="100.0" prefWidth="667.0" spacing="40.0">
+                                             <children>
+                                                <VBox prefHeight="168.0" prefWidth="148.0">
+                                                   <children>
+                                                      <ImageView fitHeight="113.0" fitWidth="132.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../images/forum.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                      <Label prefHeight="58.0" prefWidth="159.0" text="Forum">
+                                                         <font>
+                                                            <Font name="System Bold" size="18.0" />
+                                                         </font>
+                                                      </Label>
+                                                   </children>
+                                                   <HBox.margin>
+                                                      <Insets left="40.0" />
+                                                   </HBox.margin>
+                                                </VBox>
+                                                <Separator orientation="VERTICAL" prefHeight="200.0" />
+                                                <VBox prefHeight="168.0" prefWidth="148.0">
+                                                   <children>
+                                                      <ImageView fitHeight="113.0" fitWidth="132.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../images/rv.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                      <Label prefHeight="58.0" prefWidth="159.0" text="Rendez-Vous">
+                                                         <font>
+                                                            <Font name="System Bold" size="18.0" />
+                                                         </font>
+                                                      </Label>
+                                                   </children>
+                                                </VBox>
+                                                <Separator orientation="VERTICAL" prefHeight="200.0" />
+                                                <VBox prefHeight="168.0" prefWidth="148.0">
+                                                   <children>
+                                                      <ImageView fitHeight="113.0" fitWidth="132.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../images/events.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                      <Label prefHeight="58.0" prefWidth="159.0" text="Evenements">
+                                                         <font>
+                                                            <Font name="System Bold" size="18.0" />
+                                                         </font>
+                                                      </Label>
+                                                   </children>
+                                                </VBox>
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </AnchorPane>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </ScrollPane>
+         </center>
+      </BorderPane>
+   </children>
 </AnchorPane>

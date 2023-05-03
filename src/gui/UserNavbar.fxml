@@ -10,7 +10,7 @@
 
 <AnchorPane prefHeight="80.0" prefWidth="1600.0" style="-fx-background-color: #fff;" stylesheets="/gui/application.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.UserNavbarController">
    <children>
-      <HBox layoutX="68.0" layoutY="8.0" prefHeight="80.0" prefWidth="1600.0" AnchorPane.bottomAnchor="-10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <HBox fx:id="navbar" layoutX="68.0" layoutY="8.0" prefHeight="80.0" prefWidth="1600.0" AnchorPane.bottomAnchor="-10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <ImageView fitHeight="101.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -62,15 +62,15 @@
                   <Font name="Cambria" size="18.0" />
                </font>
             </Button>
-            <Button alignment="CENTER" mnemonicParsing="false" prefHeight="79.0" prefWidth="126.0" style="-fx-background-color: #26ace2; -fx-background-radius: 10;" text="Se connecter" textFill="WHITE">
+            <Button fx:id="loginBtn" alignment="CENTER" mnemonicParsing="false" onAction="#redirectToLogin" prefHeight="79.0" prefWidth="126.0" style="-fx-background-color: #26ace2; -fx-background-radius: 10;" text="Se connecter" textFill="WHITE">
                <font>
                   <Font name="Cambria" size="18.0" />
                </font>
                <HBox.margin>
-                  <Insets bottom="20.0" top="10.0" />
+                  <Insets bottom="20.0" right="20.0" top="10.0" />
                </HBox.margin>
             </Button>
-            <Button alignment="CENTER" mnemonicParsing="false" prefHeight="60.0" prefWidth="153.0" style="-fx-background-color: #26ace2; -fx-background-radius: 10;" text="Créer un compte" textFill="WHITE">
+            <Button fx:id="singupBtn" alignment="CENTER" mnemonicParsing="false" onAction="#redirectToSignup" prefHeight="60.0" prefWidth="153.0" style="-fx-background-color: #26ace2; -fx-background-radius: 10;" text="Créer un compte" textFill="WHITE">
                <font>
                   <Font name="Cambria" size="18.0" />
                </font>

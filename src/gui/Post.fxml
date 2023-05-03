@@ -2,7 +2,6 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -37,66 +36,75 @@
                                     <Image url="@../../../../../../Downloads/1-removebg-preview.png" />
                                  </image>
                               </ImageView>
-
-
-                              <ListView fx:id="listViewQuestion" layoutX="13.0" layoutY="170.0" prefHeight="131.0" prefWidth="736.0" />
                               <Label alignment="CENTER" layoutX="9.0" layoutY="52.0" prefHeight="37.0" prefWidth="743.0" text="Liste des Posts&amp;Commentaires" textAlignment="CENTER" textFill="#0e0e90">
                                  <font>
                                     <Font name="System Bold" size="14.0" />
                                  </font>
                               </Label>
-                              <Button fx:id="modifierBtn" layoutX="202.0" layoutY="314.0" mnemonicParsing="false" onAction="#ModifierPost" prefHeight="26.0" prefWidth="150.0" style="-fx-background-color: #6777ef;" text="Modifier post" textFill="WHITE" />
-                              <Button layoutX="427.0" layoutY="314.0" mnemonicParsing="false" onAction="#SupprimerPost" prefHeight="26.0" prefWidth="150.0" style="-fx-background-color: #6777ef;" text="Supprimer post" textFill="WHITE" />
-                              <AnchorPane layoutX="184.0" layoutY="361.0" prefHeight="322.0" prefWidth="393.0" style="-fx-background-color: #0e0e90;" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="250.0" AnchorPane.topAnchor="361.0">
-                                 <children>
-                                    <AnchorPane layoutX="36.0" layoutY="18.0" prefHeight="249.0" prefWidth="327.0" style="-fx-background-color: #F1EDDF;">
-                                       <children>
-                                          <VBox layoutX="29.0" layoutY="39.0" prefHeight="187.0" prefWidth="266.0" spacing="10.0">
-                                             <children>
-                                                <TextField fx:id="tfId_User" prefHeight="26.0" prefWidth="286.0" promptText="Id_user" />
-                                                <TextField fx:id="tfNom_Utilisateur" prefHeight="26.0" prefWidth="146.0" promptText="Nom utilisateur" />
-                                                <TextField fx:id="tfDescription" prefHeight="26.0" prefWidth="282.0" promptText="Description" />
-                                                <TextField fx:id="tfPublication" prefHeight="26.0" prefWidth="146.0" promptText="Publication" />
-                                                <Button fx:id="Btn" mnemonicParsing="false" onAction="#AjouterPost" prefHeight="26.0" prefWidth="306.0" style="-fx-background-color: #6777ef;" text="Ajouter post" textFill="WHITE" />
-                                             </children>
-                                          </VBox>
-                                          <Label alignment="CENTER" layoutX="73.0" layoutY="6.0" prefHeight="29.0" prefWidth="159.0" text="Ajouter un post:" textAlignment="CENTER" textFill="#0e0e90">
-                                             <font>
-                                                <Font name="System Bold" size="14.0" />
-                                             </font>
-                                          </Label>
-                                       </children>
-                                    </AnchorPane>
-                                 </children>
-                              </AnchorPane>
-                              <TextField fx:id="id_recherche" layoutX="244.0" layoutY="125.0" onAction="#cherchepost" prefHeight="37.0" prefWidth="310.0" promptText="Chercher" />
-                              <Button fx:id="id_like" layoutX="756.0" layoutY="172.0" mnemonicParsing="false" onAction="#likepost" prefHeight="58.0" prefWidth="53.0" styleClass="button-transparent" stylesheets="@post.css" textFill="#0d0d0d">
-                                 <graphic>
-                                    <ImageView fitHeight="45.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../src/Icon-like-button-transparent-PNG.png" />
-                                       </image>
-                                    </ImageView>
-                                 </graphic></Button>
-                              <Button fx:id="id_dislike" layoutX="756.0" layoutY="232.0" mnemonicParsing="false" onAction="#dislikepost" prefHeight="58.0" prefWidth="53.0" styleClass="button-transparent" stylesheets="@post.css" textFill="#0d0d0d">
-                                 <graphic>
-                                    <ImageView fitHeight="42.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../src/Dislike-icon-on-transparent-PNG.png" />
-                                       </image>
-                                    </ImageView>
-                                 </graphic></Button>
                               <ImageView fitHeight="37.0" fitWidth="40.0" layoutX="202.0" layoutY="125.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../../../../../../LetsBarter-main/projetVersion1/src/tn/edu/esprit/gui/1546_1.png" />
                                  </image>
                               </ImageView>
-                              <Button fx:id="btn_sort" alignment="CENTER" layoutX="588.0" layoutY="125.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="90.0" style="-fx-background-color: #0e0e90;" text="Trier" textFill="#fff9f9">
+                              <AnchorPane layoutX="268.0" layoutY="148.0" prefHeight="326.0" prefWidth="418.0" style="-fx-background-color: #F1EDDF;">
+                                 <children>
+                                    <VBox layoutX="29.0" layoutY="84.0" prefHeight="182.0" prefWidth="354.0" spacing="10.0">
+                                       <children>
+                                          <TextField fx:id="tfNom_Utilisateur" prefHeight="26.0" prefWidth="146.0" promptText="Nom utilisateur" />
+                                          <TextField fx:id="tfId_User" prefHeight="26.0" prefWidth="365.0" promptText="Id_user" />
+                                          <TextField fx:id="tfDescription" prefHeight="26.0" prefWidth="282.0" promptText="Description" />
+                                          <TextField fx:id="tfPublication" prefHeight="26.0" prefWidth="146.0" promptText="Publication" />
+                                          <Button fx:id="Btn" mnemonicParsing="false" onAction="#AjouterPost" prefHeight="46.0" prefWidth="507.0" style="-fx-background-color: #6777ef;" text="Ajouter post" textFill="WHITE" />
+                                       </children>
+                                    </VBox>
+                                    <Label alignment="CENTER" layoutX="130.0" layoutY="14.0" prefHeight="29.0" prefWidth="159.0" text="Ajouter un post:" textAlignment="CENTER" textFill="#0e0e90">
+                                       <font>
+                                          <Font name="System Bold" size="14.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </AnchorPane>
+                              <Button layoutX="18.0" layoutY="97.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="250.0" style="-fx-background-color: #ffffff;" text="Utilisateurs" textFill="#858796">
                                  <font>
-                                    <Font name="Arial Bold" size="14.0" />
+                                    <Font size="24.0" />
                                  </font>
                               </Button>
-                              <Button fx:id="MesPosts" alignment="CENTER" layoutX="704.0" layoutY="125.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="90.0" style="-fx-background-color: #0e0e90;" text="Mes posts" textFill="#fff9f9">
+                              <Button layoutX="18.0" layoutY="148.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="250.0" style="-fx-background-color: #ffffff;" text="Actualités" textFill="#858796">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Button>
+                              <Button layoutX="18.0" layoutY="199.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="250.0" style="-fx-background-color: #ffffff;" text="Forum" textFill="#858796">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Button>
+                              <Button layoutX="18.0" layoutY="250.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="250.0" style="-fx-background-color: #ffffff;" text="événements" textFill="#858796">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Button>
+                              <Button layoutX="18.0" layoutY="301.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="250.0" style="-fx-background-color: #ffffff;" text="Liste des Catégories" textFill="#858796">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Button>
+                              <Button layoutX="18.0" layoutY="352.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="250.0" style="-fx-background-color: #ffffff;" text="Ajouter Catégorie" textFill="#858796">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Button>
+                              <Button layoutX="2.0" layoutY="403.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="265.0" style="-fx-background-color: #ffffff;" text="Ajouter Produit" textFill="#858796">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Button>
+                              <Button layoutX="18.0" layoutY="454.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="250.0" style="-fx-background-color: #ffffff;" text="Liste des Produits" textFill="#858796">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="retour" alignment="CENTER" layoutX="84.0" layoutY="528.0" mnemonicParsing="false" onAction="#back" prefHeight="26.0" prefWidth="101.0" style="-fx-background-color: #0e0e90;" text="Retour" textFill="#fff9f9">
                                  <font>
                                     <Font name="Arial Bold" size="14.0" />
                                  </font>

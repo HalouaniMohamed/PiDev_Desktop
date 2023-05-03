@@ -11,52 +11,53 @@ import entities.Commentaire;
 import tools.MyConnection;
 
 public class CommentaireService implements NewInterface<Commentaire> {
+
     Connection cnx;
     String sql = "";
 
     public CommentaireService() {
-        
+
         cnx = MyConnection.getInstance().getCnx();
-    
+
     }
 
     @Override
- 
-public void ajouter(Commentaire c) {
-    
-     sql = "insert into commentaire (id_user, commentaires_id, reponse) values (?, ?, ?)";
-    try {
-        PreparedStatement ste = cnx.prepareStatement(sql);
-        
-        ste.setInt(1, c.getId_user());
-        ste.setInt(2, c.getCommentaires_id());
-        ste.setString(3, c.getReponse());
 
-        ste.executeUpdate();
-        System.out.println("Commentaire ajouté !");
-    } catch (SQLException ex) {
-        System.out.println(ex.getMessage());
-    }
-}
-public void modifier(Commentaire c) {
-    sql = "UPDATE commentaire SET id_user = ?, commentaires_id = ?,reponse = ?";
-    try {
-        PreparedStatement ste = cnx.prepareStatement(sql);
-        ste.setInt(1, c.getId_user());
-        ste.setInt(2, c.getCommentaires_id());
-        ste.setString(3, c.getReponse());
-        
-        int resultat = ste.executeUpdate();
-        if(resultat > 0) {
-            System.out.println("Commentaire modifié avec succès !");
-        } else {
-            System.out.println("Erreur lors de la modification du commentaire.");
+    public void ajouter(Commentaire c) {
+
+        sql = "insert into commentaire (id_user, commentaires_id, reponse) values (?, ?, ?)";
+        try {
+            PreparedStatement ste = cnx.prepareStatement(sql);
+
+            ste.setInt(1, c.getId_user());
+            ste.setInt(2, c.getCommentaires_id());
+            ste.setString(3, c.getReponse());
+
+            ste.executeUpdate();
+            System.out.println("Commentaire ajoutÃ© !");
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
         }
-    } catch (SQLException ex) {
-        System.out.println(ex.getMessage());
     }
-}
 
+    public void modifier(Commentaire c) {
+        sql = "UPDATE commentaire SET id_user = ?, commentaires_id = ?,reponse = ?";
+        try {
+            PreparedStatement ste = cnx.prepareStatement(sql);
+            ste.setInt(1, c.getId_user());
+            ste.setInt(2, c.getCommentaires_id());
+            ste.setString(3, c.getReponse());
+
+            int resultat = ste.executeUpdate();
+            if (resultat > 0) {
+                System.out.println("Commentaire modifiÃ© avec succÃ¨s !");
+            } else {
+                System.out.println("Erreur lors de la modification du commentaire.");
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
 
     @Override
     public List<Commentaire> afficher() {
@@ -72,14 +73,15 @@ public void modifier(Commentaire c) {
                         rs.getString("reponse")
                 );
                 p.setId(rs.getInt("id"));
-               commentaires.add(p);
+                commentaires.add(p);
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
         return commentaires;
     }
-  @Override
+
+    @Override
     public Commentaire getById(int id) {
         sql = "SELECT * FROM post WHERE id = ?";
         try {
@@ -87,11 +89,10 @@ public void modifier(Commentaire c) {
             ste.setInt(1, id);
             ResultSet rs = ste.executeQuery();
             if (rs.next()) {
-                Commentaire c = new Commentaire (
-                    rs.getInt("id_user"),
-                    rs.getInt("commentaires_id"),
-                    rs.getString("reponse")
-                    
+                Commentaire c = new Commentaire(
+                        rs.getInt("id_user"),
+                        rs.getInt("commentaires_id"),
+                        rs.getString("reponse")
                 );
                 c.setId(rs.getInt("id"));
                 return c;
@@ -104,16 +105,40 @@ public void modifier(Commentaire c) {
             return null;
         }
     }
-    
-      public void supprimer(Commentaire c) {
-        sql="delete from commentaire where id="+c.getId();
+
+    public void supprimer(Commentaire c) {
+        sql = "delete from commentaire where id=" + c.getId();
         try {
             Statement ste = cnx.createStatement();
             ste.executeUpdate(sql);
-            System.out.println("Commentaire supprimé");
+            System.out.println("Commentaire supprimÃ©");
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
-        
-      }}
-   
+
+    }
+    //afficher par id_user
+
+    public List<Commentaire> afficherCommentaireParId(int id_user) {
+        List<Commentaire> commentaires = new ArrayList<>();
+
+        sql = "select * from commentaire  WHERE id_user = " + id_user;
+        try {
+            Statement ste = cnx.createStatement();
+            ResultSet rs = ste.executeQuery(sql);
+            while (rs.next()) {
+                Commentaire p = new Commentaire(
+                        rs.getInt("commentaires_id"),
+                        rs.getInt("id_user"),
+                        rs.getString("reponse")
+                );
+                p.setId(rs.getInt("id"));
+                commentaires.add(p);
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return commentaires;
+
+    }
+}

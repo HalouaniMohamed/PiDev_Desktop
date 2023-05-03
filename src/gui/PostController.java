@@ -53,6 +53,16 @@ import javafx.stage.PopupWindow;
 import javafx.util.Duration;
 import javafx.event.EventHandler;
 public class PostController implements Initializable {
+     @FXML 
+    private Button retour;
+    @FXML
+    private void  back(javafx.event.ActionEvent event) throws IOException {
+      FXMLLoader loader = new FXMLLoader(getClass().getResource("../GUI/Ziw.fxml"));
+        Parent root = loader.load();
+        retour.getScene().setRoot(root);
+
+
+    }
     
     @FXML
     private TextField tfId_User;
@@ -62,23 +72,16 @@ public class PostController implements Initializable {
     private TextField tfDescription;
     @FXML
     private TextField tfPublication;
-    @FXML
-    private Button ajouterBtn;
-    @FXML
     private ListView<Post> listViewQuestion;
-    @FXML
       private Button btn_sort;
     
 
     private PostService postService = new PostService();
     
-     @FXML
     private TextField id_recherche;
      
       @FXML
-    private Button id_like;
-       @FXML
-    private Button id_dislike;
+    private Button Btn;
       
        
       
@@ -93,27 +96,16 @@ public class PostController implements Initializable {
 
     @Override
 public void initialize(URL url, ResourceBundle rb) {
-    btn_sort.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-           
-            listViewQuestion.getItems().sort(Comparator.comparing(Post::getDescription));
-              listViewQuestion.getSelectionModel().clearSelection();
-   
-           }
-        });
+
     //  listViewQuestion.refresh();
     
     // Afficher la liste des questions dans la ListView
-    List<Post> questions = postService.afficher();
-    ObservableList<Post> observableQuestions = FXCollections.observableArrayList(questions);
-    listViewQuestion.setItems(observableQuestions);
-    
+  
    
     
 
 }
-
+    
     
      @FXML
 private void AjouterPost(ActionEvent event) {
@@ -168,129 +160,9 @@ private void AjouterPost(ActionEvent event) {
     }
 }
 
-    @FXML
-
-void ModifierPost(ActionEvent event) {
-    Post selectedLN = listViewQuestion.getSelectionModel().getSelectedItem();
-    if (selectedLN == null) {
-        // Afficher un message d'erreur
-        Alert alert = new Alert(AlertType.ERROR);
-        alert.setTitle("Erreur");
-        alert.setHeaderText("Impossible de modifier  ");
-        alert.setContentText("Veuillez selectionner pour modifier !");
-        alert.showAndWait();
-    } else {
-        // Show an input dialog to get the new event details.
-        TextInputDialog dialog = new TextInputDialog();
-        dialog.setTitle("Modifier un post");
-        dialog.setHeaderText("Modifier les champs du post");
-
-        // Set the default values of the input fields to the current post description and publication.
-        dialog.getEditor().setText(selectedLN.getDescription());
-        dialog.getEditor().setPromptText("Description");
-        dialog.getEditor().setText(selectedLN.getPublication());
-        dialog.getEditor().setPromptText("Publication");
-
-        // Add a second input field for the post description.
-        TextField descriptionField = new TextField();
-        descriptionField.setText(selectedLN.getDescription());
-        descriptionField.setPromptText("Description");
-
-        // Set the content of the dialog to include both input fields.
-        VBox vbox = new VBox();
-        vbox.getChildren().addAll(new Label("Description:"), descriptionField, new Label("Publication:"), dialog.getEditor());
-        dialog.getDialogPane().setContent(vbox);
-
-        Optional<String> result = dialog.showAndWait();
-        if (result.isPresent()) {
-            // Update the post details with the new values.
-            selectedLN.setDescription(descriptionField.getText());
-            selectedLN.setPublication(result.get());
-
-            PostService ps = new PostService();
-            ps.modifier(selectedLN);
-
-            // Show a confirmation alert.
-            Alert alert = new Alert(AlertType.INFORMATION);
-            alert.setTitle("Succes");
-            alert.setHeaderText("Le post a ete modifie avec succes");
-            alert.setContentText("Les modifications ont ete enregistrees.");
-            alert.showAndWait();
-        }
-    }
-    listViewQuestion.refresh();
-}
     
-@FXML
-void SupprimerPost(ActionEvent event) {
-        Post selectedLN =  listViewQuestion.getSelectionModel().getSelectedItem();
-        if (selectedLN == null) {
-            // Afficher un message d'erreur
-            Alert alert = new Alert(AlertType.ERROR);
-            alert.setTitle("Erreur");
-            alert.setHeaderText("Impossible de supprimer  ");
-            alert.setContentText("Veuillez selectionner pour supprimer !");
-            alert.showAndWait();
-        } else {
-            PostService ps = new PostService();
-            System.out.println(selectedLN.getId());
-            ps.supprimer(selectedLN);
-
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Information");
-            alert.setHeaderText(null);
-            alert.setContentText("Post supprime!");
-            alert.showAndWait();
-
-            // Actualiser le TableView
-             List<Post> questions = postService.afficher();
-        ObservableList<Post> observableQuestions = FXCollections.observableArrayList(questions);
-        listViewQuestion.setItems(observableQuestions);
-            
-        }
-    }
-
-//Recherche 
- @FXML
-    private void cherchepost(ActionEvent event) {
-        
-       
-        ObservableList<Post> list = FXCollections.observableArrayList(postService.afficher());
-        FilteredList<Post> filteredData = new FilteredList<>(list, b -> true);
-        id_recherche.textProperty().addListener((observable, oldValue, newValue) -> {
-            filteredData.setPredicate(Post -> {
-                if (newValue == null || newValue.isEmpty()) {
-                  
-                    System.out.println("bien");
-                    return true;
-                }
-                String lowerCaseFilter = newValue.toLowerCase();
-
-                if (Post.getDescription().toLowerCase().indexOf(lowerCaseFilter) != -1) {
-                    return true;
-                } else if (Post.getPublication().toLowerCase().indexOf(lowerCaseFilter) != -1) {
-                    return true;
-                } else if (Post.getNom_utilisateur().toLowerCase().indexOf(lowerCaseFilter) != -1) {
-                    return true; 
-                
-                }
-                
-                 else {
-                    return false;
-                }
-            });
-        });
-
-       SortedList<Post> sortedData = new SortedList<>(filteredData);
-
-        //sortedData.comparatorProperty().bind(listViewQuestion.comparatorProperty());
-
-        listViewQuestion.setItems(sortedData);
-    }
+ //like post
     
-    //like post
-    
-     @FXML
 private void likepost(ActionEvent event) {
     
        Post selectedLN =  listViewQuestion.getSelectionModel().getSelectedItem();
@@ -323,7 +195,6 @@ private void likepost(ActionEvent event) {
 
 
 //dislike post
-     @FXML
 private void dislikepost(ActionEvent event) {
        Post selectedLN =  listViewQuestion.getSelectionModel().getSelectedItem();
         if (selectedLN == null) {
@@ -352,6 +223,17 @@ private void dislikepost(ActionEvent event) {
     }
     
 }
+
+ 
+            
+
+
+
+ 
+
+
+    
+   
 
  
             
