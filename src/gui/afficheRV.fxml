@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="692.0" style="-fx-background-radius: 15;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AfficheRVController">
+  
+    <children>
+      <Button fx:id="stat1" mnemonicParsing="false" onAction="#redirectToHome" prefHeight="25.0" prefWidth="137.0" styleClass="search-button" stylesheets="@style.css" text="Home">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </Button>
+      <Button fx:id="stat" mnemonicParsing="false" onAction="#stat" prefHeight="25.0" prefWidth="137.0" styleClass="search-button" stylesheets="@style.css" text="Voir statistique">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <VBox.margin>
+            <Insets left="550.0" top="20.0" />
+         </VBox.margin>
+      </Button>
+
+      <ImageView fitHeight="166.0" fitWidth="151.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="file:/C:/Users/ALPHA/Desktop/logo.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="btnAjouter" contentDisplay="CENTER" graphicTextGap="18.0" lineSpacing="5555.0" onAction="#handleAjouter" prefHeight="40.0" prefWidth="295.0" style="-fx-background-color: #87CEEB; -fx-background-radius: 15;" text="Click ici pour prendre un Rendez-Vous" textAlignment="RIGHT">
+         <font>
+            <Font name="Bernard MT Condensed" size="15.0" />
+         </font>
+         <VBox.margin>
+            <Insets left="6.0" top="3.0" />
+         </VBox.margin>
+      </Button>
+      <Label />
+                <HBox alignment="CENTER" stylesheets="@style.css">
+        <Label text="Recherche:">
+            <font>
+               <Font name="Cambria Italic" size="17.0" />
+            </font></Label>
+        <TextField fx:id="searchField" opacity="0.47" promptText="tapez ici pour ecrire" styleClass="transparent" stylesheets="@style.css" />
+        <Button onAction="#handleSearch" styleClass="search-button" stylesheets="@style.css" text="Rechercher" />
+         <Button fx:id="btn_tri" mnemonicParsing="false" onAction="#handletri" prefHeight="25.0" prefWidth="94.0" styleClass="search-button" stylesheets="@style.css" text="Tri ">
+            <opaqueInsets>
+               <Insets />
+            </opaqueInsets>
+            <HBox.margin>
+               <Insets left="20.0" />
+            </HBox.margin>
+         </Button>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <styleClass>
+            <String fx:value="search-box" />
+            <String fx:value="shadow" />
+         </styleClass>
+    </HBox>
+      <TableView fx:id="tableRendezVous" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="700.0">
+         <columns>
+            <TableColumn fx:id="columnNom" prefWidth="103.0" style="-fx-background-radius: 15;" text="Nom" />
+            <TableColumn fx:id="columnPrenom" prefWidth="99.0" style="-fx-background-radius: 15;" text="Prenom" />
+            <TableColumn fx:id="columnCause" prefWidth="102.0" style="-fx-background-radius: 15;" text="Cause" />
+            <TableColumn fx:id="columnDescription" prefWidth="118.0" style="-fx-background-radius: 15;" text="Description" />
+            <TableColumn fx:id="columnDate" prefWidth="149.0" style="-fx-background-radius: 15;" text="Date" />
+            <TableColumn fx:id="columnAction" prefWidth="128.0" style="-fx-background-radius: 15;" text="Actions" />
+            
+         </columns>
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
+      </TableView>
+      <Label />
+      <Button fx:id="btn_pdf" mnemonicParsing="false" onAction="#btnGenPDF" prefHeight="25.0" prefWidth="230.0" styleClass="search-button" stylesheets="@style.css" text="PDF">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets></Button>
+   </children>
+</VBox>

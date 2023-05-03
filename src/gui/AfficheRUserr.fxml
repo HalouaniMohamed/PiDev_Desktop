@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="544.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AfficheRUserrController">
+   <children>
+      <Label layoutX="8.0" layoutY="7.0" prefHeight="61.0" prefWidth="260.0" text="Mes reservations :  " textFill="#5c16e0">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <Button layoutX="441.0" layoutY="22.0" mnemonicParsing="false" onAction="#supprimer" prefHeight="33.0" prefWidth="134.0" style="-fx-background-color: #6777ef;" text="Supprimer" textFill="#fcf8f8" />
+      <Button layoutX="300.0" layoutY="22.0" mnemonicParsing="false" onAction="#modifier" prefHeight="33.0" prefWidth="125.0" style="-fx-background-color: #6777ef;" text="Modifier" textFill="#fcfcfc" />
+      
+      <ListView fx:id="listView" layoutX="9.0" layoutY="80.0" prefHeight="459.0" prefWidth="582.0" />
+   </children>
+</AnchorPane>

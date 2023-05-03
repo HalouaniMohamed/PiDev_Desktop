@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="593.0" prefWidth="1398.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AjouterMoodController">
+   <children>
+      <Label layoutX="248.0" layoutY="268.0" text="UserID:" textFill="#1c3ca4" />
+      <Label layoutX="250.0" layoutY="337.0" text="mood:" textFill="#1c3ca4" />
+      <Label layoutX="236.0" layoutY="406.0" text="description:" textFill="#1c3ca4" />
+      <Label layoutX="244.0" layoutY="477.0" text="MoodID:" textFill="#1c3ca4" />
+      <TextField fx:id="tfUserID" layoutX="344.0" layoutY="264.0" />
+      <TextField fx:id="tfmood" layoutX="344.0" layoutY="333.0" />
+      <TextField fx:id="tfdesc" layoutX="344.0" layoutY="402.0" />
+      <TextField fx:id="tfmoodID" layoutX="344.0" layoutY="473.0" />
+      <Button fx:id="btnAjouter" layoutX="763.0" layoutY="550.0" mnemonicParsing="false" onAction="#savemood" style="-fx-background-color: #6777ef;" text="Ajouter" />
+      <AnchorPane id="AnchorPane" layoutX="-139.0" prefHeight="80.0" prefWidth="1600.0" style="-fx-background-color: #6777ef;">
+         <children>
+            <Label alignment="CENTER" layoutX="365.0" layoutY="1.0" prefHeight="134.0" prefWidth="870.0" text="           Ajouter Mood :" textAlignment="CENTER" textFill="#0e0e90">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            <AnchorPane layoutX="79.0" layoutY="-14.0" prefHeight="164.0" prefWidth="371.0" style="-fx-background-color: #4c60da;">
+               <children>
+                  <ImageView fitHeight="119.0" fitWidth="236.0" layoutX="-88.0" layoutY="-7.0" pickOnBounds="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-88.0" AnchorPane.rightAnchor="218.0" AnchorPane.topAnchor="-7.0">
+                     <image>
+                        <Image url="@../../../../../../Downloads/Desktop/logo-removebg-preview.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="162.0" prefHeight="112.0" prefWidth="204.0" text="Echkili" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="162.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <font>
+                        <Font name="Comic Sans MS" size="48.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+      <Button layoutX="1371.0" layoutY="172.0" mnemonicParsing="false" onAction="#redirectToHome" style="-fx-background-color: #6777ef;" text="Home" />
+   </children>
+</AnchorPane>

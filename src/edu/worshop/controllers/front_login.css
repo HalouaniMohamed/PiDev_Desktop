@@ -1,0 +1,17 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+    
+    @font-face {
+    font-family: 'VTFRedzone-Classic';
+    src: url('fonts/VTFRedzone-Classic.ttf');
+}
+
+.redzone-label {
+    -fx-font-family: 'VTFRedzone-Classic';
+    -fx-font-size: 18px;
+    
+}
+
+

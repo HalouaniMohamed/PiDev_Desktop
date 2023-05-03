@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.Reservation_Component_Controller">
+   <children>
+      <GridPane layoutX="177.0" layoutY="201.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="795.0" minWidth="10.0" prefWidth="705.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="486.0" minWidth="10.0" prefWidth="295.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <VBox alignment="CENTER" maxHeight="274.0" maxWidth="480.0" minHeight="274.0" minWidth="480.0" prefHeight="274.0" prefWidth="480.0" VBox.vgrow="NEVER">
+                     <children>
+                        <ImageView fx:id="_pic" fitHeight="227.0" fitWidth="288.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../../../../../Pictures/303285058_6427106950639516_3062257284421731108_n.jpg" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </VBox>
+                  <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" VBox.vgrow="ALWAYS">
+                     <children>
+                        <HBox maxHeight="50.0" minHeight="50.0" prefHeight="50.0" prefWidth="480.0">
+                           <children>
+                              <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+                                 <children>
+                                    <Label fx:id="_nom" text="Nom Evenement" textFill="#171ddd">
+                                       <font>
+                                          <Font name="Comic Sans MS Bold" size="15.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+                                 <children>
+                                    <Label text="Places disponibles :" textFill="#171ddd">
+                                       <font>
+                                          <Font name="Comic Sans MS Bold" size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="_places" text="250" textFill="#171ddd">
+                                       <font>
+                                          <Font name="Comic Sans MS Bold" size="15.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </HBox>
+                        <HBox layoutX="10.0" layoutY="10.0" maxHeight="50.0" minHeight="50.0" prefHeight="50.0" prefWidth="480.0">
+                           <children>
+                              <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+                                 <children>
+                                    <Label text="Type:" textFill="#171ddd">
+                                       <font>
+                                          <Font name="Comic Sans MS Bold" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="_type" layoutX="109.0" layoutY="24.0" text="Type" textFill="#171ddd">
+                                       <font>
+                                          <Font name="Comic Sans MS Bold" size="12.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+                                 <children>
+                                    <Label text="Emplacement: " textFill="#171ddd">
+                                       <font>
+                                          <Font name="Comic Sans MS Bold" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="_emplacement" text="Emplacement" textFill="#171ddd">
+                                       <font>
+                                          <Font name="Comic Sans MS Bold" size="12.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </HBox>
+                        <HBox VBox.vgrow="ALWAYS">
+                           <children>
+                              <Label fx:id="_description" text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum." textFill="#1e5d90" wrapText="true">
+                                 <font>
+                                    <Font name="Comic Sans MS" size="12.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                           <padding>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </padding>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <HBox maxHeight="50.0" minHeight="50.0" prefHeight="50.0" prefWidth="480.0">
+                     <children>
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+                           <children>
+                              <Label text="Date: " textFill="#171ddd">
+                                 <font>
+                                    <Font name="Comic Sans MS Bold" size="11.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="_date" layoutX="93.0" layoutY="25.0" text="Date is epic!" textFill="#171ddd">
+                                 <font>
+                                    <Font name="Comic Sans MS Bold" size="11.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+                           <children>
+                              <Label text="Heure : " textFill="#171ddd">
+                                 <font>
+                                    <Font name="Comic Sans MS Bold" size="11.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="_time" layoutX="93.0" layoutY="25.0" text="Time is epic!" textFill="#171ddd">
+                                 <font>
+                                    <Font name="Comic Sans MS Bold" size="11.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                     </children>
+                  </HBox>
+               </children>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+            </VBox>
+            <VBox alignment="CENTER" spacing="25.0" GridPane.columnIndex="1">
+               <children>
+                  <Label text="Passer Reservation" textFill="#171ddd">
+                     <font>
+                        <Font name="Comic Sans MS Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <HBox alignment="CENTER_LEFT" spacing="25.0">
+                     <children>
+                        <Label text="Quantité" textFill="#147b9e">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font></Label>
+                        <Slider fx:id="_qunatite" blockIncrement="1.0" majorTickUnit="10.0" min="1.0" minorTickCount="1" showTickLabels="true" showTickMarks="true" snapToTicks="true" HBox.hgrow="ALWAYS" />
+                     </children>
+                     <padding>
+                        <Insets left="10.0" right="10.0" />
+                     </padding>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="318.0" spacing="25.0">
+                     <padding>
+                        <Insets left="10.0" right="10.0" />
+                     </padding>
+                  </HBox>
+                  <Button mnemonicParsing="false" onAction="#valider" style="-fx-background-color: #6777ef;" text="Valider" textFill="WHITE">
+                     <font>
+                        <Font name="Comic Sans MS Bold" size="15.0" />
+                     </font>
+                  </Button>
+               </children>
+            </VBox>
+         </children>
+      </GridPane>
+      <Button mnemonicParsing="false" onAction="#close" style="-fx-background-color: #6777ef red;" text="Close" textFill="WHITE" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+         <font>
+            <Font name="Comic Sans MS Bold" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <ImageView fitHeight="135.0" fitWidth="141.0">
+         <image>
+            <Image url="@../../../../../../../Downloads/1-removebg-preview%20(2).png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
