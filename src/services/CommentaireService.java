@@ -116,5 +116,31 @@ public void modifier(Commentaire c) {
             System.out.println(ex.getMessage());
         }
         
-      }}
+      }
+      //afficher par id_user
+public List<Commentaire> afficherCommentaireParId(int id_user) {
+List<Commentaire> commentaires = new ArrayList<>();
+
+        sql = "select * from commentaire  WHERE id_user = " + id_user;
+        try {
+            Statement ste = cnx.createStatement();
+            ResultSet rs = ste.executeQuery(sql);
+            while (rs.next()) {
+                Commentaire p = new Commentaire(
+                        rs.getInt("commentaires_id"),
+                        rs.getInt("id_user"),
+                        rs.getString("reponse")
+                );
+                p.setId(rs.getInt("id"));
+               commentaires.add(p);
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return commentaires;
+
+}
+}
+
+
    

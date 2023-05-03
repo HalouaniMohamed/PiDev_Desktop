@@ -4,6 +4,7 @@ package gui;
 import entities.Evenements;
 import entities.Post;
 import entities.Reservation;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.List;
@@ -14,10 +15,13 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
+import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
@@ -38,26 +42,54 @@ import services.PostService;
  *
  * @author ASUS
  */public class AffichePuserController implements Initializable {
+      @FXML 
+    private Button retour;
+    @FXML
+    private void  back(javafx.event.ActionEvent event) throws IOException {
+      FXMLLoader loader = new FXMLLoader(getClass().getResource("../GUI/Ziw.fxml"));
+        Parent root = loader.load();
+        retour.getScene().setRoot(root);
+
+
+    }
 	 
- 	 @FXML
-    private ListView<Post> listViewQuestion;
+  //  private ListView<Post>listViewQuestion ;
          
 	
            private PostService postService = new PostService();
-    
-
 	 
+        
+          
+	     @FXML private ListView<Post> listViewQuestion;
+	  private int id_user;
+   private List<Post> posts;
+
+	 public void setReservation(int idU) {
+	     this.id_user= idU;
+	     System.out.println(id_user);
+	     PostService es = new PostService();
+	     posts = es.afficherPostParId(id_user);
+	     if (posts != null) {
+	         listViewQuestion.getItems().addAll(posts);
+	     }
+	 }
 
  	    public void initialize(URL location, ResourceBundle resources) {
+                 
+        
+	 }
 	      
 
  	// Afficher la liste des questions dans la ListView
-    List<Post> questions = postService.afficher();
-    ObservableList<Post> observableQuestions = FXCollections.observableArrayList(questions);
-    listViewQuestion.setItems(observableQuestions);
+   
+	
+	
+
+	 
+
  	    	
  
- 	    }
+ 	    
 
 
  @FXML

@@ -5,6 +5,7 @@
  */
 package tests;
 
+import services.CommentaireService;
 import services.PostService;
 
 /**
@@ -31,8 +32,9 @@ public class Main {
 //        CartTests cartTests = new CartTests();
 //        cartTests.getCart();
 //        cartTests.addToCart();
-PostService ps = new PostService();
-ps.afficherPostParId(30);
+CommentaireService cs = new CommentaireService();
+
+ System.out.println(cs.afficherCommentaireParId(1));
     }
     
 
