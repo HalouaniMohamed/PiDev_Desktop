@@ -50,6 +50,26 @@ public class ProductService {
         }
     }
 
+    public boolean isUnique(Product p) {
+        sql = "SELECT COUNT(*) FROM product WHERE name=?";
+        boolean unique = false;
+        try {
+            PreparedStatement ste = cnx.prepareStatement(sql);
+            ste.setString(1, p.getName());
+            ResultSet rs = ste.executeQuery();
+            if (rs.next() && rs.getInt(1) == 0) {
+                unique = true;
+            } else {
+                System.out.println("Product with the same name already exists!");
+
+                unique = false;
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return unique;
+    }
+
     public void update(Product p) {
         sql = " update product set name=? ,description=? ,price=? ,image=? ,quantity=?,updated_at=?,category_id=? where id= ? ";
         try {
@@ -61,8 +81,9 @@ public class ProductService {
             ste.setInt(5, p.getQuantity());
             ste.setDate(6, (Date) p.getUpdatedAt());
             ste.setInt(7, p.getCategory().getId());
+            ste.setInt(8, p.getId());
             ste.executeUpdate();
-            System.out.println("product added");
+            System.out.println("product updated");
             ste.close();
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());

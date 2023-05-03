@@ -13,8 +13,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import entities.Category;
 import tools.MyConnection;
 
@@ -29,37 +27,6 @@ public class CategoryService {
 
     public CategoryService() {
         cnx = MyConnection.getInstance().getCnx();
-
-    }
-
-    public Category getCategoryById(Integer id) {
-        sql = "select * from category where id=" + id;
-        Statement ste;
-        Category category = new Category();
-        try {
-            ste = cnx.createStatement();
-            ResultSet rs = ste.executeQuery(sql);
-
-            if (!rs.next()) {
-                System.out.println("no category found");
-                return null;
-            }
-            Integer categoryId = rs.getInt("id");
-            String name = rs.getString("category_name");
-            String description = rs.getString("description");
-            Date createdAt = rs.getDate("create_at");
-            Date updatedAt = rs.getDate("updated_at");
-            category.setId(categoryId);
-            category.setCategoryName(name);
-            category.setDescription(description);
-            category.setCreateAt(createdAt);
-            category.setUpdatedAt(updatedAt);
-            rs.close();
-            ste.close();
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
-        return category;
 
     }
 
@@ -78,6 +45,26 @@ public class CategoryService {
         }
     }
 
+    public boolean isUnique(Category c) {
+        sql = "SELECT COUNT(*) FROM category WHERE category_name=?";
+        System.out.println(sql);
+        boolean unique = false;
+        try {
+            PreparedStatement ste = cnx.prepareStatement(sql);
+            ste.setString(1, c.getCategoryName());
+            ResultSet rs = ste.executeQuery();
+            if (rs.next() && rs.getInt(1) == 0) {
+                System.out.println("Category with the same name already exists!");
+                unique = true;
+            } else {
+                unique = false;
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return unique;
+    }
+
     public List<Category> getAllCategories() {
         List<Category> categories = new ArrayList<>();
         sql = "select * from category";
@@ -93,35 +80,30 @@ public class CategoryService {
             rs.close();
 
         } catch (SQLException ex) {
-            Logger.getLogger(CategoryService.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getMessage());
         }
         return categories;
     }
 
-    public Category getCategoryById(int categoryId) {
-        Category category = new Category();
-        sql = "select * from category where id=" + categoryId;
+    public void update(Category c) {
+        System.out.println("service" + c);
+        sql = " update category set category_name=? ,description=? ,updated_at=? where id= ? ";
         try {
-            Statement ste = cnx.createStatement();
-            ResultSet rs = ste.executeQuery(sql);
-            if (rs.next()) {
-                category.setId(rs.getInt("id"));
-                category.setCategoryName(rs.getString("category_name"));
-                category.setDescription(rs.getString("description"));
-                category.setCreateAt(rs.getDate("create_at"));
-                category.setUpdatedAt(rs.getDate("updated_at"));
-            }
+            PreparedStatement ste = cnx.prepareStatement(sql);
+            ste.setString(1, c.getCategoryName());
+            ste.setString(2, c.getDescription());
+            ste.setDate(3, (Date) c.getUpdatedAt());
+            ste.setInt(4, c.getId());
+            ste.executeUpdate();
+            System.out.println("category updated");
             ste.close();
-            rs.close();
-
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
-        return category;
     }
 
     public void delete(Category c) {
-        sql = " select count(*) from product where id=" + c.getId();
+        sql = " select count(*) from product where category_id=" + c.getId();
         int count = 0;
         try {
             Statement ste = cnx.createStatement();
@@ -148,9 +130,9 @@ public class CategoryService {
         }
     }
 
-    public void deleteById(Integer categoryId) {
+    public boolean deleteById(Integer categoryId) {
 
-        sql = " select count(*) from product where id=" + categoryId;
+        sql = " select count(*) from product where category_id=" + categoryId;
         int count = 0;
         try {
             Statement ste = cnx.createStatement();
@@ -165,15 +147,18 @@ public class CategoryService {
         // check if the category is associated with any products, display an error message in that case
         if (count > 0) {
             System.out.println("Cette categorie ne peut pas etre supprimé");
-            return;
+            return false;
         }
         sql = "delete from category where id=" + categoryId;
         try {
             Statement ste = cnx.createStatement();
             ste.executeUpdate(sql);
             System.out.println("Categorie" + categoryId + "supprimé avec success");
+            return true;
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
+            return false;
         }
     }
+
 }

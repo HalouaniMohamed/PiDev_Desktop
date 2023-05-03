@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="900.0" prefWidth="1600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.CategoriesListController">
+   <children>
+      <BorderPane prefHeight="900.0" prefWidth="1600.0">
+         <top>
+            <fx:include source="AdminNavbar.fxml" />
+         </top>
+         <left>
+            <fx:include source="SideMenu.fxml" />
+         </left>
+         <center>
+            <AnchorPane fx:id="id" prefHeight="777.0" prefWidth="1211.0" BorderPane.alignment="CENTER">
+               <children>
+                  <TableView fx:id="categoriesView" layoutX="238.0" layoutY="151.0" prefHeight="563.0" prefWidth="691.0" AnchorPane.bottomAnchor="70.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0">
+                    <columns>
+                      <TableColumn fx:id="idC" prefWidth="70.66668701171875" text="Id" />
+                      <TableColumn fx:id="nameC" prefWidth="126.93325805664062" text="Name" />
+                        <TableColumn fx:id="descriptionC" prefWidth="132.00009155273438" text="Description" />
+                        <TableColumn fx:id="createdAtC" prefWidth="115.2000732421875" text="Created_at" />
+                        <TableColumn fx:id="updatedAtC" prefWidth="98.933349609375" text="updated_at" />
+                        <TableColumn fx:id="updateC" prefWidth="68.533447265625" text="Modifier" />
+                        <TableColumn fx:id="deleteC" prefWidth="93.06658935546875" text="Supprimer" />
+                    </columns>
+                     <effect>
+                        <DropShadow height="15.0" radius="7.0" width="15.0">
+                           <color>
+                              <Color red="0.6842105388641357" green="0.6411306262016296" blue="0.6411306262016296" />
+                           </color>
+                        </DropShadow>
+                     </effect>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
+                  </TableView>
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="250.0" layoutY="62.0" prefHeight="18.0" prefWidth="639.0" text="Liste des Catégories" textAlignment="CENTER">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>

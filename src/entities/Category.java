@@ -44,6 +44,13 @@ public class Category {
         this.updatedAt = updatedAt;
     }
 
+    public Category(String categoryName, String description, Date createdAt, Date updatedAt) {
+        this.categoryName = categoryName;
+        this.description = description;
+        this.createAt = createdAt;
+        this.updatedAt = updatedAt;
+    }
+
     public Integer getId() {
         return id;
     }

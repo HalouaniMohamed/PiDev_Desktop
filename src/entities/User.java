@@ -5,130 +5,160 @@
  */
 package entities;
 
-import java.io.Serializable;
-import java.util.Date;
+import java.util.Arrays;
 import java.util.List;
-import javax.persistence.Basic;
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Lob;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
+import java.sql.Date;
 
-/**
- *
- * @author ALPHA
- */
-@Entity
-@Table(name = "user")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "User.findAll", query = "SELECT u FROM User u")
-    , @NamedQuery(name = "User.findById", query = "SELECT u FROM User u WHERE u.id = :id")
-    , @NamedQuery(name = "User.findByEmail", query = "SELECT u FROM User u WHERE u.email = :email")
-    , @NamedQuery(name = "User.findByPassword", query = "SELECT u FROM User u WHERE u.password = :password")
-    , @NamedQuery(name = "User.findByFirstName", query = "SELECT u FROM User u WHERE u.firstName = :firstName")
-    , @NamedQuery(name = "User.findByLastName", query = "SELECT u FROM User u WHERE u.lastName = :lastName")
-    , @NamedQuery(name = "User.findByAdresse", query = "SELECT u FROM User u WHERE u.adresse = :adresse")
-    , @NamedQuery(name = "User.findByBirthDate", query = "SELECT u FROM User u WHERE u.birthDate = :birthDate")
-    , @NamedQuery(name = "User.findByCreatedAt", query = "SELECT u FROM User u WHERE u.createdAt = :createdAt")
-    , @NamedQuery(name = "User.findByUpdatedAt", query = "SELECT u FROM User u WHERE u.updatedAt = :updatedAt")
-    , @NamedQuery(name = "User.findByStatus", query = "SELECT u FROM User u WHERE u.status = :status")
-    , @NamedQuery(name = "User.findByFile", query = "SELECT u FROM User u WHERE u.file = :file")
-    , @NamedQuery(name = "User.findByGender", query = "SELECT u FROM User u WHERE u.gender = :gender")
-    , @NamedQuery(name = "User.findByResetToken", query = "SELECT u FROM User u WHERE u.resetToken = :resetToken")
-    , @NamedQuery(name = "User.findByResetTokenExpiresAt", query = "SELECT u FROM User u WHERE u.resetTokenExpiresAt = :resetTokenExpiresAt")})
-public class User implements Serializable {
+public class User {
 
-//    @JoinTable(name = "user_notification", joinColumns = {
-//        @JoinColumn(name = "user_id", referencedColumnName = "id")}, inverseJoinColumns = {
-//        @JoinColumn(name = "notification_id", referencedColumnName = "id")})
-//    @ManyToMany
-//    private List<Notification> notificationList;
-    private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
-    @Column(name = "id")
-    private Integer id;
-    @Basic(optional = false)
-    @Column(name = "email")
+    private int id;
     private String email;
-    @Basic(optional = false)
-    @Lob
-    @Column(name = "roles")
-    private String roles;
-    @Basic(optional = false)
-    @Column(name = "password")
+    private String address;
     private String password;
-    @Basic(optional = false)
-    @Column(name = "first_name")
-    private String firstName;
-    @Basic(optional = false)
-    @Column(name = "last_name")
-    private String lastName;
-    @Column(name = "adresse")
-    private String adresse;
-    @Basic(optional = false)
-    @Column(name = "birth_date")
-    @Temporal(TemporalType.DATE)
-    private Date birthDate;
-    @Column(name = "created_at")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date createdAt;
-    @Column(name = "updated_at")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date updatedAt;
-    @Column(name = "status")
-    private Boolean status;
-    @Column(name = "file")
-    private String file;
-    @Basic(optional = false)
-    @Column(name = "gender")
-    private String gender;
-    @Column(name = "reset_token")
-    private String resetToken;
-    @Column(name = "reset_token_expires_at")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date resetTokenExpiresAt;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
-    private List<Commande> commandeList;
-    @OneToMany(mappedBy = "user")
-    private List<ShoppingCartItem> shoppingCartItemList;
+    private String full_name;
+    private String img_user;
+    private List<String> roles = Arrays.asList("ROLE_USER");
+    private Date date_naissance;
+    public static User Current_User;
 
     public User() {
     }
 
-    public User(Integer id) {
+    public User(int id) {
         this.id = id;
     }
 
-    public User(Integer id, String email, String roles, String password, String firstName, String lastName, Date birthDate, String gender) {
+    public User(String email) {
+        this.email = email;
+    }
+
+    public User(int id, String email, String address, String password, String full_name, String img_user, List<String> roles) {
         this.id = id;
         this.email = email;
-        this.roles = roles;
+        this.address = address;
         this.password = password;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.birthDate = birthDate;
-        this.gender = gender;
+        this.full_name = full_name;
+        this.img_user = img_user;
+        this.roles = roles;
     }
 
-    public Integer getId() {
+    public User(String email, String address, String password, String full_name, String img_user, List<String> roles) {
+        this.email = email;
+        this.address = address;
+        this.password = password;
+        this.full_name = full_name;
+        this.img_user = img_user;
+        this.roles = roles;
+    }
+
+    public User(String email, String address, String password, String full_name, String img_user, List<String> roles, Date naissance) {
+        this.email = email;
+        this.address = address;
+        this.password = password;
+        this.full_name = full_name;
+        this.img_user = img_user;
+        this.roles = roles;
+        this.date_naissance = naissance;
+    }
+
+    public User(String email, String address, String full_name, String img_user, List<String> roles) {
+        this.email = email;
+        this.address = address;
+        this.full_name = full_name;
+        this.img_user = img_user;
+        this.roles = roles;
+    }
+
+    public User(int id, String email, String address, String password, String full_name, String img_user) {
+        this.id = id;
+        this.email = email;
+        this.address = address;
+        this.password = password;
+        this.full_name = full_name;
+        this.img_user = img_user;
+    }
+
+    public User(int id, String full_name, String email, String password, String address, Date date_naissance, List<String> roles) {
+        this.id = id;
+        this.email = email;
+        this.address = address;
+        this.password = password;
+        this.full_name = full_name;
+        this.date_naissance = date_naissance;
+        this.roles = roles;
+    }
+
+    public User(String email, String address, String password, String full_name, Date date_naissance, String img_user) {
+        this.email = email;
+        this.address = address;
+        this.password = password;
+        this.full_name = full_name;
+        this.img_user = img_user;
+        this.date_naissance = date_naissance;
+    }
+
+    public User(String email, String address, String full_name, String img_user, String password) {
+        this.email = email;
+        this.address = address;
+        this.password = password;
+        this.full_name = full_name;
+        this.img_user = img_user;
+    }
+
+    public User(String email, String password) {
+        this.email = email;
+        this.password = password;
+    }
+
+    public User(int id, String email, String address, String full_name, String img_user) {
+        this.id = id;
+        this.email = email;
+        this.address = address;
+        this.full_name = full_name;
+        this.img_user = img_user;
+    }
+
+    public User(String email, String address, String password, String full_name, Date date_naissance) {
+        this.email = email;
+        this.address = address;
+        this.password = password;
+        this.full_name = full_name;
+        this.date_naissance = date_naissance;
+    }
+
+    public User(String azizmansgmailcom, String address, String password, String mohamed_aziz_mansour, String oko, String image) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public static User getCurrent_User() {
+        return Current_User;
+    }
+
+    public static void setCurrent_User(User Current_User) {
+        User.Current_User = Current_User;
+    }
+
+    public String getImg_user() {
+        return img_user;
+    }
+
+    public void setImg_user(String img_user) {
+        this.img_user = img_user;
+    }
+
+    public Date getDate_naissance() {
+        return date_naissance;
+    }
+
+    public void setDate_naissance(Date date_naissance) {
+        this.date_naissance = date_naissance;
+    }
+
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -140,12 +170,12 @@ public class User implements Serializable {
         this.email = email;
     }
 
-    public String getRoles() {
-        return roles;
+    public String getAddress() {
+        return address;
     }
 
-    public void setRoles(String roles) {
-        this.roles = roles;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getPassword() {
@@ -156,135 +186,31 @@ public class User implements Serializable {
         this.password = password;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getFull_name() {
+        return full_name;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setFull_name(String full_name) {
+        this.full_name = full_name;
     }
 
-    public String getLastName() {
-        return lastName;
+    public List<String> getRoles() {
+        return roles;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getAdresse() {
-        return adresse;
-    }
-
-    public void setAdresse(String adresse) {
-        this.adresse = adresse;
-    }
-
-    public Date getBirthDate() {
-        return birthDate;
-    }
-
-    public void setBirthDate(Date birthDate) {
-        this.birthDate = birthDate;
-    }
-
-    public Date getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public Date getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(Date updatedAt) {
-        this.updatedAt = updatedAt;
-    }
-
-    public Boolean getStatus() {
-        return status;
-    }
-
-    public void setStatus(Boolean status) {
-        this.status = status;
-    }
-
-    public String getFile() {
-        return file;
-    }
-
-    public void setFile(String file) {
-        this.file = file;
-    }
-
-    public String getGender() {
-        return gender;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
-
-    public String getResetToken() {
-        return resetToken;
-    }
-
-    public void setResetToken(String resetToken) {
-        this.resetToken = resetToken;
-    }
-
-    public Date getResetTokenExpiresAt() {
-        return resetTokenExpiresAt;
-    }
-
-    public void setResetTokenExpiresAt(Date resetTokenExpiresAt) {
-        this.resetTokenExpiresAt = resetTokenExpiresAt;
-    }
-
-    @XmlTransient
-    public List<Commande> getCommandeList() {
-        return commandeList;
-    }
-
-    public void setCommandeList(List<Commande> commandeList) {
-        this.commandeList = commandeList;
-    }
-
-    @XmlTransient
-    public List<ShoppingCartItem> getShoppingCartItemList() {
-        return shoppingCartItemList;
-    }
-
-    public void setShoppingCartItemList(List<ShoppingCartItem> shoppingCartItemList) {
-        this.shoppingCartItemList = shoppingCartItemList;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof User)) {
-            return false;
-        }
-        User other = (User) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
+    public void setRoles(List<String> roles) {
+        this.roles = roles;
     }
 
     @Override
     public String toString() {
-        return "pidev_desktop.entities.User[ id=" + id + " ]";
+        return "User{"
+                + "id=" + id
+                + ", email='" + email + '\''
+                + ", address='" + address + '\''
+                + ", password='" + password + '\''
+                + ", full_name='" + full_name + '\''
+                + ", roles=" + roles
+                + '}';
     }
-//    }
 }
