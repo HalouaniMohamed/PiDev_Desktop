@@ -100,7 +100,7 @@ public class Front_LoginController implements Initializable {
                 }
             } else if (roles.contains("[ROLE_PATIENT]")) {
                 try {
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("../../../gui/UserCart.fxml"));
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("../../../gui/Home.fxml"));
                     Parent root = loader.load();
                     Scene scene = new Scene(root);
                     Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

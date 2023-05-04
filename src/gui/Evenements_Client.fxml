@@ -64,7 +64,7 @@
                               </HBox>
                            </children>
                         </HBox>
-                        <Button fx:id="voirR" mnemonicParsing="false" onAction="#goToR" style="-fx-background-color: #6777ef;" text="Consulter vos reservations" />
+                        <Button fx:id="voirR" mnemonicParsing="false" onAction="#goToR" style="-fx-background-color: #26ace2;" text="Consulter mes reservations" textFill="WHITE" />
                      </children>
                   </GridPane>
                </children>
