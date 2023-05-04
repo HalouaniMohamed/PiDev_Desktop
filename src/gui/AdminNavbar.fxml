@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
@@ -11,9 +10,9 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="80.0" prefWidth="1600.0" style="-fx-background-color: #6777ef;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.worshop.controllers.AdminNavbarController">
+<AnchorPane id="AnchorPane" prefHeight="80.0" prefWidth="1600.0" style="-fx-background-color: #6777ef;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AdminNavbarController">
    <children>
-      <AnchorPane id="AnchorPane" prefHeight="110.0" prefWidth="361.0" style="-fx-background-color: #4c60da;" stylesheets="@application.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1233.6" AnchorPane.topAnchor="0.0">
+      <AnchorPane id="AnchorPane" prefHeight="110.0" prefWidth="361.0" style="-fx-background-color: #4c60da;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1233.6" AnchorPane.topAnchor="0.0">
          <children>
             <ImageView fitHeight="112.0" fitWidth="139.0" layoutX="-5.0" layoutY="-1.0" pickOnBounds="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="217.0" AnchorPane.topAnchor="0.0">
                <image>
@@ -32,11 +31,7 @@
             <Pane prefHeight="110.0" prefWidth="200.0" />
             <HBox alignment="CENTER_RIGHT" layoutY="22.0" prefHeight="55.0" prefWidth="486.0" AnchorPane.bottomAnchor="35.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="22.0">
                <children>
-                  <Button mnemonicParsing="false" onAction="#exit" text="Déconnexion">
-                     <HBox.margin>
-                        <Insets right="30.0" />
-                     </HBox.margin>
-                  </Button>
+                  <Button fx:id="logout" mnemonicParsing="false" onAction="#logout" prefHeight="26.0" prefWidth="182.0" text="Déconnexion" />
                   <Separator orientation="VERTICAL" prefHeight="46.0" prefWidth="8.0" />
                   <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="55.0" prefWidth="236.0" style="-fx-background-color: #6777ef;" text="Admin" textFill="WHITE">
                      <font>

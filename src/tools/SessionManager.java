@@ -5,44 +5,46 @@
  */
 package tools;
 
+import entities.User;
+
 /**
  *
  * @author rayen
  */
-    public final class SessionManager {
- 
+public final class SessionManager {
+
     private static SessionManager instance;
- 
-     private static int id;
+
+    private static User currentUser;
+    private static int id;
     private static int CIN;
     private static String UserName;
     private static int Numero;
     private static String Email;
     private static String Adresse;
-   
+
     private static String roles;
 
-   
-  //SessionManager.getInstace(rs.getInt("id"),rs.getInt("cin"),rs.getString("user_name"),rs.getInt("numero"),rs.getString("email"),rs.getString("adresse"),rs.getString("roles"));
-    private SessionManager(int id , String user_name , int numero , String email ,String address,String role ) {
-    SessionManager.id=id;
-    SessionManager.UserName=user_name;
-    SessionManager.Numero=numero;
-    SessionManager.Email=email;
-    SessionManager.Adresse=address;
-    SessionManager.roles=role;
+    //SessionManager.getInstace(rs.getInt("id"),rs.getInt("cin"),rs.getString("user_name"),rs.getInt("numero"),rs.getString("email"),rs.getString("adresse"),rs.getString("roles"));
+    private SessionManager(int id, String user_name, int numero, String email, String address, String role) {
+        SessionManager.id = id;
+        SessionManager.UserName = user_name;
+        SessionManager.Numero = numero;
+        SessionManager.Email = email;
+        SessionManager.Adresse = address;
+        SessionManager.roles = role;
     }
- 
+
     /**
-    *
-    * @param userName
-    * @param employeeId
-    * @param privileges
-    * @return
-    */
-    public static SessionManager getInstace(int id , String user_name , int numero , String email ,String address,String role) {
-        if(instance == null) {
-            instance = new SessionManager( id ,  user_name ,  numero ,  email ,address, role);
+     *
+     * @param userName
+     * @param employeeId
+     * @param privileges
+     * @return
+     */
+    public static SessionManager getInstace(int id, String user_name, int numero, String email, String address, String role) {
+        if (instance == null) {
+            instance = new SessionManager(id, user_name, numero, email, address, role);
         }
         return instance;
     }
@@ -63,7 +65,6 @@ package tools;
         SessionManager.id = id;
     }
 
- 
     public static String getUserName() {
         return UserName;
     }
@@ -104,40 +105,42 @@ package tools;
         SessionManager.roles = roles;
     }
 
-   
-    
-    public static void cleanUserSession() {
-    id=0;
-     UserName="";
-     Numero=0;
-     Email="";
-     Adresse="";
-     roles="";
+    public static User getCurrentUser() {
+        return currentUser;
     }
- 
+
+    public static void setCurrentUser(User currentUser) {
+        SessionManager.currentUser = currentUser;
+    }
+
+    public static void cleanUserSession() {
+        id = 0;
+        UserName = "";
+        Numero = 0;
+        Email = "";
+        Adresse = "";
+        roles = "";
+    }
+
     @Override
     public String toString() {
-        return "UserSession{" +
-                "userName='" + UserName + '\'' +
-                "email='" + Email + '\'' +
-               
-                "id = '" + id + '\'' +
-           
-                ", privileges=" + roles +
-                
-            '}';
+        return "UserSession{"
+                + "userName='" + UserName + '\''
+                + "email='" + Email + '\''
+                + "id = '" + id + '\''
+                + ", privileges=" + roles
+                + '}';
     }
- 
-    
+
     static class cleanUserSession {
- 
+
         public cleanUserSession() {
-          id=0;
-     UserName="";
-     Numero=0;
-     Email="";
-     Adresse="";
-     roles="";
+            id = 0;
+            UserName = "";
+            Numero = 0;
+            Email = "";
+            Adresse = "";
+            roles = "";
         }
     }
 }

@@ -5,7 +5,6 @@
  */
 package services;
 
-
 import edu.worshop.interfaces.IService;
 import entities.User;
 import tools.MyConnection;
@@ -17,6 +16,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Arrays;
+
 /**
  *
  * @author rayen
@@ -24,44 +24,41 @@ import java.util.Arrays;
 public class ServiceUser implements IService {
 
     Statement ste;
-    Connection conn = MyConnection.getInstance().getConn();
-
-   
+    Connection conn = MyConnection.getInstance().getCnx();
 
     @Override
     public void add(Object p) {
         try {
-            if (p instanceof User) { // Vérifie si p est un objet de type User
-                
-    
-    // Crypter le mot de passe avec BCrypt
-               
-                //String qry = "INSERT INTO user(id, email , password, address, full_name ) VALUES ('" + ((User) p).getId() + "','" + ((User) p).getEmail() + "','" + ((User) p).getPassword() + "' ,'" + ((User) p).getAddress() + "','" + ((User) p).getFull_name() + "')"; 
-                String qry = "INSERT INTO user(email, password, adresse, user_name, roles, date_naiss) VALUES ('" + ((User) p).getEmail() + "','" + ((User) p).getPassword() + "','" + ((User) p).getAddress() + "','" + ((User) p).getFull_name() + "','" + ((User) p).getRoles() + "','"  + ((User) p).getDate_naissance() + "')";
+            if (p instanceof User) { // VÃ©rifie si p est un objet de type User
+
+                // Crypter le mot de passe avec BCrypt
+                //String qry = "INSERT INTO user(id, email , password, address, full_name ) VALUES ('" + ((User) p).getId() + "','" + ((User) p).getEmail() + "','" + ((User) p).getPassword() + "' ,'" + ((User) p).getAddress() + "','" + ((User) p).getFull_name() + "')";
+                String qry = "INSERT INTO user(email, password, adresse, user_name, roles, date_naiss) VALUES ('" + ((User) p).getEmail() + "','" + ((User) p).getPassword() + "','" + ((User) p).getAddress() + "','" + ((User) p).getFull_name() + "','" + ((User) p).getRoles() + "','" + ((User) p).getDate_naissance() + "')";
                 //String qry = "INSERT INTO user(email, password, address, full_name) VALUES ('" + ((User) p).getEmail() + "','" + ((User) p).getPassword() + "','" + ((User) p).getAddress() + "','" + ((User) p).getFull_name() + "')";
                 ste = conn.createStatement();
                 ste.executeUpdate(qry);
             } else {
-                System.out.println("L'objet passé en paramètre n'est pas un utilisateur.");
+                System.out.println("L'objet passÃ© en paramÃ¨tre n'est pas un utilisateur.");
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
     }
+
     @Override
     public void register(Object p) {
-         try {
-        if (p instanceof User) {
-            String encryptedPassword = PasswordEncryption.encrypt(((User) p).getPassword());
-            String qry = "INSERT INTO user(email, password, adresse, user_name, date_naiss, roles) VALUES ('" + ((User) p).getEmail() + "','" + encryptedPassword + "','" + ((User) p).getAddress() + "','" + ((User) p).getFull_name() + "','" + ((User) p).getDate_naissance() + "','"  + ((User) p).getRoles() + "')";
-            ste = conn.createStatement();
-            ste.executeUpdate(qry);
-        } else {
-            System.out.println("L'objet passé en paramètre n'est pas un utilisateur.");
+        try {
+            if (p instanceof User) {
+                String encryptedPassword = PasswordEncryption.encrypt(((User) p).getPassword());
+                String qry = "INSERT INTO user(email, password, adresse, user_name, date_naiss, roles) VALUES ('" + ((User) p).getEmail() + "','" + encryptedPassword + "','" + ((User) p).getAddress() + "','" + ((User) p).getFull_name() + "','" + ((User) p).getDate_naissance() + "','" + ((User) p).getRoles() + "')";
+                ste = conn.createStatement();
+                ste.executeUpdate(qry);
+            } else {
+                System.out.println("L'objet passÃ© en paramÃ¨tre n'est pas un utilisateur.");
+            }
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
         }
-    } catch (Exception ex) {
-        System.out.println(ex.getMessage());
-    }
     }
 
     @Override
@@ -94,32 +91,31 @@ public class ServiceUser implements IService {
         }
         return User;
     }
-    
+
     public List<User> ListUsers() {
-    List<User> list = new ArrayList<>();
-    try {
-        String qry = "SELECT id, user_name, email,password, adresse, date_naiss, roles FROM user";
-        Statement st = conn.createStatement();
-        ResultSet RS = st.executeQuery(qry);
-        while (RS.next()) {
-            List<String> roles = Arrays.asList(RS.getString("roles").split(","));
-            User R = new User(
-                RS.getInt("id"),
-                RS.getString("user_name"),
-                RS.getString("email"),
-                RS.getString("password"),
-                RS.getString("adresse"),
-                RS.getDate("date_naiss"),
-                roles
-            );
-            list.add(R);
+        List<User> list = new ArrayList<>();
+        try {
+            String qry = "SELECT id, user_name, email,password, adresse, date_naiss, roles FROM user";
+            Statement st = conn.createStatement();
+            ResultSet RS = st.executeQuery(qry);
+            while (RS.next()) {
+                List<String> roles = Arrays.asList(RS.getString("roles").split(","));
+                User R = new User(
+                        RS.getInt("id"),
+                        RS.getString("user_name"),
+                        RS.getString("email"),
+                        RS.getString("password"),
+                        RS.getString("adresse"),
+                        RS.getDate("date_naiss"),
+                        roles
+                );
+                list.add(R);
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
         }
-    } catch (SQLException ex) {
-        System.out.println(ex.getMessage());
+        return list;
     }
-    return list;
-}
-    
 
     public User getUserById(int userId) {
         try {
@@ -144,23 +140,22 @@ public class ServiceUser implements IService {
         }
         return null;
     }
-   
 
     @Override
-public void supprimer(Object p) {
-    try {
-        if (p instanceof User) {
-            String qry = "DELETE FROM user WHERE email=?";
-            PreparedStatement pst = conn.prepareStatement(qry);
-            pst.setString(1, ((User) p).getEmail());
-            pst.executeUpdate();
-        } else {
-            System.out.println("L'objet passé en paramètre n'est pas un utilisateur.");
+    public void supprimer(Object p) {
+        try {
+            if (p instanceof User) {
+                String qry = "DELETE FROM user WHERE email=?";
+                PreparedStatement pst = conn.prepareStatement(qry);
+                pst.setString(1, ((User) p).getEmail());
+                pst.executeUpdate();
+            } else {
+                System.out.println("L'objet passÃ© en paramÃ¨tre n'est pas un utilisateur.");
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
         }
-    } catch (SQLException ex) {
-        System.out.println(ex.getMessage());
     }
-}
 
     @Override
     public boolean modifier(Object E) {
@@ -190,47 +185,46 @@ public void supprimer(Object p) {
     }
 
     @Override
-public User authenticate(String email, String password) {
-    try {
-        String qry = "SELECT id, email, password, user_name, adresse, roles FROM user WHERE email = ?";
-        PreparedStatement ps = conn.prepareStatement(qry);
-        ps.setString(1, email);
-        ResultSet rs = ps.executeQuery();
+    public User authenticate(String email, String password) {
+        try {
+            String qry = "SELECT id, email, password, user_name, adresse, roles FROM user WHERE email = ?";
+            PreparedStatement ps = conn.prepareStatement(qry);
+            ps.setString(1, email);
+            ResultSet rs = ps.executeQuery();
 
-        if (rs.next()) {
-            String encryptedPassword = rs.getString("password");
-            String decryptedPassword = PasswordEncryption.decrypt(encryptedPassword);
-            
-            if (decryptedPassword.equals(password)) {
-                User user = new User();
-                user.setId(rs.getInt("id"));
-                user.setEmail(rs.getString("email"));
-                user.setPassword(decryptedPassword);
-                user.setAddress(rs.getString("adresse"));
-                user.setFull_name(rs.getString("user_name"));
+            if (rs.next()) {
+                String encryptedPassword = rs.getString("password");
+                String decryptedPassword = PasswordEncryption.decrypt(encryptedPassword);
 
-                // fetch roles from the database based on user's roles column
-                List<String> roles = Arrays.asList(rs.getString("roles").split(","));
-                user.setRoles(roles);
+                if (decryptedPassword.equals(password)) {
+                    User user = new User();
+                    user.setId(rs.getInt("id"));
+                    user.setEmail(rs.getString("email"));
+                    user.setPassword(decryptedPassword);
+                    user.setAddress(rs.getString("adresse"));
+                    user.setFull_name(rs.getString("user_name"));
 
-                MyConnection.setUserId(user.getId());
+                    // fetch roles from the database based on user's roles column
+                    List<String> roles = Arrays.asList(rs.getString("roles").split(","));
+                    user.setRoles(roles);
 
-                return user;
+                    MyConnection.setUserId(user.getId());
+
+                    return user;
+                } else {
+                    return null;
+                }
             } else {
                 return null;
             }
-        } else {
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+            return null;
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
             return null;
         }
-    } catch (SQLException ex) {
-        System.out.println(ex.getMessage());
-        return null;
-    } catch (Exception ex) {
-        System.out.println(ex.getMessage());
-        return null;
     }
-}
-
 
     public boolean emailExist(String email) {
         try {
@@ -249,16 +243,16 @@ public User authenticate(String email, String password) {
             return false;
         }
     }
-    
+
     public int ChercherMail(String email) {
         String req = "SELECT * from `user` WHERE `user`.`email` ='" + email + "'  ";
         try {
-            
+
             Statement st = conn.createStatement();
             ResultSet rs = st.executeQuery(req);
             while (rs.next()) {
                 if (rs.getString("email").equals(email)) {
-                    System.out.println("mail trouvé ! ");
+                    System.out.println("mail trouvÃ© ! ");
                     return 1;
                 }
             }
@@ -267,7 +261,8 @@ public User authenticate(String email, String password) {
         }
         return -1;
     }
-      public void ResetPaswword(String email, String password) {
+
+    public void ResetPaswword(String email, String password) {
         String req = "UPDATE user SET password = ? WHERE email = ?";
         try {
             PreparedStatement ps = conn.prepareStatement(req);

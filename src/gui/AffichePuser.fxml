@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="900.0" prefWidth="1600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AffichePuserController">
+    <children>
+      <BorderPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <top>
+            <fx:include source="UserNavbar.fxml" />
+         </top>
+         <left>
+            <AnchorPane prefHeight="820.0" prefWidth="1589.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Button fx:id="retour" alignment="CENTER" layoutX="99.0" layoutY="738.0" mnemonicParsing="false" onAction="#back" prefHeight="26.0" prefWidth="101.0" style="-fx-background-color: #26ace2;" text="Retour" textFill="#fff9f9">
+                     <font>
+                        <Font name="Arial Bold" size="14.0" />
+                     </font>
+                  </Button>
+                  <ListView fx:id="listViewQuestion" layoutX="162.0" layoutY="169.0" prefHeight="528.0" prefWidth="1023.0" />
+             <Button layoutX="1362.0" layoutY="281.0" mnemonicParsing="false" onAction="#ModifierPost" prefHeight="33.0" prefWidth="125.0" style="-fx-background-color: #26ace2;" text="Modifier" textFill="#fcfcfc" />
+             <Button layoutX="1357.0" layoutY="356.0" mnemonicParsing="false" onAction="#SupprimerPost" prefHeight="33.0" prefWidth="134.0" style="-fx-background-color: #26ace2;" text="Supprimer" textFill="#fcf8f8" />
+                  <Label layoutX="642.0" layoutY="85.0" prefHeight="43.0" prefWidth="275.0" text="Mes Postes">
+                     <font>
+                        <Font name="System Bold" size="36.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+         </left>
+      </BorderPane>
+    </children>  
+
+
+</AnchorPane>

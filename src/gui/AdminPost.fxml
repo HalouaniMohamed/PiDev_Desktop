@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="900.0" prefWidth="1600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AdminPostController">
+    
+   <children>
+      <BorderPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <left>
+            <fx:include source="SideMenu.fxml" />
+         </left>
+         <center>
+            <AnchorPane id="AnchorPane" prefHeight="900.0" prefWidth="1600.0" styleClass="mainFxmlClass" BorderPane.alignment="CENTER">
+                
+                     <children>
+                  <AnchorPane id="AnchorPane" prefHeight="544.0" prefWidth="231.0" style="-fx-background-color: #fafdfb;">
+                     <children>
+                        <AnchorPane id="AnchorPane" minWidth="-Infinity" prefHeight="729.0" prefWidth="1600.0" style="-fx-background-color: #fafdfb;">
+                           <children>
+                              <ListView fx:id="listViewQuestion" layoutX="124.0" layoutY="97.0" prefHeight="475.0" prefWidth="1358.0" />
+                              <Label alignment="CENTER" layoutX="368.0" layoutY="8.0" prefHeight="82.0" prefWidth="743.0" text="Liste des Posts" textAlignment="CENTER" textFill="#0e0e90">
+                                 <font>
+                                    <Font name="System Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                              <Button layoutX="709.0" layoutY="646.0" mnemonicParsing="false" onAction="#SupprimerPost" prefHeight="26.0" prefWidth="150.0" style="-fx-background-color: #6777ef;" text="Supprimer post" textFill="WHITE" />
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+         </center>
+         <top>
+            <fx:include source="AdminNavbar.fxml" />
+         </top>
+      </BorderPane>
+   </children>
+</AnchorPane>

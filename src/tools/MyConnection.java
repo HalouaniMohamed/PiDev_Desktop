@@ -8,30 +8,29 @@ package tools;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
- * @author belkn
+ * @author ALPHA
  */
 public class MyConnection {
-    
-   private static Connection conn; //DB Credations
-    
-String url = "jdbc:mysql://127.0.0.1:3306/echkili1";
-String user = "root";
-String pwd = "";
 
-private static int userId;
-private static String image_Name;
+    private Connection cnx;
+    public final String url = "jdbc:mysql://localhost:3306/pidevfinal1";
+    public final String user = "root";
+    public final String pwd = "";
+    public static MyConnection ct;
 
-public static int getUserId() {
+    private static int userId;
+    private static String image_Name;
+
+    public static int getUserId() {
         return userId;
     }
-public static void setUserId(int userId) {
+
+    public static void setUserId(int userId) {
         MyConnection.userId = userId;
-        
+
     }
 
     public static String getImage_Name() {
@@ -42,27 +41,26 @@ public static void setUserId(int userId) {
         MyConnection.image_Name = image_Name;
     }
 
-
-
-private static MyConnection instance;
     private MyConnection() {
         try {
-            conn=DriverManager.getConnection(url, user, pwd);
-            System.out.println("Connexion etablie!!!");
+            cnx = DriverManager.getConnection(url, user, pwd);
+            System.out.println("Connexion etablie !");
         } catch (SQLException ex) {
-            System.out.println("Probleme de connexion");        }
+            System.out.println(ex.getMessage());
+        }
     }
 
+    // get instance method using singleton pattern
     public static MyConnection getInstance() {
-        if(instance==null){
-            instance= new MyConnection();
+        // create a new instance if no connection has been made before
+        if (ct == null) {
+            ct = new MyConnection();
         }
-        return instance;
+        return ct;
     }
- 
-    
-    public Connection getConn(){
-        return MyConnection.getInstance().conn;
+
+    public Connection getCnx() {
+        return cnx;
     }
-    
+
 }

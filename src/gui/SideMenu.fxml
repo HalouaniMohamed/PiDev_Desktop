@@ -2,15 +2,16 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="544.0" prefWidth="363.0" style="-fx-background-color: #fafdfb;" stylesheets="@application.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.worshop.controllers.SideMenuController">
+<AnchorPane id="AnchorPane" prefHeight="544.0" prefWidth="363.0" style="-fx-background-color: #fafdfb;" stylesheets="@application.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.SideMenuController">
    <children>
       <VBox prefHeight="603.0" prefWidth="361.0" style="-fx-background-color: #fafdfb;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="361.0" style="-fx-background-color: #ffffff;" text="Utilisateurs" textFill="#858796">
+            <Button mnemonicParsing="false" onAction="#redirectToUsers" prefHeight="45.0" prefWidth="361.0" style="-fx-background-color: #ffffff;" text="Utilisateurs" textFill="#858796">
                <font>
                   <Font size="24.0" />
                </font></Button>
@@ -20,12 +21,18 @@
                   <Font size="24.0" />
                </font></Button>
             <Separator prefWidth="200.0" />
-            <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="361.0" style="-fx-background-color: #ffffff;" text="Forum" textFill="#858796">
+            <Button mnemonicParsing="false" onAction="#redirectToPost" prefHeight="45.0" prefWidth="361.0" style="-fx-background-color: #ffffff;" text="Post" textFill="#858796">
                <font>
                   <Font size="24.0" />
                </font></Button>
             <Separator prefWidth="200.0" />
-            <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="361.0" style="-fx-background-color: #ffffff;" text="événements" textFill="#858796">
+            <Button mnemonicParsing="false" onAction="#redirectToCommentaire" prefHeight="45.0" prefWidth="361.0" style="-fx-background-color: #ffffff;" text="Commentaires" textFill="#858796">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+            <Separator prefWidth="200.0" />
+            <Button mnemonicParsing="false" onAction="#redirectToAddE" prefHeight="45.0" prefWidth="361.0" style="-fx-background-color: #ffffff;" text="Ajouter Evénements" textFill="#858796">
                <font>
                   <Font size="24.0" />
                </font></Button>
@@ -52,6 +59,7 @@
                </font>
             </Button>
             <Separator prefWidth="200.0" />
+            <TextField fx:id="tfName" prefHeight="0.0" prefWidth="363.0" style="-fx-background-color: #fff;" />
          </children>
       </VBox>
    </children>

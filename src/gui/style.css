@@ -1,0 +1,60 @@
+.search-box {
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 100;
+}
+
+.transparent {
+    -fx-background-color: rgba(0, 0, 0, 0);
+
+}
+
+.search-button {
+    -fx-background-color:  #87CEEB;
+    -fx-background-radius: 10;
+}
+
+.right-bar {
+    -fx-background-color: #D5D5D5;
+
+}
+
+.shadow {
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.1), 10.0, 0.0, 0.0, 10.0);
+}
+
+.chosen-categorie-type {
+    -fx-background-color: #828282;
+    -fx-background-radius: 10;
+}
+
+.comboBox {
+    -fx-background-color: rgba(255, 255, 255, 0.3);
+    -fx-background-radius: 30;
+}
+
+.ajouter-btn {
+    -fx-background-color: #690E09;
+    -fx-background-radius: 100;
+}
+
+.vous-navez {
+    -fx-background-color: #828282;
+    -fx-background-radius: 30;
+}
+
+.vous-ajouter {
+    -fx-background-color: #4fb939;
+    -fx-background-radius: 30;
+}
+
+.nous-aimons {
+    -fx-background-color: #690E20;
+    -fx-background-radius: 30;
+}
+
+.event-items {
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 30;
+    -fx-min-width: 225;
+    -fx-min-height: 225;
+}

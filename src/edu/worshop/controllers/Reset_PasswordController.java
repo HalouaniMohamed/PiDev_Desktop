@@ -30,7 +30,7 @@ import javafx.stage.Stage;
  * @author rayen
  */
 public class Reset_PasswordController implements Initializable {
-    
+
     @FXML
     private TextField tfPassword;
     @FXML
@@ -44,29 +44,29 @@ public class Reset_PasswordController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
-    
-     @FXML
+    }
+
+    @FXML
     private void btnReset(ActionEvent event) throws Exception {
         Alert A = new Alert(Alert.AlertType.INFORMATION);
         if (!tfPassword.getText().equals("") && tfPassword.getText().equals(tfConfirmer.getText())) {
             ServiceUser su = new ServiceUser();
             //String encrypt = (tfPassword.getText());
-              String encrypt = PasswordEncryption.encrypt(tfPassword.getText());
+            String encrypt = PasswordEncryption.encrypt(tfPassword.getText());
 
             su.ResetPaswword(Forget_PasswordController.EmailReset, encrypt);
             A.setContentText("Mot de passe modifié avec succes ! ");
             A.show();
             try {
-            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/worshop/gui/Front_Login.fxml"));
-            Scene scene = new Scene(page1);
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException ex) {
-            Logger.getLogger(User_AddController.class.getName()).log(Level.SEVERE, null, ex);
-            //showAlert("Error loading");
-        }
+                Parent page1 = FXMLLoader.load(getClass().getResource("../../../gui/Front_Login.fxml"));
+                Scene scene = new Scene(page1);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException ex) {
+                Logger.getLogger(User_AddController.class.getName()).log(Level.SEVERE, null, ex);
+                //showAlert("Error loading");
+            }
         } else {
             A.setContentText("veuillez saisir un mot de passe conforme !");
             A.show();
@@ -86,5 +86,5 @@ public class Reset_PasswordController implements Initializable {
             //showAlert("Error loading");
         }
     }
-    
+
 }
