@@ -5,30 +5,37 @@
  */
 package gui;
 
+import entities.User;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import tools.SessionManager;
 
 /**
  *
- * @author ALPHA
+ * @author Mongi
  */
-public class Main extends Application {
+public class FirstWindow extends Application {
 
     @Override
     public void start(Stage primaryStage) {
+        User currentUser = SessionManager.getCurrentUser();
+        System.out.println(currentUser.getRoles());
         try {
-            System.out.println("sent");
-            Parent root = FXMLLoader.load(getClass().getResource("Home.fxml"));
-            Scene scene = new Scene(root, 1600, 900);
-//            primaryStage.setTitle("addCategory");
+            Parent root = FXMLLoader.load(getClass().getResource("ajouteRV.fxml"));
+
+            Scene scene = new Scene(root);
+
+            primaryStage.setTitle("pris d'un RendezVous !");
             primaryStage.setScene(scene);
             primaryStage.show();
         } catch (IOException ex) {
-            System.out.println(ex.getMessage());
+            Logger.getLogger(FirstWindow.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

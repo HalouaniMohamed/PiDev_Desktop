@@ -5,6 +5,8 @@
  */
 package gui;
 
+import com.twilio.type.PhoneNumber;
+import com.twilio.Twilio;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -32,9 +34,11 @@ import javafx.stage.Stage;
 
 import com.twilio.exception.ApiException;
 import com.twilio.exception.TwilioException;
+import com.twilio.rest.api.v2010.account.Message;
 import entities.Cabinet;
 import entities.Medecin;
 import entities.rendez_vous;
+import javafx.scene.layout.AnchorPane;
 import services.CabinetService;
 import services.RendezVous;
 
@@ -62,17 +66,20 @@ public class AjouteRVController implements Initializable {
 
     @FXML
     private ComboBox<String> cbCabinet;
+    @FXML
+    private AnchorPane tfimage;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+
         try {
             RendezVous rendezvous = new RendezVous();
             ObservableList<String> listeMedecins = FXCollections.observableArrayList();
             for (Medecin medecin : rendezvous.getListeMedecins()) {
-                listeMedecins.add(medecin.getNom() + " " + medecin.getPrenom());
+                listeMedecins.add(medecin.getNom());
             }
 
             ObservableList<String> listeCabinet = FXCollections.observableArrayList();
@@ -100,12 +107,13 @@ public class AjouteRVController implements Initializable {
             String descriprion = tfDescription.getText();
             LocalDate localDate = tfDate.getValue();
             String medecin = cbMedecin.getValue();
-            int idMedecin = rendezvous.getIdMedecin(medecin);
             String cabinetSelectionne = cbCabinet.getValue();
-
+            System.out.println("medecin:");
+            System.out.println(medecin);
             int id_cabinet = cs.recupererBynom(cbCabinet.getValue()).getId();
-
+            int id_medecin = rendezvous.recupererBynom(cbMedecin.getValue()).getId();
             System.out.println(id_cabinet);
+            System.out.println(id_medecin);
 
             if (nom.isEmpty() || prenom.isEmpty() || cause.isEmpty() || descriprion.isEmpty() || localDate == null) {
                 // Afficher un message d'erreur si un champ est vide
@@ -133,17 +141,24 @@ public class AjouteRVController implements Initializable {
             Date date_rv = Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
 
             rendez_vous rv = new rendez_vous(nom, prenom, cause, descriprion, date_rv, id_cabinet);
+            rv.setIdMedecin(id_medecin);
             rendezvous.ajouter(rv);
-//           final String ACCOUNT_SID = "AC5d57c3de2630a499b86b1b7781ea33fa";
-//           final String AUTH_TOKEN = "ce85b2e4ca30483bb9acdf358717df03";
-//           Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
-//
-////        Envoyer le SMS
-//          String toPhoneNumber = "+21624660566"; // Numéro de téléphone de destination
-//          String fromPhoneNumber = "+16813233462"; // Numéro de téléphone Twilio
-//          String messageBody = "votre rendez-vous est pris avec succées <3 "; // Contenu du message
-//          Message message = Message.creator(new PhoneNumber(toPhoneNumber), new PhoneNumber(fromPhoneNumber), messageBody).create();
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("afficheRV.fxml"));
+            final String ACCOUNT_SID = "AC5d57c3de2630a499b86b1b7781ea33fa";
+            final String AUTH_TOKEN = "d0a3451a9ba82619dc0cd60c8b4320a0";
+            Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
+
+//        Envoyer le SMS
+            String toPhoneNumber = "+21624660566"; // Numéro de téléphone de destination
+            String fromPhoneNumber = "+16813233462"; // Numéro de téléphone Twilio
+            String messageBody = "votre rendez-vous est pris avec succées <3 "; // Contenu du message
+            Message message = Message.creator(new PhoneNumber(toPhoneNumber), new PhoneNumber(fromPhoneNumber), messageBody).create();
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Validation");
+            alert.setHeaderText(null);
+            alert.setContentText("Votre Rendez-Vous a été pris avec succées ");
+            alert.showAndWait();
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("UserCart.fxml"));
             Parent root = loader.load();
             Scene scene = new Scene(root);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -151,20 +166,32 @@ public class AjouteRVController implements Initializable {
             stage.show();
         } catch (IOException ex) {
             Logger.getLogger(AjouteRVController.class.getName()).log(Level.SEVERE, null, ex);
-        }catch (ApiException ex) {
-    Logger.getLogger(AjouteRVController.class.getName()).log(Level.SEVERE, null, ex);
-    Alert alert = new Alert(Alert.AlertType.ERROR);
-    alert.setTitle("Erreur");
-    alert.setHeaderText(null);
-    alert.setContentText("Erreur lors de l'envoi du SMS: " + ex.getMessage());
-    alert.showAndWait();
-} catch (TwilioException ex) {
-    Logger.getLogger(AjouteRVController.class.getName()).log(Level.SEVERE, null, ex);
-    Alert alert = new Alert(Alert.AlertType.ERROR);
-    alert.setTitle("Erreur");
-    alert.setHeaderText(null);
-    alert.setContentText("Erreur lors de l'envoi du SMS: " + ex.getMessage());
-    alert.showAndWait();
+        } catch (ApiException ex) {
+            Logger.getLogger(AjouteRVController.class.getName()).log(Level.SEVERE, null, ex);
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erreur");
+            alert.setHeaderText(null);
+            alert.setContentText("Erreur lors de l'envoi du SMS: " + ex.getMessage());
+            alert.showAndWait();
+        } catch (TwilioException ex) {
+            Logger.getLogger(AjouteRVController.class.getName()).log(Level.SEVERE, null, ex);
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erreur");
+            alert.setHeaderText(null);
+            alert.setContentText("Erreur lors de l'envoi du SMS: " + ex.getMessage());
+            alert.showAndWait();
+        }
+
     }
 
-}}
+    @FXML
+    private void redirectToHome(ActionEvent event) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("UserProductsList.fxml"));
+        try {
+            Parent root = loader.load();
+            tfNom.getScene().setRoot(root);
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+}

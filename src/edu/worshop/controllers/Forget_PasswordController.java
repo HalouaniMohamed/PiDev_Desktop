@@ -31,13 +31,12 @@ import javafx.stage.Stage;
  * @author rayen
  */
 public class Forget_PasswordController implements Initializable {
-    
-     public static int code;
-    public static String EmailReset ; 
+
+    public static int code;
+    public static String EmailReset;
     @FXML
     private TextField tfMailO;
-    
-    
+
     public static int generateVerificationCode() {
         // Générer un code de vérification aléatoire à 6 chiffres
         Random random = new Random();
@@ -52,9 +51,8 @@ public class Forget_PasswordController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
-    
-    
+    }
+
     @FXML
     private void BtnCode(ActionEvent event) {
         code = generateVerificationCode();
@@ -67,18 +65,18 @@ public class Forget_PasswordController implements Initializable {
         if (!tfMailO.getText().equals("") && verifMail) {
             if (su.ChercherMail(tfMailO.getText()) == 1) {
                 EmailReset = tfMailO.getText();
-                EmailSender.sendEmail("Meriem.bouchahoua@esprit.tn", "223JFT442893732971", tfMailO.getText(), "Verification code", "Votre code est : " + code);
+                EmailSender.sendEmail("mohamed.halouani@esprit.tn", "MedHal@@99", tfMailO.getText(), "Verification code", "Votre code est : " + code);
 
-                 try {
-            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/worshop/gui/VerifCode.fxml"));
-            Scene scene = new Scene(page1);
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException ex) {
-            Logger.getLogger(User_AddController.class.getName()).log(Level.SEVERE, null, ex);
-            //showAlert("Error loading");
-        }
+                try {
+                    Parent page1 = FXMLLoader.load(getClass().getResource("../../../gui/VerifCode.fxml"));
+                    Scene scene = new Scene(page1);
+                    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                    stage.setScene(scene);
+                    stage.show();
+                } catch (IOException ex) {
+                    Logger.getLogger(User_AddController.class.getName()).log(Level.SEVERE, null, ex);
+                    //showAlert("Error loading");
+                }
 
             } else {
                 A.setContentText("pas de compte lié avec cette adresse ! ");
@@ -89,25 +87,25 @@ public class Forget_PasswordController implements Initializable {
             A.show();
         }
     }
-    
+
     @FXML
     private void btnAnnulerForgot(ActionEvent event) {
         try {
 
-                    Parent page1 = FXMLLoader.load(getClass().getResource("/GUI/Front_Login.fxml"));
+            Parent page1 = FXMLLoader.load(getClass().getResource("/GUI/Front_Login.fxml"));
 
-                    Scene scene = new Scene(page1);
+            Scene scene = new Scene(page1);
 
-                    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
-                    stage.setScene(scene);
+            stage.setScene(scene);
 
-                    stage.show();
+            stage.show();
 
-                } catch (IOException ex) {
+        } catch (IOException ex) {
 
-                    System.out.println(ex.getMessage());
+            System.out.println(ex.getMessage());
 
-                }
+        }
     }
 }

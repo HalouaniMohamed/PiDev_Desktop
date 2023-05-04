@@ -29,7 +29,7 @@ public class ServiceUser implements IService {
     @Override
     public void add(Object p) {
         try {
-            if (p instanceof User) { // Vérifie si p est un objet de type User
+            if (p instanceof User) { // VÃ©rifie si p est un objet de type User
 
                 // Crypter le mot de passe avec BCrypt
                 //String qry = "INSERT INTO user(id, email , password, address, full_name ) VALUES ('" + ((User) p).getId() + "','" + ((User) p).getEmail() + "','" + ((User) p).getPassword() + "' ,'" + ((User) p).getAddress() + "','" + ((User) p).getFull_name() + "')";
@@ -38,7 +38,7 @@ public class ServiceUser implements IService {
                 ste = conn.createStatement();
                 ste.executeUpdate(qry);
             } else {
-                System.out.println("L'objet passé en paramètre n'est pas un utilisateur.");
+                System.out.println("L'objet passÃ© en paramÃ¨tre n'est pas un utilisateur.");
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
@@ -54,7 +54,7 @@ public class ServiceUser implements IService {
                 ste = conn.createStatement();
                 ste.executeUpdate(qry);
             } else {
-                System.out.println("L'objet passé en paramètre n'est pas un utilisateur.");
+                System.out.println("L'objet passÃ© en paramÃ¨tre n'est pas un utilisateur.");
             }
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
@@ -150,7 +150,7 @@ public class ServiceUser implements IService {
                 pst.setString(1, ((User) p).getEmail());
                 pst.executeUpdate();
             } else {
-                System.out.println("L'objet passé en paramètre n'est pas un utilisateur.");
+                System.out.println("L'objet passÃ© en paramÃ¨tre n'est pas un utilisateur.");
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
@@ -252,7 +252,7 @@ public class ServiceUser implements IService {
             ResultSet rs = st.executeQuery(req);
             while (rs.next()) {
                 if (rs.getString("email").equals(email)) {
-                    System.out.println("mail trouvé ! ");
+                    System.out.println("mail trouvÃ© ! ");
                     return 1;
                 }
             }

@@ -28,6 +28,7 @@ import javafx.stage.Stage;
  * @author rayen
  */
 public class VerifCodeController implements Initializable {
+
     @FXML
     private TextField tfCode;
     @FXML
@@ -39,36 +40,33 @@ public class VerifCodeController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
-    
+    }
+
     @FXML
     private void BtnConfirmerCode(ActionEvent event) {
-        if (Integer.parseInt(tfCode.getText()) == Forget_PasswordController.code)
-        {
-              try {
-            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/worshop/gui/Reset_Password.fxml"));
-            Scene scene = new Scene(page1);
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException ex) {
-            Logger.getLogger(User_AddController.class.getName()).log(Level.SEVERE, null, ex);
-            //showAlert("Error loading");
-        }
-        }
-        else 
-        {
+        if (Integer.parseInt(tfCode.getText()) == Forget_PasswordController.code) {
+            try {
+                Parent page1 = FXMLLoader.load(getClass().getResource("../../../gui/Reset_Password.fxml"));
+                Scene scene = new Scene(page1);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException ex) {
+                Logger.getLogger(User_AddController.class.getName()).log(Level.SEVERE, null, ex);
+                //showAlert("Error loading");
+            }
+        } else {
             Alert A = new Alert(Alert.AlertType.WARNING);
             A.setContentText("Code erroné ! ");
             A.show();
-            
+
         }
     }
 
     @FXML
     private void btnAnnulerCode(ActionEvent event) {
         try {
-            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/worshop/gui/Forget_Password.fxml"));
+            Parent page1 = FXMLLoader.load(getClass().getResource("../../../gui/Forget_Password.fxml"));
             Scene scene = new Scene(page1);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(scene);
@@ -78,5 +76,5 @@ public class VerifCodeController implements Initializable {
             //showAlert("Error loading");
         }
     }
-    
+
 }

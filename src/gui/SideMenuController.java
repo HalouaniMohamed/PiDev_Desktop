@@ -78,12 +78,47 @@ public class SideMenuController implements Initializable {
     }
 
     @FXML
-    private void Forum(ActionEvent event) {
-   FXMLLoader loader = new FXMLLoader(getClass().getResource("Post.fxml"));
+    private void redirectToAddE(ActionEvent event) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("AddE.fxml"));
         try {
             Parent root = loader.load();
             tfName.getScene().setRoot(root);
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
         }
-}}
+    }
+
+    @FXML
+    private void redirectToUsers(ActionEvent event) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("User_List.fxml"));
+        try {
+            Parent root = loader.load();
+            tfName.getScene().setRoot(root);
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+
+    @FXML
+    private void redirectToPost(ActionEvent event) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("AdminPost.fxml"));
+        try {
+            Parent root = loader.load();
+            tfName.getScene().setRoot(root);
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+
+    @FXML
+    private void redirectToCommentaire(ActionEvent event) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("AdminCommentaire.fxml"));
+        try {
+            Parent root = loader.load();
+            tfName.getScene().setRoot(root);
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+
+}

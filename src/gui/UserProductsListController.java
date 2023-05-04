@@ -7,6 +7,7 @@ package gui;
 
 import entities.Product;
 import entities.ShoppingCartItem;
+import entities.User;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -34,7 +35,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import services.ProductService;
 import services.ShoppingCartItemService;
-import tools.Statics;
+import tools.SessionManager;
 
 /**
  * FXML Controller class
@@ -127,9 +128,10 @@ public class UserProductsListController implements Initializable {
         buyButton.setPrefWidth(100);
         buyButton.setPrefHeight(30);
         buyButton.setFont(Font.font(18));
+        User currentUser = SessionManager.getCurrentUser();
         buyButton.setStyle("-fx-background-color: #26ace2; -fx-text-fill: white; -fx-border-radius: 5;");
         buyButton.setOnAction(e -> {
-            ShoppingCartItem item = new ShoppingCartItem(1, product, Statics.currentUser);
+            ShoppingCartItem item = new ShoppingCartItem(currentUser.getId(), product, currentUser);
             ShoppingCartItemService shoppingCartItemService = new ShoppingCartItemService();
             boolean success = shoppingCartItemService.add(item);
             if (success) {

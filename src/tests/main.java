@@ -5,9 +5,6 @@
  */
 package tests;
 
-import services.CommentaireService;
-import services.PostService;
-
 /**
  *
  * @author ALPHA
@@ -32,10 +29,6 @@ public class Main {
 //        CartTests cartTests = new CartTests();
 //        cartTests.getCart();
 //        cartTests.addToCart();
-CommentaireService cs = new CommentaireService();
-
- System.out.println(cs.afficherCommentaireParId(1));
     }
-    
 
 }

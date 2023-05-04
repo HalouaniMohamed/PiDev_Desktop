@@ -82,5 +82,10 @@
          </font>
       </Button>
       <ListView fx:id="journalview" layoutX="313.0" layoutY="181.0" prefHeight="315.0" prefWidth="519.0" />
+      <Button fx:id="voirJ" layoutX="758.0" layoutY="578.0" mnemonicParsing="false" onAction="#goQ" prefHeight="29.0" prefWidth="90.0" style="-fx-background-color: #6777ef;" text="Ajouter">
+         <font>
+            <Font name="Century Schoolbook" size="15.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

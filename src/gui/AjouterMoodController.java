@@ -7,7 +7,6 @@ package gui;
 
 import java.io.IOException;
 import java.net.URL;
-import java.time.Duration;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -38,8 +37,6 @@ import services.Mood1;
 public class AjouterMoodController implements Initializable {
 
     @FXML
-    private TextField tfID;
-    @FXML
     private TextField tfUserID;
     @FXML
     private TextField tfmood;
@@ -52,26 +49,27 @@ public class AjouterMoodController implements Initializable {
 
     /**
      * Initializes the controller class.
+     *
      * @param url
      * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+    }
 
     @FXML
     private void savemood(ActionEvent event) {
-        int id= Integer.parseInt(tfID.getText());
-        int user_id= Integer.parseInt(tfUserID.getText());
-        String mood= tfmood.getText();
-        String description= tfdesc.getText();
-        int mood_id= Integer.parseInt(tfmoodID.getText());
-        
-        Mood m = new Mood(id, user_id, mood_id, description, mood);
+
+        int user_id = Integer.parseInt(tfUserID.getText());
+        String mood = tfmood.getText();
+        String description = tfdesc.getText();
+        int mood_id = Integer.parseInt(tfmoodID.getText());
+
+        Mood m = new Mood(user_id, mood_id, description, mood);
         Mood1 M = new Mood1();
         M.ajouterMood(m);
-        
+
 //                 // Check if description has at least 5 characters
 //        if (tfmood.getText().length() < 1) {
 //            Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -82,9 +80,7 @@ public class AjouterMoodController implements Initializable {
 //            alert.showAndWait();
 //            return;
 //        }
-        
-        
-               // Check if description has at least 5 characters
+        // Check if description has at least 5 characters
         if (tfdesc.getText().length() < 5) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
@@ -94,45 +90,48 @@ public class AjouterMoodController implements Initializable {
             alert.showAndWait();
             return;
         }
-        
-         String message = "Dear Client,\n"
-                        + "\n"
-                        + "I am writing this email to confirm your location reservation for the following details:\n"
-                        + "\n"
-                        + "user_id  : " + user_id  + "\n"
-                        + "mood_id  : " + mood_id + "\n"
-                        + "description  : " + description  + "\n"
-                        + "mood  : " + mood + "\n"
 
-                       
-                        //+ "We are pleased to inform you that your reservation has been successfully processed, and we have reserved the required number of seats for you. Your confirmation number is [Enter confirmation number].\n"
-                        + "\n";
+        String message = "Dear Client,\n"
+                + "\n"
+                + "I am writing this email to confirm your location reservation for the following details:\n"
+                + "\n"
+                + "user_id  : " + user_id + "\n"
+                + "mood_id  : " + mood_id + "\n"
+                + "description  : " + description + "\n"
+                + "mood  : " + mood + "\n"
+                //+ "We are pleased to inform you that your reservation has been successfully processed, and we have reserved the required number of seats for you. Your confirmation number is [Enter confirmation number].\n"
+                + "\n";
 
-                EmailsenderMood.sendEmail_add("souha.sghaier@esprit.tn", message);
-                 
+        EmailsenderMood.sendEmail_add("souha.sghaier@esprit.tn", message);
+
         Notifications notificationBuilder = Notifications.create()
                 .title("mood ajouté")
                 .text("saved")
-               // .hideAfter(Duration.seconds(5))
+                // .hideAfter(Duration.seconds(5))
                 .position(Pos.BOTTOM_RIGHT);
-                 notificationBuilder.darkStyle();
-                 notificationBuilder.show();
-                 
-                
-                 try {
-        Parent page1 = FXMLLoader.load(getClass().getResource("../gui/AfficherMood.fxml"));
-        Scene scene = new Scene(page1);
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setScene(scene);
-        stage.show();
-    } catch (IOException ex) {
-        Logger.getLogger(AjouterMoodController.class.getName()).log(Level.SEVERE, null, ex);
-        //showAlert("Error loading");
+        notificationBuilder.darkStyle();
+        notificationBuilder.show();
+
+        try {
+            Parent page1 = FXMLLoader.load(getClass().getResource("../gui/AfficherMood.fxml"));
+            Scene scene = new Scene(page1);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(AjouterMoodController.class.getName()).log(Level.SEVERE, null, ex);
+            //showAlert("Error loading");
+        }
     }
-                }
+
+    @FXML
+    private void redirectToHome(ActionEvent event) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("UserCart.fxml"));
+        try {
+            Parent root = loader.load();
+            tfmood.getScene().setRoot(root);
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
 }
-
-        
-    
-    
-

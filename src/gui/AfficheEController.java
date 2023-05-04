@@ -15,7 +15,7 @@ import java.util.Optional;
 import java.util.Properties;
 import java.util.ResourceBundle;
 
- import javafx.collections.FXCollections;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -38,7 +38,6 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import services.EvenementsService;
 
-
 /**
  * FXML Controller class
  *
@@ -53,7 +52,7 @@ public class AfficheEController implements Initializable {
     @FXML
     private TableColumn<Evenements, String> tfNom;
     @FXML
-    private TableColumn<Evenements, String>tfLieu;
+    private TableColumn<Evenements, String> tfLieu;
     @FXML
     private TableColumn<Evenements, String> tfDate;
     @FXML
@@ -69,35 +68,29 @@ public class AfficheEController implements Initializable {
     @FXML
     private Button btndelete;
 
-    public void show(){
-    	EvenementsService bs=new EvenementsService();
-    listeB=bs.afficher();
-    tfNom.setCellValueFactory(new PropertyValueFactory<>("nom_evenement"));
-    tfLieu.setCellValueFactory(new PropertyValueFactory<>("lieu_evenement"));
-    tfDate.setCellValueFactory(new PropertyValueFactory<>("date_evenement"));
-     
-       
+    public void show() {
+        EvenementsService bs = new EvenementsService();
+        listeB = bs.afficher();
+        tfNom.setCellValueFactory(new PropertyValueFactory<>("nom_evenement"));
+        tfLieu.setCellValueFactory(new PropertyValueFactory<>("lieu_evenement"));
+        tfDate.setCellValueFactory(new PropertyValueFactory<>("date_evenement"));
 
-    tfDescription.setCellValueFactory(new PropertyValueFactory<>("description_evenement"));
-    tfNbr.setCellValueFactory(new PropertyValueFactory<>("nbr_de_places"));
-    tfType.setCellValueFactory(new PropertyValueFactory<>("type"));
-    
- 
-    categoriesView.setItems(listeB);
+        tfDescription.setCellValueFactory(new PropertyValueFactory<>("description_evenement"));
+        tfNbr.setCellValueFactory(new PropertyValueFactory<>("nbr_de_places"));
+        tfType.setCellValueFactory(new PropertyValueFactory<>("type"));
+
+        categoriesView.setItems(listeB);
     }
-    
-   
-
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-     
-    show();
-}
+
+        show();
+    }
 
     @FXML
-    private void Modifier(javafx.event.ActionEvent event) { 
-        Evenements selectedLN =  categoriesView.getSelectionModel().getSelectedItem();
+    private void Modifier(javafx.event.ActionEvent event) {
+        Evenements selectedLN = categoriesView.getSelectionModel().getSelectedItem();
         if (selectedLN == null) {
             // Afficher un message d'erreur
             Alert alert = new Alert(AlertType.ERROR);
@@ -105,7 +98,7 @@ public class AfficheEController implements Initializable {
             alert.setHeaderText("Impossible de modifier  ");
             alert.setContentText("Veuillez selectionner pour modifier !");
             alert.showAndWait();
-        }else {
+        } else {
             // Show an input dialog to get the new event details.
             TextInputDialog dialog = new TextInputDialog();
             dialog.setTitle("Modifier un evenement");
@@ -122,7 +115,7 @@ public class AfficheEController implements Initializable {
                 // TODO: Update the other event details using similar steps.
 
                 EvenementsService bs = new EvenementsService();
-                
+
                 bs.modifier(selectedLN);
                 // Show a confirmation alert.
                 Alert alert = new Alert(AlertType.INFORMATION);
@@ -131,17 +124,16 @@ public class AfficheEController implements Initializable {
                 alert.setContentText("Les modifications ont ete enregistrees.");
                 alert.showAndWait();
             }
-            
+
         }
         categoriesView.refresh();
- 
-        
+
     }
 
     @FXML
     private void Supprimer(javafx.event.ActionEvent event) throws SQLException {
-        
-        Evenements selectedLN =  categoriesView.getSelectionModel().getSelectedItem();
+
+        Evenements selectedLN = categoriesView.getSelectionModel().getSelectedItem();
         if (selectedLN == null) {
             // Afficher un message d'erreur
             Alert alert = new Alert(AlertType.ERROR);
@@ -152,10 +144,10 @@ public class AfficheEController implements Initializable {
         } else {
             EvenementsService bs = new EvenementsService();
             System.out.println(selectedLN.getId());
-             List<Reservation> list = new EvenementsService().getR(selectedLN.getId());
-            
-            for(Reservation r : list){
-         sendMail(r);
+            List<Reservation> list = new EvenementsService().getR(selectedLN.getId());
+
+            for (Reservation r : list) {
+                sendMail(r);
                 System.out.println(r.getEmail());
             }
             bs.supprimer(selectedLN.getId());
@@ -168,18 +160,16 @@ public class AfficheEController implements Initializable {
 
             // Actualiser le TableView
             show();
-           
-            
-            
 
         }
     }
-        public void sendMail( Reservation r) {
+
+    public void sendMail(Reservation r) {
         // Set the SMTP host and port for sending the email
         String host = "smtp.gmail.com";
         String port = "587";
-        String username = "meriem.bouchahoua@esprit.tn";
-        String password = "223JFT442893732971";
+        String username = "mohamed.halouani@esprit.tn";
+        String password = "MedHal@@99";
 
         // Set the properties for the email session
         Properties properties = new Properties();
@@ -207,22 +197,13 @@ public class AfficheEController implements Initializable {
 
             // Set the subject and body text for the email
             msg.setSubject("Annulation d'evenements");
-            msg.setText("Bonjour , nous sommes desolés de vous informer que , l'"+r.getE().getNom_evenement()+" a été annulé , merci pour votre compréhension");
+            msg.setText("Bonjour , nous sommes desolés de vous informer que , l'" + r.getE().getNom_evenement() + " a été annulé , merci pour votre compréhension");
             // Create an alert to notify the user that the email was sent successfully
 
-            
-
             // Send the email
-       
-               
+            Transport.send(msg);
 
-                Transport.send(msg);
- 
-
-          
-                // Close the dialog and do nothing
-              
-
+            // Close the dialog and do nothing
             // Print a message to the console to indicate that the email was sent successfully
         } catch (AddressException e) {
             // Create an alert to notify the user that there was an error with the email address
@@ -233,27 +214,26 @@ public class AfficheEController implements Initializable {
             System.out.println("Failed to send email: " + e.getMessage());
         }
     }
-    @FXML 
+    @FXML
     private Button ajoutE;
-    
-    
-     @FXML
+
+    @FXML
     private void AjouterE(javafx.event.ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../GUI/AddE.fxml"));
         Parent root = loader.load();
         ajoutE.getScene().setRoot(root);
 
     }
- 
-    @FXML 
+
+    @FXML
     private Button voirR;
-    
-     @FXML
+
+    @FXML
     private void goR(javafx.event.ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../GUI/AfficheReservation.fxml"));
         Parent root = loader.load();
         voirR.getScene().setRoot(root);
 
     }
-    
+
 }

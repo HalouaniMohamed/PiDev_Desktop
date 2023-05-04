@@ -193,7 +193,6 @@ public class CreditCardController implements Initializable {
                     } else {
                         ShoppingCartItemService cartService = new ShoppingCartItemService();
                         cartService.deleteCartItemsForUser(Statics.currentUser.getId());
-                        System.out.println("decrementing done");
 
                         //generate pdf using the shopping cart items
                         PdfGeneratorH pdfGenerator = new PdfGeneratorH();
@@ -202,6 +201,7 @@ public class CreditCardController implements Initializable {
                         //send the email
                         MailSenderH mailer = new MailSenderH();
                         mailer.sendEmailH(email, pdfFile);
+
                         try {
                             Platform.runLater(() -> {
                                 Stage currentStage = (Stage) totalPriceLabel.getScene().getWindow();

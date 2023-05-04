@@ -23,6 +23,9 @@ import javafx.scene.control.TextInputDialog;
 import javafx.scene.control.cell.PropertyValueFactory;
 import entities.JournalMood;
 import entities.Mood;
+import java.io.IOException;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import services.Journal;
 import services.Mood1;
 
@@ -35,14 +38,16 @@ public class AfficherJournalController implements Initializable {
 
     @FXML
     private ListView<JournalMood> journalview;
-    static int id,id_user,moods_id;   
+    static int id_user,moods_id;   
     static JournalMood J = new JournalMood();
-    private TableColumn<JournalMood, Integer> tfid;
+    
     private TableColumn<JournalMood, Integer> tfiduser;
     private TableColumn<JournalMood, Integer> tfmoodsid;
     ObservableList<JournalMood> listeB = FXCollections.observableArrayList();
     @FXML
     private Button buttsupp;
+    @FXML
+    private Button voirJ;
 
     /**
      * Initializes the controller class.
@@ -103,6 +108,15 @@ for (int i = 0; i < list2.size(); i++) {
             // Actualiser le TableView
            // show();
         }
+    }
+
+      @FXML
+    private void goQ(javafx.event.ActionEvent event) throws IOException {
+      FXMLLoader loader = new FXMLLoader(getClass().getResource("../GUI/AjouterJournal.fxml"));
+        Parent root = loader.load();
+        voirJ.getScene().setRoot(root);
+
+
     }
     
 }

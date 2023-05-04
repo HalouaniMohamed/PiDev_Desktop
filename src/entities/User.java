@@ -8,6 +8,7 @@ package entities;
 import java.util.Arrays;
 import java.util.List;
 import java.sql.Date;
+import java.util.ArrayList;
 
 public class User {
 
@@ -17,7 +18,7 @@ public class User {
     private String password;
     private String full_name;
     private String img_user;
-    private List<String> roles = Arrays.asList("ROLE_USER");
+    private List<String> roles;
     private Date date_naissance;
     public static User Current_User;
 
@@ -67,6 +68,16 @@ public class User {
         this.full_name = full_name;
         this.img_user = img_user;
         this.roles = roles;
+    }
+
+// enaa ahowa
+    public User(String email, String address, String password, String full_name, String roles, Date date_naissance) {
+        this.email = email;
+        this.address = address;
+        this.password = password;
+        this.full_name = full_name;
+        this.roles = new ArrayList<String>(Arrays.asList(roles));
+        this.date_naissance = date_naissance;
     }
 
     public User(int id, String email, String address, String password, String full_name, String img_user) {

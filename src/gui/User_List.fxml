@@ -6,43 +6,66 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" minHeight="600.0" minWidth="800.0" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: linear-gradient(to bottom, #123879 , #ffffff);" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.worshop.controllers.User_ListController">
+<AnchorPane id="AnchorPane" minHeight="600.0" minWidth="800.0" prefHeight="900.0" prefWidth="1600.0" style="-fx-background-color: linear-gradient(to bottom, #123879 , #ffffff);" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.worshop.controllers.User_ListController">
     <stylesheets>
         <URL value="@/edu/worshop/controllers/user_list.css" />
     </stylesheets>
     
    <children>
-        
-      <ListView fx:id="User_Listfx" layoutX="45.0" layoutY="166.0" prefHeight="314.0" prefWidth="710.0" />
-      <Button layoutX="427.0" layoutY="506.0" mnemonicParsing="false" onAction="#addUser" prefHeight="38.0" prefWidth="66.0" style="-fx-background-color: #0593a1;" text="Ajouter" textFill="WHITE">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Button>
-      <Button layoutX="628.0" layoutY="506.0" mnemonicParsing="false" onAction="#deleteUser" prefHeight="38.0" prefWidth="80.0" style="-fx-background-color: #0593a1;" text="Supprimer" textFill="WHITE">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Button>
-      <Button layoutX="522.0" layoutY="506.0" mnemonicParsing="false" onAction="#updateUser" prefHeight="38.0" prefWidth="80.0" style="-fx-background-color: #0593a1;" text="Modifier" textFill="WHITE">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Button>
-      <TextField fx:id="searchField" layoutX="568.0" layoutY="108.0" promptText="Search" style="-fx-border-width: 0px 0px 2px 0px; -fx-background-color: transparent; -fx-border-color: #0593a1;" />
-      <Label fx:id="label" layoutX="254.0" layoutY="27.0" prefHeight="74.0" prefWidth="291.0" text="Liste des utilisateurs" textFill="WHITE">
-         <font>
-            <Font size="50.0" />
-         </font></Label>
-      <Button fx:id="btn_pdf" layoutX="333.0" layoutY="506.0" mnemonicParsing="false" onAction="#btnGenPDF" prefHeight="38.0" prefWidth="66.0" style="-fx-background-color: #0593a1;" text="PDF" textFill="WHITE">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Button>
+      <BorderPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <left>
+            <fx:include source="SideMenu.fxml" />
+         </left>
+         <top>
+            <fx:include source="AdminNavbar.fxml" />
+         </top>
+         <center>
+            <AnchorPane style="-fx-background-color: #fff;" BorderPane.alignment="CENTER">
+               <children>
+                  <AnchorPane layoutX="70.0" layoutY="90.0" prefHeight="639.0" prefWidth="1098.0">
+                     <children>
+                          
+                        <ListView fx:id="User_Listfx" layoutX="57.0" layoutY="144.0" prefHeight="314.0" prefWidth="966.0" />
+                        <HBox layoutX="345.0" layoutY="472.0" spacing="20.0">
+                           <children>
+                              <Button fx:id="btn_pdf" mnemonicParsing="false" onAction="#btnGenPDF" prefHeight="38.0" prefWidth="102.0" style="-fx-background-color: #0593a1;" text="PDF" textFill="WHITE">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Button>
+                              <Button mnemonicParsing="false" onAction="#addUser" prefHeight="38.0" prefWidth="99.0" style="-fx-background-color: #0593a1;" text="Ajouter" textFill="WHITE">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Button>
+                              <Button mnemonicParsing="false" onAction="#updateUser" prefHeight="38.0" prefWidth="126.0" style="-fx-background-color: #0593a1;" text="Modifier" textFill="WHITE">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Button>
+                              <Button mnemonicParsing="false" onAction="#deleteUser" prefHeight="38.0" prefWidth="122.0" style="-fx-background-color: #0593a1;" text="Supprimer" textFill="WHITE">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </HBox>
+                        <TextField fx:id="searchField" layoutX="498.0" layoutY="81.0" prefHeight="28.0" prefWidth="175.0" promptText="Search" style="-fx-border-width: 0px 0px 2px 0px; -fx-background-color: transparent; -fx-border-color: #0593a1;" />
+                        <Label fx:id="label" layoutX="297.0" layoutY="-9.0" prefHeight="74.0" prefWidth="467.0" text="Liste des utilisateurs">
+                           <font>
+                              <Font size="50.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+         </center>
+      </BorderPane>
         
    </children>
    

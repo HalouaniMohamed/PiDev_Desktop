@@ -10,24 +10,24 @@
 
 <AnchorPane prefHeight="80.0" prefWidth="1600.0" style="-fx-background-color: #fff;" stylesheets="/gui/application.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.UserNavbarController">
    <children>
-      <HBox layoutX="68.0" layoutY="8.0" prefHeight="80.0" prefWidth="1600.0" spacing="10.0" AnchorPane.bottomAnchor="-10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <HBox fx:id="navbar" layoutX="68.0" layoutY="8.0" prefHeight="80.0" prefWidth="1600.0" AnchorPane.bottomAnchor="-10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <ImageView fitHeight="101.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="file:/C:/Users/ALPHA/Desktop/9raya/echkilii.png" />
                </image>
             </ImageView>
-            <Button alignment="CENTER" mnemonicParsing="false" onAction="#redirectToHome" prefHeight="79.0" prefWidth="126.0" style="-fx-background-color: #fff;" text="Home" textFill="#242429">
+            <Button alignment="CENTER" mnemonicParsing="false" onAction="#redirectToHome" prefHeight="79.0" prefWidth="89.0" style="-fx-background-color: #fff;" text="Home" textFill="#242429">
                <font>
                   <Font name="Cambria" size="18.0" />
                </font>
             </Button>
-            <Button alignment="CENTER" mnemonicParsing="false" onAction="#redirectToNews" prefHeight="79.0" prefWidth="126.0" style="-fx-background-color: #fff;" text="Actualités" textFill="#242429">
+            <Button alignment="CENTER" mnemonicParsing="false" onAction="#redirectToNews" prefHeight="79.0" prefWidth="109.0" style="-fx-background-color: #fff;" text="Actualités" textFill="#242429">
                <font>
                   <Font name="Cambria" size="18.0" />
                </font>
             </Button>
-            <Button alignment="CENTER" mnemonicParsing="false" onAction="#redirectToForum" prefHeight="79.0" prefWidth="126.0" style="-fx-background-color: #fff;" text="Forum" textFill="#242429">
+            <Button alignment="CENTER" mnemonicParsing="false" onAction="#redirectToForum" prefHeight="79.0" prefWidth="87.0" style="-fx-background-color: #fff;" text="Forum" textFill="#242429">
                <font>
                   <Font name="Cambria" size="18.0" />
                </font>
@@ -37,35 +37,40 @@
                   <Font name="Cambria" size="18.0" />
                </font>
             </Button>
-            <Button fx:id="p" alignment="CENTER" mnemonicParsing="false" onAction="#redirectToProducts" prefHeight="79.0" prefWidth="126.0" style="-fx-background-color: #fff;" text="Produits" textFill="#242429">
+            <Button fx:id="p" alignment="CENTER" mnemonicParsing="false" onAction="#redirectToProducts" prefHeight="79.0" prefWidth="97.0" style="-fx-background-color: #fff;" text="Produits" textFill="#242429">
                <font>
                   <Font name="Cambria" size="18.0" />
                </font>
             </Button>
-            <Button alignment="CENTER" mnemonicParsing="false" onAction="#redirectToMood" prefHeight="79.0" prefWidth="126.0" style="-fx-background-color: #fff;" text="Humeur" textFill="#242429">
+            <Button alignment="CENTER" mnemonicParsing="false" onAction="#redirectToMood" prefHeight="79.0" prefWidth="131.0" style="-fx-background-color: #fff;" text="Mood" textFill="#242429">
                <font>
                   <Font name="Cambria" size="18.0" />
                </font>
             </Button>
-            <Button alignment="CENTER" mnemonicParsing="false" onAction="#redirectToEvents" prefHeight="79.0" prefWidth="126.0" style="-fx-background-color: #fff;" text="Evenements" textFill="#242429">
+            <Button alignment="CENTER" mnemonicParsing="false" onAction="#redirectToJournal" prefHeight="79.0" prefWidth="129.0" style="-fx-background-color: #fff;" text="Journal Mood" textFill="#242429">
                <font>
                   <Font name="Cambria" size="18.0" />
                </font>
             </Button>
-            <Button alignment="CENTER" mnemonicParsing="false" onAction="#redirectToCart" prefHeight="79.0" prefWidth="126.0" style="-fx-background-color: #fff;" text="Panier" textFill="#242429">
+            <Button alignment="CENTER" mnemonicParsing="false" onAction="#redirectToEvents" prefHeight="79.0" prefWidth="120.0" style="-fx-background-color: #fff;" text="Evenements" textFill="#242429">
                <font>
                   <Font name="Cambria" size="18.0" />
                </font>
             </Button>
-            <Button alignment="CENTER" mnemonicParsing="false" prefHeight="79.0" prefWidth="126.0" style="-fx-background-color: #26ace2; -fx-background-radius: 10;" text="Se connecter" textFill="WHITE">
+            <Button alignment="CENTER" mnemonicParsing="false" onAction="#redirectToCart" prefHeight="79.0" prefWidth="111.0" style="-fx-background-color: #fff;" text="Panier" textFill="#242429">
+               <font>
+                  <Font name="Cambria" size="18.0" />
+               </font>
+            </Button>
+            <Button fx:id="loginBtn" alignment="CENTER" mnemonicParsing="false" onAction="#redirectToLogin" prefHeight="79.0" prefWidth="126.0" style="-fx-background-color: #26ace2; -fx-background-radius: 10;" text="Se connecter" textFill="WHITE">
                <font>
                   <Font name="Cambria" size="18.0" />
                </font>
                <HBox.margin>
-                  <Insets bottom="20.0" top="10.0" />
+                  <Insets bottom="20.0" right="20.0" top="10.0" />
                </HBox.margin>
             </Button>
-            <Button alignment="CENTER" mnemonicParsing="false" prefHeight="79.0" prefWidth="165.0" style="-fx-background-color: #26ace2; -fx-background-radius: 10;" text="Créer un compte" textFill="WHITE">
+            <Button fx:id="singupBtn" alignment="CENTER" mnemonicParsing="false" onAction="#redirectToSignup" prefHeight="60.0" prefWidth="153.0" style="-fx-background-color: #26ace2; -fx-background-radius: 10;" text="Créer un compte" textFill="WHITE">
                <font>
                   <Font name="Cambria" size="18.0" />
                </font>

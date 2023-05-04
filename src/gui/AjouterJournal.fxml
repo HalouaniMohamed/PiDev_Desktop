@@ -13,13 +13,11 @@
 
 <AnchorPane id="AnchorPane" prefHeight="971.0" prefWidth="884.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AjouterJournalController">
    <children>
-      <Label layoutX="332.0" layoutY="184.0" text="ID:" textFill="#1c3ca4" />
       <Label layoutX="328.0" layoutY="271.0" text="idUser:" textFill="#1c3ca4" />
       <Label layoutX="329.0" layoutY="345.0" text="mood:" textFill="#1c3ca4" />
-      <TextField fx:id="tfid" layoutX="425.0" layoutY="180.0" />
       <TextField fx:id="tfiduser" layoutX="425.0" layoutY="267.0" />
       <TextField fx:id="tfmood" layoutX="425.0" layoutY="341.0" />
-      <Button fx:id="btnvalider" layoutX="684.0" layoutY="409.0" mnemonicParsing="false" onAction="#addJournal" style="-fx-background-color: #6777ef;" text="Ajouter" />
+      <Button fx:id="btnvalider" layoutX="472.0" layoutY="422.0" mnemonicParsing="false" onAction="#addJournal" style="-fx-background-color: #6777ef;" text="Ajouter" />
       <AnchorPane id="AnchorPane" layoutY="-7.0" prefHeight="129.0" prefWidth="1610.0" style="-fx-background-color: #6777ef;">
          <children>
             <AnchorPane prefHeight="110.0" prefWidth="361.0" style="-fx-background-color: #4c60da;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1233.6" AnchorPane.topAnchor="0.0">
@@ -58,5 +56,6 @@
             </AnchorPane>
          </children>
       </AnchorPane>
+      <Button layoutX="1439.0" layoutY="194.0" mnemonicParsing="false" onAction="#redirectToHome" style="-fx-background-color: #6777ef;" text="Home" />
    </children>
 </AnchorPane>

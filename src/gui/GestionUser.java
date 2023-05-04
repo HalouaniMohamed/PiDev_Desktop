@@ -14,15 +14,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+
 /**
  *
  * @author rayen
  */
 public class GestionUser extends Application {
-    
-  
+
     @Override
     public void start(Stage primaryStage) {
         Button btn = new Button();
@@ -49,8 +48,6 @@ public class GestionUser extends Application {
         }
 
     }
-    
-    
 
     /**
      * @param args the command line arguments
@@ -58,8 +55,5 @@ public class GestionUser extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-    
-    
-    
-}
 
+}

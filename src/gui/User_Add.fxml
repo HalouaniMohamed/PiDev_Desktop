@@ -8,26 +8,41 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" minHeight="600.0" minWidth="800.0" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: linear-gradient(to right, #123879 , #ffffff);" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.worshop.controllers.User_AddController">
+<AnchorPane id="AnchorPane" minHeight="600.0" minWidth="800.0" prefHeight="900.0" prefWidth="1600.0" style="-fx-background-color: linear-gradient(to right, #123879 , #ffffff);" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.worshop.controllers.User_AddController">
     <stylesheets>
         <URL value="@/edu/worshop/controllers/user_add.css" />
     </stylesheets>
    <children>
-      <TextField fx:id="fullnameF" layoutX="71.0" layoutY="126.0" minHeight="30.0" minWidth="200.0" prefWidth="150.0" promptText="Pseudo" style="-fx-border-width: 0px 0px 2px 0px; -fx-background-color: transparent; -fx-border-color: #0593a1;" />
-      <TextField fx:id="emailF" layoutX="71.0" layoutY="195.0" minHeight="30.0" minWidth="200.0" promptText="Email" style="-fx-border-width: 0px 0px 2px 0px; -fx-background-color: transparent; -fx-border-color: #0593a1;" />
-      <TextField fx:id="passwordF" layoutX="71.0" layoutY="262.0" minHeight="30.0" minWidth="200.0" promptText="Mot de passe" style="-fx-border-width: 0px 0px 2px 0px; -fx-background-color: transparent; -fx-border-color: #0593a1;" />
-      <TextField fx:id="adreeseF" layoutX="71.0" layoutY="335.0" minHeight="30.0" minWidth="200.0" promptText="Adresse" style="-fx-border-width: 0px 0px 2px 0px; -fx-background-color: transparent; -fx-border-color: #0593a1;" />
-      <DatePicker fx:id="dateNaissanceField" layoutX="71.0" layoutY="466.0" minHeight="30.0" minWidth="200.0" style="-fx-background-color: transparent; -fx-border-width: 0px 0px 2px 0px;" />
-      <ImageView fx:id="imageView" fitHeight="237.0" fitWidth="246.0" layoutX="438.0" layoutY="107.0" pickOnBounds="true" preserveRatio="true" />
-      <Button layoutX="555.0" layoutY="496.0" mnemonicParsing="false" onMouseClicked="#chooseImage" prefHeight="30.0" prefWidth="70.0" style="-fx-background-color: #0593a1;" text="Importer" textFill="WHITE" />
-      <Button layoutX="649.0" layoutY="496.0" mnemonicParsing="false" onAction="#AddUser2"  prefHeight="30.0" prefWidth="70.0" style="-fx-background-color: #0593a1;" text="Ajouter" textFill="WHITE" />
-      <ComboBox fx:id="roleu" layoutX="95.0" layoutY="398.0" prefWidth="150.0" />
-      <Label fx:id="label" layoutX="113.0" layoutY="32.0" prefHeight="74.0" prefWidth="487.0" text="Ajouter un utilisateur" textFill="WHITE">
-         <font>
-            <Font size="50.0" />
-         </font>
-      </Label>
+      <BorderPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <center>
+            <AnchorPane BorderPane.alignment="CENTER">
+               <children>
+                  <TextField fx:id="fullnameF" layoutY="94.0" minHeight="30.0" minWidth="200.0" prefWidth="150.0" promptText="Pseudo" style="-fx-border-width: 0px 0px 2px 0px; -fx-background-color: transparent; -fx-border-color: #0593a1;" />
+                  <TextField fx:id="emailF" layoutY="163.0" minHeight="30.0" minWidth="200.0" promptText="Email" style="-fx-border-width: 0px 0px 2px 0px; -fx-background-color: transparent; -fx-border-color: #0593a1;" />
+                  <TextField fx:id="passwordF" layoutY="230.0" minHeight="30.0" minWidth="200.0" promptText="Mot de passe" style="-fx-border-width: 0px 0px 2px 0px; -fx-background-color: transparent; -fx-border-color: #0593a1;" />
+                  <TextField fx:id="adreeseF" layoutY="303.0" minHeight="30.0" minWidth="200.0" promptText="Adresse" style="-fx-border-width: 0px 0px 2px 0px; -fx-background-color: transparent; -fx-border-color: #0593a1;" />
+                  <DatePicker fx:id="dateNaissanceField" layoutY="434.0" minHeight="30.0" minWidth="200.0" style="-fx-background-color: transparent; -fx-border-width: 0px 0px 2px 0px;" />
+                  <ImageView fx:id="imageView" fitHeight="237.0" fitWidth="246.0" layoutX="367.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true" />
+                  <Button layoutX="484.0" layoutY="464.0" mnemonicParsing="false" onMouseClicked="#chooseImage" prefHeight="30.0" prefWidth="70.0" style="-fx-background-color: #0593a1;" text="Importer" textFill="WHITE" />
+                  <Button layoutX="578.0" layoutY="464.0" mnemonicParsing="false" onAction="#AddUser2" prefHeight="30.0" prefWidth="70.0" style="-fx-background-color: #0593a1;" text="Ajouter" textFill="WHITE" />
+                  <ComboBox fx:id="roleu" layoutX="24.0" layoutY="366.0" prefWidth="150.0" />
+                  <Label fx:id="label" layoutX="42.0" prefHeight="74.0" prefWidth="487.0" text="Ajouter un utilisateur" textFill="WHITE">
+                     <font>
+                        <Font size="50.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+         </center>
+         <top>
+            <fx:include source="AdminNavbar.fxml" />
+         </top>
+         <left>
+            <fx:include source="SideMenu.fxml" />
+         </left>
+      </BorderPane>
    </children>
 </AnchorPane>
