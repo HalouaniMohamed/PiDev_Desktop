@@ -52,20 +52,19 @@
                      <children>
                         <AnchorPane id="AnchorPane" minWidth="-Infinity" prefHeight="432.0" prefWidth="827.0" style="-fx-background-color: #fafdfb;">
                            <children>
-                              <Label alignment="CENTER" layoutX="374.0" layoutY="26.0" prefHeight="55.0" prefWidth="408.0" text="Ajouter un commentaire" textAlignment="CENTER" textFill="#0e0e90">
+                              <Label alignment="CENTER" layoutX="374.0" layoutY="26.0" prefHeight="55.0" prefWidth="408.0" text="Ajouter un commentaire" textAlignment="CENTER" textFill="#26ace2">
                                  <font>
                                     <Font name="System Bold" size="24.0" />
                                  </font>
                               </Label>
                               <VBox layoutX="292.0" layoutY="127.0" prefHeight="252.0" prefWidth="582.0" spacing="20.0">
                                  <children>
-                                    <TextField fx:id="tfId_User" prefHeight="40.0" prefWidth="286.0" promptText="Id_User" />
                                     <TextField fx:id="tfcommentaires_id" prefHeight="40.0" prefWidth="286.0" promptText="Numéro du post" />
                                     <TextField fx:id="tfreponse" prefHeight="40.0" prefWidth="286.0" promptText="Réponse" />
                                  </children>
                               </VBox>
-                              <Button fx:id="ajouterbtn" layoutX="491.0" layoutY="493.0" mnemonicParsing="false" onAction="#ajouterCommentaire" prefHeight="37.0" prefWidth="286.0" style="-fx-background-color: #6777ef;" text="Ajouter commentaire" textFill="WHITE" />
-                              <Button fx:id="retour" alignment="CENTER" layoutX="117.0" layoutY="535.0" mnemonicParsing="false" onAction="#back" prefHeight="26.0" prefWidth="101.0" style="-fx-background-color: #0e0e90;" text="Retour" textFill="#fff9f9">
+                              <Button fx:id="ajouterbtn" layoutX="491.0" layoutY="493.0" mnemonicParsing="false" onAction="#ajouterCommentaire" prefHeight="37.0" prefWidth="286.0" style="-fx-background-color: #26ace2;" text="Ajouter commentaire" textFill="WHITE" />
+                              <Button fx:id="retour" alignment="CENTER" layoutX="117.0" layoutY="535.0" mnemonicParsing="false" onAction="#back" prefHeight="26.0" prefWidth="101.0" style="-fx-background-color: #26ace2;" text="Retour" textFill="#fff9f9">
                                  <font>
                                     <Font name="Arial Bold" size="14.0" />
                                  </font>

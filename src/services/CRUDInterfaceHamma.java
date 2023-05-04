@@ -9,15 +9,8 @@ import java.util.List;
 
 /**
  *
- * @author ASUS
+ * @author ALPHA
  */
-<<<<<<<< HEAD:src/services/EventInterface.java
-public interface EventInterface<T> {
-     
-      public List<T> afficher();
-      
-      
-========
 public interface CRUDInterfaceHamma<T> {
 
     public void add(T p);
@@ -25,5 +18,4 @@ public interface CRUDInterfaceHamma<T> {
     public List<T> show();
 
     public void delete(T p);
->>>>>>>> master:src/services/CRUDInterfaceHamma.java
 }

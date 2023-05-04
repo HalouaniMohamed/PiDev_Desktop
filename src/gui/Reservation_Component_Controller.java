@@ -141,13 +141,15 @@ public class Reservation_Component_Controller implements Initializable {
             controller.Afficher(null);
         }
     }
+    String username = "mohamed.halouani@esprit.tn";
+    String password = "MedHal@@99";
 
     public void sendMail(Evenements ee, Reservation r) {
         // Set the SMTP host and port for sending the email
         String host = "smtp.gmail.com";
         String port = "587";
-        String username = "meriem.bouchahoua@esprit.tn";
-        String password = "223JFT442893732971";
+        String username = "mohamed.halouani@esprit.tn";
+        String password = "MedHal@@99";
 
         // Set the properties for the email session
         Properties properties = new Properties();

@@ -66,7 +66,7 @@ public class VerifCodeController implements Initializable {
     @FXML
     private void btnAnnulerCode(ActionEvent event) {
         try {
-            Parent page1 = FXMLLoader.load(getClass().getResource("/edu/worshop/gui/Forget_Password.fxml"));
+            Parent page1 = FXMLLoader.load(getClass().getResource("../../../gui/Forget_Password.fxml"));
             Scene scene = new Scene(page1);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(scene);

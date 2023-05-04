@@ -65,7 +65,7 @@ public class Forget_PasswordController implements Initializable {
         if (!tfMailO.getText().equals("") && verifMail) {
             if (su.ChercherMail(tfMailO.getText()) == 1) {
                 EmailReset = tfMailO.getText();
-                EmailSender.sendEmail("Meriem.bouchahoua@esprit.tn", "223JFT442893732971", tfMailO.getText(), "Verification code", "Votre code est : " + code);
+                EmailSender.sendEmail("mohamed.halouani@esprit.tn", "MedHal@@99", tfMailO.getText(), "Verification code", "Votre code est : " + code);
 
                 try {
                     Parent page1 = FXMLLoader.load(getClass().getResource("../../../gui/VerifCode.fxml"));

@@ -31,6 +31,7 @@
             <Pane prefHeight="110.0" prefWidth="200.0" />
             <HBox alignment="CENTER_RIGHT" layoutY="22.0" prefHeight="55.0" prefWidth="486.0" AnchorPane.bottomAnchor="35.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="22.0">
                <children>
+                  <Button fx:id="logout" mnemonicParsing="false" onAction="#logout" prefHeight="26.0" prefWidth="182.0" text="Déconnexion" />
                   <Separator orientation="VERTICAL" prefHeight="46.0" prefWidth="8.0" />
                   <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="55.0" prefWidth="236.0" style="-fx-background-color: #6777ef;" text="Admin" textFill="WHITE">
                      <font>

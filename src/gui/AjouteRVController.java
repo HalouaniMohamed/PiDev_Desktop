@@ -79,7 +79,7 @@ public class AjouteRVController implements Initializable {
             RendezVous rendezvous = new RendezVous();
             ObservableList<String> listeMedecins = FXCollections.observableArrayList();
             for (Medecin medecin : rendezvous.getListeMedecins()) {
-                listeMedecins.add(medecin.getNom() + " " + medecin.getPrenom());
+                listeMedecins.add(medecin.getNom());
             }
 
             ObservableList<String> listeCabinet = FXCollections.observableArrayList();
@@ -107,12 +107,13 @@ public class AjouteRVController implements Initializable {
             String descriprion = tfDescription.getText();
             LocalDate localDate = tfDate.getValue();
             String medecin = cbMedecin.getValue();
-            int idMedecin = rendezvous.getIdMedecin(medecin);
             String cabinetSelectionne = cbCabinet.getValue();
-
+            System.out.println("medecin:");
+            System.out.println(medecin);
             int id_cabinet = cs.recupererBynom(cbCabinet.getValue()).getId();
-
+            int id_medecin = rendezvous.recupererBynom(cbMedecin.getValue()).getId();
             System.out.println(id_cabinet);
+            System.out.println(id_medecin);
 
             if (nom.isEmpty() || prenom.isEmpty() || cause.isEmpty() || descriprion.isEmpty() || localDate == null) {
                 // Afficher un message d'erreur si un champ est vide
@@ -140,9 +141,10 @@ public class AjouteRVController implements Initializable {
             Date date_rv = Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
 
             rendez_vous rv = new rendez_vous(nom, prenom, cause, descriprion, date_rv, id_cabinet);
+            rv.setIdMedecin(id_medecin);
             rendezvous.ajouter(rv);
             final String ACCOUNT_SID = "AC5d57c3de2630a499b86b1b7781ea33fa";
-            final String AUTH_TOKEN = "de7f1201e862714a40823083b3421c17";
+            final String AUTH_TOKEN = "d0a3451a9ba82619dc0cd60c8b4320a0";
             Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
 
 //        Envoyer le SMS

@@ -176,7 +176,7 @@
                         <Insets left="10.0" right="10.0" />
                      </padding>
                   </HBox>
-                  <Button mnemonicParsing="false" onAction="#valider" style="-fx-background-color: #6777ef;" text="Valider" textFill="WHITE">
+                  <Button mnemonicParsing="false" onAction="#valider" style="-fx-background-color: #26ace2;" text="Valider" textFill="WHITE">
                      <font>
                         <Font name="Comic Sans MS Bold" size="15.0" />
                      </font>
@@ -185,7 +185,7 @@
             </VBox>
          </children>
       </GridPane>
-      <Button mnemonicParsing="false" onAction="#close" style="-fx-background-color: #6777ef red;" text="Close" textFill="WHITE" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+      <Button mnemonicParsing="false" onAction="#close" style="-fx-background-color: #26ace2;" text="Close" textFill="WHITE" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
          <font>
             <Font name="Comic Sans MS Bold" size="12.0" />
          </font>

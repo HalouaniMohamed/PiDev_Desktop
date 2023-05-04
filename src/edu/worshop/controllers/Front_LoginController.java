@@ -81,7 +81,7 @@ public class Front_LoginController implements Initializable {
         if (loggedInUser != null) {
             List<String> roles = loggedInUser.getRoles();
             if (roles.contains("[ROLE_ADMIN]")) {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/worshop/gui/User_List.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("../../../gui/User_List.fxml"));
                 Parent root = loader.load();
                 Scene scene = new Scene(root);
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -100,7 +100,7 @@ public class Front_LoginController implements Initializable {
                 }
             } else if (roles.contains("[ROLE_PATIENT]")) {
                 try {
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("../../../gui/UserCart.fxml"));
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("../../../gui/Home.fxml"));
                     Parent root = loader.load();
                     Scene scene = new Scene(root);
                     Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
