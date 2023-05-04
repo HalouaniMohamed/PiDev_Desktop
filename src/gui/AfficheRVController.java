@@ -48,7 +48,6 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import services.RendezVous;
 
-
 /**
  * FXML Controller class
  *
@@ -80,6 +79,8 @@ public class AfficheRVController implements Initializable {
     private Button btn_tri;
     @FXML
     private Button stat;
+    @FXML
+    private Button stat1;
 
     /**
      * Initializes the controller class.
@@ -269,5 +270,16 @@ public class AfficheRVController implements Initializable {
         Stage stage = new Stage();
         stage.setScene(scene);
         stage.show();
+    }
+
+    @FXML
+    private void redirectToHome(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("UserCart.fxml"));
+        try {
+            Parent root = loader.load();
+            searchField.getScene().setRoot(root);
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
     }
 }

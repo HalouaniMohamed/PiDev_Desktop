@@ -163,7 +163,6 @@ public class AddProductController implements Initializable {
                     aler.showAndWait();
                 } else {
                     ps.add(p);
-
                     // on success show alert that displays a success message then empty the textfields
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setTitle("Success");
@@ -206,9 +205,7 @@ public class AddProductController implements Initializable {
         String uniqueImageName = null;
         try {
             ImageUploader imageUploader = new ImageUploader();
-            System.out.println("before calling the method");
             uniqueImageName = imageUploader.uploadImage(file);
-            System.out.println("after calling the method");
 
         } catch (IOException ex) {
             System.out.println("whaaaaaaaaaaaaat");

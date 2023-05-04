@@ -5,15 +5,10 @@
  */
 package services;
 
-
 //import java.net.Authenticator;
 //import java.net.PasswordAuthentication;
 import javax.mail.Authenticator;
 import javax.mail.PasswordAuthentication;
-
-
-
-
 
 import javax.mail.*;
 
@@ -26,13 +21,13 @@ import javax.mail.internet.MimeMessage;
  * @author HOUYEM
  */
 public class EmailsenderMood {
+
     private static final String USERNAME = "souha.sghaier@esprit.tn";
     private static final String PASSWORD = "201JFT3414";
-    
-     public static void sendEmail_add(String toEmail,String message ) {
-        
-        String subject = "Trippie Add Reservation ";
-     
+
+    public static void sendEmail_add(String toEmail, String message) {
+
+        String subject = "Add Mood ";
 
         Properties props = new Properties();
         props.put("mail.smtp.auth", "true");
@@ -61,7 +56,7 @@ public class EmailsenderMood {
         }
     }
 
-    public static void sendEmail_mod(String toEmail,String subject) {
+    public static void sendEmail_mod(String toEmail, String subject) {
 
         //String subject = "Trippie modify Cov_voiturage ";
         String message = "confirmation email";
@@ -91,6 +86,5 @@ public class EmailsenderMood {
             throw new RuntimeException(e);
         }
     }
-    
-    
+
 }

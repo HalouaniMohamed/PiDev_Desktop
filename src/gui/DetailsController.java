@@ -13,9 +13,13 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import entities.Post;
+import java.io.IOException;
 import services.PostService;
 import javafx.collections.ObservableList;
 import javafx.collections.FXCollections;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.control.Button;
 
 
 
@@ -25,6 +29,16 @@ import javafx.collections.FXCollections;
  * @author asus
  */
 public class DetailsController implements Initializable {
+     @FXML 
+    private Button retour;
+    @FXML
+    private void  back(javafx.event.ActionEvent event) throws IOException {
+      FXMLLoader loader = new FXMLLoader(getClass().getResource("../GUI/Post.fxml"));
+        Parent root = loader.load();
+        retour.getScene().setRoot(root);
+
+
+    }
     
 
      @FXML

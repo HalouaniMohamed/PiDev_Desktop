@@ -31,8 +31,6 @@ import services.Journal;
 public class AjouterJournalController implements Initializable {
 
     @FXML
-    private TextField tfid;
-    @FXML
     private TextField tfiduser;
     @FXML
     private TextField tfmood;
@@ -45,29 +43,40 @@ public class AjouterJournalController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+    }
 
     @FXML
     private void addJournal(ActionEvent event) {
-        int id= Integer.parseInt(tfid.getText());
-        int id_user= Integer.parseInt(tfiduser.getText());
-        int moods_id= Integer.parseInt(tfmood.getText());
-        
-        JournalMood j = new JournalMood(id, id_user, moods_id);
+
+        int id_user = Integer.parseInt(tfiduser.getText());
+        int moods_id = Integer.parseInt(tfmood.getText());
+
+        JournalMood j = new JournalMood(id_user, moods_id);
         Journal J = new Journal();
         J.ajouterJournal(j);
-        
-                     try {
-        Parent page1 = FXMLLoader.load(getClass().getResource("../gui/AfficherMood.fxml"));
-        Scene scene = new Scene(page1);
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setScene(scene);
-        stage.show();
-    } catch (IOException ex) {
-        Logger.getLogger(AjouterMoodController.class.getName()).log(Level.SEVERE, null, ex);
-        //showAlert("Error loading");
+
+        try {
+            Parent page1 = FXMLLoader.load(getClass().getResource("AfficherJournal.fxml"));
+            Scene scene = new Scene(page1);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(AjouterMoodController.class.getName()).log(Level.SEVERE, null, ex);
+            //showAlert("Error loading");
+        }
+
     }
-        
-    } 
-    
+
+    @FXML
+    private void redirectToHome(ActionEvent event) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("UserCart.fxml"));
+        try {
+            Parent root = loader.load();
+            tfmood.getScene().setRoot(root);
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+
 }

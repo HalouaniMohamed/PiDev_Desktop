@@ -20,7 +20,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import tools.MyConnection;
 
-
 /**
  *
  * @author Mongi
@@ -37,7 +36,7 @@ public class RendezVous {
     }
 
     public void ajouter(rendez_vous p) {
-        sql = "INSERT INTO rendez_vous(nom, prenom, cause, description, date_rv,cabinet_id) VALUES (?, ?, ?, ?, ?,?)";
+        sql = "INSERT INTO rendez_vous(nom, prenom, cause, description, date_rv,cabinet_id,medecin_id) VALUES (?, ?, ?, ?, ?,?,?)";
         try {
             PreparedStatement ste = cnx.prepareStatement(sql);
             ste.setString(1, p.getNom());
@@ -46,6 +45,7 @@ public class RendezVous {
             ste.setString(4, p.getDescription());
             ste.setDate(5, new java.sql.Date(p.getDate_rv().getTime()));
             ste.setInt(6, p.getIdCabinet());
+            ste.setInt(7, p.getIdMedecin());
 
             ste.executeUpdate();
             System.out.println("Rendez-vous ajouté avec succès !");
@@ -327,6 +327,19 @@ public class RendezVous {
         }
 
         return medecins;
+    }
+
+    public Medecin recupererBynom(String nom) throws SQLException {
+        String req = "select * from medecin where nom LIKE ?";
+        PreparedStatement st = cnx.prepareStatement(req);
+
+        st.setString(1, nom);
+        ResultSet rs = st.executeQuery();
+        Medecin p = new Medecin();
+        rs.next();
+        p.setId(rs.getInt("id"));
+
+        return p;
     }
 
     public List<Cabinet> getListeCabinets() throws SQLException {

@@ -94,5 +94,10 @@
             <Image url="@image/eshkili.png" />
          </image>
       </ImageView>
+      <Button layoutX="511.0" layoutY="11.0" mnemonicParsing="false" onAction="#redirectToHome" prefHeight="37.0" prefWidth="119.0" style="-fx-background-color: #84dbf0;" styleClass="shadow" stylesheets="@style.css" text="Home">
+         <font>
+            <Font name="System Italic" size="24.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

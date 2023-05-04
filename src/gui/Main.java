@@ -20,14 +20,10 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-
         try {
-
             System.out.println("sent");
-            Parent root = FXMLLoader.load(getClass().getResource("AdminStatistics.fxml"));
-
+            Parent root = FXMLLoader.load(getClass().getResource("Home.fxml"));
             Scene scene = new Scene(root, 1600, 900);
-
 //            primaryStage.setTitle("addCategory");
             primaryStage.setScene(scene);
             primaryStage.show();

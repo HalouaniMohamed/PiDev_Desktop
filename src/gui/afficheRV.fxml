@@ -16,6 +16,11 @@
 <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="692.0" style="-fx-background-radius: 15;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AfficheRVController">
   
     <children>
+      <Button fx:id="stat1" mnemonicParsing="false" onAction="#redirectToHome" prefHeight="25.0" prefWidth="137.0" styleClass="search-button" stylesheets="@style.css" text="Home">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </Button>
       <Button fx:id="stat" mnemonicParsing="false" onAction="#stat" prefHeight="25.0" prefWidth="137.0" styleClass="search-button" stylesheets="@style.css" text="Voir statistique">
          <opaqueInsets>
             <Insets />
@@ -27,7 +32,7 @@
 
       <ImageView fitHeight="166.0" fitWidth="151.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@image/eshkili.png" />
+            <Image url="file:/C:/Users/ALPHA/Desktop/logo.png" />
          </image>
       </ImageView>
       <Button fx:id="btnAjouter" contentDisplay="CENTER" graphicTextGap="18.0" lineSpacing="5555.0" onAction="#handleAjouter" prefHeight="40.0" prefWidth="295.0" style="-fx-background-color: #87CEEB; -fx-background-radius: 15;" text="Click ici pour prendre un Rendez-Vous" textAlignment="RIGHT">

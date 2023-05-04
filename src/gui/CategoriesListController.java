@@ -29,6 +29,7 @@ import javafx.util.Callback;
 import services.CategoryService;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
+import tools.SessionManager;
 
 /**
  * FXML Controller class
@@ -68,6 +69,11 @@ public class CategoriesListController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
 
         load();
+        System.out.println("user object:" + SessionManager.getCurrentUser());
+        System.out.println("user email: " + SessionManager.getEmail());
+        System.out.println("user id: " + SessionManager.getId());
+        System.out.println("user role: " + SessionManager.getRoles());
+
 //        List<Category> categories = cs.getAllCategories();
 //        ObservableList<Category> data = FXCollections.observableArrayList(categories);
 //        categoriesView.setItems(data);

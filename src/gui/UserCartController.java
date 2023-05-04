@@ -25,6 +25,7 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -35,6 +36,7 @@ import javafx.scene.control.TableCell;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import tools.SessionManager;
 
 /**
  * FXML Controller class
@@ -72,6 +74,8 @@ public class UserCartController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         load();
+
+        System.out.println(SessionManager.getAdresse());
     }
 
     private void refreshTable() {
@@ -178,7 +182,13 @@ public class UserCartController implements Initializable {
     @FXML
     private void makeOrder(ActionEvent event) {
         Stripe.apiKey = "sk_test_51MhGaAGeGEgrQ6hOFaUPvKPr8iOv7UjDwPJ22UAHMhCVD0VCQw3CmEGh0mQoVN7b635WeO2rilB94j2hSWMNDxhu00UQXAHDAc";
-
+        if (!checkCartQuantities(items)) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Payment Error");
+            alert.setHeaderText(null);
+            alert.setContentText("Quantité non disponible");
+            alert.showAndWait();
+        }
         try {
             // Calculate the total price of the items in the shopping cart
 
@@ -276,4 +286,15 @@ public class UserCartController implements Initializable {
         prixTotale.setText(String.format("%.2f", totalPrice));
     }
 
+    public boolean checkCartQuantities(List<ShoppingCartItem> items) {
+        for (ShoppingCartItem item : items) {
+            int cartQuantity = item.getQuantity();
+            int productQuantity = item.getProduct().getQuantity();
+
+            if (cartQuantity > productQuantity) {
+                return false;
+            }
+        }
+        return true;
+    }
 }

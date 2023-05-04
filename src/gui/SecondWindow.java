@@ -27,7 +27,7 @@ public class SecondWindow extends Application {
     @Override
     public void start(Stage primaryStage) {
        try {
-            Parent root = FXMLLoader.load(getClass().getResource("Commentaire.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("ZiwCommentaire.fxml"));
          
             
             

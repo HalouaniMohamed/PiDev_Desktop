@@ -1,4 +1,5 @@
 package gui;
+
 import entities.Evenements;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -6,9 +7,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-
 import java.text.SimpleDateFormat;
-
 
 public class Evenement_Component_Controller {
 
@@ -42,10 +41,10 @@ public class Evenement_Component_Controller {
     @FXML
     private Label _type;
     private SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
-    private Evenements_Client_Controller controller ;
+    private Evenements_Client_Controller controller;
     private Evenements event;
 
-    public void init(Evenements evenement, int index, Evenements_Client_Controller evenements_client_controller){
+    public void init(Evenements evenement, int index, Evenements_Client_Controller evenements_client_controller) {
         this.controller = evenements_client_controller;
         this.event = evenement;
         _nbr.setText(String.valueOf(index));
@@ -55,9 +54,10 @@ public class Evenement_Component_Controller {
         _date.setText(formatter.format(evenement.getDate_evenement()));
         _desc.setText(evenement.getDescription_evenement());
         _lieu.setText(evenement.getLieu_evenement());
-        _pic.setImage(new Image("file:///"+evenement.getImage()));
+        _pic.setImage(new Image("file:///" + evenement.getImage()));
         _type.setText(evenement.getType());
     }
+
     @FXML
     void preview(MouseEvent event) {
         controller.pop(this.event);

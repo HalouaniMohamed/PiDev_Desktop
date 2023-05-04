@@ -40,6 +40,9 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import entities.Mood;
+import java.io.IOException;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import services.Mood1;
 
 /**
@@ -75,6 +78,8 @@ public class AfficherMoodController implements Initializable {
         private ObservableList<Mood> moodList;
     @FXML
     private Button butpdf;
+    @FXML
+    private Button voirP;
 
 
     /**
@@ -327,6 +332,15 @@ for (int i = 0; i < list2.size(); i++) {
             e.printStackTrace();
             
         }
+    }
+
+   @FXML
+    private void goQ(javafx.event.ActionEvent event) throws IOException {
+      FXMLLoader loader = new FXMLLoader(getClass().getResource("../GUI/AjouterMood.fxml"));
+        Parent root = loader.load();
+        voirP.getScene().setRoot(root);
+
+
     }
         
     }

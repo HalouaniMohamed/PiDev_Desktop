@@ -10,12 +10,10 @@
 
 <AnchorPane id="AnchorPane" prefHeight="593.0" prefWidth="1398.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AjouterMoodController">
    <children>
-      <Label layoutX="252.0" layoutY="192.0" text="ID:" textFill="#1c3ca4" />
       <Label layoutX="248.0" layoutY="268.0" text="UserID:" textFill="#1c3ca4" />
       <Label layoutX="250.0" layoutY="337.0" text="mood:" textFill="#1c3ca4" />
       <Label layoutX="236.0" layoutY="406.0" text="description:" textFill="#1c3ca4" />
       <Label layoutX="244.0" layoutY="477.0" text="MoodID:" textFill="#1c3ca4" />
-      <TextField fx:id="tfID" layoutX="344.0" layoutY="188.0" />
       <TextField fx:id="tfUserID" layoutX="344.0" layoutY="264.0" />
       <TextField fx:id="tfmood" layoutX="344.0" layoutY="333.0" />
       <TextField fx:id="tfdesc" layoutX="344.0" layoutY="402.0" />
@@ -44,5 +42,6 @@
             </AnchorPane>
          </children>
       </AnchorPane>
+      <Button layoutX="1371.0" layoutY="172.0" mnemonicParsing="false" onAction="#redirectToHome" style="-fx-background-color: #6777ef;" text="Home" />
    </children>
 </AnchorPane>
