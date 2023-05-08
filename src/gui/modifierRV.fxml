@@ -14,41 +14,41 @@
       <TextField fx:id="causeField" layoutX="169.0" layoutY="264.0" prefHeight="25.0" prefWidth="282.0" />
       <TextField fx:id="descriptionField" layoutX="170.0" layoutY="302.0" prefHeight="106.0" prefWidth="282.0" />
       <DatePicker fx:id="dateField" layoutX="175.0" layoutY="431.0" prefHeight="25.0" prefWidth="282.0" />
-      <Button fx:id="enregistrerButton" layoutX="195.0" layoutY="469.0" mnemonicParsing="false" onAction="#handleEnregistrer" prefHeight="25.0" prefWidth="214.0" style="-fx-background-color: #84dbf0;" text="ENREGISTRER">
+      <Button fx:id="enregistrerButton" layoutX="195.0" layoutY="469.0" mnemonicParsing="false" onAction="#handleEnregistrer" prefHeight="25.0" prefWidth="214.0" style="-fx-background-color: #26ace2;" text="ENREGISTRER" textFill="WHITE">
          <font>
             <Font name="System Italic" size="24.0" />
          </font></Button>
-      <Label alignment="CENTER" layoutX="-2.0" prefHeight="78.0" prefWidth="607.0" style="-fx-background-color: #84dbf0;" text="ESHKILI">
+      <Label alignment="CENTER" layoutX="-2.0" prefHeight="78.0" prefWidth="607.0" style="-fx-background-color: #26ace2;" text="ESHKILI" textFill="#ece6e6">
          <font>
             <Font name="Trebuchet MS" size="53.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="102.0" layoutY="78.0" prefHeight="68.0" prefWidth="428.0" style="-fx-background-color: #D3D3D3;" text="MODIFICATION D'UN RENDEZ-VOUS" textAlignment="CENTER">
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="102.0" layoutY="100.0" prefHeight="38.0" prefWidth="428.0" style="-fx-background-color: #26ace2;" text="MODIFICATION D'UN RENDEZ-VOUS" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="Gill Sans Ultra Bold" size="20.0" />
          </font>
       </Label>
-      <Label layoutX="51.0" layoutY="168.0" text="Nom :">
+      <Label layoutX="51.0" layoutY="168.0" text="Nom :" textFill="#131bb4">
          <font>
             <Font name="System Bold" size="19.0" />
          </font>
       </Label>
-      <Label layoutX="48.0" layoutY="222.0" text="Prenom :">
+      <Label layoutX="48.0" layoutY="222.0" text="Prenom :" textFill="#131bb4">
          <font>
             <Font name="System Bold" size="19.0" />
          </font>
       </Label>
-      <Label layoutX="57.0" layoutY="263.0" text="Cause :">
+      <Label layoutX="57.0" layoutY="263.0" text="Cause :" textFill="#131bb4">
          <font>
             <Font name="System Bold" size="19.0" />
          </font>
       </Label>
-      <Label layoutX="29.0" layoutY="333.0" text="Description : ">
+      <Label layoutX="29.0" layoutY="333.0" text="Description : " textFill="#131bb4">
          <font>
             <Font name="System Bold" size="19.0" />
          </font>
       </Label>
-      <Label layoutX="62.0" layoutY="430.0" text="Date :">
+      <Label layoutX="62.0" layoutY="430.0" text="Date :" textFill="#131bb4">
          <font>
             <Font name="System Bold" size="19.0" />
          </font>

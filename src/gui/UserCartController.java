@@ -8,6 +8,7 @@ package gui;
 import com.stripe.Stripe;
 import entities.Product;
 import entities.ShoppingCartItem;
+import entities.User;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -31,7 +32,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import services.ShoppingCartItemService;
-import tools.Statics;
 import javafx.scene.control.TableCell;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -67,6 +67,7 @@ public class UserCartController implements Initializable {
     @FXML
     private Label prixTotale;
     double totalPrice;
+    private User currentUser;
 
     /**
      * Initializes the controller class.
@@ -81,8 +82,9 @@ public class UserCartController implements Initializable {
     private void refreshTable() {
 
         data.clear();
-
-        items = service.getCartItems(Statics.currentUser.getId());
+        currentUser = SessionManager.getCurrentUser();
+        System.out.println(currentUser);
+        items = service.getCartItems(currentUser.getId());
         data.addAll(items);
         cartTable.setItems(data);
         if (data.isEmpty()) {

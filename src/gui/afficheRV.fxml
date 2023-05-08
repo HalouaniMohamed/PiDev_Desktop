@@ -16,12 +16,15 @@
 <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="692.0" style="-fx-background-radius: 15;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AfficheRVController">
   
     <children>
-      <Button fx:id="stat1" mnemonicParsing="false" onAction="#redirectToHome" prefHeight="25.0" prefWidth="137.0" styleClass="search-button" stylesheets="@style.css" text="Home">
+      <Button fx:id="stat1" mnemonicParsing="false" onAction="#redirectToHome" prefHeight="25.0" prefWidth="137.0" style="-fx-background-color: #26ace2;" styleClass="search-button" stylesheets="@style.css" text="Home" textFill="WHITE">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
+         <VBox.margin>
+            <Insets left="550.0" />
+         </VBox.margin>
       </Button>
-      <Button fx:id="stat" mnemonicParsing="false" onAction="#stat" prefHeight="25.0" prefWidth="137.0" styleClass="search-button" stylesheets="@style.css" text="Voir statistique">
+      <Button fx:id="stat" mnemonicParsing="false" onAction="#stat" prefHeight="25.0" prefWidth="137.0" style="-fx-background-color: #26ace2;" styleClass="search-button" stylesheets="@style.css" text="Voir statistique" textFill="#f4f0f0">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
@@ -35,7 +38,7 @@
             <Image url="file:/C:/Users/ALPHA/Desktop/logo.png" />
          </image>
       </ImageView>
-      <Button fx:id="btnAjouter" contentDisplay="CENTER" graphicTextGap="18.0" lineSpacing="5555.0" onAction="#handleAjouter" prefHeight="40.0" prefWidth="295.0" style="-fx-background-color: #87CEEB; -fx-background-radius: 15;" text="Click ici pour prendre un Rendez-Vous" textAlignment="RIGHT">
+      <Button fx:id="btnAjouter" contentDisplay="CENTER" graphicTextGap="18.0" lineSpacing="5555.0" onAction="#handleAjouter" prefHeight="40.0" prefWidth="295.0" style="-fx-background-color: #26ace2; -fx-background-radius: 15;" text="Click ici pour prendre un Rendez-Vous" textAlignment="RIGHT" textFill="WHITE">
          <font>
             <Font name="Bernard MT Condensed" size="15.0" />
          </font>
@@ -50,8 +53,8 @@
                <Font name="Cambria Italic" size="17.0" />
             </font></Label>
         <TextField fx:id="searchField" opacity="0.47" promptText="tapez ici pour ecrire" styleClass="transparent" stylesheets="@style.css" />
-        <Button onAction="#handleSearch" styleClass="search-button" stylesheets="@style.css" text="Rechercher" />
-         <Button fx:id="btn_tri" mnemonicParsing="false" onAction="#handletri" prefHeight="25.0" prefWidth="94.0" styleClass="search-button" stylesheets="@style.css" text="Tri ">
+        <Button onAction="#handleSearch" style="-fx-background-color: #26ace2;" styleClass="search-button" stylesheets="@style.css" text="Rechercher" textFill="WHITE" />
+         <Button fx:id="btn_tri" mnemonicParsing="false" onAction="#handletri" prefHeight="25.0" prefWidth="94.0" style="-fx-background-color: #26ace2;" styleClass="search-button" stylesheets="@style.css" text="Tri " textFill="WHITE">
             <opaqueInsets>
                <Insets />
             </opaqueInsets>
@@ -82,7 +85,7 @@
          </VBox.margin>
       </TableView>
       <Label />
-      <Button fx:id="btn_pdf" mnemonicParsing="false" onAction="#btnGenPDF" prefHeight="25.0" prefWidth="230.0" styleClass="search-button" stylesheets="@style.css" text="PDF">
+      <Button fx:id="btn_pdf" mnemonicParsing="false" onAction="#btnGenPDF" prefHeight="25.0" prefWidth="230.0" style="-fx-background-color: #26ace2;" styleClass="search-button" stylesheets="@style.css" text="PDF" textFill="#fffefe">
          <opaqueInsets>
             <Insets />
          </opaqueInsets></Button>

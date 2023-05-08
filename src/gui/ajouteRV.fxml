@@ -16,19 +16,19 @@
 
 <AnchorPane id="AnchorPane" fx:id="tfimage" prefHeight="684.0" prefWidth="599.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AjouteRVController">
    <children>
-      <Label layoutX="88.0" layoutY="173.0" text="Nom :">
+      <Label layoutX="88.0" layoutY="173.0" text="Nom :" textFill="#2641cc">
          <font>
             <Font name="System Bold" size="19.0" />
          </font></Label>
-      <Label layoutX="85.0" layoutY="227.0" text="Prenom :">
+      <Label layoutX="85.0" layoutY="227.0" text="Prenom :" textFill="#2641cc">
          <font>
             <Font name="System Bold" size="19.0" />
          </font></Label>
-      <Label layoutX="89.0" layoutY="282.0" text="Cause :">
+      <Label layoutX="89.0" layoutY="282.0" text="Cause :" textFill="#2641cc">
          <font>
             <Font name="System Bold" size="19.0" />
          </font></Label>
-      <Label layoutX="66.0" layoutY="387.0" text="Description : ">
+      <Label layoutX="66.0" layoutY="387.0" text="Description : " textFill="#2641cc">
          <font>
             <Font name="System Bold" size="19.0" />
          </font></Label>
@@ -36,32 +36,32 @@
       <TextField fx:id="tfPrenom" alignment="CENTER" layoutX="192.0" layoutY="228.0" prefHeight="25.0" prefWidth="234.0" promptText="Votre Prénom" style="-fx-background-radius: 25;" styleClass="shadow" stylesheets="@style.css" />
       <TextField fx:id="tfCause" alignment="CENTER" layoutX="189.0" layoutY="283.0" prefHeight="25.0" prefWidth="234.0" promptText="La Cause du maaladie" style="-fx-background-radius: 25;" styleClass="shadow" stylesheets="@style.css" />
       <TextField fx:id="tfDescription" alignment="CENTER" layoutX="192.0" layoutY="357.0" prefHeight="87.0" prefWidth="226.0" promptText="Une Description" style="-fx-background-radius: 25;" styleClass="shadow" stylesheets="@style.css" />
-      <Button fx:id="tfValider" layoutX="239.0" layoutY="619.0" mnemonicParsing="false" onAction="#SaveRV" prefHeight="37.0" prefWidth="119.0" style="-fx-background-color: #84dbf0;" styleClass="shadow" stylesheets="@style.css" text="Valider">
+      <Button fx:id="tfValider" layoutX="226.0" layoutY="635.0" mnemonicParsing="false" onAction="#SaveRV" prefHeight="28.0" prefWidth="166.0" style="-fx-background-color: #26ace2;" styleClass="shadow" stylesheets="@style.css" text="Valider" textFill="WHITE">
          <font>
             <Font name="System Italic" size="24.0" />
          </font></Button>
       <DatePicker fx:id="tfDate" layoutX="204.0" layoutY="481.0" prefHeight="25.0" prefWidth="204.0" styleClass="shadow" stylesheets="@style.css" />
-      <Label layoutX="107.0" layoutY="480.0" text="Date :">
+      <Label layoutX="107.0" layoutY="480.0" text="Date :" textFill="#2641cc">
          <font>
             <Font name="System Bold" size="19.0" />
          </font></Label>
       <ComboBox fx:id="cbMedecin" layoutX="207.0" layoutY="535.0" prefHeight="25.0" prefWidth="197.0" style="-fx-background-radius: 25;" styleClass="shadow" stylesheets="@style.css" />
       <ComboBox fx:id="cbCabinet" layoutX="207.0" layoutY="585.0" prefHeight="25.0" prefWidth="197.0" style="-fx-background-radius: 25;" styleClass="shadow" stylesheets="@style.css" />
 
-      <Label layoutX="82.0" layoutY="535.0" text="Medecin :">
+      <Label layoutX="82.0" layoutY="535.0" text="Medecin :" textFill="#2641cc">
          <font>
             <Font name="System Bold" size="19.0" />
          </font></Label>
-      <Label layoutX="113.0" layoutY="589.0" text="Cabinet">
+      <Label layoutX="113.0" layoutY="589.0" text="Cabinet" textFill="#2641cc">
          <font>
             <Font name="System Bold" size="19.0" />
          </font></Label>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="102.0" layoutY="78.0" prefHeight="68.0" prefWidth="380.0" style="-fx-background-color: #D3D3D3;" text="CREATION D'UN RENDEZ-VOUS" textAlignment="CENTER">
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="116.0" layoutY="90.0" prefHeight="26.0" prefWidth="398.0" style="-fx-background-color: #26ace2;" text="CREATION D'UN RENDEZ-VOUS" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="Gill Sans Ultra Bold" size="20.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" prefHeight="78.0" prefWidth="651.0" style="-fx-background-color: #84dbf0;" text="ESHKILI">
+      <Label alignment="CENTER" prefHeight="78.0" prefWidth="661.0" style="-fx-background-color: #26ace2;" text="ESHKILI" textFill="WHITE">
          <font>
             <Font name="Trebuchet MS" size="53.0" />
          </font>
@@ -71,7 +71,7 @@
             <Font name="System Bold" size="19.0" />
          </font>
       </Label>
-      <Circle fill="#84dbf0" layoutX="25.0" layoutY="55.0" radius="69.0" strokeType="INSIDE" styleClass="#84dbf0">
+      <Circle fill="#26ace2" layoutX="25.0" layoutY="55.0" radius="69.0" strokeType="INSIDE" styleClass="#84dbf0">
          <stroke>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>
@@ -89,12 +89,12 @@
             </LinearGradient>
          </stroke>
       </Circle>
-      <ImageView fitHeight="174.0" fitWidth="180.0" layoutX="475.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="112.0" fitWidth="138.0" layoutX="518.0" layoutY="99.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@image/eshkili.png" />
+            <Image url="file:/C:/Users/ALPHA/Desktop/logo.png" />
          </image>
       </ImageView>
-      <Button layoutX="511.0" layoutY="11.0" mnemonicParsing="false" onAction="#redirectToHome" prefHeight="37.0" prefWidth="119.0" style="-fx-background-color: #84dbf0;" styleClass="shadow" stylesheets="@style.css" text="Home">
+      <Button layoutX="511.0" layoutY="11.0" mnemonicParsing="false" onAction="#redirectToHome" prefHeight="37.0" prefWidth="119.0" style="-fx-background-color: #26ace2;" styleClass="shadow" stylesheets="@style.css" text="Home" textFill="WHITE">
          <font>
             <Font name="System Italic" size="24.0" />
          </font>

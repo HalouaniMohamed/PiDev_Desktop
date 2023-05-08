@@ -15,6 +15,7 @@ import java.sql.Statement;
 import java.util.Calendar;
 import java.util.List;
 import tools.MyConnection;
+import tools.SessionManager;
 import tools.Statics;
 
 /**
@@ -56,14 +57,17 @@ public class OrderService {
     }
 
     public boolean decrementQuantities2(List<ShoppingCartItem> shoppingCartItems) {
+        int userId = SessionManager.getCurrentUser().getId();
         try {
             // Create a new order
-            PreparedStatement orderStatement = cnx.prepareStatement("INSERT INTO commande(user_id,address,created_at,is_confirmed) VALUES (?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
-            orderStatement.setInt(1, Statics.currentUser.getId());
+            PreparedStatement orderStatement = cnx.prepareStatement("INSERT INTO `commande`(`user_id`, `addresse`, `created_at`, `is_confirmed`) VALUES (?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
             orderStatement.setString(2, "new address");
+            orderStatement.setInt(1, userId);
+
             Date date = new Date(Calendar.getInstance().getTime().getTime());
             orderStatement.setDate(3, date);
             orderStatement.setBoolean(4, false);
+
             orderStatement.executeUpdate();
 
             // Retrieve the ID of the new order

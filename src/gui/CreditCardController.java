@@ -9,6 +9,7 @@ import com.stripe.exception.StripeException;
 import com.stripe.model.Charge;
 import com.stripe.model.Token;
 import entities.ShoppingCartItem;
+import entities.User;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -36,7 +37,7 @@ import services.OrderService;
 import services.ShoppingCartItemService;
 import tools.MailSenderH;
 import tools.PdfGeneratorH;
-import tools.Statics;
+import tools.SessionManager;
 
 /**
  * FXML Controller class
@@ -59,6 +60,7 @@ public class CreditCardController implements Initializable {
     @FXML
     private TextField tfYear;
     List<ShoppingCartItem> items = new ArrayList<>();
+    private User currentUser;
 
     @FXML
 //    private Button done;
@@ -69,6 +71,7 @@ public class CreditCardController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        currentUser = SessionManager.getCurrentUser();
     }
 
     @FXML
@@ -192,7 +195,7 @@ public class CreditCardController implements Initializable {
                         });
                     } else {
                         ShoppingCartItemService cartService = new ShoppingCartItemService();
-                        cartService.deleteCartItemsForUser(Statics.currentUser.getId());
+                        cartService.deleteCartItemsForUser(currentUser.getId());
 
                         //generate pdf using the shopping cart items
                         PdfGeneratorH pdfGenerator = new PdfGeneratorH();
@@ -212,19 +215,15 @@ public class CreditCardController implements Initializable {
                         }
                         Platform.runLater(() -> {
 
-                            FXMLLoader loader = new FXMLLoader(getClass().getResource("UserProductsList.fxml"));
-
                             try {
-                                // set the main window to UserProductList.fxml
-                                System.out.println("hi");
+                                FXMLLoader loader = new FXMLLoader(getClass().getResource("Home.fxml"));
                                 Parent root = loader.load();
                                 Scene scene = new Scene(root);
-                                Stage mainStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                                mainStage.setScene(scene);
-                                mainStage.show();
-                            } catch (IOException ex) {
-                                System.out.println(ex.getMessage());
-                                System.out.println("baaaaaaaa3");
+                                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                                stage.setScene(scene);
+                                stage.show();
+                            } catch (IOException e) {
+                                e.printStackTrace();
                             }
                         });
 

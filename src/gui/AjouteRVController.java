@@ -158,7 +158,7 @@ public class AjouteRVController implements Initializable {
             alert.setContentText("Votre Rendez-Vous a été pris avec succées ");
             alert.showAndWait();
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("UserCart.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Home.fxml"));
             Parent root = loader.load();
             Scene scene = new Scene(root);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -186,7 +186,7 @@ public class AjouteRVController implements Initializable {
 
     @FXML
     private void redirectToHome(ActionEvent event) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("UserProductsList.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Home.fxml"));
         try {
             Parent root = loader.load();
             tfNom.getScene().setRoot(root);

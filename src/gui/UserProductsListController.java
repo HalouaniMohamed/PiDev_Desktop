@@ -128,6 +128,9 @@ public class UserProductsListController implements Initializable {
         buyButton.setPrefWidth(100);
         buyButton.setPrefHeight(30);
         buyButton.setFont(Font.font(18));
+        if (SessionManager.getCurrentUser() == null) {
+            buyButton.setDisable(true);
+        }
         User currentUser = SessionManager.getCurrentUser();
         buyButton.setStyle("-fx-background-color: #26ace2; -fx-text-fill: white; -fx-border-radius: 5;");
         buyButton.setOnAction(e -> {

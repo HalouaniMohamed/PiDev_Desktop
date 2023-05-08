@@ -93,7 +93,7 @@ public class AjouterMoodController implements Initializable {
 
         String message = "Dear Client,\n"
                 + "\n"
-                + "I am writing this email to confirm your location reservation for the following details:\n"
+                + "I am writing this email to confirm your location mood the following details:\n"
                 + "\n"
                 + "user_id  : " + user_id + "\n"
                 + "mood_id  : " + mood_id + "\n"
